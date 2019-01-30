@@ -5,216 +5,42 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>test</title>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="./../src/assets/css/app.css">
 
 </head>
 <body>
     <div id="root"></div>
+        <!-- <div class ='TitleBar col-md-12'>
+            <h3>Do Your Work</h3>
+        </div>
+        <div class='NavBar col-md-2'>
+            
+
+
+        </div>
+    <div class='MainPage col-md-10'>
+        <div class='leftBar col-md-6'>
+            <h3>Add Item</h3>
+            <input class='TaskInput'></input><button class='btn btn-primary'>Done</button>
+  
+        </div>
+        <div class='rightBar col-md-6'>
+            <h3>List of Jobs</h3>
+            <ol class='TaskTable'>
+                    <li>Task 1<button class='btn btn-primary'>Done</button></li>
+                    <li>Task 2<button class='btn btn-primary'>Done</button></li>
+                    <li>Task 3<button class='btn btn-primary'>Done</button></li>
+                    <li>Task 4<button class='btn btn-primary'>Done</button></li>
+                    <li>Task 5<button class='btn btn-primary'>Done</button></li>
+                 </ol>
+ 
+        </div>
+
+    </div> -->
     <!-- Skeleton Start -->
-    <div class="MainContainer">
-      <h1>Selection Window</h1>
-      <div class="WeaponContainer">
-          <div class="WeaponContainerContents">
-            <p class='MainContainerText'>Weapon Type:</p>
-            <img src="./../src/assets/images/Great_Sword_Icon_White.png">
-              <select>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
-          </div>
-          <div class="WeaponContainerContents">
-            <p class='MainContainerText'>Weapon Name:</p>
-            <img src="./../src/assets/images/Great_Sword_Icon_White.png">
-              <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-              </select>
-          </div>
-          <div class="WeaponContainerContents">
-            <p class='MainContainerText'>Decorations</p>
-            <img src="./../src/assets/images/decoration.png">
-              <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-              </select>
-          </div>
-        </div>
-      <div class="HelmContainer">
-        <div class="HelmContainerContents">
-          <p class='MainContainerText'>Helms</p>
-          <img src="./../src/assets/images/MH3icon-Helm.png" alt="Italian Trulli">
-          <select>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div class="HelmContainerContents">
-          <div class="DecorationContainer">
-              <p class='MainContainerText'>Decorations</p>
-              <img src="./../src/assets/images/decoration.png">
-              <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-              </select>
-          </div>
-        </div>
-      </div>
-      <div class="ChestContainer">
-        <div class="ChestContainerContents">
-          <p class='MainContainerText'>Chests</p>
-          <img src="./../src/assets/images/MH3icon-Plate.png" alt="Italian Trulli">
-          <select>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div class="ChestContainerContents">
-          <div class="DecorationContainer">
-              <p class='MainContainerText'>Decorations</p>
-              <img src="./../src/assets/images/decoration.png">
-              <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-              </select>
-          </div>
-        </div>
-      </div>
-      <div class="ArmContainer">
-        <div class="ArmContainerContents">
-          <p class='MainContainerText'>Arms</p>
-          <img src="./../src/assets/images/MH3icon-Gauntlets.png" alt="Italian Trulli">
-          <select>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div class="ArmContainerContents">
-          <div class="DecorationContainer">
-              <p class='MainContainerText'>Decorations</p>
-              <img src="./../src/assets/images/decoration.png">
-              <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-              </select>
-          </div>
-        </div>
-      </div>
-      <div class="WaistContainer">
-        <div class="WaistContainerContents">
-          <p class='MainContainerText'>Waist</p>
-          <img src="./../src/assets/images/MH3icon-Waist.png" alt="Italian Trulli">
-          <select>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div class="WaistContainerContents">
-          <div class="DecorationContainer">
-              <p class='MainContainerText'>Decorations</p>
-              <img src="./../src/assets/images/decoration.png">
-              <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-              </select>
-          </div>
-        </div>      
-      </div>
-      <div class="LegContainer">
-        <div class="LegContainerContents">
-          <p class='MainContainerText'>Legs</p>
-          <img src="./../src/assets/images/MH3icon-Leggings.png" alt="Italian Trulli">
-          <select>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div class="LegContainerContents">
-          <div class="DecorationContainer">
-              <p class='MainContainerText'>Decorations</p>
-              <img src="./../src/assets/images/decoration.png">
-              <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-              </select>
-          </div>
-        </div>  
-      </div>
-      <div class="CharmContainer">
-        <div class="CharmContainerContents">
-          <p class='MainContainerText'>Charms</p>
-          <img src="./../src/assets/images/Sword_and_Shield_Icon_White.png" alt="Italian Trulli">
-          <select>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div class="CharmContainerContents">
-          <div class="DecorationContainer">
-              <p class='MainContainerText'>Decorations</p>
-              <img src="./../src/assets/images/decoration.png">
-              <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-              </select>
-          </div>      
-        </div>
-      </div>
-      
-      
-  </div>
-  <div class="ResultContainer">
-      <h1>Results:</h1>
-      <div class="AttackContainer">
-        <h2>Weapon Type Bonus:</h2>
-        <h2>Attack Status:</h2>
-        <h4>Attack</h4>
-        <h4>Sharpness</h4>
-        <h4>Affinity</h4>
-        <h4>Element</h4>
-        <h4>Additional Effects</h4>
-      </div>
-      <div class="DefenseContainer">
-        <h2>Defense Status:</h2>
-        <h4>Defense</h4>
-        <h4>Attack</h4>
-        <h4>Vs. Fire</h4>
-        <h4>Vs. Water</h4>
-        <h4>Vs. Thunder</h4>
-        <h4>Vs. Ice</h4>
-        <h4>Vs. Dragon</h4>
-      </div>
-  </div>
+    
 
     <!-- Skeleton End -->
 

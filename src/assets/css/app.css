@@ -3,150 +3,97 @@
     src: url(../fonts/quest.ttf);
 }
 
-body {
-    margin: 0;
-    background-color:black;
-    color: rgb(112, 169, 88);
+.TitleBar{
+
+    height:12vh;
+    text-align: center;
+    background-color:rgb(69, 209, 225);
+    color:white;
+    border-style:solid;
+    border-width: 1px;
+    border-color:rgb(181, 181, 181);
+
 }
 
-.MainContainer{
-    border-style: solid;
-    border-color: red;
-    width:35%;
-    height:100vh;
-    display:flex;
-    flex-direction: column;
+.TitleBar h3{
+    font-size: 45px;
+    font-family:Consolas;
+
+        margin-bottom:auto;
+}
+
+.NavBar{
+    background-color:rgb(162, 212, 218);
+    color: green;
+    height: 88vh;
+    border-right-style:solid;
+    border-width: 1px;
+    border-color:rgb(181, 181, 181);
+}
+
+.MainPage{
+    font-family:Consolas;
+
+    background-color:white;
+    height: 88vh;
+}
+
+.leftBar{
+    padding-top:10px;
+    background-color: white;
+    height: 88vh;
+    overflow:auto;
     float:left;
-    padding-left:30px
-
 }
 
-.MainContainerText{
-    
-
+.leftBar h3{
+    color: rgb(106, 106, 106);
+    font-size: 35px;
+    margin-top: 20px;
+    margin-left: 20%;
+    font-family:Consolas;
+}
+.rightBar{
+    padding-top:10px;
+    background-color: white;
+    height: 88vh;
+    overflow:auto;
+    float:left;
+    border-left-style:solid;
+    border-width: 1px;
+    border-color:rgb(181, 181, 181);
 }
 
-.WeaponContainer{
-    font-size: 18px;
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
+.rightBar h3{
+    color: rgb(106, 106, 106);
+    margin-top: 20px;
+    margin-left: 20%;
+    font-size: 35px;
+    font-family:Consolas;
 }
 
-.WeaponContainerContents{
-    display:inline-block;
-    padding-left:30px
-
+.TaskInput{
+    width: 80%
 }
 
-.HelmContainer{
-    font-size: 18px;
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
+.RadioInput{
+    width: 20px;
 }
 
-.HelmContainerContents{
-    display:inline-block;
-    padding-left:30px
+.TaskTable{  
+    padding-top:10px;
+    font-family:Consolas;
+    background-color:white;
+    color: rgb(106, 106, 106);
+    overflow:auto;
+    font-size: 20px;
 
 }
-
-.ChestContainer{
-    font-size: 18px;
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
+.TaskTable li{  
+    margin-top:10px;
+    margin-left:10px;
 }
 
-.ChestContainerContents{
-    display:inline-block;
-    padding-left:30px
-
-}
-.ArmContainer{
-    font-size: 18px;
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
-}
-
-.ArmContainerContents{
-    display:inline-block;
-    padding-left:30px
-
-}
-
-.WaistContainer{
-    font-size: 18px;
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
-}
-
-.WaistContainerContents{
-    display:inline-block;
-    padding-left:30px
-
-}
-
-.LegContainer{
-    font-size: 18px;
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
-}
-
-.LegContainerContents{
-    display:inline-block;
-    padding-left:30px
-}
-
-.CharmContainer{
-    font-size: 18px;
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
-}
-
-.CharmContainerContents{
-    display:inline-block;
-    padding-left:30px
-}
-
-.DecorationContainer{
-    float:right;
-}
-
-.ResultContainer{
-    border-style: solid;
-    border-color: red;
-    width:55%;
-    height:100vh;
-    display:flex;
-    flex-direction: column;
-    float:right;
-    padding-left:30px
-
-}
-
-.AttackContainer{
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
-    padding-left:30px
-
-}
-
-.DefenseContainer{
-    border-style: solid;
-    border-color: blue;
-    flex: 1 0 auto;
-    padding-left:30px
-
-}
-
-img{
-    height:20px;
-    width:20px;
+.btn-primary{
+    margin: 5px;
 }
