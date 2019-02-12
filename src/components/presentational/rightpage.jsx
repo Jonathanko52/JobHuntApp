@@ -17,7 +17,7 @@ const RightPage = (props) => {
             <br></br>
             <b>Cover Letter:</b> {cur.coverInput}
             <br></br>
-            <b>Link:</b> {cur.linkInput}
+            <b href>Link:</b> <a href = {cur.linkInput} target="_blank">{cur.linkInput}</a>
             <br></br>
             <button 
                 class ='btn btn-primary'

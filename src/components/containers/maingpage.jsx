@@ -87,6 +87,8 @@ class MainPage extends React.Component {
         })
     }
     
+
+
     render(){
         return(
             <div className='MainPage col-md-10'>
@@ -112,10 +114,6 @@ class MainPage extends React.Component {
 }
 export default MainPage
 
-// WebsiteInput
-// CompanyInput
-// titleInput
-// recruiterInput
-// LocationInput
-// coverInput
-// LinkInput
+//Client ID: 218195582841-2ijdcs0qti8ot0pjkbti6srelmn1d8fn.apps.googleusercontent.com
+//Client Secret:HyZ6TLHlrdRteSv3KhwfonWE
+//API KEY: AIzaSyDtozpl2iAtr2mB9OViJKsi0PNTIWg2Uq4
