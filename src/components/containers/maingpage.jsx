@@ -17,6 +17,9 @@ class MainPage extends React.Component {
         linkInput:'',
       }
       this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
+
+      this.handleChangeWebsite2 = this.handleChangeWebsite2.bind(this);
+
       this.handleChangeCompany = this.handleChangeCompany.bind(this)
       this.handleChangeTitle = this.handleChangeTitle.bind(this)
       this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this)
@@ -31,6 +34,11 @@ class MainPage extends React.Component {
     handleChangeWebsite(event){
         this.setState({websiteInput:event.target.value})
     }
+
+    handleChangeWebsite2(event){
+        this.setState({websiteInput:event.target.value})
+    }
+
     handleChangeCompany(event){
         this.setState({companyInput:event.target.value})
     }
@@ -51,6 +59,7 @@ class MainPage extends React.Component {
     }
 
     addToList(){
+        console.log('addToList')
         this.setState((state)=>{
             let newTasks = state.tasks.slice()
             newTasks.push({
@@ -94,6 +103,7 @@ class MainPage extends React.Component {
             <div className='MainPage col-md-10'>
                 <LeftPage 
                     handleChangeWebsite = {this.handleChangeWebsite}
+                    handleChangeWebsite2 = {this.handleChangeWebsite2}
                     handleChangeCompany = {this.handleChange}
                     handleChangeTitle = {this.handleChangeTitle}
                     handleChangeRecruiter = {this.handleChangeRecruiter}

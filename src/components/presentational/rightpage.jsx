@@ -19,12 +19,56 @@ const RightPage = (props) => {
             <br></br>
             <b href>Link:</b> <a href = {cur.linkInput} target="_blank">{cur.linkInput}</a>
             <br></br>
+            <button class ='btn btn-primary' onClick={()=>{
+                console.log("BUtton for sheet pressed")
+                let emptyRow;
+                gapi.client.sheets.spreadsheets.values.get({
+                    spreadsheetId: '1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw',
+                    range: 'Sheet2!A1:A1000'
+                }).then((response) => {
+                    var result = response.result;
+                    console.log(result.values.length)
+                    emptyRow = result.values.length + 1
+                }).then(()=>{
+                    gapi.client.sheets.spreadsheets.values.update({
+                        spreadsheetId: '1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw',
+                        range:`Sheet2!A${emptyRow}:J${emptyRow}`,
+                        valueInputOption:'RAW',
+                        resource:{
+                            values: [
+                                [
+                                    cur.websiteInput, 
+                                    cur.companyInput,
+                                    cur.titleInput, 
+                                    cur.recruiterInput, 
+                                    `${new Date().getMonth()+1}/${new Date().getDate()}`,
+                                    cur.locationInput,
+                                    cur.coverInput,
+                                    'no',
+                                    '',
+                                    cur.linkInput
+                                ]
+                            ]
+                        }
+                    }).then((response) => {
+                        var result = response.result;
+                        console.log(result);
+                    }).catch((err)=>{
+                        console.log('inner error',err.result.error.message)
+                    });
+
+                }).catch((err)=>{
+                    console.log('outter error', err.result.error.message)
+                });
+
+            }}> Done
+            </button>
             <button 
                 class ='btn btn-primary'
                 onClick = {()=>{
                     props.removeFromList(ind)
                 }}>
-                Done
+                Cancel
             </button>
         </li>)
     })

@@ -3,18 +3,25 @@ import React from 'react';
 const LeftPage = (props) => (
     <div className='leftBar col-md-6'>
             <h4>Website</h4>
-            <input 
+            {/* <input 
             className='WebsiteInput TaskInput'
             onChange={(e)=>{
                 console.log('CHANGING')
                 props.handleChangeWebsite(e)
             }
-            }></input>
+            }></input> */}
+            <select 
+                className='WebsiteInput TaskInput'
+                onChange={(e)=>{
+                props.handleChangeWebsite2(e)
+            }}>
+                <option value="Indeed">Indeed</option>
+                <option value="LinkedIn">LinkedIn</option>
+            </select>
             <h4>Company</h4>
             <input 
             className='CompanyInput TaskInput'
             onChange={(e)=>{
-                console.log('CHANGING')
                 props.handleChangeCompany(e)
             }
             }></input>
@@ -22,7 +29,6 @@ const LeftPage = (props) => (
             <input 
             className='TitleInput TaskInput'
             onChange={(e)=>{
-                console.log('CHANGING')
                 props.handleChangeTitle(e)
             }
             }></input>
@@ -51,7 +57,6 @@ const LeftPage = (props) => (
             <input 
             className='LocationInput TaskInput'
             onChange={(e)=>{
-                console.log('CHANGING')
                 props.handleChangeLocation(e)
             }
             }></input>
@@ -61,7 +66,6 @@ const LeftPage = (props) => (
                 name = 'CoverLetter'
                 className='CoverInput RadioInput'
                 onChange={(e)=>{
-                    console.log('CHANGING')
                     props.handleChangeCover(e)
                 }}
                 value = 'Yes'
@@ -70,7 +74,6 @@ const LeftPage = (props) => (
                 name = 'CoverLetter'
                 className='CoverInput RadioInput'
                 onChange={(e)=>{
-                    console.log('CHANGING')
                     props.handleChangeCover(e)
                 }}
                 value = 'No'
@@ -80,7 +83,6 @@ const LeftPage = (props) => (
             <input 
             className='LinkInput TaskInput'
             onChange={(e)=>{
-                console.log('CHANGING')
                 props.handleChangeLink(e)
             }
             }></input>
@@ -93,6 +95,7 @@ const LeftPage = (props) => (
                 document.getElementsByClassName('TitleInput')[0].value=''
                 document.getElementsByClassName('LocationInput')[0].value=''
                 document.getElementsByClassName('LinkInput')[0].value=''
+                console.log('CLEARING')
             }}
             
             >Done</button>
