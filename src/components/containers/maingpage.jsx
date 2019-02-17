@@ -11,55 +11,43 @@ class MainPage extends React.Component {
         websiteInput: '',
         companyInput: '',
         titleInput: '',
-        recruiterInput: 'Yes',
         locationInput: '',
-        coverInput: 'Yes',
         linkInput:'',
       }
+      //Event Listener Function Bindings
       this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
-
-      this.handleChangeWebsite2 = this.handleChangeWebsite2.bind(this);
-
       this.handleChangeCompany = this.handleChangeCompany.bind(this)
       this.handleChangeTitle = this.handleChangeTitle.bind(this)
-      this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this)
       this.handleChangeLocation = this.handleChangeLocation.bind(this)
-      this.handleChangeCover = this.handleChangeCover.bind(this)
       this.handleChangeLink = this.handleChangeLink.bind(this)
 
+      //Add/Remove from list functions
       this.addToList = this.addToList.bind(this)
       this.removeFromList = this.removeFromList.bind(this)
     }
 
+    //Event Listeners handling event changes on left(input) page
     handleChangeWebsite(event){
         this.setState({websiteInput:event.target.value})
     }
-
     handleChangeWebsite2(event){
         this.setState({websiteInput:event.target.value})
     }
-
     handleChangeCompany(event){
         this.setState({companyInput:event.target.value})
     }
     handleChangeTitle(event){
         this.setState({titleInput:event.target.value})
     }
-    handleChangeRecruiter(event){
-        this.setState({recruiterInput:event.target.value})
-    }
     handleChangeLocation(event){
         this.setState({locationInput:event.target.value})
-    }
-    handleChangeCover(event){
-        this.setState({coverInput:event.target.value})
     }
     handleChangeLink(event){
         this.setState({linkInput:event.target.value})
     }
 
+    //Adds item to task list
     addToList(){
-        console.log('addToList')
         this.setState((state)=>{
             let newTasks = state.tasks.slice()
             newTasks.push({
@@ -77,14 +65,13 @@ class MainPage extends React.Component {
                 websiteInput: '',
                 companyInput: '',
                 titleInput: '',
-                recruiterInput: 'Yes',
                 locationInput: '',
-                coverInput: 'Yes',
                 linkInput:'',
             }
         })
     }
 
+    //removes item from task list
     removeFromList(index){
         this.setState((state)=>{
             let newTasks = state.tasks.slice()
@@ -116,6 +103,7 @@ class MainPage extends React.Component {
                 <RightPage 
                     tasks = {this.state.tasks}
                     removeFromList = {this.removeFromList}
+                    websiteInput = {this.state.websiteInput}
                 />
             </div>
         )

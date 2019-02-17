@@ -8,9 +8,9 @@ class NavBar extends React.Component {
     }
 
     componentDidMount(){
-        console.log('componentdidmount')
         gapi.load('client:auth2', initClient);
-
+        //Connects to google api on startup of application. Placed in Navbar because I was toying with idea with
+        // over other functionality related to this page, forgot what
         function initClient(){
             gapi.client.init({
                 'apiKey': 'AIzaSyDtozpl2iAtr2mB9OViJKsi0PNTIWg2Uq4',
@@ -32,7 +32,7 @@ class NavBar extends React.Component {
 
     render(){
         return(
-    <div class='NavBar col-md-2'>
+    <div className ='NavBar col-md-2'>
     
             
     </div>)

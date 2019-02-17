@@ -1,8 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const RightPage = (props) => {
+class RightPage extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        recruiterInput: 'Yes',
+        coverInput: 'Yes',  
+      }
+      //binding handle change functions
+      this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this)
+      this.handleChangeCover = this.handleChangeCover.bind(this)
+
+    }
+
+    //handle changes to "Recruiter" value
+
+    handleChangeRecruiter(event){
+        this.setState({recruiterInput:event.target.value})
+    }
+
+    //handle changes to "Cover value"
+
+    handleChangeCover(event){
+        this.setState({coverInput:event.target.value})
+    }
+
+render(){
     let Array = []
-    props.tasks.forEach((cur,ind)=>{
+    this.props.tasks.forEach((cur,ind)=>{
         Array.push(
         <li key = {ind}>
             <b>Source Website:</b> {cur.websiteInput}
@@ -11,17 +37,59 @@ const RightPage = (props) => {
             <br></br>
             <b>Job Title:</b> {cur.titleInput}
             <br></br>
-            <b>Recruiter Input:</b> {cur.recruiterInput}
+            <b>Recruiter Input:</b> 
+            <form>
+                <input type='radio'
+                //Radio Button To switch Recruiter info
+                name = 'RecruiterRadio'
+                className='RecruiterInput RadioInput'
+                onChange={(e)=>{
+                    this.handleChangeRecruiter(e)
+                }}
+                value = 'Yes'
+                ></input>Yes            
+                <input type='radio'
+                name = 'RecruiterRadio'
+                className='RecruiterInput RadioInput'
+                onChange={(e)=>{
+                    this.handleChangeRecruiter(e)
+                }}
+                value = 'No'
+                ></input>No
+            </form>
             <br></br>
             <b>Location Input:</b> {cur.locationInput}
             <br></br>
-            <b>Cover Letter:</b> {cur.coverInput}
+            
+            <b>Cover Letter:</b> 
+            <form>
+                <input type = 'radio'
+                //Radio Button to save cover letter info
+                name = 'CoverLetter'
+                className='CoverInput RadioInput'
+                onChange={(e)=>{
+                    this.handleChangeCover(e)
+                }}
+                value = 'Yes'
+                ></input>Yes
+                <input type = 'radio'
+                name = 'CoverLetter'
+                className='CoverInput RadioInput'
+                onChange={(e)=>{
+                    this.handleChangeCover(e)
+                }}
+                value = 'No'
+                ></input>No
+            </form>
             <br></br>
             <b href>Link:</b> <a href = {cur.linkInput} target="_blank">{cur.linkInput}</a>
             <br></br>
-            <button class ='btn btn-primary' onClick={()=>{
-                console.log("BUtton for sheet pressed")
+            <button className ='btn btn-primary' onClick={()=>{
+                
+                //variable that indicates first empty row in sheet
                 let emptyRow;
+
+                //first google api call that finds first empty row (well, first with empty cell in column A)
                 gapi.client.sheets.spreadsheets.values.get({
                     spreadsheetId: '1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw',
                     range: 'Sheet2!A1:A1000'
@@ -30,6 +98,8 @@ const RightPage = (props) => {
                     console.log(result.values.length)
                     emptyRow = result.values.length + 1
                 }).then(()=>{
+
+                //second google api call (technically within first) that posts data to sheet
                     gapi.client.sheets.spreadsheets.values.update({
                         spreadsheetId: '1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw',
                         range:`Sheet2!A${emptyRow}:J${emptyRow}`,
@@ -40,10 +110,10 @@ const RightPage = (props) => {
                                     cur.websiteInput, 
                                     cur.companyInput,
                                     cur.titleInput, 
-                                    cur.recruiterInput, 
+                                    this.state.recruiterInput, 
                                     `${new Date().getMonth()+1}/${new Date().getDate()}`,
                                     cur.locationInput,
-                                    cur.coverInput,
+                                    this.state.coverInput,
                                     'no',
                                     '',
                                     cur.linkInput
@@ -51,7 +121,9 @@ const RightPage = (props) => {
                             ]
                         }
                     }).then((response) => {
+                        //Removes item added to sheet form React App
                         var result = response.result;
+                        this.props.removeFromList(ind)
                         console.log(result);
                     }).catch((err)=>{
                         console.log('inner error',err.result.error.message)
@@ -64,22 +136,34 @@ const RightPage = (props) => {
             }}> Done
             </button>
             <button 
-                class ='btn btn-primary'
+                className ='btn btn-primary'
                 onClick = {()=>{
-                    props.removeFromList(ind)
+                    //Removes Item form React App
+                    this.props.removeFromList(ind)
                 }}>
                 Cancel
             </button>
         </li>)
     })
 
-    return(<div class='rightBar col-md-6'>
+    return(
+    <div className ='rightBar col-md-6'>
         <h3>List of Jobs</h3>
-        <ol class='TaskTable'>
+        <ol className ='TaskTable'>
             {Array}
         </ol>
-
     </div>)
-};
+}};
+
+//Testing Proptypes Functionality
+
+// RightPage.propTypes ={
+//     websiteInput:PropTypes.array,
+//     // tasks:PropTypes.element.isRequired,
+// }
+
+// RightPage.defaultProps = {
+//     websiteInput:'TEST'
+// }
 
 export default RightPage

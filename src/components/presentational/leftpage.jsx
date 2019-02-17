@@ -1,15 +1,9 @@
 import React from 'react';
 
 const LeftPage = (props) => (
+    //Input boxes that take in input regarding relevant information to a job application.
     <div className='leftBar col-md-6'>
             <h4>Website</h4>
-            {/* <input 
-            className='WebsiteInput TaskInput'
-            onChange={(e)=>{
-                console.log('CHANGING')
-                props.handleChangeWebsite(e)
-            }
-            }></input> */}
             <select 
                 className='WebsiteInput TaskInput'
                 onChange={(e)=>{
@@ -32,27 +26,6 @@ const LeftPage = (props) => (
                 props.handleChangeTitle(e)
             }
             }></input>
-            <h4>Recruiter</h4>
-            <form>
-                <input type='radio'
-                name = 'RecruiterRadio'
-                className='RecruiterInput RadioInput'
-                onChange={(e)=>{
-                    props.handleChangeRecruiter(e)
-                }
-                }
-                value = 'Yes'
-                ></input>Yes            
-                <input type='radio'
-                name = 'RecruiterRadio'
-                className='RecruiterInput RadioInput'
-                onChange={(e)=>{
-                    props.handleChangeRecruiter(e)
-                }
-                }
-                value = 'No'
-                ></input>No
-            </form>
             <h4>Location</h4>
             <input 
             className='LocationInput TaskInput'
@@ -60,25 +33,6 @@ const LeftPage = (props) => (
                 props.handleChangeLocation(e)
             }
             }></input>
-            <h4>Cover Letter?</h4>
-            <form>
-                <input type = 'radio'
-                name = 'CoverLetter'
-                className='CoverInput RadioInput'
-                onChange={(e)=>{
-                    props.handleChangeCover(e)
-                }}
-                value = 'Yes'
-                ></input>Yes
-                <input type = 'radio'
-                name = 'CoverLetter'
-                className='CoverInput RadioInput'
-                onChange={(e)=>{
-                    props.handleChangeCover(e)
-                }}
-                value = 'No'
-                ></input>No
-            </form>
             <h4>Link</h4>
             <input 
             className='LinkInput TaskInput'
