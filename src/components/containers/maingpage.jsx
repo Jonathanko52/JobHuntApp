@@ -5,7 +5,8 @@ import LeftPage from './../presentational/leftpage.jsx'
 
 class MainPage extends React.Component {
     constructor(props) {
-      super(props);
+      super();
+      console.log('MAINPAGE CONSOLE', this)
       this.state = {
         tasks: [],
         websiteInput: '',
@@ -13,6 +14,7 @@ class MainPage extends React.Component {
         titleInput: '',
         locationInput: '',
         linkInput:'',
+        totalJobsFromSheets:0
       }
       //Event Listener Function Bindings
       this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
@@ -20,6 +22,7 @@ class MainPage extends React.Component {
       this.handleChangeTitle = this.handleChangeTitle.bind(this)
       this.handleChangeLocation = this.handleChangeLocation.bind(this)
       this.handleChangeLink = this.handleChangeLink.bind(this)
+      this.updateTotalJobsFromSheets = this.updateTotalJobsFromSheets.bind(this)
 
       //Add/Remove from list functions
       this.addToList = this.addToList.bind(this)
@@ -28,9 +31,6 @@ class MainPage extends React.Component {
 
     //Event Listeners handling event changes on left(input) page
     handleChangeWebsite(event){
-        this.setState({websiteInput:event.target.value})
-    }
-    handleChangeWebsite2(event){
         this.setState({websiteInput:event.target.value})
     }
     handleChangeCompany(event){
@@ -45,7 +45,9 @@ class MainPage extends React.Component {
     handleChangeLink(event){
         this.setState({linkInput:event.target.value})
     }
-
+    updateTotalJobsFromSheets(value){
+        this.setState({totalJobsFromSheets:value})
+    }
     //Adds item to task list
     addToList(){
         this.setState((state)=>{
@@ -90,7 +92,6 @@ class MainPage extends React.Component {
             <div className='MainPage col-md-10'>
                 <LeftPage 
                     handleChangeWebsite = {this.handleChangeWebsite}
-                    handleChangeWebsite2 = {this.handleChangeWebsite2}
                     handleChangeCompany = {this.handleChange}
                     handleChangeTitle = {this.handleChangeTitle}
                     handleChangeRecruiter = {this.handleChangeRecruiter}
@@ -99,11 +100,14 @@ class MainPage extends React.Component {
                     handleChangeCover = {this.handleChangeCover}
                     handleChangeLink = {this.handleChangeLink}
                     addToList = {this.addToList}
+                    totalJobsFromSheets = {this.state.totalJobsFromSheets}
+                    
                 />
                 <RightPage 
                     tasks = {this.state.tasks}
                     removeFromList = {this.removeFromList}
                     websiteInput = {this.state.websiteInput}
+                    updateTotalJobsFromSheets = {this.updateTotalJobsFromSheets}
                 />
             </div>
         )

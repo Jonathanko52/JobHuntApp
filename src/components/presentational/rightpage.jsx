@@ -97,6 +97,7 @@ render(){
                     var result = response.result;
                     console.log(result.values.length)
                     emptyRow = result.values.length + 1
+                    this.props.updateTotalJobsFromSheets(emptyRow)
                 }).then(()=>{
 
                 //second google api call (technically within first) that posts data to sheet
@@ -148,7 +149,7 @@ render(){
 
     return(
     <div className ='rightBar col-md-6'>
-        <h3>List of Jobs</h3>
+        <h3>List of Jobs:{this.props.tasks.length}</h3>
         <ol className ='TaskTable'>
             {Array}
         </ol>
