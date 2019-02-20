@@ -10,6 +10,7 @@ const LeftPage = (props) => {
             <h3>Total Jobs at this point: {total}</h3>
             <h4>Website</h4>
             <select 
+                ref = {props.webRef}
                 className='WebsiteInput TaskInput'
                 onChange={(e)=>{
                 props.handleChangeWebsite(e)
@@ -19,6 +20,7 @@ const LeftPage = (props) => {
             </select>
             <h4>Company</h4>
             <input 
+            ref = {props.compRef}
             className='CompanyInput TaskInput'
             onChange={(e)=>{
                 props.handleChangeCompany(e)
@@ -26,6 +28,7 @@ const LeftPage = (props) => {
             }></input>
             <h4>Title</h4>
             <input 
+            ref = {props.titleRef}
             className='TitleInput TaskInput'
             onChange={(e)=>{
                 props.handleChangeTitle(e)
@@ -33,6 +36,7 @@ const LeftPage = (props) => {
             }></input>
             <h4>Location</h4>
             <input 
+            ref = {props.locRef}
             className='LocationInput TaskInput'
             onChange={(e)=>{
                 props.handleChangeLocation(e)
@@ -40,6 +44,7 @@ const LeftPage = (props) => {
             }></input>
             <h4>Link</h4>
             <input 
+            ref = {props.linkRef}
             className='LinkInput TaskInput'
             onChange={(e)=>{
                 props.handleChangeLink(e)
@@ -49,12 +54,17 @@ const LeftPage = (props) => {
             className='btn btn-primary'
             onClick={()=>{
                 props.addToList()
-                document.getElementsByClassName('WebsiteInput')[0].value=''
-                document.getElementsByClassName('CompanyInput')[0].value=''
-                document.getElementsByClassName('TitleInput')[0].value=''
-                document.getElementsByClassName('LocationInput')[0].value=''
-                document.getElementsByClassName('LinkInput')[0].value=''
-                console.log('CLEARING')
+                console.log(props)
+                props.webRef.current.value=''
+                props.compRef.current.value=''
+                props.titleRef.current.value=''
+                props.locRef.current.value=''
+                props.linkRef.current.value=''
+                // document.getElementsByClassName('WebsiteInput')[0].value=''
+                // document.getElementsByClassName('CompanyInput')[0].value=''
+                // document.getElementsByClassName('TitleInput')[0].value=''
+                // document.getElementsByClassName('LocationInput')[0].value=''
+                // document.getElementsByClassName('LinkInput')[0].value=''
             }}
             
             >Done</button>

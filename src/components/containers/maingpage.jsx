@@ -6,7 +6,12 @@ import LeftPage from './../presentational/leftpage.jsx'
 class MainPage extends React.Component {
     constructor(props) {
       super();
-      console.log('MAINPAGE CONSOLE', this)
+      this.webRef = React.createRef()
+      this.compRef = React.createRef()
+      this.titleRef = React.createRef()
+      this.locRef = React.createRef()
+      this.linkRef = React.createRef()
+
       this.state = {
         tasks: [],
         websiteInput: '',
@@ -91,6 +96,12 @@ class MainPage extends React.Component {
         return(
             <div className='MainPage col-md-10'>
                 <LeftPage 
+
+                    webRef = {this.webRef}
+                    compRef = {this.compRef}
+                    titleRef = {this.titleRef}
+                    locRef = {this.locRef}
+                    linkRef = {this.linkRef}
                     handleChangeWebsite = {this.handleChangeWebsite}
                     handleChangeCompany = {this.handleChange}
                     handleChangeTitle = {this.handleChangeTitle}
