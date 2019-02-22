@@ -32,6 +32,7 @@ const LeftPage = (props) => {
             className='TitleInput TaskInput'
             onChange={(e)=>{
                 props.handleChangeTitle(e)
+                //TEST TEST TEST
             }
             }></input>
             <h4>Location</h4>
