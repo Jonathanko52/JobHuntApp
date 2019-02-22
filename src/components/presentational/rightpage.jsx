@@ -95,7 +95,6 @@ render(){
                     range: 'Sheet2!A1:A1000'
                 }).then((response) => {
                     var result = response.result;
-                    console.log(result.values.length)
                     emptyRow = result.values.length + 1
                     this.props.updateTotalJobsFromSheets(emptyRow)
                 }).then(()=>{

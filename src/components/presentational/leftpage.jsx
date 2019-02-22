@@ -54,17 +54,11 @@ const LeftPage = (props) => {
             className='btn btn-primary'
             onClick={()=>{
                 props.addToList()
-                console.log(props)
                 props.webRef.current.value=''
                 props.compRef.current.value=''
                 props.titleRef.current.value=''
                 props.locRef.current.value=''
                 props.linkRef.current.value=''
-                // document.getElementsByClassName('WebsiteInput')[0].value=''
-                // document.getElementsByClassName('CompanyInput')[0].value=''
-                // document.getElementsByClassName('TitleInput')[0].value=''
-                // document.getElementsByClassName('LocationInput')[0].value=''
-                // document.getElementsByClassName('LinkInput')[0].value=''
             }}
             
             >Done</button>
