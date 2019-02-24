@@ -26,12 +26,14 @@ app.use(
       date: String!
       creator: User!
     }
+
     type User {
       _id: ID!
       email: String!
       password: String
       createdEvents: [Event!]
     }
+
     input EventInput {
       title: String!
       description: String!
@@ -57,11 +59,12 @@ app.use(
     rootValue: {
       events: () => {
           return Event.find()
+          .populate('creator')
           .then(events =>{
-            return events.map(result=>{
+            return events.map(event=>{
                 return {
-                    ...result._doc, 
-                    _id: result._id
+                    ...event._doc, 
+                    _id: event._id
                 }
             })
           })
@@ -91,11 +94,9 @@ app.use(
                     email: args.userInput.email,
                     password:hashed 
                 })
-                console.log('Creating new User', user)
             return user.save();
             })
             .then(result =>{
-                console.log('Cuser created', result)
                 return {...result._doc, _id: result.id}
              })
             .catch(err=>{
