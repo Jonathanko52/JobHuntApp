@@ -22,6 +22,7 @@
     "express-graphql": "^0.7.1",
     "google-auth-library": "^3.0.1",
     "graphql": "^14.1.1",
+    "lodash": "^4.17.11",
     "mongoose": "^5.4.15",
     "prop-types": "^15.7.2",
     "react": "^16.5.2",
