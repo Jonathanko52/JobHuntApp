@@ -7,21 +7,41 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Main Page</title>
+    <title>Main Page TEST</title>
+    <style>
+      div {
+        height: 100px;
+        background-color: red;
+      }
+
+      .parent {
+        display: flex;
+        background-color: red;
+        height: 100px;
+        width: 100px;
+      }
+
+      .child {
+        background-color: blue;
+        margin: auto;
+        height: 10px;
+        width: 10px;
+      }
+    </style>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./../src/assets/css/app.css" />
     <script async defer src="https://apis.google.com/js/api.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="parent">
+      <div class="child"></div>
+    </div>
 
-    <script src="/bundle.js"></script>
+    <script></script>
   </body>
 </html>

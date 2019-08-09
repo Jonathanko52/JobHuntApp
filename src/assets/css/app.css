@@ -1,103 +1,101 @@
 @font-face {
-    font-family: quest;
-    src: url(../fonts/quest.ttf);
+  font-family: quest;
+  src: url(../fonts/quest.ttf);
 }
 @media only screen and (max-width: 600px) {
-    body{
-        background-color:red;
-    }
-}
-.TitleBar{
-
-    height:12vh;
-    text-align: center;
-    background-color:rgb(69, 209, 225);
-    color:white;
-    border-style:solid;
-    border-width: 1px;
-    border-color:rgb(181, 181, 181);
-
+  body {
+    background-color: red;
+  }
 }
 
-.TitleBar h3{
-    font-size: 45px;
-    font-family:Consolas;
-
-        margin-bottom:auto;
+.TitleBar {
+  height: 12vh;
+  text-align: center;
+  background-color: rgb(69, 209, 225);
+  color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(181, 181, 181);
 }
 
-.NavBar{
-    background-color:rgb(162, 212, 218);
-    color: green;
-    height: 88vh;
-    border-right-style:solid;
-    border-width: 1px;
-    border-color:rgb(181, 181, 181);
+.TitleBar h3 {
+  font-size: 45px;
+  font-family: Consolas;
+
+  margin-bottom: auto;
 }
 
-.MainPage{
-    font-family:Consolas;
-
-    background-color:white;
-    height: 88vh;
+.NavBar {
+  background-color: rgb(162, 212, 218);
+  color: green;
+  height: 88vh;
+  border-right-style: solid;
+  border-width: 1px;
+  border-color: rgb(181, 181, 181);
 }
 
-.leftBar{
-    padding-top:10px;
-    background-color: white;
-    height: 88vh;
-    overflow:auto;
-    float:left;
+.MainPage {
+  font-family: Consolas;
+
+  background-color: white;
+  height: 88vh;
 }
 
-.leftBar h3{
-    color: rgb(106, 106, 106);
-    font-size: 35px;
-    margin-top: 20px;
-    margin-left: 20%;
-    font-family:Consolas;
-}
-.rightBar{
-    padding-top:10px;
-    background-color: white;
-    height: 88vh;
-    overflow:auto;
-    float:left;
-    border-left-style:solid;
-    border-width: 1px;
-    border-color:rgb(181, 181, 181);
+.leftBar {
+  padding-top: 10px;
+  background-color: white;
+  height: 88vh;
+  overflow: auto;
+  float: left;
 }
 
-.rightBar h3{
-    color: rgb(106, 106, 106);
-    margin-top: 20px;
-    margin-left: 20%;
-    font-size: 35px;
-    font-family:Consolas;
+.leftBar h3 {
+  color: rgb(106, 106, 106);
+  font-size: 35px;
+  margin-top: 20px;
+  margin-left: 20%;
+  font-family: Consolas;
+}
+.rightBar {
+  padding-top: 10px;
+  background-color: white;
+  height: 88vh;
+  overflow: auto;
+  float: left;
+  border-left-style: solid;
+  border-width: 1px;
+  border-color: rgb(181, 181, 181);
 }
 
-.TaskInput{
-    width: 80%
+.rightBar h3 {
+  color: rgb(106, 106, 106);
+  margin-top: 20px;
+  margin-left: 20%;
+  font-size: 35px;
+  font-family: Consolas;
 }
 
-.RadioInput{
-    width: 20px;
+.TaskInput {
+  width: 80%;
 }
 
-.TaskTable{  
-    padding-top:10px;
-    font-family:Consolas;
-    background-color:white;
-    color: rgb(106, 106, 106);
-    overflow:auto;
-    font-size: 20px;
-
-}
-.TaskTable li{  
-    margin-top:10px;
-    margin-left:10px;
+.RadioInput {
+  width: 20px;
 }
 
-.btn-primary{
-    margin: 5px;
+.TaskTable {
+  padding-top: 10px;
+  font-family: Consolas;
+  background-color: white;
+  color: rgb(106, 106, 106);
+  overflow: auto;
+  font-size: 20px;
+}
+.TaskTable li {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.btn-primary {
+  margin: 5px;
 }
