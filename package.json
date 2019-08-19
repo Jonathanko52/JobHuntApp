@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
-    "server": "nodemon server/server.js",
+    "server": "nodemon src/server/server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "jest"
   },
@@ -22,6 +22,7 @@
     "express-graphql": "^0.7.1",
     "google-auth-library": "^3.0.1",
     "graphql": "^14.1.1",
+    "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.15",
     "prop-types": "^15.7.2",
@@ -51,6 +52,7 @@
     "css-loader": "^1.0.0",
     "eslint": "^5.7.0",
     "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
     "jest": "^23.6.0",
     "nodemon": "^1.18.10",
     "postcss-loader": "^3.0.0",

@@ -202,12 +202,15 @@ class NavBar extends React.Component {
                         newSeconds =
                           parseInt(newSeconds) +
                           parseInt(result.values[dateExists][3]);
-                        console.log(
-                          "updating old",
-                          newHours,
-                          newMinutes,
-                          newSeconds
-                        );
+
+                        if (newSeconds >= 60) {
+                          newSeconds = newSeconds - 60;
+                          newMinutes++;
+                          if (newMinutes >= 60) {
+                            newMinutes = newMinutes - 60;
+                            newHours++;
+                          }
+                        }
                       } else {
                         targetRow = result.values.length + 1;
                         console.log("creating new");
@@ -244,70 +247,6 @@ class NavBar extends React.Component {
                         .catch(err => {
                           console.log("inner error", err.result.error.message);
                         });
-                      // } else {
-                      //   console.log(newHours, newMinutes, newSeconds);
-                      //   gapi.client.sheets.spreadsheets.values
-                      //     .update({
-                      //       spreadsheetId:
-                      //         "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
-                      //       range: `Sheet3!B${targetRow}`,
-                      //       valueInputOption: "RAW",
-                      //       resource: {
-                      //         values: [[newHours]]
-                      //       }
-                      //     })
-                      //     .then(response => {
-                      //       //Removes item added to sheet form React App
-                      //       console.log("savedtosheets", response.result);
-                      //     })
-                      //     .catch(err => {
-                      //       console.log(
-                      //         "inner error",
-                      //         err.result.error.message
-                      //       );
-                      //     });
-
-                      //   gapi.client.sheets.spreadsheets.values
-                      //     .update({
-                      //       spreadsheetId:
-                      //         "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
-                      //       range: `Sheet3!C${targetRow}`,
-                      //       valueInputOption: "RAW",
-                      //       resource: {
-                      //         values: [[newMinutes]]
-                      //       }
-                      //     })
-                      //     .then(response => {
-                      //       //Removes item added to sheet form React App
-                      //       console.log("savedtosheets", response.result);
-                      //     })
-                      //     .catch(err => {
-                      //       console.log(
-                      //         "inner error",
-                      //         err.result.error.message
-                      //       );
-                      //     });
-                      //   gapi.client.sheets.spreadsheets.values
-                      //     .update({
-                      //       spreadsheetId:
-                      //         "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
-                      //       range: `Sheet3!D${targetRow}`,
-                      //       valueInputOption: "RAW",
-                      //       resource: {
-                      //         values: [[newSeconds]]
-                      //       }
-                      //     })
-                      //     .then(response => {
-                      //       //Removes item added to sheet form React App
-                      //       console.log("savedtosheets", response.result);
-                      //     })
-                      //     .catch(err => {
-                      //       console.log(
-                      //         "inner error",
-                      //         err.result.error.message
-                      //       );
-                      //     });
-                      // }
                     })
 
                     .catch(err => {
@@ -315,7 +254,7 @@ class NavBar extends React.Component {
                     });
                 }}
               >
-                SaveToSheets
+                Upload
               </button>
             </div>
           </div>
