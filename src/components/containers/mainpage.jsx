@@ -1,6 +1,6 @@
 import React from "react";
-import RightPage from "./../presentational/rightpage.jsx";
-import LeftPage from "./../presentational/leftpage.jsx";
+import RightPage from "../presentational/rightpage.jsx";
+import LeftPage from "../presentational/leftpage.jsx";
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -21,7 +21,6 @@ class MainPage extends React.Component {
       totalJobsFromSheets: 0
     };
     //Event Listener Function Bindings
-    this.makeHttpRequest = this.makeHttpRequest.bind(this);
     this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -38,8 +37,6 @@ class MainPage extends React.Component {
     this.loadFromLocal = this.loadFromLocal.bind(this);
   }
 
-  //makeHttpRequest
-  makeHttpRequest() {}
   //Event Listeners handling event changes on left(input) page
   handleChangeWebsite(event) {
     this.setState({ websiteInput: event.target.value });
@@ -144,7 +141,6 @@ class MainPage extends React.Component {
           handleChangeCover={this.handleChangeCover}
           handleChangeLink={this.handleChangeLink}
           addToList={this.addToList}
-          makeHttpRequest={this.makeHttpRequest}
           totalJobsFromSheets={this.state.totalJobsFromSheets}
         />
         <RightPage

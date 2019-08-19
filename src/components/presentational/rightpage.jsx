@@ -170,24 +170,6 @@ class RightPage extends React.Component {
     return (
       <div className="rightBar col-xs-6">
         <h3>List of Jobs:{this.props.tasks.length}</h3>
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            this.props.saveToLocal();
-            alert("Tasks Saved to Local");
-          }}
-        >
-          Save
-        </button>{" "}
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            this.props.loadFromLocal();
-            alert("Tasks Loaded from Local");
-          }}
-        >
-          Load
-        </button>
         <ol className="TaskTable">{Array}</ol>
       </div>
     );
