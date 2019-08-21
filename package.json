@@ -16,8 +16,10 @@
     "url": ""
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.3",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "google-auth-library": "^3.0.1",
@@ -30,6 +32,7 @@
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "redux": "^4.0.1"
   },
   "devDependencies": {

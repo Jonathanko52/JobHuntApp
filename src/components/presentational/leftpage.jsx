@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LeftPage = props => {
   let total = "N/A";
@@ -71,7 +72,10 @@ const LeftPage = props => {
       <button
         className="btn btn-primary"
         onClick={() => {
-          props.makeHttpRequest();
+          let url;
+          url = props.linkRef.current.value.split("/");
+          let test = props.retrieveHtml(url[url.length - 2]);
+          console.log("test", test);
         }}
       >
         HttpRequest

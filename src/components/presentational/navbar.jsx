@@ -15,6 +15,13 @@ class NavBar extends React.Component {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener("beforeunload", ev => {
+      ev.preventDefault();
+      // return (ev.returnValue = "Are you sure you want to close?");
+    });
+  }
+
   // changeColor(event) {
   //   this.setState({ color: event.target.value });
   // }
@@ -52,7 +59,6 @@ class NavBar extends React.Component {
   }
   stopTimer() {
     clearInterval(this.state.timer);
-    console.log("STOPing timer");
   }
   clearTimer() {
     this.setState({
@@ -67,7 +73,6 @@ class NavBar extends React.Component {
       JSON.stringify(this.state.minutes),
       JSON.stringify(this.state.seconds)
     ]);
-    console.log("Saved");
   }
 
   loadFromLocal() {
@@ -144,8 +149,6 @@ class NavBar extends React.Component {
               <button
                 className="btn btn-primary"
                 onClick={() => {
-                  this.stopTimer();
-                  this.clearTimer();
                   this.saveToLocal();
                 }}
               >
@@ -169,7 +172,6 @@ class NavBar extends React.Component {
                   let newMinutes = this.state.minutes;
                   let newSeconds = this.state.seconds;
                   let dateExists = false;
-                  console.log("making call");
                   gapi.client.sheets.spreadsheets.values
                     .get({
                       spreadsheetId:
@@ -179,10 +181,8 @@ class NavBar extends React.Component {
                     .then(response => {
                       //first call. Finds empty row in sheets
                       var result = response.result;
-                      console.log("result values", result.values);
 
                       result.values.forEach((cur, ind) => {
-                        console.log(cur[0]);
                         if (
                           cur[0] ===
                           `${new Date().getMonth() + 1}/${new Date().getDate()}`
@@ -191,7 +191,6 @@ class NavBar extends React.Component {
                         }
                       });
                       if (dateExists) {
-                        console.log(result.values);
                         targetRow = dateExists + 1;
                         newHours =
                           parseInt(newHours) +
@@ -213,14 +212,10 @@ class NavBar extends React.Component {
                         }
                       } else {
                         targetRow = result.values.length + 1;
-                        console.log("creating new");
                       }
-                      console.log("target row", targetRow);
                     })
                     .then(() => {
                       //second google api call (technically within first) that posts data to sheet
-                      // if (!dateExists) {
-                      console.log(newHours, newMinutes, newSeconds);
 
                       gapi.client.sheets.spreadsheets.values
                         .update({
@@ -252,6 +247,10 @@ class NavBar extends React.Component {
                     .catch(err => {
                       console.log("outter error", err);
                     });
+                  this.clearTimer();
+                  this.stopTimer();
+
+                  this.saveToLocal();
                 }}
               >
                 Upload

@@ -1,6 +1,7 @@
 import React from "react";
 import RightPage from "../presentational/rightpage.jsx";
 import LeftPage from "../presentational/leftpage.jsx";
+import axios from "axios";
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -35,6 +36,9 @@ class MainPage extends React.Component {
     //Save/load List to LocalStorage
     this.saveToLocal = this.saveToLocal.bind(this);
     this.loadFromLocal = this.loadFromLocal.bind(this);
+
+    //Http Request
+    this.retrieveHtml = this.retrieveHtml.bind(this);
   }
 
   //Event Listeners handling event changes on left(input) page
@@ -119,6 +123,39 @@ class MainPage extends React.Component {
     });
   }
 
+  //HTTP Stuff
+
+  retrieveHtml(test) {
+    axios
+      .get("/RetrieveHtml/" + test)
+      .then((res, request) => {
+        console.log("retrievehtml 2", this);
+        this.setState(state => {
+          console.log("setting state in retriete");
+          let newTasks = state.tasks.slice();
+
+          newTasks.push({
+            websiteInput: state.websiteInput,
+            companyInput: res.data[1],
+            titleInput: res.data[0],
+            recruiterInput: state.recruiterInput,
+            locationInput: res.data[3],
+            coverInput: state.coverInput,
+            linkInput: res.data[2]
+          });
+          return {
+            tasks: newTasks,
+            websiteInput: "LinkedIn",
+            companyInput: "",
+            titleInput: "",
+            locationInput: "",
+            linkInput: ""
+          };
+        });
+      })
+      .catch(error => console.error(error));
+  }
+
   componentDidMount() {
     this.loadFromLocal();
   }
@@ -142,6 +179,7 @@ class MainPage extends React.Component {
           handleChangeLink={this.handleChangeLink}
           addToList={this.addToList}
           totalJobsFromSheets={this.state.totalJobsFromSheets}
+          retrieveHtml={this.retrieveHtml}
         />
         <RightPage
           tasks={this.state.tasks}
