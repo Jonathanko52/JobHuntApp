@@ -33,7 +33,8 @@ class RightPage extends React.Component {
           <li key={ind}>
             <b>Source Website:</b> {cur.websiteInput}
             <br />
-            <b>Company Name:</b> {cur.companyInput}
+            <b>Company Name:</b>
+            <a href={cur.companyLinkInput}>{cur.companyInput}</a>
             <br />
             <b>Job Title:</b> {cur.titleInput}
             <br />
@@ -142,7 +143,6 @@ class RightPage extends React.Component {
                         //Removes item added to sheet form React App
                         var result = response.result;
                         this.props.removeFromList(ind);
-                        this.props.saveToLocal();
                       })
                       .catch(err => {
                         console.log("inner error", err.result.error.message);
@@ -158,9 +158,9 @@ class RightPage extends React.Component {
             <button
               className="btn btn-primary"
               onClick={() => {
+                console.log("remove");
                 //Removes Item form React App
                 this.props.removeFromList(ind);
-                this.props.saveToLocal();
               }}
             >
               Cancel

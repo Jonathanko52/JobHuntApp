@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
-const port = process.env.PORT || 8800;
+const port = process.env.PORT || 3000;
 const taskController = require("./taskController.js");
 
 app.use(bodyParser.json());
@@ -14,7 +14,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./../../dist/index.html"));
 });
 
-app.get("/RetrieveHtml/:link", taskController.retrieveHtml);
+app.get("/RetrieveHtmlLinkedIn/:link", taskController.retrieveHtmlLinkedIn);
+
+app.get("/RetrieveHtmlIndeed/:link", taskController.retrieveHtmlIndeed);
+
+// app.get("/RetrieveHtmlAngelist/:link", taskController.retrieveHtmlAngelist);
 
 //paths
 

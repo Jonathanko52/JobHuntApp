@@ -6,6 +6,8 @@ import axios from "axios";
 class MainPage extends React.Component {
   constructor(props) {
     super();
+    this.directWebRef = React.createRef();
+    this.directLinkRef = React.createRef();
     this.webRef = React.createRef();
     this.compRef = React.createRef();
     this.titleRef = React.createRef();
@@ -19,7 +21,10 @@ class MainPage extends React.Component {
       titleInput: "",
       locationInput: "",
       linkInput: "",
-      totalJobsFromSheets: 0
+      totalJobsFromSheets: 0,
+      directWebsiteInput: "LinkedIn",
+      directLinkInput: "",
+      companyLinkInput: ""
     };
     //Event Listener Function Bindings
     this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
@@ -28,6 +33,8 @@ class MainPage extends React.Component {
     this.handleChangeLocation = this.handleChangeLocation.bind(this);
     this.handleChangeLink = this.handleChangeLink.bind(this);
     this.updateTotalJobsFromSheets = this.updateTotalJobsFromSheets.bind(this);
+    this.handleChangeDirectWebsite = this.handleChangeDirectWebsite.bind(this);
+    this.handleChangeDirectLink = this.handleChangeDirectLink.bind(this);
 
     //Add/Remove from list
     this.addToList = this.addToList.bind(this);
@@ -36,9 +43,12 @@ class MainPage extends React.Component {
     //Save/load List to LocalStorage
     this.saveToLocal = this.saveToLocal.bind(this);
     this.loadFromLocal = this.loadFromLocal.bind(this);
+    this.clearLocal = this.clearLocal.bind(this);
 
     //Http Request
-    this.retrieveHtml = this.retrieveHtml.bind(this);
+    this.retrieveHtmlLinkedin = this.retrieveHtmlLinkedin.bind(this);
+    this.retrieveHtmlIndeed = this.retrieveHtmlIndeed.bind(this);
+    this.retrieveHtmlAngelist = this.retrieveHtmlAngelist.bind(this);
   }
 
   //Event Listeners handling event changes on left(input) page
@@ -60,9 +70,14 @@ class MainPage extends React.Component {
   updateTotalJobsFromSheets(value) {
     this.setState({ totalJobsFromSheets: value });
   }
+  handleChangeDirectWebsite(event) {
+    this.setState({ directWebsiteInput: event.target.value });
+  }
+  handleChangeDirectLink(event) {
+    this.setState({ directLinkInput: event.target.value });
+  }
   //Adds item to task list
   addToList() {
-    this.saveToLocal();
     this.setState(state => {
       let newTasks = state.tasks.slice();
       let company = state.companyInput.split(" ");
@@ -88,11 +103,11 @@ class MainPage extends React.Component {
         linkInput: ""
       };
     });
+    this.saveToLocal();
   }
 
   //removes item from task list
   removeFromList(index) {
-    this.saveToLocal();
     this.setState(state => {
       let newTasks = state.tasks.slice();
       newTasks.splice(index, 1);
@@ -101,33 +116,43 @@ class MainPage extends React.Component {
         input: state.input
       };
     });
+    this.saveToLocal();
   }
 
   saveToLocal() {
-    localStorage.setItem("Tasks", JSON.stringify(this.state.tasks));
+    setTimeout(() => {
+      localStorage.setItem("Tasks", JSON.stringify(this.state.tasks));
+    }, 500);
   }
 
   loadFromLocal() {
-    this.setState(state => {
-      let loadedTasks = JSON.parse(localStorage.getItem("Tasks"));
-      let newTasks = state.tasks.slice().concat(loadedTasks);
+    let loadedTasks = JSON.parse(localStorage.getItem("Tasks"));
 
-      return {
-        tasks: newTasks,
-        websiteInput: "LinkedIn",
-        companyInput: "",
-        titleInput: "",
-        locationInput: "",
-        linkInput: ""
-      };
-    });
+    if (Array.isArray(loadedTasks)) {
+      this.setState(state => {
+        let newTasks = state.tasks.slice().concat(loadedTasks);
+
+        return {
+          tasks: newTasks,
+          websiteInput: "LinkedIn",
+          companyInput: "",
+          titleInput: "",
+          locationInput: "",
+          linkInput: ""
+        };
+      });
+    }
   }
 
-  //HTTP Stuff
+  clearLocal() {
+    localStorage.removeItem("Tasks");
+  }
 
-  retrieveHtml(test) {
+  retrieveHtmlLinkedin() {
+    let url = this.state.directLinkInput.split("/");
+    url = url[url.length - 2];
     axios
-      .get("/RetrieveHtml/" + test)
+      .get("/RetrieveHtmlLinkedIn/" + url)
       .then((res, request) => {
         console.log("retrievehtml 2", this);
         this.setState(state => {
@@ -135,13 +160,14 @@ class MainPage extends React.Component {
           let newTasks = state.tasks.slice();
 
           newTasks.push({
-            websiteInput: state.websiteInput,
+            websiteInput: state.directWebsiteInput,
             companyInput: res.data[1],
             titleInput: res.data[0],
             recruiterInput: state.recruiterInput,
             locationInput: res.data[3],
             coverInput: state.coverInput,
-            linkInput: res.data[2]
+            linkInput: state.directLinkInput,
+            companyLinkInput: res.data[2]
           });
           return {
             tasks: newTasks,
@@ -149,9 +175,84 @@ class MainPage extends React.Component {
             companyInput: "",
             titleInput: "",
             locationInput: "",
-            linkInput: ""
+            linkInput: "",
+            companyLinkInput: ""
           };
         });
+      })
+      .then(res => {
+        this.saveToLocal();
+      })
+      .catch(error => console.error(error));
+    this.saveToLocal();
+  }
+  retrieveHtmlIndeed() {
+    let url = this.state.directLinkInput.split("?");
+    url = url[url.length - 1];
+    console.log(url);
+    axios
+      .get("/RetrieveHtmlIndeed/" + url)
+      .then((res, request) => {
+        this.setState(state => {
+          console.log("setting state in retriete");
+          let newTasks = state.tasks.slice();
+          newTasks.push({
+            websiteInput: state.directWebsiteInput,
+            companyInput: res.data[1],
+            titleInput: res.data[0],
+            recruiterInput: state.recruiterInput,
+            locationInput: res.data[3],
+            coverInput: state.coverInput,
+            linkInput: state.directLinkInput,
+            companyLinkInput: res.data[2]
+          });
+          return {
+            tasks: newTasks,
+            websiteInput: "LinkedIn",
+            companyInput: "",
+            titleInput: "",
+            locationInput: "",
+            linkInput: "",
+            companyLinkInput: ""
+          };
+        });
+      })
+      .then(res => {
+        this.saveToLocal();
+      })
+      .catch(error => console.error(error));
+  }
+  retrieveHtmlAngelist() {
+    let url = this.state.directLinkInput.split("/");
+    url = url[url.length - 1];
+    axios
+      .get("/RetrieveHtmlAngelist/" + url)
+      .then((res, request) => {
+        this.setState(state => {
+          let newTasks = state.tasks.slice();
+          newTasks.push({
+            websiteInput: state.directWebsiteInput,
+            companyInput: res.data[1],
+            titleInput: res.data[0],
+            recruiterInput: state.recruiterInput,
+            locationInput: res.data[3],
+            coverInput: state.coverInput,
+            linkInput: state.directLinkInput,
+            companyLinkInput: res.data[2]
+          });
+          return {
+            tasks: newTasks,
+            websiteInput: "LinkedIn",
+            companyInput: "",
+            titleInput: "",
+            locationInput: "",
+            linkInput: "",
+            companyLinkInput: ""
+          };
+        });
+      })
+      .then(res => {
+        this.saveToLocal();
       })
       .catch(error => console.error(error));
   }
@@ -164,6 +265,8 @@ class MainPage extends React.Component {
     return (
       <div className="MainPage col-xs-10">
         <LeftPage
+          directWebRef={this.directWebRef}
+          directLinkRef={this.directLinkRef}
           webRef={this.webRef}
           compRef={this.compRef}
           titleRef={this.titleRef}
@@ -177,9 +280,16 @@ class MainPage extends React.Component {
           handleChangeCompany={this.handleChangeCompany}
           handleChangeCover={this.handleChangeCover}
           handleChangeLink={this.handleChangeLink}
+          handleChangeDirectWebsite={this.handleChangeDirectWebsite}
+          handleChangeDirectLink={this.handleChangeDirectLink}
           addToList={this.addToList}
           totalJobsFromSheets={this.state.totalJobsFromSheets}
-          retrieveHtml={this.retrieveHtml}
+          retrieveHtmlLinkedin={this.retrieveHtmlLinkedin}
+          retrieveHtmlIndeed={this.retrieveHtmlIndeed}
+          retrieveHtmlAngelist={this.retrieveHtmlAngelist}
+          directWebsiteInput={this.state.directWebsiteInput}
+          directLinkInput={this.state.directLinkInput}
+          saveToLocal={this.saveToLocal}
         />
         <RightPage
           tasks={this.state.tasks}
@@ -188,6 +298,7 @@ class MainPage extends React.Component {
           updateTotalJobsFromSheets={this.updateTotalJobsFromSheets}
           saveToLocal={this.saveToLocal}
           loadFromLocal={this.loadFromLocal}
+          clearLocal={this.clearLocal}
         />
       </div>
     );

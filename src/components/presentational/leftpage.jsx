@@ -69,17 +69,49 @@ const LeftPage = props => {
       >
         Done
       </button>
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          let url;
-          url = props.linkRef.current.value.split("/");
-          let test = props.retrieveHtml(url[url.length - 2]);
-          console.log("test", test);
-        }}
-      >
-        HttpRequest
-      </button>
+      <div className="DirectWebSelect">
+        <h4>Website</h4>
+
+        <select
+          ref={props.directWebRef}
+          className="WebsiteInput TaskInput"
+          onChange={e => {
+            props.handleChangeDirectWebsite(e);
+          }}
+        >
+          <option value="Angelist">Angelist</option>
+          <option value="Indeed">Indeed</option>
+          <option selected="selected" value="LinkedIn">
+            LinkedIn
+          </option>
+        </select>
+
+        <h4>Link</h4>
+        <input
+          ref={props.directLinkRef}
+          className="CompanyInput TaskInput"
+          onChange={e => {
+            props.handleChangeDirectLink(e);
+          }}
+        />
+
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            props.directLinkRef.current.value = "";
+
+            if (props.directWebsiteInput === "LinkedIn") {
+              props.retrieveHtmlLinkedin();
+            } else if (props.directWebsiteInput === "Indeed") {
+              props.retrieveHtmlIndeed();
+            } else if (props.directWebsiteInput === "Angelist") {
+              props.retrieveHtmlAngelist();
+            }
+          }}
+        >
+          HttpRequest
+        </button>
+      </div>
     </div>
   );
 };
