@@ -1,5 +1,59 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const Promise = require("promise");
+
+//googapi test
+const fs = require("fs");
+const readline = require("readline");
+const { google } = require("googleapis");
+
+const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
+const TOKEN_PATH = "token.json";
+
+// Load client secrets from a local file.
+
+class SheetsSnippets {
+  /**
+   * Creates Sheets Snippets with a Google API Services
+   * @param {GoogleAuth[]} service Authenticated Google Drive and Sheets Services
+   */
+  constructor([driveService, sheetsService]) {
+    this.driveService = driveService;
+    this.sheetsService = sheetsService;
+  }
+
+  async create(title) {
+    return new Promise((resolve, reject) => {
+      // [START sheets_create]
+      const resource = {
+        properties: {
+          title
+        }
+      };
+      this.sheetsService.spreadsheets.create(
+        {
+          resource,
+          fields: "spreadsheetId"
+        },
+        (err, spreadsheet) => {
+          if (err) {
+            // Handle error.
+            console.log(err);
+            // [START_EXCLUDE silent]
+            reject(err);
+            // [END_EXCLUDE]
+          } else {
+            console.log(`Spreadsheet ID: ${spreadsheet.spreadsheetId}`);
+            // [START_EXCLUDE silent]
+            resolve(spreadsheet.spreadsheetId);
+            // [END_EXCLUDE]
+          }
+        }
+      );
+      // [END sheets_create]
+    });
+  }
+}
 
 module.exports = {
   retrieveHtmlLinkedIn: (req, res, next) => {
