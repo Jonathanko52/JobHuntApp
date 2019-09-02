@@ -159,6 +159,12 @@ class NavBar extends React.Component {
                       {
                         userEnteredValue: {
                           formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!H:H,"*Tech") '
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
                             '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!G:G,"*Onsite*") '
                         }
                       },
@@ -198,6 +204,12 @@ class NavBar extends React.Component {
                         userEnteredValue: {
                           formulaValue:
                             '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!G:G,"*Phone*") '
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!G:G,"*Tech*") '
                         }
                       },
                       {
@@ -247,6 +259,12 @@ class NavBar extends React.Component {
                       {
                         userEnteredValue: {
                           formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!G:G,"*Tech*") '
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
                             '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!G:G,"*Onsite*") '
                         }
                       },
@@ -286,6 +304,12 @@ class NavBar extends React.Component {
                         userEnteredValue: {
                           formulaValue:
                             '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!G:G,"*Phone*") '
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!G:G,"*Tech*") '
                         }
                       },
                       {
@@ -335,6 +359,12 @@ class NavBar extends React.Component {
                       {
                         userEnteredValue: {
                           formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!G:G,"*Tech*") '
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
                             '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!G:G,"*Onsite*") '
                         }
                       },
@@ -379,6 +409,12 @@ class NavBar extends React.Component {
                       {
                         userEnteredValue: {
                           formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!G:G,"*Tech*") '
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
                             '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!G:G,"*Onsite*") '
                         }
                       },
@@ -400,7 +436,37 @@ class NavBar extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "Grand Total Application"
+                          stringValue: "Total"
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue: "=SUM(Summary!B2:B7)"
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue: "=SUM(Summary!C2:C7)"
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue: "=SUM(Summary!D2:D7)"
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue: "=SUM(Summary!E2:E7)"
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue: "=SUM(Summary!F2:F7)"
+                        }
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue: "=SUM(Summary!G2:G7)"
                         }
                       }
                     ]
@@ -544,7 +610,7 @@ class NavBar extends React.Component {
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "PMinutes"
+                          stringValue: "Minutes"
                         }
                       },
                       {
@@ -654,15 +720,16 @@ class NavBar extends React.Component {
                 className="btn btn-primary"
                 onClick={() => {
                   let targetRow;
+                  let spreadsheetId = localStorage.getItem("SpreadSheetId");
+
                   let newHours = this.state.hours;
                   let newMinutes = this.state.minutes;
                   let newSeconds = this.state.seconds;
                   let dateExists = false;
                   gapi.client.sheets.spreadsheets.values
                     .get({
-                      spreadsheetId:
-                        "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
-                      range: "Sheet3!A1:D1000"
+                      spreadsheetId: spreadsheetId,
+                      range: "Time!A1:D1000"
                     })
                     .then(response => {
                       //first call. Finds empty row in sheets
@@ -705,9 +772,8 @@ class NavBar extends React.Component {
 
                       gapi.client.sheets.spreadsheets.values
                         .update({
-                          spreadsheetId:
-                            "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
-                          range: `Sheet3!A${targetRow}:D${targetRow}`,
+                          spreadsheetId: spreadsheetId,
+                          range: `Time!A${targetRow}:D${targetRow}`,
                           valueInputOption: "RAW",
                           resource: {
                             values: [
