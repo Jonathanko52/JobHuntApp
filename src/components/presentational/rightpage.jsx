@@ -6,11 +6,13 @@ class RightPage extends React.Component {
     super(props);
     this.state = {
       recruiterInput: "Yes",
-      coverInput: "Yes"
+      coverInput: "Yes",
+      interviewInput: "Submitted"
     };
     //binding handle change functions
     this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this);
     this.handleChangeCover = this.handleChangeCover.bind(this);
+    // this.handleChangeInterview = this.handleChangeInterview.bind(this)
   }
 
   //handle changes to "Recruiter" value
@@ -23,6 +25,10 @@ class RightPage extends React.Component {
 
   handleChangeCover(event) {
     this.setState({ coverInput: event.target.value });
+  }
+
+  handleChangeInterview(event) {
+    this.setState({ interviewInput: event.target.value });
   }
 
   render() {
@@ -100,13 +106,13 @@ class RightPage extends React.Component {
               onClick={() => {
                 //variable that indicates first empty row in sheet
                 let emptyRow;
-
+                let spreadsheetId = localStorage.getItem("SpreadSheetId");
                 //first google api call that finds first empty row (well, first with empty cell in column A)
                 gapi.client.sheets.spreadsheets.values
                   .get({
-                    spreadsheetId:
-                      "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
-                    range: "Sheet2!A1:A1000"
+                    spreadsheetId: spreadsheetId,
+                    // "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
+                    range: "Jobs!A1:A1000"
                   })
                   .then(response => {
                     var result = response.result;
@@ -117,9 +123,9 @@ class RightPage extends React.Component {
                     //second google api call (technically within first) that posts data to sheet
                     gapi.client.sheets.spreadsheets.values
                       .update({
-                        spreadsheetId:
-                          "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
-                        range: `Sheet2!A${emptyRow}:J${emptyRow}`,
+                        spreadsheetId: spreadsheetId,
+                        // "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
+                        range: `Jobs!A${emptyRow}:J${emptyRow}`,
                         valueInputOption: "RAW",
                         resource: {
                           values: [
@@ -132,8 +138,7 @@ class RightPage extends React.Component {
                                 1}/${new Date().getDate()}`,
                               cur.locationInput,
                               this.state.coverInput,
-                              "no",
-                              "",
+                              this.state.interviewInput,
                               cur.linkInput
                             ]
                           ]

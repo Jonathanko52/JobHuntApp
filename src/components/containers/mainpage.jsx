@@ -24,7 +24,9 @@ class MainPage extends React.Component {
       totalJobsFromSheets: 0,
       directWebsiteInput: "LinkedIn",
       directLinkInput: "",
-      companyLinkInput: ""
+      companyLinkInput: "",
+      spreadSheetId: "",
+      totalJobs: ""
     };
     //Event Listener Function Bindings
     this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
@@ -290,6 +292,7 @@ class MainPage extends React.Component {
           directWebsiteInput={this.state.directWebsiteInput}
           directLinkInput={this.state.directLinkInput}
           saveToLocal={this.saveToLocal}
+          totalJobs={this.state.totalJobs}
         />
         <RightPage
           tasks={this.state.tasks}

@@ -563,6 +563,8 @@ class NavBar extends React.Component {
       .then(response => {
         let parsedResponse = JSON.parse(response.body);
         console.log("response", parsedResponse.spreadsheetId);
+        localStorage.setItem("SpreadSheetId", parsedResponse.spreadsheetId);
+
         // localStorage.setItem('spreadsheetId',parsedResponse.spreadsheetId)
       })
       .catch((res, err) => {
