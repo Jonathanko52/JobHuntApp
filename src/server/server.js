@@ -18,10 +18,6 @@ app.get("/RetrieveHtmlLinkedIn/:link", taskController.retrieveHtmlLinkedIn);
 
 app.get("/RetrieveHtmlIndeed/:link", taskController.retrieveHtmlIndeed);
 
-// app.get("/RetrieveHtmlAngelist/:link", taskController.retrieveHtmlAngelist);
-
-//paths
-
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
