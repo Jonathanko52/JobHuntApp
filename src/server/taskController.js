@@ -1,14 +1,5 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const Promise = require("promise");
-
-//googapi test
-const fs = require("fs");
-const readline = require("readline");
-const { google } = require("googleapis");
-
-const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
-const TOKEN_PATH = "token.json";
 
 // Load client secrets from a local file.
 
@@ -92,6 +83,6 @@ module.exports = {
       .then(data => {
         res.status(200).send(data);
       })
-      .catch(error => console.log("ERROR"));
+      .catch(error => console.log("ERROR", error));
   }
 };
