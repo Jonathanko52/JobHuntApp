@@ -2,7 +2,7 @@ import React from "react";
 
 const TitleBar = () => (
   <div class="TitleBar col-12">
-    <h3>Do Your Work</h3>
+    <h3>Get To Work</h3>
   </div>
 );
 
