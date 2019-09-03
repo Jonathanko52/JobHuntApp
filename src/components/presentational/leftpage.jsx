@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const LeftPage = props => {
   let total = "N/A";
   if (props.totalJobsFromSheets > 0) {
-    total = props.totalJobsFromSheets + 150;
+    total = props.totalJobsFromSheets;
   }
   //Input boxes that take in input regarding relevant information to a job application.
   return (
