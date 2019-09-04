@@ -1,6 +1,6 @@
 import React from "react";
-import RightPage from "../presentational/rightpage.jsx";
-import LeftPage from "../presentational/leftpage.jsx";
+import RightPage from "../presentational/mainrightpage.jsx";
+import LeftPage from "../presentational/mainleftpage.jsx";
 import axios from "axios";
 
 class MainPage extends React.Component {

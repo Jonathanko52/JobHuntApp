@@ -1,9 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import App from './components/presentational/app.js';
-
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
+import App from "./components/containers/app.jsx";
+ReactDOM.render(<App />, document.getElementById("root"));

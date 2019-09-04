@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 var GoogleAuth;
 
@@ -828,6 +829,20 @@ class NavBar extends React.Component {
           >
             Create?
           </button>
+        </div>
+        <div className="NavbarProper pt-5">
+          <li className="py-2 pl-5">
+            <a>
+              {" "}
+              <Link to="/">Main</Link>
+            </a>
+          </li>
+          <li className="py-2 pl-5">
+            <Link to="/InputPage">Input Page</Link>
+          </li>
+          <li className="py-2 pl-5">
+            <Link to="/Test">Hypothetical Additional Pages</Link>
+          </li>
         </div>
       </div>
     );
