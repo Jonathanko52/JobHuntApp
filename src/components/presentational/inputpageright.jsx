@@ -42,8 +42,7 @@ class RightPage extends React.Component {
             <a href={cur.companyLinkInput}>{cur.companyInput}</a>
             <br />
             <b>Job Title:</b> {cur.titleInput}
-            <br />
-            <b>Recruiter Input:</b>
+            {/* <b>Recruiter Input:</b>
             <form>
               <input
                 type="radio"
@@ -66,7 +65,7 @@ class RightPage extends React.Component {
                 value="No"
               />
               No
-            </form>
+            </form> */}
             <br />
             <b>Location Input:</b> {cur.locationInput}
             <br />
@@ -94,7 +93,6 @@ class RightPage extends React.Component {
               />
               No
             </form>
-            <br />
             <b href>Link:</b>{" "}
             <a href={cur.linkInput} target="_blank">
               {cur.linkInput}
@@ -110,7 +108,6 @@ class RightPage extends React.Component {
                 gapi.client.sheets.spreadsheets.values
                   .get({
                     spreadsheetId: spreadsheetId,
-                    // "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
                     range: "Jobs!A1:A1000"
                   })
                   .then(response => {
@@ -132,7 +129,6 @@ class RightPage extends React.Component {
                               cur.websiteInput,
                               cur.companyInput,
                               cur.titleInput,
-                              this.state.recruiterInput,
                               `${new Date().getMonth() +
                                 1}/${new Date().getDate()}`,
                               cur.locationInput,

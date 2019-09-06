@@ -67,6 +67,7 @@ class App extends React.Component {
     this.signInChange = this.signInChange.bind(this);
     this.createSheet = this.createSheet.bind(this);
     this.setSpreadsheetId = this.setSpreadsheetId.bind(this);
+    this.setSpreadsheetIdFromTemp = this.setSpreadsheetIdFromTemp.bind(this);
   }
 
   //Event Listeners handling event changes on left(input) page
@@ -102,17 +103,17 @@ class App extends React.Component {
   addToList() {
     this.setState(state => {
       let newTasks = state.tasks.slice();
-      let company = state.companyInput.split(" ");
-      let locationWordIndex = company.indexOf("Location");
-      let location = company.slice(locationWordIndex + 1).join(" ");
-      company = company.slice(0, locationWordIndex - 1).join(" ");
+      // let company = state.companyInput.split(" ");
+      // let locationWordIndex = company.indexOf("Location");
+      // let location = company.slice(locationWordIndex + 1).join(" ");
+      // company = company.slice(0, locationWordIndex - 1).join(" ");
 
       newTasks.push({
         websiteInput: state.websiteInput,
-        companyInput: company,
+        companyInput: state.companyInput,
         titleInput: state.titleInput,
         recruiterInput: state.recruiterInput,
-        locationInput: location,
+        locationInput: state.locationInput,
         coverInput: state.coverInput,
         linkInput: state.linkInput
       });
@@ -818,7 +819,9 @@ class App extends React.Component {
         let parsedResponse = JSON.parse(response.body);
         console.log("response", parsedResponse.spreadsheetId);
         localStorage.setItem("SpreadSheetId", parsedResponse.spreadsheetId);
-
+        this.setState({
+          spreadSheetId: parsedResponse.spreadsheetId
+        });
         // localStorage.setItem('spreadsheetId',parsedResponse.spreadsheetId)
       })
       .catch((res, err) => {
@@ -834,7 +837,13 @@ class App extends React.Component {
     }
   }
 
-  setSpreadsheetId() {
+  setSpreadsheetId(newId) {
+    this.setState({
+      spreadSheetId: newId
+    });
+  }
+
+  setSpreadsheetIdFromTemp() {
     this.setState({
       spreadSheetId: this.state.tempSpreadsheetID
     });
@@ -859,6 +868,7 @@ class App extends React.Component {
                     SignedInOnGoogle={this.state.SignedInOnGoogle}
                     createSheet={this.createSheet}
                     handleSpreadsheetIdSubmit={this.handleSpreadsheetIdSubmit}
+                    setSpreadsheetIdFromTemp={this.setSpreadsheetIdFromTemp}
                     setSpreadsheetId={this.setSpreadsheetId}
                   />
                 );

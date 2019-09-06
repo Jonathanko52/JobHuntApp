@@ -243,16 +243,7 @@ class NavBar extends React.Component {
             </div>
           </div>
         </div>
-        <div className="buttonContainer">
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              this.createSheet();
-            }}
-          >
-            Create?
-          </button>
-        </div>
+
         <div className="NavbarProper pt-5">
           <li className="py-2 pl-5">
             <a>
