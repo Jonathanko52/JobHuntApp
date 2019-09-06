@@ -870,6 +870,7 @@ class App extends React.Component {
                     handleSpreadsheetIdSubmit={this.handleSpreadsheetIdSubmit}
                     setSpreadsheetIdFromTemp={this.setSpreadsheetIdFromTemp}
                     setSpreadsheetId={this.setSpreadsheetId}
+                    tempSpreadsheetID={this.state.tempSpreadsheetID}
                   />
                 );
               }}

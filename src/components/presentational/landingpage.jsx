@@ -84,7 +84,7 @@ const LandingPage = props => {
               <button
                 className="btn btn-primary"
                 onClick={() => {
-                  props.setSpreadsheetId();
+                  props.setSpreadsheetIdFromTemp();
                 }}
               >
                 Submit ID
