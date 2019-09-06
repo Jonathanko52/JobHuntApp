@@ -157,7 +157,7 @@ class RightPage extends React.Component {
                   });
               }}
             >
-              Done
+              Submit
             </button>
             <button
               className="btn btn-primary"
