@@ -55,6 +55,7 @@ const LandingPage = props => {
                 <br></br>
                 <a
                   href={`https://docs.google.com/spreadsheets/d/${props.spreadSheetId}/edit#gid=2094364220`}
+                  target="_blank"
                 >
                   https://docs.google.com/spreadsheets/d/{props.spreadSheetId}
                   /edit#gid=2094364220

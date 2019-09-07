@@ -849,6 +849,10 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.loadFromLocal();
+  }
+
   render() {
     return (
       <div>
