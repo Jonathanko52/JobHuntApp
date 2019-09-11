@@ -247,16 +247,15 @@ class NavBar extends React.Component {
         <div className="NavbarProper pt-5">
           <li className="py-2 pl-5">
             <a>
-              {" "}
               <Link to="/">Main</Link>
             </a>
           </li>
           <li className="py-2 pl-5">
             <Link to="/InputPage">Input Page</Link>
           </li>
-          <li className="py-2 pl-5">
+          {/* <li className="py-2 pl-5">
             <Link to="/Test">Hypothetical Additional Pages</Link>
-          </li>
+          </li> */}
         </div>
       </div>
     );

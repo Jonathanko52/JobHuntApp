@@ -74,7 +74,7 @@ const LeftPage = props => {
       </div>
       <h3 className="text-center"> OR </h3>
       <p className="text-center mt-4">
-        Copy and paste the url of the job page (Currenly supports LinkedIn and
+        Copy and paste the url of the job page (Currently supports LinkedIn and
         Indeed).
       </p>
       <div className="LeftSubBar">
