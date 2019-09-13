@@ -1,10 +1,11 @@
 import React from "react";
 import "./../../assets/css/app.css";
 import NavBar from "../presentational/navbar.jsx";
-import InputPage from "./inputPage.jsx";
+import InputPage from "../presentational/inputPage.jsx";
 import TitleBar from "../presentational/titlebar.jsx";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "../presentational/landingpage.jsx";
+import GraphPage from "./graphPage.jsx";
 var GoogleAuth;
 
 import axios from "axios";
@@ -882,7 +883,6 @@ class App extends React.Component {
             <Route
               path="/InputPage"
               render={props => {
-                console.log("APPPROPS", props);
                 return (
                   <InputPage
                     directWebRef={this.directWebRef}
@@ -920,6 +920,13 @@ class App extends React.Component {
                     clearLocal={this.clearLocal}
                   />
                 );
+              }}
+            />
+            <Route
+              path="/GraphPage"
+              exact
+              render={props => {
+                return <GraphPage />;
               }}
             />
           </div>

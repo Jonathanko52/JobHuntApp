@@ -1,8 +1,8 @@
 import React from "react";
-import RightPage from "../presentational/inputpageright.jsx";
-import LeftPage from "../presentational/inputpageleft.jsx";
+import RightPage from "./inputpageright.jsx";
+import LeftPage from "./inputpageleft.jsx";
 
-const MainPage = props => {
+const InputPage = props => {
   return (
     <div className="MainPage col-xs-10">
       <LeftPage
@@ -46,4 +46,4 @@ const MainPage = props => {
   );
 };
 
-export default MainPage;
+export default InputPage;
