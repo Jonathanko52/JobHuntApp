@@ -41,6 +41,7 @@ const InputPage = props => {
         saveToLocal={props.saveToLocal}
         loadFromLocal={props.loadFromLocal}
         clearLocal={props.clearLocal}
+        spreadSheetId={props.spreadSheetId}
       />
     </div>
   );

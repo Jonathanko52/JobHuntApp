@@ -79,7 +79,7 @@ class RightPage extends React.Component {
               onClick={() => {
                 //variable that indicates first empty row in sheet
                 let emptyRow;
-                let spreadsheetId = localStorage.getItem("SpreadSheetId");
+                let spreadsheetId = this.props.spreadSheetId;
                 //first google api call that finds first empty row (well, first with empty cell in column A)
                 gapi.client.sheets.spreadsheets.values
                   .get({

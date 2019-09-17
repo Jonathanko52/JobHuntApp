@@ -86,6 +86,10 @@ const LandingPage = props => {
                 className="btn btn-primary"
                 onClick={() => {
                   props.setSpreadsheetIdFromTemp();
+                  localStorage.setItem(
+                    "SpreadSheetId",
+                    JSON.stringify(props.tempSpreadsheetID)
+                  );
                 }}
               >
                 Submit ID

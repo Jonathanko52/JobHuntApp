@@ -823,7 +823,6 @@ class App extends React.Component {
         this.setState({
           spreadSheetId: parsedResponse.spreadsheetId
         });
-        // localStorage.setItem('spreadsheetId',parsedResponse.spreadsheetId)
       })
       .catch((res, err) => {
         console.log("error", res.body);
