@@ -1,28 +1,49 @@
 import React from "react";
+import LineGraph from "./../presentational/linegraph.jsx";
+import BarGraph from "./../presentational/bargraph.jsx";
 // import { AreaChart, Area } from "recharts";
 import {
   ResponsiveContainer,
   LineChart,
+  BarChart,
   Line,
   CartesianGrid,
   XAxis,
-  YAxis
+  YAxis,
+  Tooltip
 } from "recharts";
 
 class GraphPage extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      graphData: []
+      LineData: [],
+      BarData: [],
+      GraphDisplay: "Line",
+      BarGraphCompany: "2",
+      SearchParamDate: "7"
     };
 
     this.retrieveData = this.retrieveData.bind(this);
+    this.conversionRate = this.conversionRate.bind(this);
+
+    //Shared Options
+    this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.handleParamDateChange = this.handleParamDateChange.bind(this);
+
+    //Bar Graph Options
+    this.handleParamCompanyChange = this.handleParamCompanyChange.bind(this);
   }
+
+  // componentDidMount() {
+  //   this.conversionRate();
+  //   this.retrieveData();
+  // }
 
   retrieveData() {
     let spreadsheetId = localStorage.getItem("SpreadSheetId");
     let tempDate1 = new Date();
-    let tempDate2 = tempDate1.getDate() - 30;
+    let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
     let previousMonth = false;
     if (tempDate2 < 0) {
       tempDate1.setDate(1);
@@ -45,8 +66,6 @@ class GraphPage extends React.Component {
       })
       .then(response => {
         lastRow = response.result.values.length;
-        console.log(response);
-        console.log(response.result);
         let index;
         let j = 0;
         while (!index && j < response.result.values.length) {
@@ -73,56 +92,115 @@ class GraphPage extends React.Component {
           dataArray.push({ name: key, uv: obj[key] });
         }
 
-        console.log(dataArray);
-        this.setState({ graphData: dataArray });
-      })
-      .then(res => {
-        console.log(this.state);
+        this.setState({ LineData: dataArray });
       })
       .catch(err => {
         console.log("outter error", err);
       });
   }
 
-  componentDidMount() {}
+  conversionRate() {
+    let spreadsheetId = localStorage.getItem("SpreadSheetId");
+    let targetRow = parseInt(this.state.BarGraphCompany);
+    console.log("TARGET ROW", targetRow);
+    gapi.client.sheets.spreadsheets.values
+      .get({
+        spreadsheetId: spreadsheetId,
+        range: `Summary!A${targetRow}:G${targetRow}`
+      })
+      .then(response => {
+        console.log(response.result.values[0][0]);
+        let BarData = [
+          { name: "Jobs", uv: response.result.values[0][1] },
+          { name: "Cover Letters Sent", uv: response.result.values[0][2] },
+          { name: "Phone Screens", uv: response.result.values[0][3] },
+          { name: "Tech Interviews", uv: response.result.values[0][4] },
+          { name: "In Person Interviews", uv: response.result.values[0][5] },
+          { name: "Offers", uv: response.result.values[0][6] }
+        ];
+        this.setState({ BarData: BarData });
+      })
+
+      .catch(err => {
+        console.log("outter error", err);
+      });
+  }
+
+  handleOptionChange(event) {
+    this.conversionRate();
+    this.retrieveData();
+
+    this.setState({ GraphDisplay: event.target.value });
+  }
+
+  handleParamDateChange(event) {
+    this.retrieveData();
+
+    this.setState({ SearchParamDate: event.target.value });
+  }
+
+  handleParamCompanyChange(event) {
+    this.conversionRate();
+    this.setState({ BarGraphCompany: event.target.value });
+  }
 
   render() {
-    return (
-      <div className="LandingPage col-xs-10 d-flex justify-content-center pt-5">
-        <ResponsiveContainer width="100%" height={700}>
-          <LineChart width={600} height={300} data={this.state.graphData}>
-            <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-
-            <CartesianGrid stroke="#ccc" />
-            <XAxis dataKey="name" />
-            <YAxis />
-          </LineChart>
-        </ResponsiveContainer>
-        <button
-          onClick={() => {
-            this.retrieveData();
+    let graphContainer = [];
+    let graphOptionsContainer = [];
+    if (this.state.GraphDisplay === "Line") {
+      graphContainer.push(
+        <LineGraph LineData={this.state.LineData}></LineGraph>
+      );
+    } else if (this.state.GraphDisplay === "Bar") {
+      graphOptionsContainer.push(<label className="pr-3 h4"> Company </label>);
+      graphOptionsContainer.push(
+        <select
+          onChange={e => {
+            this.handleParamCompanyChange(e);
           }}
         >
-          RetrieveDAta
-        </button>
+          <option value="">--Pick a Company--</option>
+          <option value="2">Indeed</option>
+          <option value="3">LinkedIn</option>
+          <option value="4">Angelist</option>
+          <option value="5">ZipRecruiter</option>
+          <option value="6">Dice</option>
+          <option value="7">Monster</option>
+        </select>
+      );
+      graphContainer.push(<BarGraph BarData={this.state.BarData}></BarGraph>);
+    }
+
+    return (
+      <div className="col-xs-10">
+        <div className="row justify-content-center pt-5">
+          <label className="pr-3 h4"> Graph </label>
+          <select
+            onChange={e => {
+              this.handleOptionChange(e);
+            }}
+          >
+            <option label="Applications Submitted" value="Line"></option>
+            <option label="Application Conversion Rate" value="Bar"></option>
+          </select>
+
+          <label className="pr-3 h4"> Timeline </label>
+          <select
+            onChange={e => {
+              this.handleParamDateChange(e);
+            }}
+          >
+            <option label="Past Week" value="7"></option>
+            <option label="Past 15 Days" value="15"></option>
+            <option label="Past Month" value="30"></option>
+          </select>
+          {graphOptionsContainer}
+        </div>
+        <div className="row d-flex ">{graphContainer}</div>
+        <div className="row d-flex justify-content-center py-3"></div>
       </div>
     );
   }
 }
-
-// import { LineChart, Line } from 'recharts';
-// const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
-
-// const renderLineChart = () => (
-//   <div className="LandingPage col-xs-10 d-flex justify-content-center pt-5">
-//     <LineChart width={600} height={300} data={data}>
-//       <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-//       <CartesianGrid stroke="#ccc" />
-//       <XAxis dataKey="name" />
-//       <YAxis />
-//     </LineChart>
-//   </div>
-// );
 
 export default GraphPage;

@@ -17,11 +17,10 @@
 
 .NavBar {
   background-color: rgb(162, 212, 218);
-  /* color: green; */
-  height: 88vh;
   border-right-style: solid;
   border-width: 1px;
   border-color: rgb(181, 181, 181);
+  height: 100vh;
 }
 
 .MainPage {

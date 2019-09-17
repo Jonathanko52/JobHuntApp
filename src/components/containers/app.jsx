@@ -860,75 +860,77 @@ class App extends React.Component {
         <Router>
           <div className="app">
             <TitleBar />
-            <NavBar />
-            <Route
-              path="/"
-              exact
-              render={props => {
-                return (
-                  <LandingPage
-                    spreadSheetId={this.state.spreadSheetId}
-                    googleAuth={this.googleAuth}
-                    signInChange={this.signInChange}
-                    SignedInOnGoogle={this.state.SignedInOnGoogle}
-                    createSheet={this.createSheet}
-                    handleSpreadsheetIdSubmit={this.handleSpreadsheetIdSubmit}
-                    setSpreadsheetIdFromTemp={this.setSpreadsheetIdFromTemp}
-                    setSpreadsheetId={this.setSpreadsheetId}
-                    tempSpreadsheetID={this.state.tempSpreadsheetID}
-                  />
-                );
-              }}
-            />
-            <Route
-              path="/InputPage"
-              render={props => {
-                return (
-                  <InputPage
-                    directWebRef={this.directWebRef}
-                    directLinkRef={this.directLinkRef}
-                    webRef={this.webRef}
-                    compRef={this.compRef}
-                    titleRef={this.titleRef}
-                    locRef={this.locRef}
-                    linkRef={this.linkRef}
-                    handleChangeWebsite={this.handleChangeWebsite}
-                    handleChangeCompany={this.handleChange}
-                    handleChangeTitle={this.handleChangeTitle}
-                    handleChangeRecruiter={this.handleChangeRecruiter}
-                    handleChangeLocation={this.handleChangeLocation}
-                    handleChangeCompany={this.handleChangeCompany}
-                    handleChangeCover={this.handleChangeCover}
-                    handleChangeLink={this.handleChangeLink}
-                    handleChangeDirectWebsite={this.handleChangeDirectWebsite}
-                    handleChangeDirectLink={this.handleChangeDirectLink}
-                    addToList={this.addToList}
-                    totalJobsFromSheets={this.state.totalJobsFromSheets}
-                    retrieveHtmlLinkedin={this.retrieveHtmlLinkedin}
-                    retrieveHtmlIndeed={this.retrieveHtmlIndeed}
-                    retrieveHtmlAngelist={this.retrieveHtmlAngelist}
-                    directWebsiteInput={this.state.directWebsiteInput}
-                    directLinkInput={this.state.directLinkInput}
-                    saveToLocal={this.saveToLocal}
-                    totalJobs={this.state.totalJobs}
-                    tasks={this.state.tasks}
-                    removeFromList={this.removeFromList}
-                    websiteInput={this.state.websiteInput}
-                    updateTotalJobsFromSheets={this.updateTotalJobsFromSheets}
-                    saveToLocal={this.saveToLocal}
-                    loadFromLocal={this.loadFromLocal}
-                    clearLocal={this.clearLocal}
-                  />
-                );
-              }}
-            />
-            <Route
-              path="/GraphPage"
-              exact
-              render={props => {
-                return <GraphPage />;
-              }}
-            />
+            <div className="row">
+              <NavBar />
+              <Route
+                path="/"
+                exact
+                render={props => {
+                  return (
+                    <LandingPage
+                      spreadSheetId={this.state.spreadSheetId}
+                      googleAuth={this.googleAuth}
+                      signInChange={this.signInChange}
+                      SignedInOnGoogle={this.state.SignedInOnGoogle}
+                      createSheet={this.createSheet}
+                      handleSpreadsheetIdSubmit={this.handleSpreadsheetIdSubmit}
+                      setSpreadsheetIdFromTemp={this.setSpreadsheetIdFromTemp}
+                      setSpreadsheetId={this.setSpreadsheetId}
+                      tempSpreadsheetID={this.state.tempSpreadsheetID}
+                    />
+                  );
+                }}
+              />
+              <Route
+                path="/InputPage"
+                render={props => {
+                  return (
+                    <InputPage
+                      directWebRef={this.directWebRef}
+                      directLinkRef={this.directLinkRef}
+                      webRef={this.webRef}
+                      compRef={this.compRef}
+                      titleRef={this.titleRef}
+                      locRef={this.locRef}
+                      linkRef={this.linkRef}
+                      handleChangeWebsite={this.handleChangeWebsite}
+                      handleChangeCompany={this.handleChange}
+                      handleChangeTitle={this.handleChangeTitle}
+                      handleChangeRecruiter={this.handleChangeRecruiter}
+                      handleChangeLocation={this.handleChangeLocation}
+                      handleChangeCompany={this.handleChangeCompany}
+                      handleChangeCover={this.handleChangeCover}
+                      handleChangeLink={this.handleChangeLink}
+                      handleChangeDirectWebsite={this.handleChangeDirectWebsite}
+                      handleChangeDirectLink={this.handleChangeDirectLink}
+                      addToList={this.addToList}
+                      totalJobsFromSheets={this.state.totalJobsFromSheets}
+                      retrieveHtmlLinkedin={this.retrieveHtmlLinkedin}
+                      retrieveHtmlIndeed={this.retrieveHtmlIndeed}
+                      retrieveHtmlAngelist={this.retrieveHtmlAngelist}
+                      directWebsiteInput={this.state.directWebsiteInput}
+                      directLinkInput={this.state.directLinkInput}
+                      saveToLocal={this.saveToLocal}
+                      totalJobs={this.state.totalJobs}
+                      tasks={this.state.tasks}
+                      removeFromList={this.removeFromList}
+                      websiteInput={this.state.websiteInput}
+                      updateTotalJobsFromSheets={this.updateTotalJobsFromSheets}
+                      saveToLocal={this.saveToLocal}
+                      loadFromLocal={this.loadFromLocal}
+                      clearLocal={this.clearLocal}
+                    />
+                  );
+                }}
+              />
+              <Route
+                path="/GraphPage"
+                exact
+                render={props => {
+                  return <GraphPage />;
+                }}
+              />
+            </div>
           </div>
         </Router>
       </div>

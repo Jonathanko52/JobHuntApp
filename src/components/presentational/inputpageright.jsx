@@ -42,30 +42,6 @@ class RightPage extends React.Component {
             <a href={cur.companyLinkInput}>{cur.companyInput}</a>
             <br />
             <b>Job Title:</b> {cur.titleInput}
-            {/* <b>Recruiter Input:</b>
-            <form>
-              <input
-                type="radio"
-                //Radio Button To switch Recruiter info
-                name="RecruiterRadio"
-                className="RecruiterInput RadioInput"
-                onChange={e => {
-                  this.handleChangeRecruiter(e);
-                }}
-                value="Yes"
-              />
-              Yes
-              <input
-                type="radio"
-                name="RecruiterRadio"
-                className="RecruiterInput RadioInput"
-                onChange={e => {
-                  this.handleChangeRecruiter(e);
-                }}
-                value="No"
-              />
-              No
-            </form> */}
             <br />
             <b>Location Input:</b> {cur.locationInput}
             <br />
