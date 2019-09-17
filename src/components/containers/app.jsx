@@ -912,6 +912,7 @@ class App extends React.Component {
                       saveToLocal={this.saveToLocal}
                       totalJobs={this.state.totalJobs}
                       tasks={this.state.tasks}
+                      spreadSheetId={this.state.spreadSheetId}
                       removeFromList={this.removeFromList}
                       websiteInput={this.state.websiteInput}
                       updateTotalJobsFromSheets={this.updateTotalJobsFromSheets}
