@@ -20,12 +20,12 @@ class GraphPage extends React.Component {
       LineData: [],
       BarData: [],
       GraphDisplay: "Line",
-      BarGraphCompany: "2",
+      BarGraphCompany: "",
       SearchParamDate: "7"
     };
 
     this.retrieveData = this.retrieveData.bind(this);
-    this.conversionRate = this.conversionRate.bind(this);
+    this.getConversionRate = this.getConversionRate.bind(this);
 
     //Shared Options
     this.handleOptionChange = this.handleOptionChange.bind(this);
@@ -34,11 +34,6 @@ class GraphPage extends React.Component {
     //Bar Graph Options
     this.handleParamCompanyChange = this.handleParamCompanyChange.bind(this);
   }
-
-  // componentDidMount() {
-  //   this.conversionRate();
-  //   this.retrieveData();
-  // }
 
   retrieveData() {
     let spreadsheetId = localStorage.getItem("SpreadSheetId");
@@ -99,7 +94,7 @@ class GraphPage extends React.Component {
       });
   }
 
-  conversionRate() {
+  getConversionRate() {
     let spreadsheetId = localStorage.getItem("SpreadSheetId");
     let targetRow = parseInt(this.state.BarGraphCompany);
     console.log("TARGET ROW", targetRow);
@@ -119,6 +114,10 @@ class GraphPage extends React.Component {
           { name: "Offers", uv: response.result.values[0][6] }
         ];
         this.setState({ BarData: BarData });
+        return response.result.values;
+      })
+      .then(res => {
+        console.log("TEST RES", res);
       })
 
       .catch(err => {
@@ -127,21 +126,33 @@ class GraphPage extends React.Component {
   }
 
   handleOptionChange(event) {
-    this.conversionRate();
-    this.retrieveData();
-
     this.setState({ GraphDisplay: event.target.value });
+    this.retrieveData();
   }
 
   handleParamDateChange(event) {
-    this.retrieveData();
-
     this.setState({ SearchParamDate: event.target.value });
+    this.retrieveData();
   }
 
   handleParamCompanyChange(event) {
-    this.conversionRate();
-    this.setState({ BarGraphCompany: event.target.value });
+    // console.log("EVENET", event);
+    // console.log("EVENET target", event.target);
+    // console.log("EVENET values", event.target.value);
+    let changeValue = event.target.value;
+    let newPromise = new Promise((resolve, reject) => {
+      resolve();
+    });
+    newPromise
+      .then(() => {
+        this.setState({ BarGraphCompany: changeValue });
+      })
+      .then(() => {
+        this.getConversionRate();
+      })
+      .catch(err => {
+        console.log("error", err);
+      });
   }
 
   render() {
