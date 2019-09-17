@@ -77,7 +77,9 @@ const LandingPage = props => {
               <button
                 className="btn btn-primary"
                 onClick={() => {
-                  props.setSpreadsheetId(localStorage.getItem("SpreadSheetId"));
+                  let tempSpreadsheetID = localStorage.getItem("SpreadSheetId");
+                  tempSpreadsheetID = tempSpreadsheetID.replace(/['"]+/g, "");
+                  props.setSpreadsheetId(tempSpreadsheetID);
                 }}
               >
                 Retrieve ID

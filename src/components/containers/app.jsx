@@ -927,7 +927,7 @@ class App extends React.Component {
                 path="/GraphPage"
                 exact
                 render={props => {
-                  return <GraphPage />;
+                  return <GraphPage spreadSheetId={this.state.spreadSheetId} />;
                 }}
               />
             </div>

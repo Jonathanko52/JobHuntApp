@@ -36,7 +36,7 @@ class GraphPage extends React.Component {
   }
 
   retrieveData() {
-    let spreadsheetId = localStorage.getItem("SpreadSheetId");
+    let spreadsheetId = this.props.spreadSheetId;
     let tempDate1 = new Date();
     let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
     let previousMonth = false;
@@ -90,12 +90,12 @@ class GraphPage extends React.Component {
         this.setState({ LineData: dataArray });
       })
       .catch(err => {
-        console.log("outter error", err);
+        console.log("outter error", err.result);
       });
   }
 
   getConversionRate() {
-    let spreadsheetId = localStorage.getItem("SpreadSheetId");
+    let spreadsheetId = this.props.spreadSheetId;
     let targetRow = parseInt(this.state.BarGraphCompany);
     console.log("TARGET ROW", targetRow);
     gapi.client.sheets.spreadsheets.values
