@@ -32,7 +32,7 @@ module.exports = {
       .then(data => {
         res.status(200).send(data);
       })
-      .catch(error => console.error(error));
+      .catch(error => console.log("ERROR", error));
   },
   retrieveHtmlIndeed: (req, res, next) => {
     req.body = axios
@@ -57,7 +57,7 @@ module.exports = {
       .then(data => {
         res.status(200).send(data);
       })
-      .catch(error => console.error(error));
+      .catch(error => console.log("ERROR", error));
   },
   retrieveHtmlAngelist: (req, res, next) => {
     req.body = axios

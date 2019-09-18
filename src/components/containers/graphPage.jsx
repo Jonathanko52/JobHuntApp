@@ -97,7 +97,6 @@ class GraphPage extends React.Component {
   getConversionRate() {
     let spreadsheetId = this.props.spreadSheetId;
     let targetRow = parseInt(this.state.BarGraphCompany);
-    console.log("TARGET ROW", targetRow);
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
@@ -126,19 +125,40 @@ class GraphPage extends React.Component {
   }
 
   handleOptionChange(event) {
-    this.setState({ GraphDisplay: event.target.value });
-    this.retrieveData();
+    let changeValue = event.target.value;
+    let newPromise = new Promise((resolve, reject) => {
+      resolve();
+    });
+    newPromise
+      .then(() => {
+        this.setState({ GraphDisplay: changeValue });
+      })
+      .then(() => {
+        this.retrieveData();
+      })
+      .catch(err => {
+        console.log("error", err);
+      });
   }
 
   handleParamDateChange(event) {
-    this.setState({ SearchParamDate: event.target.value });
-    this.retrieveData();
+    let changeValue = event.target.value;
+    let newPromise = new Promise((resolve, reject) => {
+      resolve();
+    });
+    newPromise
+      .then(() => {
+        this.setState({ SearchParamDate: changeValue });
+      })
+      .then(() => {
+        this.retrieveData();
+      })
+      .catch(err => {
+        console.log("error", err);
+      });
   }
 
   handleParamCompanyChange(event) {
-    // console.log("EVENET", event);
-    // console.log("EVENET target", event.target);
-    // console.log("EVENET values", event.target.value);
     let changeValue = event.target.value;
     let newPromise = new Promise((resolve, reject) => {
       resolve();
