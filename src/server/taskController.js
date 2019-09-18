@@ -57,7 +57,7 @@ module.exports = {
       .then(data => {
         res.status(200).send(data);
       })
-      .catch(error => console.log("ERROR", error));
+      .catch(error => console.log("ERROR", error.error));
   },
   retrieveHtmlAngelist: (req, res, next) => {
     req.body = axios
@@ -66,23 +66,13 @@ module.exports = {
         const $ = cheerio.load(response.data);
         let jobTitleCompany = $(".u-colorGray3").text();
 
-        // let company = $(
-        //   ".icl-u-xs-mr--sm.jobsearch-JobInfoHeader-companyName"
-        // ).text();
-        // let companyLink = $(
-        //   ".icl-u-xs-mr--sm.jobsearch-JobInfoHeader-companyName"
-        // )
-        //   .find("a")
-        //   .attr("href");
-
         let location = $(
           ".high-concept.s-vgBottom2.u-colorGray6.u-fontSize16"
         ).text();
-        // return [jobTitle, company, companyLink, location];
       })
       .then(data => {
         res.status(200).send(data);
       })
-      .catch(error => console.log("ERROR", error));
+      .catch(error => console.log("ERROR", error.error));
   }
 };
