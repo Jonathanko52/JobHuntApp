@@ -32,7 +32,7 @@ module.exports = {
       .then(data => {
         res.status(200).send(data);
       })
-      .catch(error => console.log("ERROR Linkedin Call", error.error));
+      .catch(error => console.log("ERROR Linkedin Call", error));
   },
   retrieveHtmlIndeed: (req, res, next) => {
     req.body = axios

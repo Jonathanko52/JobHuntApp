@@ -39,7 +39,9 @@ class RightPage extends React.Component {
             <b>Source Website:</b> {cur.websiteInput}
             <br />
             <b>Company Name:</b>
-            <a href={cur.companyLinkInput}>{cur.companyInput}</a>
+            <a href={cur.companyLinkInput} target="_blank">
+              {cur.companyInput}
+            </a>
             <br />
             <b>Job Title:</b> {cur.titleInput}
             <br />
