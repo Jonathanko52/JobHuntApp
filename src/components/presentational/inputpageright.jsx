@@ -77,7 +77,6 @@ class RightPage extends React.Component {
             <button
               className="btn btn-primary"
               onClick={() => {
-                console.log(this.props);
                 //variable that indicates first empty row in sheet
                 let emptyRow;
                 let spreadsheetId = this.props.spreadSheetId;
@@ -135,7 +134,6 @@ class RightPage extends React.Component {
             <button
               className="btn btn-primary"
               onClick={() => {
-                console.log("remove");
                 //Removes Item form React App
                 this.props.removeFromList(ind);
               }}

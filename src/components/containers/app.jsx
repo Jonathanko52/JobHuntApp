@@ -178,7 +178,6 @@ class App extends React.Component {
     axios
       .get("/RetrieveHtmlLinkedIn/" + url)
       .then((res, request) => {
-        console.log("retrievehtml 2", this);
         this.setState(state => {
           console.log("setting state in retriete");
           let newTasks = state.tasks.slice();
