@@ -12,7 +12,8 @@ class NavBar extends React.Component {
       hours: 0,
       minutes: 0,
       seconds: 0,
-      timer: null
+      timer: null,
+      timerRunning: false
     };
   }
 
@@ -49,20 +50,29 @@ class NavBar extends React.Component {
   }
 
   startTimer() {
-    let timer = this.incrementTimer;
-    let runTimer = setInterval(function() {
-      timer();
-    }, 1000);
-    runTimer;
-    this.setState({
-      timer: runTimer
-    });
+    if (!this.state.timerRunning) {
+      this.setState({
+        timerRunning: true
+      });
+      let timer = this.incrementTimer;
+      let runTimer = setInterval(function() {
+        timer();
+      }, 1000);
+      runTimer;
+      this.setState({
+        timer: runTimer
+      });
+    }
   }
   stopTimer() {
+    this.setState({
+      timerRunning: false
+    });
     clearInterval(this.state.timer);
   }
   clearTimer() {
     this.setState({
+      timerRunning: false,
       hours: 0,
       minutes: 0,
       seconds: 0
@@ -107,14 +117,6 @@ class NavBar extends React.Component {
         className="NavBar col-xs-2"
         style={{ backgroundColor: this.state.color }}
       >
-        {/* <select
-          className="WebsiteInput TaskInput"
-          onChange={e => this.changeColor(e)}
-        >
-          <option value="red">red</option>
-          <option value="green">green</option>
-          <option value="blue">blue</option>
-        </select> */}
         <div className="clockContainer">
           <div className="counterContainer">
             <div className="counterNumbers" />
@@ -153,7 +155,7 @@ class NavBar extends React.Component {
                 className="btn btn-primary"
                 onClick={() => {
                   let targetRow;
-                  let spreadsheetId = localStorage.getItem("SpreadSheetId");
+                  let spreadsheetId = this.props.spreadSheetId;
 
                   let newHours = this.state.hours;
                   let newMinutes = this.state.minutes;
@@ -234,7 +236,6 @@ class NavBar extends React.Component {
                     });
                   this.clearTimer();
                   this.stopTimer();
-
                   this.saveToLocal();
                 }}
               >

@@ -859,7 +859,7 @@ class App extends React.Component {
           <div className="app">
             <TitleBar />
             <div className="row">
-              <NavBar />
+              <NavBar spreadSheetId={this.state.spreadSheetId} />
               <Route
                 path="/"
                 exact
