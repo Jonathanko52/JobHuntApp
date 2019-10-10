@@ -12,8 +12,8 @@ import {
 
 const BarGraph = props => {
   return (
-    <ResponsiveContainer width="100%" height={700}>
-      <BarChart width={600} height={700} data={props.BarData}>
+    <ResponsiveContainer width="100%" height={800}>
+      <BarChart width={700} height={800} data={props.BarData}>
         <Bar type="monotone" dataKey="pv" stroke="#8884d8" />
         <Bar type="monotone" dataKey="uv" stroke="#82ca9d" />
 
