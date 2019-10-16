@@ -61,7 +61,7 @@ class App extends React.Component {
     //Http Request
     this.retrieveHtmlLinkedin = this.retrieveHtmlLinkedin.bind(this);
     this.retrieveHtmlIndeed = this.retrieveHtmlIndeed.bind(this);
-    this.retrieveHtmlAngelist = this.retrieveHtmlAngelist.bind(this);
+    this.retrieveHtmlBuiltInLA = this.retrieveHtmlBuiltInLA.bind(this);
 
     //GoogleAPI stuff
     this.googleAuth = this.googleAuth.bind(this);
@@ -245,11 +245,11 @@ class App extends React.Component {
       })
       .catch(error => console.error(error));
   }
-  retrieveHtmlAngelist() {
+  retrieveHtmlBuiltInLA() {
     let url = this.state.directLinkInput.split("/");
     url = url[url.length - 1];
     axios
-      .get("/RetrieveHtmlAngelist/" + url)
+      .get("/RetrieveHtmlBuiltInLA/" + url)
       .then((res, request) => {
         this.setState(state => {
           let newTasks = state.tasks.slice();
@@ -905,7 +905,7 @@ class App extends React.Component {
                       totalJobsFromSheets={this.state.totalJobsFromSheets}
                       retrieveHtmlLinkedin={this.retrieveHtmlLinkedin}
                       retrieveHtmlIndeed={this.retrieveHtmlIndeed}
-                      retrieveHtmlAngelist={this.retrieveHtmlAngelist}
+                      retrieveHtmlBuiltInLA={this.retrieveHtmlBuiltInLA}
                       directWebsiteInput={this.state.directWebsiteInput}
                       directLinkInput={this.state.directLinkInput}
                       saveToLocal={this.saveToLocal}
