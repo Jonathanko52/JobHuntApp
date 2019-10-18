@@ -18,6 +18,8 @@ app.get("/RetrieveHtmlLinkedIn/:link", taskController.retrieveHtmlLinkedIn);
 
 app.get("/RetrieveHtmlIndeed/:link", taskController.retrieveHtmlIndeed);
 
+app.get("/RetrieveHtmlBuiltInLA/:link", taskController.retrieveHtmlBuildInLA);
+
 //test
 
 app.listen(port, () => {

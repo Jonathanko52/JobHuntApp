@@ -59,7 +59,7 @@ module.exports = {
       })
       .catch(error => console.log("ERROR", error.error));
   },
-  retrieveHtmlAngelist: (req, res, next) => {
+  retrieveHtmlBuildInLA: (req, res, next) => {
     req.body = axios
       .get("https://angel.co/company/blockfolio/jobs/" + req.params.link)
       .then(function(response) {
