@@ -110,7 +110,7 @@ class App extends React.Component {
       // let location = company.slice(locationWordIndex + 1).join(" ");
       // company = company.slice(0, locationWordIndex - 1).join(" ");
 
-      newTasks.push({
+      newTasks.shift({
         websiteInput: state.websiteInput,
         companyInput: state.companyInput,
         titleInput: state.titleInput,
@@ -180,10 +180,9 @@ class App extends React.Component {
       .get("/RetrieveHtmlLinkedIn/" + url)
       .then((res, request) => {
         this.setState(state => {
-          console.log("setting state in retriete");
           let newTasks = state.tasks.slice();
 
-          newTasks.push({
+          newTasks.unshift({
             websiteInput: state.directWebsiteInput,
             companyInput: res.data[1],
             titleInput: res.data[0],
@@ -203,13 +202,20 @@ class App extends React.Component {
             companyLinkInput: ""
           };
         });
+        return res;
       })
       .then(res => {
+        alert(
+          `${res.data[0]} for ${res.data[1]} in ${
+            res.data[3]
+          } has been successfully added to the list`
+        );
         this.saveToLocal();
       })
       .catch(error => console.error(error));
     this.saveToLocal();
   }
+
   retrieveHtmlIndeed() {
     let url = this.state.directLinkInput.split("?");
     url = url[url.length - 1];
@@ -218,7 +224,6 @@ class App extends React.Component {
       .get("/RetrieveHtmlIndeed/" + url)
       .then((res, request) => {
         this.setState(state => {
-          console.log("setting state in retriete");
           let newTasks = state.tasks.slice();
           newTasks.push({
             websiteInput: state.directWebsiteInput,
