@@ -205,11 +205,11 @@ class App extends React.Component {
         return res;
       })
       .then(res => {
-        alert(
-          `${res.data[0]} for ${res.data[1]} in ${
-            res.data[3]
-          } has been successfully added to the list`
-        );
+        // alert(
+        //   `${res.data[0]} for ${res.data[1]} in ${
+        //     res.data[3]
+        //   } has been successfully added to the list`
+        // );
         this.saveToLocal();
       })
       .catch(error => console.error(error));
