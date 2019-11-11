@@ -27,6 +27,7 @@ const InputPage = props => {
         retrieveHtmlLinkedin={props.retrieveHtmlLinkedin}
         retrieveHtmlIndeed={props.retrieveHtmlIndeed}
         retrieveHtmlAngelist={props.retrieveHtmlAngelist}
+        retrieveHtmlAngelist={props.retrieveHtmlAngelist}
         totalJobsFromSheets={props.totalJobsFromSheets}
         directWebsiteInput={props.directWebsiteInput}
         directLinkInput={props.directLinkInput}

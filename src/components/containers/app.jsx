@@ -290,42 +290,41 @@ class App extends React.Component {
 
   retrieveHtmlMonster() {}
   retrieveHtmlAngelist() {
-    let url = this.state.directLinkInput
-      .split("/")
-      .shift()
-      .join("/");
-    console.log("URl/" + url);
-    // axios
-    //   .get("/RetrieveHtmlAngelist/" + url)
-    //   .then((res, request) => {
-    //     console.log("BUILTINLA RESPONSE FRONTEND", res);
-    //     // this.setState(state => {
-    //     //   let newTasks = state.tasks.slice();
-    //     //   newTasks.push({
-    //     //     websiteInput: state.directWebsiteInput,
-    //     //     companyInput: res.data[1],
-    //     //     titleInput: res.data[0],
-    //     //     recruiterInput: state.recruiterInput,
-    //     //     locationInput: res.data[3],
-    //     //     coverInput: state.coverInput,
-    //     //     linkInput: state.directLinkInput,
-    //     //     companyLinkInput: res.data[2]
-    //     //   });
-    //     //   return {
-    //     //     tasks: newTasks,
-    //     //     websiteInput: "LinkedIn",
-    //     //     companyInput: "",
-    //     //     titleInput: "",
-    //     //     locationInput: "",
-    //     //     linkInput: "",
-    //     //     companyLinkInput: ""
-    //     //   };
-    //     // });
-    //   })
-    //   .then(res => {
-    //     this.saveToLocal();
-    //   })
-    //   .catch(error => console.error(error));
+    let url = this.state.directLinkInput.split("/");
+    url = url.slice(3);
+    url = url.join("+");
+    axios
+      .get("/RetrieveHtmlAngelist/" + url)
+
+      .then((res, request) => {
+        console.log("ANGELIST RESPONSE FRONTEND", res);
+        // this.setState(state => {
+        //   let newTasks = state.tasks.slice();
+        //   newTasks.push({
+        //     websiteInput: state.directWebsiteInput,
+        //     companyInput: res.data[1],
+        //     titleInput: res.data[0],
+        //     recruiterInput: state.recruiterInput,
+        //     locationInput: res.data[3],
+        //     coverInput: state.coverInput,
+        //     linkInput: state.directLinkInput,
+        //     companyLinkInput: res.data[2]
+        //   });
+        //   return {
+        //     tasks: newTasks,
+        //     websiteInput: "LinkedIn",
+        //     companyInput: "",
+        //     titleInput: "",
+        //     locationInput: "",
+        //     linkInput: "",
+        //     companyLinkInput: ""
+        //   };
+        // });
+      })
+      .then(res => {
+        this.saveToLocal();
+      })
+      .catch(error => console.error(error));
   }
   //Google API functions
   googleAuth() {
@@ -953,6 +952,7 @@ class App extends React.Component {
                       retrieveHtmlLinkedin={this.retrieveHtmlLinkedin}
                       retrieveHtmlIndeed={this.retrieveHtmlIndeed}
                       retrieveHtmlBuiltInLA={this.retrieveHtmlBuiltInLA}
+                      retrieveHtmlAngelist={this.retrieveHtmlAngelist}
                       directWebsiteInput={this.state.directWebsiteInput}
                       directLinkInput={this.state.directLinkInput}
                       saveToLocal={this.saveToLocal}

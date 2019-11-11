@@ -92,6 +92,7 @@ const LeftPage = props => {
             LinkedIn
           </option>
           <option value="BuiltInLA">BuiltInLA</option>
+          <option value="Angelist">Angelist</option>
         </select>
 
         <h4>Link</h4>
@@ -114,6 +115,8 @@ const LeftPage = props => {
               props.retrieveHtmlIndeed();
             } else if (props.directWebsiteInput === "BuiltInLA") {
               props.retrieveHtmlBuiltInLA();
+            } else if (props.directWebsiteInput === "Angelist") {
+              props.retrieveHtmlAngelist();
             }
           }}
         >
