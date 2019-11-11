@@ -36,16 +36,16 @@ class RightPage extends React.Component {
       if (cur) {
         Array.push(
           <li key={ind}>
-            <b>Source Website:</b> {cur.websiteInput}
+            <b>Source Website: </b> {cur.websiteInput}
             <br />
-            <b>Company Name:</b>
+            <b>Company Name: </b>
             <a href={cur.companyLinkInput} target="_blank">
               {cur.companyInput}
             </a>
             <br />
-            <b>Job Title:</b> {cur.titleInput}
+            <b>Job Title: </b> {cur.titleInput}
             <br />
-            <b>Location Input:</b> {cur.locationInput}
+            <b>Location Input: </b> {cur.locationInput}
             <br />
             <b>Cover Letter:</b>
             <form>
@@ -71,7 +71,7 @@ class RightPage extends React.Component {
               />
               No
             </form>
-            <b href>Link:</b>{" "}
+            <b href>Link:</b>
             <a href={cur.linkInput} target="_blank">
               {cur.linkInput}
             </a>

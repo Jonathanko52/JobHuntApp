@@ -20,6 +20,8 @@ app.get("/RetrieveHtmlIndeed/:link", taskController.retrieveHtmlIndeed);
 
 app.get("/RetrieveHtmlBuiltInLA/:link", taskController.retrieveHtmlBuildInLA);
 
+app.get("RetrieveHtmlAngelist/:link", taskController.retrieveHtmlAngelist);
+
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });

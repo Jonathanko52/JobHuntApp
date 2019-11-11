@@ -74,5 +74,8 @@ module.exports = {
         res.status(200).send(data);
       })
       .catch(error => console.log("ERROR", error.error));
+  },
+  retrieveHtmlAngelist: (req, res, next) => {
+    console.log("REQ", req);
   }
 };

@@ -63,6 +63,7 @@ class App extends React.Component {
     this.retrieveHtmlIndeed = this.retrieveHtmlIndeed.bind(this);
     this.retrieveHtmlBuiltInLA = this.retrieveHtmlBuiltInLA.bind(this);
     this.retrieveHtmlMonster = this.retrieveHtmlMonster.bind(this);
+    this.retrieveHtmlAngelist = this.retrieveHtmlAngelist.bind(this);
 
     //GoogleAPI stuff
     this.googleAuth = this.googleAuth.bind(this);
@@ -110,7 +111,7 @@ class App extends React.Component {
       // let location = company.slice(locationWordIndex + 1).join(" ");
       // company = company.slice(0, locationWordIndex - 1).join(" ");
 
-      newTasks.shift({
+      newTasks.unshift({
         websiteInput: state.websiteInput,
         companyInput: state.companyInput,
         titleInput: state.titleInput,
@@ -288,7 +289,44 @@ class App extends React.Component {
   }
 
   retrieveHtmlMonster() {}
-
+  retrieveHtmlAngelist() {
+    let url = this.state.directLinkInput
+      .split("/")
+      .shift()
+      .join("/");
+    console.log("URl/" + url);
+    // axios
+    //   .get("/RetrieveHtmlAngelist/" + url)
+    //   .then((res, request) => {
+    //     console.log("BUILTINLA RESPONSE FRONTEND", res);
+    //     // this.setState(state => {
+    //     //   let newTasks = state.tasks.slice();
+    //     //   newTasks.push({
+    //     //     websiteInput: state.directWebsiteInput,
+    //     //     companyInput: res.data[1],
+    //     //     titleInput: res.data[0],
+    //     //     recruiterInput: state.recruiterInput,
+    //     //     locationInput: res.data[3],
+    //     //     coverInput: state.coverInput,
+    //     //     linkInput: state.directLinkInput,
+    //     //     companyLinkInput: res.data[2]
+    //     //   });
+    //     //   return {
+    //     //     tasks: newTasks,
+    //     //     websiteInput: "LinkedIn",
+    //     //     companyInput: "",
+    //     //     titleInput: "",
+    //     //     locationInput: "",
+    //     //     linkInput: "",
+    //     //     companyLinkInput: ""
+    //     //   };
+    //     // });
+    //   })
+    //   .then(res => {
+    //     this.saveToLocal();
+    //   })
+    //   .catch(error => console.error(error));
+  }
   //Google API functions
   googleAuth() {
     gapi.load("client:auth2", initClient);
