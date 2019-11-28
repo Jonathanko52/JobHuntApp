@@ -52,6 +52,8 @@ class App extends React.Component {
     //Add/Remove from list
     this.addToList = this.addToList.bind(this);
     this.removeFromList = this.removeFromList.bind(this);
+    this.clearList = this.clearList.bind(this);
+    // this.checkForDuplicates = this.checkForDuplicates.bind(this);
 
     //Save/load List to LocalStorage
     this.saveToLocal = this.saveToLocal.bind(this);
@@ -104,6 +106,11 @@ class App extends React.Component {
 
   //Adds item to task list
   addToList() {
+    this.state.tasks.forEach(cur => {
+      if (cur.companyInput === this.state.companyInput) {
+        alert("This company is already on the list.");
+      }
+    });
     this.setState(state => {
       let newTasks = state.tasks.slice();
       // let company = state.companyInput.split(" ");
@@ -144,6 +151,25 @@ class App extends React.Component {
     });
     this.saveToLocal();
   }
+
+  clearList() {
+    this.setState(state => {
+      let newTasks = [];
+      return {
+        tasks: newTasks,
+        input: state.input
+      };
+    });
+    this.saveToLocal();
+  }
+  // checkForDuplicates(entry) {
+  //   let usDuplicate = false;
+  //   this.state.tasks.forEach((cur)=>{
+  //       if(cur.companyInput === entry.companyInput){
+  //         alert('This company is already on the list. Ddd anyways?')
+  //       }
+  //   })
+  // }
 
   saveToLocal() {
     setTimeout(() => {
@@ -948,6 +974,7 @@ class App extends React.Component {
                       handleChangeDirectWebsite={this.handleChangeDirectWebsite}
                       handleChangeDirectLink={this.handleChangeDirectLink}
                       addToList={this.addToList}
+                      clearList={this.clearList}
                       totalJobsFromSheets={this.state.totalJobsFromSheets}
                       retrieveHtmlLinkedin={this.retrieveHtmlLinkedin}
                       retrieveHtmlIndeed={this.retrieveHtmlIndeed}

@@ -37,6 +37,7 @@ const InputPage = props => {
       <RightPage
         tasks={props.tasks}
         removeFromList={props.removeFromList}
+        clearList={props.clearList}
         websiteInput={props.websiteInput}
         updateTotalJobsFromSheets={props.updateTotalJobsFromSheets}
         saveToLocal={props.saveToLocal}

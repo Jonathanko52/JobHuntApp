@@ -149,7 +149,17 @@ class RightPage extends React.Component {
 
     return (
       <div className="rightBar col-xs-6">
-        <h3>List of Jobs:{this.props.tasks.length}</h3>
+        <h3>List of Jobs: {this.props.tasks.length}</h3>
+        <div className="row">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              this.props.clearList();
+            }}
+          >
+            Clear List
+          </button>
+        </div>
         <ol className="TaskTable">{Array}</ol>
       </div>
     );
