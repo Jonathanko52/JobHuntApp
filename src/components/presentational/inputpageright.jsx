@@ -142,6 +142,15 @@ class RightPage extends React.Component {
             >
               Cancel
             </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                //Moves to end of list
+                this.props.moveToBack(ind);
+              }}
+            >
+              Postpone
+            </button>
           </li>
         );
       }

@@ -53,7 +53,7 @@ class App extends React.Component {
     this.addToList = this.addToList.bind(this);
     this.removeFromList = this.removeFromList.bind(this);
     this.clearList = this.clearList.bind(this);
-    // this.checkForDuplicates = this.checkForDuplicates.bind(this);
+    this.moveToBack = this.moveToBack.bind(this);
 
     //Save/load List to LocalStorage
     this.saveToLocal = this.saveToLocal.bind(this);
@@ -162,14 +162,21 @@ class App extends React.Component {
     });
     this.saveToLocal();
   }
-  // checkForDuplicates(entry) {
-  //   let usDuplicate = false;
-  //   this.state.tasks.forEach((cur)=>{
-  //       if(cur.companyInput === entry.companyInput){
-  //         alert('This company is already on the list. Ddd anyways?')
-  //       }
-  //   })
-  // }
+
+  moveToBack(index) {
+    this.setState(state => {
+      let newTasks = state.tasks.slice();
+      let lastItem = newTasks.splice(index, 1);
+      console.log("PRETEST", newTasks);
+      newTasks.push(lastItem[0]);
+      console.log("TEST", newTasks);
+      return {
+        tasks: newTasks,
+        input: state.input
+      };
+    });
+    this.saveToLocal();
+  }
 
   saveToLocal() {
     setTimeout(() => {
@@ -975,6 +982,7 @@ class App extends React.Component {
                       handleChangeDirectLink={this.handleChangeDirectLink}
                       addToList={this.addToList}
                       clearList={this.clearList}
+                      moveToBack={this.moveToBack}
                       totalJobsFromSheets={this.state.totalJobsFromSheets}
                       retrieveHtmlLinkedin={this.retrieveHtmlLinkedin}
                       retrieveHtmlIndeed={this.retrieveHtmlIndeed}
