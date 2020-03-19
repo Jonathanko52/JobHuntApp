@@ -67,7 +67,7 @@ const LandingPage = props => {
               <p>
                 If you're a return user, your spreadsheet address should be
                 saved to your browser. Otherwise, enter the ID of your
-                spreadsheet below to re-link the App.
+                spreadsheet below to re-connect the App.
               </p>
               <input
                 onChange={e => {

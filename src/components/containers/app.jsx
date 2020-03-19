@@ -107,6 +107,8 @@ class App extends React.Component {
   //Adds item to task list
   addToList() {
     this.state.tasks.forEach(cur => {
+      console.log(cur.companyInput);
+      console.log(this.state.companyInput);
       if (cur.companyInput === this.state.companyInput) {
         alert("This company is already on the list.");
       }
@@ -213,6 +215,11 @@ class App extends React.Component {
     axios
       .get("/RetrieveHtmlLinkedIn/" + url)
       .then((res, request) => {
+        this.state.tasks.forEach(cur => {
+          if (cur.companyInput === res.data[1]) {
+            alert("This company is already on the list.");
+          }
+        });
         this.setState(state => {
           let newTasks = state.tasks.slice();
 
