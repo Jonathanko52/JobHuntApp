@@ -36,7 +36,7 @@ class App extends React.Component {
       totalJobs: "",
       SignedInOnGoogle: false,
       SheetCreationSuccessful: false,
-      tempSpreadsheetID: ""
+      tempSpreadsheetID: "",
     };
     //Event Listener Function Bindings
     this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
@@ -106,19 +106,15 @@ class App extends React.Component {
 
   //Adds item to task list
   addToList() {
-    this.state.tasks.forEach(cur => {
+    this.state.tasks.forEach((cur) => {
       console.log(cur.companyInput);
       console.log(this.state.companyInput);
       if (cur.companyInput === this.state.companyInput) {
         alert("This company is already on the list.");
       }
     });
-    this.setState(state => {
+    this.setState((state) => {
       let newTasks = state.tasks.slice();
-      // let company = state.companyInput.split(" ");
-      // let locationWordIndex = company.indexOf("Location");
-      // let location = company.slice(locationWordIndex + 1).join(" ");
-      // company = company.slice(0, locationWordIndex - 1).join(" ");
 
       newTasks.unshift({
         websiteInput: state.websiteInput,
@@ -127,7 +123,7 @@ class App extends React.Component {
         recruiterInput: state.recruiterInput,
         locationInput: state.locationInput,
         coverInput: state.coverInput,
-        linkInput: state.linkInput
+        linkInput: state.linkInput,
       });
       return {
         tasks: newTasks,
@@ -135,7 +131,7 @@ class App extends React.Component {
         companyInput: "",
         titleInput: "",
         locationInput: "",
-        linkInput: ""
+        linkInput: "",
       };
     });
     this.saveToLocal();
@@ -143,30 +139,30 @@ class App extends React.Component {
 
   //removes item from task list
   removeFromList(index) {
-    this.setState(state => {
+    this.setState((state) => {
       let newTasks = state.tasks.slice();
       newTasks.splice(index, 1);
       return {
         tasks: newTasks,
-        input: state.input
+        input: state.input,
       };
     });
     this.saveToLocal();
   }
 
   clearList() {
-    this.setState(state => {
+    this.setState((state) => {
       let newTasks = [];
       return {
         tasks: newTasks,
-        input: state.input
+        input: state.input,
       };
     });
     this.saveToLocal();
   }
 
   moveToBack(index) {
-    this.setState(state => {
+    this.setState((state) => {
       let newTasks = state.tasks.slice();
       let lastItem = newTasks.splice(index, 1);
       console.log("PRETEST", newTasks);
@@ -174,7 +170,7 @@ class App extends React.Component {
       console.log("TEST", newTasks);
       return {
         tasks: newTasks,
-        input: state.input
+        input: state.input,
       };
     });
     this.saveToLocal();
@@ -190,7 +186,7 @@ class App extends React.Component {
     let loadedTasks = JSON.parse(localStorage.getItem("Tasks"));
 
     if (Array.isArray(loadedTasks)) {
-      this.setState(state => {
+      this.setState((state) => {
         let newTasks = state.tasks.slice().concat(loadedTasks);
 
         return {
@@ -199,7 +195,7 @@ class App extends React.Component {
           companyInput: "",
           titleInput: "",
           locationInput: "",
-          linkInput: ""
+          linkInput: "",
         };
       });
     }
@@ -215,12 +211,12 @@ class App extends React.Component {
     axios
       .get("/RetrieveHtmlLinkedIn/" + url)
       .then((res, request) => {
-        this.state.tasks.forEach(cur => {
+        this.state.tasks.forEach((cur) => {
           if (cur.companyInput === res.data[1]) {
             alert("This company is already on the list.");
           }
         });
-        this.setState(state => {
+        this.setState((state) => {
           let newTasks = state.tasks.slice();
 
           newTasks.unshift({
@@ -231,7 +227,7 @@ class App extends React.Component {
             locationInput: res.data[3],
             coverInput: state.coverInput,
             linkInput: state.directLinkInput,
-            companyLinkInput: res.data[2]
+            companyLinkInput: res.data[2],
           });
           return {
             tasks: newTasks,
@@ -240,20 +236,15 @@ class App extends React.Component {
             titleInput: "",
             locationInput: "",
             linkInput: "",
-            companyLinkInput: ""
+            companyLinkInput: "",
           };
         });
         return res;
       })
-      .then(res => {
-        // alert(
-        //   `${res.data[0]} for ${res.data[1]} in ${
-        //     res.data[3]
-        //   } has been successfully added to the list`
-        // );
+      .then((res) => {
         this.saveToLocal();
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
     this.saveToLocal();
   }
 
@@ -264,7 +255,7 @@ class App extends React.Component {
     axios
       .get("/RetrieveHtmlIndeed/" + url)
       .then((res, request) => {
-        this.setState(state => {
+        this.setState((state) => {
           let newTasks = state.tasks.slice();
           newTasks.push({
             websiteInput: state.directWebsiteInput,
@@ -274,7 +265,7 @@ class App extends React.Component {
             locationInput: res.data[3],
             coverInput: state.coverInput,
             linkInput: state.directLinkInput,
-            companyLinkInput: res.data[2]
+            companyLinkInput: res.data[2],
           });
           return {
             tasks: newTasks,
@@ -283,14 +274,14 @@ class App extends React.Component {
             titleInput: "",
             locationInput: "",
             linkInput: "",
-            companyLinkInput: ""
+            companyLinkInput: "",
           };
         });
       })
-      .then(res => {
+      .then((res) => {
         this.saveToLocal();
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }
   retrieveHtmlBuiltInLA() {
     let url = this.state.directLinkInput.split("/");
@@ -299,33 +290,11 @@ class App extends React.Component {
       .get("/RetrieveHtmlBuiltInLA/" + url)
       .then((res, request) => {
         console.log("BUILTINLA RESPONSE FRONTEND", res);
-        // this.setState(state => {
-        //   let newTasks = state.tasks.slice();
-        //   newTasks.push({
-        //     websiteInput: state.directWebsiteInput,
-        //     companyInput: res.data[1],
-        //     titleInput: res.data[0],
-        //     recruiterInput: state.recruiterInput,
-        //     locationInput: res.data[3],
-        //     coverInput: state.coverInput,
-        //     linkInput: state.directLinkInput,
-        //     companyLinkInput: res.data[2]
-        //   });
-        //   return {
-        //     tasks: newTasks,
-        //     websiteInput: "LinkedIn",
-        //     companyInput: "",
-        //     titleInput: "",
-        //     locationInput: "",
-        //     linkInput: "",
-        //     companyLinkInput: ""
-        //   };
-        // });
       })
-      .then(res => {
+      .then((res) => {
         this.saveToLocal();
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }
 
   retrieveHtmlMonster() {}
@@ -361,10 +330,10 @@ class App extends React.Component {
         //   };
         // });
       })
-      .then(res => {
+      .then((res) => {
         this.saveToLocal();
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }
   //Google API functions
   googleAuth() {
@@ -379,10 +348,10 @@ class App extends React.Component {
             "218195582841-ejmmgqp5mfkbtghcchurat2qabul2anj.apps.googleusercontent.com",
           scope: "https://www.googleapis.com/auth/spreadsheets",
           discoveryDocs: [
-            "https://sheets.googleapis.com/$discovery/rest?version=v4"
-          ]
+            "https://sheets.googleapis.com/$discovery/rest?version=v4",
+          ],
         })
-        .then(function() {
+        .then(function () {
           GoogleAuth = gapi.auth2.getAuthInstance();
 
           // Listen for sign-in state changes.
@@ -395,12 +364,12 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets
       .create({
         properties: {
-          title: "Job Hunt Progress"
+          title: "Job Hunt Progress",
         },
         sheets: [
           {
             properties: {
-              title: "Summary"
+              title: "Summary",
             },
             data: [
               {
@@ -411,47 +380,47 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "Indeed"
-                        }
+                          stringValue: "Indeed",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: '=COUNTIF(Jobs!A:A,"*Indeed*")'
-                        }
-                      },
-                      {
-                        userEnteredValue: {
-                          formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!F:F,"*yes*") '
-                        }
+                          formulaValue: '=COUNTIF(Jobs!A:A,"*Indeed*")',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!G:G,"*Phone*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!F:F,"*yes*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!H:H,"*Tech") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!G:G,"*Phone*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!G:G,"*Onsite*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!H:H,"*Tech") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!H:H,"*Offer*") '
-                        }
-                      }
-                    ]
-                  }
-                ]
+                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!G:G,"*Onsite*") ',
+                        },
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*Indeed*",Jobs!H:H,"*Offer*") ',
+                        },
+                      },
+                    ],
+                  },
+                ],
               },
               {
                 startRow: 2,
@@ -461,47 +430,47 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "LinkedIn"
-                        }
+                          stringValue: "LinkedIn",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: '=COUNTIF(Jobs!A:A,"*LinkedIn*")'
-                        }
-                      },
-                      {
-                        userEnteredValue: {
-                          formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!F:F,"*yes*") '
-                        }
+                          formulaValue: '=COUNTIF(Jobs!A:A,"*LinkedIn*")',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!G:G,"*Phone*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!F:F,"*yes*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!G:G,"*Tech*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!G:G,"*Phone*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!G:G,"*Onsite*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!G:G,"*Tech*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!H:H,"*Offer*") '
-                        }
-                      }
-                    ]
-                  }
-                ]
+                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!G:G,"*Onsite*") ',
+                        },
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*LinkedIn*",Jobs!H:H,"*Offer*") ',
+                        },
+                      },
+                    ],
+                  },
+                ],
               },
               {
                 startRow: 3,
@@ -511,47 +480,47 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "AngelList"
-                        }
+                          stringValue: "AngelList",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: '=COUNTIF(Jobs!A:A,"*AngelList*")'
-                        }
-                      },
-                      {
-                        userEnteredValue: {
-                          formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!F:F,"*yes*") '
-                        }
+                          formulaValue: '=COUNTIF(Jobs!A:A,"*AngelList*")',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!G:G,"*Phone*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!F:F,"*yes*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!G:G,"*Tech*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!G:G,"*Phone*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!G:G,"*Onsite*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!G:G,"*Tech*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!H:H,"*Offer*") '
-                        }
-                      }
-                    ]
-                  }
-                ]
+                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!G:G,"*Onsite*") ',
+                        },
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*AngelList*",Jobs!H:H,"*Offer*") ',
+                        },
+                      },
+                    ],
+                  },
+                ],
               },
               {
                 startRow: 4,
@@ -561,47 +530,47 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "ZipRecruiter"
-                        }
+                          stringValue: "ZipRecruiter",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: '=COUNTIF(Jobs!A:A,"*ZipRecruiter*")'
-                        }
-                      },
-                      {
-                        userEnteredValue: {
-                          formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!F:F,"*yes*") '
-                        }
+                          formulaValue: '=COUNTIF(Jobs!A:A,"*ZipRecruiter*")',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!G:G,"*Phone*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!F:F,"*yes*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!G:G,"*Tech*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!G:G,"*Phone*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!G:G,"*Onsite*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!G:G,"*Tech*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!H:H,"*Offer*") '
-                        }
-                      }
-                    ]
-                  }
-                ]
+                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!G:G,"*Onsite*") ',
+                        },
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*ZipRecruiter*",Jobs!H:H,"*Offer*") ',
+                        },
+                      },
+                    ],
+                  },
+                ],
               },
               {
                 startRow: 5,
@@ -611,47 +580,47 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "Dice"
-                        }
+                          stringValue: "Dice",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: '=COUNTIF(Jobs!A:A,"*Dice*")'
-                        }
-                      },
-                      {
-                        userEnteredValue: {
-                          formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!F:F,"*yes*") '
-                        }
+                          formulaValue: '=COUNTIF(Jobs!A:A,"*Dice*")',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!G:G,"*Phone*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!F:F,"*yes*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!G:G,"*Tech*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!G:G,"*Phone*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!G:G,"*Onsite*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!G:G,"*Tech*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!H:H,"*Offer*") '
-                        }
-                      }
-                    ]
-                  }
-                ]
+                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!G:G,"*Onsite*") ',
+                        },
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*Dice*",Jobs!H:H,"*Offer*") ',
+                        },
+                      },
+                    ],
+                  },
+                ],
               },
               {
                 startRow: 6,
@@ -661,47 +630,47 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "Monster"
-                        }
+                          stringValue: "Monster",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: '=COUNTIF(Jobs!A:A,"*Monster*")'
-                        }
-                      },
-                      {
-                        userEnteredValue: {
-                          formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!F:F,"*yes*") '
-                        }
+                          formulaValue: '=COUNTIF(Jobs!A:A,"*Monster*")',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!G:G,"*Phone*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!F:F,"*yes*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!G:G,"*Tech*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!G:G,"*Phone*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!G:G,"*Onsite*") '
-                        }
+                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!G:G,"*Tech*") ',
+                        },
                       },
                       {
                         userEnteredValue: {
                           formulaValue:
-                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!H:H,"*Offer*") '
-                        }
-                      }
-                    ]
-                  }
-                ]
+                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!G:G,"*Onsite*") ',
+                        },
+                      },
+                      {
+                        userEnteredValue: {
+                          formulaValue:
+                            '=COUNTIFS(Jobs!A:A,"*Monster*",Jobs!H:H,"*Offer*") ',
+                        },
+                      },
+                    ],
+                  },
+                ],
               },
               {
                 startRow: 8,
@@ -711,42 +680,42 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "Total"
-                        }
+                          stringValue: "Total",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: "=SUM(Summary!B2:B7)"
-                        }
+                          formulaValue: "=SUM(Summary!B2:B7)",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: "=SUM(Summary!C2:C7)"
-                        }
+                          formulaValue: "=SUM(Summary!C2:C7)",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: "=SUM(Summary!D2:D7)"
-                        }
+                          formulaValue: "=SUM(Summary!D2:D7)",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: "=SUM(Summary!E2:E7)"
-                        }
+                          formulaValue: "=SUM(Summary!E2:E7)",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: "=SUM(Summary!F2:F7)"
-                        }
+                          formulaValue: "=SUM(Summary!F2:F7)",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          formulaValue: "=SUM(Summary!G2:G7)"
-                        }
-                      }
-                    ]
-                  }
-                ]
+                          formulaValue: "=SUM(Summary!G2:G7)",
+                        },
+                      },
+                    ],
+                  },
+                ],
               },
 
               {
@@ -758,48 +727,48 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "Website"
-                        }
+                          stringValue: "Website",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Number of Jobs Applied To"
-                        }
+                          stringValue: "Number of Jobs Applied To",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Number of Cover Letters Sent"
-                        }
+                          stringValue: "Number of Cover Letters Sent",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Converted to Phone Screens"
-                        }
+                          stringValue: "Converted to Phone Screens",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Converted to Tech Interviews"
-                        }
+                          stringValue: "Converted to Tech Interviews",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Converted to In Person"
-                        }
+                          stringValue: "Converted to In Person",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Converted to Offer"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
+                          stringValue: "Converted to Offer",
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
           },
           {
             properties: {
-              title: "Jobs"
+              title: "Jobs",
             },
             data: [
               {
@@ -811,59 +780,59 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "Job Posting Source"
-                        }
+                          stringValue: "Job Posting Source",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Company"
-                        }
+                          stringValue: "Company",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Position Title"
-                        }
+                          stringValue: "Position Title",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Date"
-                        }
+                          stringValue: "Date",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Location"
-                        }
+                          stringValue: "Location",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Cover Letter Included?"
-                        }
+                          stringValue: "Cover Letter Included?",
+                        },
                       },
 
                       {
                         userEnteredValue: {
-                          stringValue: "Interview Phase"
-                        }
+                          stringValue: "Interview Phase",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Posting URL"
-                        }
+                          stringValue: "Posting URL",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Notes"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
+                          stringValue: "Notes",
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
           },
           {
             properties: {
-              title: "Time"
+              title: "Time",
             },
             data: [
               {
@@ -875,38 +844,38 @@ class App extends React.Component {
                     values: [
                       {
                         userEnteredValue: {
-                          stringValue: "Date"
-                        }
+                          stringValue: "Date",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Hours"
-                        }
+                          stringValue: "Hours",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Minutes"
-                        }
+                          stringValue: "Minutes",
+                        },
                       },
                       {
                         userEnteredValue: {
-                          stringValue: "Seconds"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+                          stringValue: "Seconds",
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
       })
-      .then(response => {
+      .then((response) => {
         let parsedResponse = JSON.parse(response.body);
         console.log("response", parsedResponse.spreadsheetId);
         localStorage.setItem("SpreadSheetId", parsedResponse.spreadsheetId);
         this.setState({
-          spreadSheetId: parsedResponse.spreadsheetId
+          spreadSheetId: parsedResponse.spreadsheetId,
         });
       })
       .catch((res, err) => {
@@ -924,13 +893,13 @@ class App extends React.Component {
 
   setSpreadsheetId(newId) {
     this.setState({
-      spreadSheetId: newId
+      spreadSheetId: newId,
     });
   }
 
   setSpreadsheetIdFromTemp() {
     this.setState({
-      spreadSheetId: this.state.tempSpreadsheetID
+      spreadSheetId: this.state.tempSpreadsheetID,
     });
   }
 
@@ -949,7 +918,7 @@ class App extends React.Component {
               <Route
                 path="/"
                 exact
-                render={props => {
+                render={(props) => {
                   return (
                     <LandingPage
                       spreadSheetId={this.state.spreadSheetId}
@@ -967,7 +936,7 @@ class App extends React.Component {
               />
               <Route
                 path="/InputPage"
-                render={props => {
+                render={(props) => {
                   return (
                     <InputPage
                       directWebRef={this.directWebRef}
@@ -1014,7 +983,7 @@ class App extends React.Component {
               <Route
                 path="/GraphPage"
                 exact
-                render={props => {
+                render={(props) => {
                   return <GraphPage spreadSheetId={this.state.spreadSheetId} />;
                 }}
               />
