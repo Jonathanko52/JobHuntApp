@@ -1,6 +1,6 @@
 import React from "react";
 
-const LeftPage = props => {
+const LeftPage = (props) => {
   // let total = "N/A";
   // if (props.totalJobsFromSheets > 0) {
   //   total = props.totalJobsFromSheets;
@@ -16,13 +16,13 @@ const LeftPage = props => {
         <select
           ref={props.webRef}
           className="WebsiteInput TaskInput"
-          onChange={e => {
+          onChange={(e) => {
             props.handleChangeWebsite(e);
           }}
         >
           <option value="Angelist">Angelist</option>
           <option value="Indeed">Indeed</option>
-          <option selected="selected" value="LinkedIn">
+          <option defaultValue="selected" value="LinkedIn">
             LinkedIn
           </option>
         </select>
@@ -30,7 +30,7 @@ const LeftPage = props => {
         <input
           ref={props.compRef}
           className="CompanyInput TaskInput"
-          onChange={e => {
+          onChange={(e) => {
             props.handleChangeCompany(e);
           }}
         />
@@ -38,7 +38,7 @@ const LeftPage = props => {
         <input
           ref={props.titleRef}
           className="TitleInput TaskInput"
-          onChange={e => {
+          onChange={(e) => {
             props.handleChangeTitle(e);
           }}
         />
@@ -46,7 +46,7 @@ const LeftPage = props => {
         <input
           ref={props.locRef}
           className="LocationInput TaskInput"
-          onChange={e => {
+          onChange={(e) => {
             props.handleChangeLocation(e);
           }}
         />
@@ -54,7 +54,7 @@ const LeftPage = props => {
         <input
           ref={props.linkRef}
           className="LinkInput TaskInput"
-          onChange={e => {
+          onChange={(e) => {
             props.handleChangeLink(e);
           }}
         />
@@ -83,12 +83,12 @@ const LeftPage = props => {
         <select
           ref={props.directWebRef}
           className="WebsiteInput TaskInput"
-          onChange={e => {
+          onChange={(e) => {
             props.handleChangeDirectWebsite(e);
           }}
         >
           <option value="Indeed">Indeed</option>
-          <option selected="selected" value="LinkedIn">
+          <option defaultValue="selected" value="LinkedIn">
             LinkedIn
           </option>
           <option value="BuiltInLA">BuiltInLA</option>
@@ -99,7 +99,7 @@ const LeftPage = props => {
         <input
           ref={props.directLinkRef}
           className="CompanyInput TaskInput"
-          onChange={e => {
+          onChange={(e) => {
             props.handleChangeDirectLink(e);
           }}
         />

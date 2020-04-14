@@ -1,6 +1,6 @@
 import React from "react";
 
-const LandingPage = props => {
+const LandingPage = (props) => {
   if (!props.SignedInOnGoogle) {
     return (
       <div className="LandingPage col-xs-10 d-flex justify-content-center pt-5">
@@ -70,7 +70,7 @@ const LandingPage = props => {
                 spreadsheet below to re-connect the App.
               </p>
               <input
-                onChange={e => {
+                onChange={(e) => {
                   props.handleSpreadsheetIdSubmit(e);
                 }}
               ></input>

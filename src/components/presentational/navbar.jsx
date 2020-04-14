@@ -13,12 +13,12 @@ class NavBar extends React.Component {
       minutes: 0,
       seconds: 0,
       timer: null,
-      timerRunning: false
+      timerRunning: false,
     };
   }
 
   componentDidMount() {
-    window.addEventListener("beforeunload", ev => {
+    window.addEventListener("beforeunload", (ev) => {
       ev.preventDefault();
       // return (ev.returnValue = "Are you sure you want to close?");
     });
@@ -45,28 +45,28 @@ class NavBar extends React.Component {
     this.setState({
       hours: hours,
       minutes: minutes,
-      seconds: seconds
+      seconds: seconds,
     });
   }
 
   startTimer() {
     if (!this.state.timerRunning) {
       this.setState({
-        timerRunning: true
+        timerRunning: true,
       });
       let timer = this.incrementTimer;
-      let runTimer = setInterval(function() {
+      let runTimer = setInterval(function () {
         timer();
       }, 1000);
       runTimer;
       this.setState({
-        timer: runTimer
+        timer: runTimer,
       });
     }
   }
   stopTimer() {
     this.setState({
-      timerRunning: false
+      timerRunning: false,
     });
     clearInterval(this.state.timer);
   }
@@ -75,14 +75,14 @@ class NavBar extends React.Component {
       timerRunning: false,
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
     });
   }
   saveToLocal() {
     localStorage.setItem("Time", [
       JSON.stringify(this.state.hours),
       JSON.stringify(this.state.minutes),
-      JSON.stringify(this.state.seconds)
+      JSON.stringify(this.state.seconds),
     ]);
   }
 
@@ -92,7 +92,7 @@ class NavBar extends React.Component {
       return {
         hours: parseInt(loadedTime[0]),
         minutes: parseInt(loadedTime[1]),
-        seconds: parseInt(loadedTime[2])
+        seconds: parseInt(loadedTime[2]),
       };
     });
   }
@@ -164,9 +164,9 @@ class NavBar extends React.Component {
                   gapi.client.sheets.spreadsheets.values
                     .get({
                       spreadsheetId: spreadsheetId,
-                      range: "Time!A1:D1000"
+                      range: "Time!A1:D1000",
                     })
-                    .then(response => {
+                    .then((response) => {
                       //first call. Finds empty row in sheets
                       var result = response.result;
 
@@ -213,25 +213,26 @@ class NavBar extends React.Component {
                           resource: {
                             values: [
                               [
-                                `${new Date().getMonth() +
-                                  1}/${new Date().getDate()}`,
+                                `${
+                                  new Date().getMonth() + 1
+                                }/${new Date().getDate()}`,
                                 newHours,
                                 newMinutes,
-                                newSeconds
-                              ]
-                            ]
-                          }
+                                newSeconds,
+                              ],
+                            ],
+                          },
                         })
-                        .then(response => {
+                        .then((response) => {
                           //Removes item added to sheet form React App
                           console.log("savedtosheets", response.result);
                         })
-                        .catch(err => {
+                        .catch((err) => {
                           console.log("inner error", err.result.error.message);
                         });
                     })
 
-                    .catch(err => {
+                    .catch((err) => {
                       console.log("outter error", err);
                     });
                   this.clearTimer();
@@ -247,9 +248,7 @@ class NavBar extends React.Component {
 
         <div className="NavbarProper pt-5">
           <li className="py-2 pl-5">
-            <a>
-              <Link to="/">Main</Link>
-            </a>
+            <Link to="/">Main</Link>
           </li>
           <li className="py-2 pl-5">
             <Link to="/InputPage">Input Page</Link>
