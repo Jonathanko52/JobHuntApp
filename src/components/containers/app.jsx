@@ -110,7 +110,9 @@ class App extends React.Component {
       console.log(cur.companyInput);
       console.log(this.state.companyInput);
       if (cur.companyInput === this.state.companyInput) {
-        alert("This company is already on the list.");
+        alert(
+          "This company is already on the list. Are you sure you want to add it?"
+        );
       }
     });
     this.setState((state) => {
