@@ -106,36 +106,39 @@ class App extends React.Component {
 
   //Adds item to task list
   addToList() {
+    let addNewJob;
     this.state.tasks.forEach((cur) => {
       console.log(cur.companyInput);
       console.log(this.state.companyInput);
       if (cur.companyInput === this.state.companyInput) {
-        alert(
+        addNewJob = window.confirm(
           "This company is already on the list. Are you sure you want to add it?"
         );
       }
     });
-    this.setState((state) => {
-      let newTasks = state.tasks.slice();
+    if (addNewJob) {
+      this.setState((state) => {
+        let newTasks = state.tasks.slice();
 
-      newTasks.unshift({
-        websiteInput: state.websiteInput,
-        companyInput: state.companyInput,
-        titleInput: state.titleInput,
-        recruiterInput: state.recruiterInput,
-        locationInput: state.locationInput,
-        coverInput: state.coverInput,
-        linkInput: state.linkInput,
+        newTasks.unshift({
+          websiteInput: state.websiteInput,
+          companyInput: state.companyInput,
+          titleInput: state.titleInput,
+          recruiterInput: state.recruiterInput,
+          locationInput: state.locationInput,
+          coverInput: state.coverInput,
+          linkInput: state.linkInput,
+        });
+        return {
+          tasks: newTasks,
+          websiteInput: "LinkedIn",
+          companyInput: "",
+          titleInput: "",
+          locationInput: "",
+          linkInput: "",
+        };
       });
-      return {
-        tasks: newTasks,
-        websiteInput: "LinkedIn",
-        companyInput: "",
-        titleInput: "",
-        locationInput: "",
-        linkInput: "",
-      };
-    });
+    }
     this.saveToLocal();
   }
 
@@ -208,6 +211,8 @@ class App extends React.Component {
   }
 
   retrieveHtmlLinkedin() {
+    let addNewJob;
+
     let url = this.state.directLinkInput.split("/");
     url = url[url.length - 2];
     axios
@@ -215,32 +220,36 @@ class App extends React.Component {
       .then((res, request) => {
         this.state.tasks.forEach((cur) => {
           if (cur.companyInput === res.data[1]) {
-            alert("This company is already on the list.");
+            addNewJob = window.confirm(
+              "This company is already on the list. Are you sure you want to add it?"
+            );
           }
         });
-        this.setState((state) => {
-          let newTasks = state.tasks.slice();
+        if (addNewJob) {
+          this.setState((state) => {
+            let newTasks = state.tasks.slice();
 
-          newTasks.unshift({
-            websiteInput: state.directWebsiteInput,
-            companyInput: res.data[1],
-            titleInput: res.data[0],
-            recruiterInput: state.recruiterInput,
-            locationInput: res.data[3],
-            coverInput: state.coverInput,
-            linkInput: state.directLinkInput,
-            companyLinkInput: res.data[2],
+            newTasks.unshift({
+              websiteInput: state.directWebsiteInput,
+              companyInput: res.data[1],
+              titleInput: res.data[0],
+              recruiterInput: state.recruiterInput,
+              locationInput: res.data[3],
+              coverInput: state.coverInput,
+              linkInput: state.directLinkInput,
+              companyLinkInput: res.data[2],
+            });
+            return {
+              tasks: newTasks,
+              websiteInput: "LinkedIn",
+              companyInput: "",
+              titleInput: "",
+              locationInput: "",
+              linkInput: "",
+              companyLinkInput: "",
+            };
           });
-          return {
-            tasks: newTasks,
-            websiteInput: "LinkedIn",
-            companyInput: "",
-            titleInput: "",
-            locationInput: "",
-            linkInput: "",
-            companyLinkInput: "",
-          };
-        });
+        }
         return res;
       })
       .then((res) => {
