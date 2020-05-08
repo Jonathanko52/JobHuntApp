@@ -107,6 +107,7 @@ const LeftPage = (props) => {
         <button
           className="btn btn-primary"
           onClick={() => {
+            console.log("CLICK");
             props.directLinkRef.current.value = "";
 
             if (props.directWebsiteInput === "LinkedIn") {

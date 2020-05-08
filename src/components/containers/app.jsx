@@ -106,20 +106,21 @@ class App extends React.Component {
 
   //Adds item to task list
   addToList() {
-    let addNewJob;
+    console.log("addToList");
+    let addedBefore = false;
     this.state.tasks.forEach((cur) => {
-      console.log(cur.companyInput);
-      console.log(this.state.companyInput);
+      console.log(this.state.companyInput, "AddToList", cur.companyInput);
       if (cur.companyInput === this.state.companyInput) {
-        addNewJob = window.confirm(
+        addedBefore = window.confirm(
           "This company is already on the list. Are you sure you want to add it?"
         );
       }
     });
-    if (addNewJob) {
+    if (addedBefore) {
+      console.log("AddToListSetstate");
       this.setState((state) => {
         let newTasks = state.tasks.slice();
-
+        console.log("AddToListSetstate Current");
         newTasks.unshift({
           websiteInput: state.websiteInput,
           companyInput: state.companyInput,
@@ -211,45 +212,47 @@ class App extends React.Component {
   }
 
   retrieveHtmlLinkedin() {
-    let addNewJob;
-
+    console.log("LINKEDIN");
     let url = this.state.directLinkInput.split("/");
     url = url[url.length - 2];
     axios
       .get("/RetrieveHtmlLinkedIn/" + url)
-      .then((res, request) => {
+      .then((res, req) => {
+        let addedBefore = false;
+        console.log("RETRIEVED");
         this.state.tasks.forEach((cur) => {
+          console.log(cur.companyInput);
+          console.log("RES", res);
           if (cur.companyInput === res.data[1]) {
-            addNewJob = window.confirm(
+            addedBefore = window.confirm(
               "This company is already on the list. Are you sure you want to add it?"
             );
           }
         });
-        if (addNewJob) {
-          this.setState((state) => {
-            let newTasks = state.tasks.slice();
 
-            newTasks.unshift({
-              websiteInput: state.directWebsiteInput,
-              companyInput: res.data[1],
-              titleInput: res.data[0],
-              recruiterInput: state.recruiterInput,
-              locationInput: res.data[3],
-              coverInput: state.coverInput,
-              linkInput: state.directLinkInput,
-              companyLinkInput: res.data[2],
-            });
-            return {
-              tasks: newTasks,
-              websiteInput: "LinkedIn",
-              companyInput: "",
-              titleInput: "",
-              locationInput: "",
-              linkInput: "",
-              companyLinkInput: "",
-            };
+        this.setState((state) => {
+          let newTasks = state.tasks.slice();
+
+          newTasks.unshift({
+            websiteInput: state.directWebsiteInput,
+            companyInput: res.data[1],
+            titleInput: res.data[0],
+            recruiterInput: state.recruiterInput,
+            locationInput: res.data[3],
+            coverInput: state.coverInput,
+            linkInput: state.directLinkInput,
+            companyLinkInput: res.data[2],
           });
-        }
+          return {
+            tasks: newTasks,
+            websiteInput: "LinkedIn",
+            companyInput: "",
+            titleInput: "",
+            locationInput: "",
+            linkInput: "",
+            companyLinkInput: "",
+          };
+        });
         return res;
       })
       .then((res) => {
@@ -262,7 +265,6 @@ class App extends React.Component {
   retrieveHtmlIndeed() {
     let url = this.state.directLinkInput.split("?");
     url = url[url.length - 1];
-    console.log(url);
     axios
       .get("/RetrieveHtmlIndeed/" + url)
       .then((res, request) => {
