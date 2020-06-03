@@ -73,10 +73,13 @@ class App extends React.Component {
     this.createSheet = this.createSheet.bind(this);
     this.setSpreadsheetId = this.setSpreadsheetId.bind(this);
     this.setSpreadsheetIdFromTemp = this.setSpreadsheetIdFromTemp.bind(this);
+
+    //Data Stuff
   }
 
   //Event Listeners handling event changes on left(input) page
   handleChangeWebsite(event) {
+    console.log(event.target.value);
     this.setState({ websiteInput: event.target.value });
   }
   handleChangeCompany(event) {
@@ -106,7 +109,6 @@ class App extends React.Component {
 
   //Adds item to task list
   addToList() {
-    console.log("addToList");
     let addedBefore = false;
     this.state.tasks.forEach((cur) => {
       console.log(this.state.companyInput, "AddToList", cur.companyInput);
@@ -116,11 +118,9 @@ class App extends React.Component {
         );
       }
     });
-    if (addedBefore) {
-      console.log("AddToListSetstate");
+    if (!addedBefore) {
       this.setState((state) => {
         let newTasks = state.tasks.slice();
-        console.log("AddToListSetstate Current");
         newTasks.unshift({
           websiteInput: state.websiteInput,
           companyInput: state.companyInput,
@@ -219,7 +219,6 @@ class App extends React.Component {
       .get("/RetrieveHtmlLinkedIn/" + url)
       .then((res, req) => {
         let addedBefore = false;
-        console.log("RETRIEVED");
         this.state.tasks.forEach((cur) => {
           console.log(cur.companyInput);
           console.log("RES", res);
@@ -229,30 +228,31 @@ class App extends React.Component {
             );
           }
         });
+        if (!addedBefore) {
+          this.setState((state) => {
+            let newTasks = state.tasks.slice();
 
-        this.setState((state) => {
-          let newTasks = state.tasks.slice();
-
-          newTasks.unshift({
-            websiteInput: state.directWebsiteInput,
-            companyInput: res.data[1],
-            titleInput: res.data[0],
-            recruiterInput: state.recruiterInput,
-            locationInput: res.data[3],
-            coverInput: state.coverInput,
-            linkInput: state.directLinkInput,
-            companyLinkInput: res.data[2],
+            newTasks.unshift({
+              websiteInput: state.directWebsiteInput,
+              companyInput: res.data[1],
+              titleInput: res.data[0],
+              recruiterInput: state.recruiterInput,
+              locationInput: res.data[3],
+              coverInput: state.coverInput,
+              linkInput: state.directLinkInput,
+              companyLinkInput: res.data[2],
+            });
+            return {
+              tasks: newTasks,
+              websiteInput: "LinkedIn",
+              companyInput: "",
+              titleInput: "",
+              locationInput: "",
+              linkInput: "",
+              companyLinkInput: "",
+            };
           });
-          return {
-            tasks: newTasks,
-            websiteInput: "LinkedIn",
-            companyInput: "",
-            titleInput: "",
-            locationInput: "",
-            linkInput: "",
-            companyLinkInput: "",
-          };
-        });
+        }
         return res;
       })
       .then((res) => {

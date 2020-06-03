@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  Tooltip
+  Tooltip,
 } from "recharts";
 
 class GraphPage extends React.Component {
@@ -21,7 +21,7 @@ class GraphPage extends React.Component {
       BarData: [],
       GraphDisplay: "Line",
       BarGraphCompany: "",
-      SearchParamDate: "7"
+      SearchParamDate: "7",
     };
 
     this.retrieveData = this.retrieveData.bind(this);
@@ -37,6 +37,7 @@ class GraphPage extends React.Component {
 
   retrieveData() {
     let spreadsheetId = this.props.spreadSheetId;
+
     let tempDate1 = new Date();
     let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
     let previousMonth = false;
@@ -57,25 +58,35 @@ class GraphPage extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
-        range: "Jobs!A2:D1000"
+        range: "Jobs!A2:D1000",
       })
-      .then(response => {
+      .then((response) => {
         lastRow = response.result.values.length;
         let index;
         let j = 0;
         while (!index && j < response.result.values.length) {
-          if (response.result.values[j][3] === targetDate) {
-            index = j;
+          if (
+            response.result.values[j][3].split("/")[0] ===
+            targetDate.split("/")[0]
+          ) {
+            if (
+              parseInt(response.result.values[j][3].split("/")[1]) >=
+              parseInt(targetDate.split("/")[1])
+            ) {
+              console.log(response.result.values[j][3].split("/")[1]);
+              console.log(targetDate.split("/")[1]);
+              index = j;
+            }
           }
           j++;
         }
+        let filteredArray = response.result.values.slice(index, lastRow + 1);
 
-        return response.result.values.slice(index, lastRow + 1);
+        return filteredArray;
       })
-      .then(response => {
+      .then((response) => {
         let obj = {};
-
-        response.forEach(cur => {
+        response.forEach((cur) => {
           if (obj[cur[3]]) {
             obj[cur[3]]++;
           } else {
@@ -86,40 +97,113 @@ class GraphPage extends React.Component {
         for (var key in obj) {
           dataArray.push({ name: key, uv: obj[key] });
         }
-
         this.setState({ LineData: dataArray });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("outter error", err.result);
       });
   }
 
   getConversionRate() {
+    console.log("Retrieveing Conversion");
     let spreadsheetId = this.props.spreadSheetId;
-    let targetRow = parseInt(this.state.BarGraphCompany);
+
+    let tempDate1 = new Date();
+    let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
+    let previousMonth = false;
+    if (tempDate2 < 0) {
+      tempDate1.setDate(1);
+      tempDate1.setHours(-1);
+      tempDate2 = tempDate1.getDate() + tempDate2;
+      previousMonth = true;
+    }
+    let lastRow;
+    let targetDate;
+    if (previousMonth) {
+      targetDate = `${new Date().getMonth() - 1 + 1}/${tempDate2}`;
+    } else {
+      targetDate = `${new Date().getMonth() + 1}/${tempDate2}`;
+    }
+
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
-        range: `Summary!A${targetRow}:G${targetRow}`
+        range: "Jobs!A2:G1000",
       })
-      .then(response => {
-        console.log(response.result.values[0][0]);
-        let BarData = [
-          { name: "Jobs", uv: response.result.values[0][1] },
-          { name: "Cover Letters Sent", uv: response.result.values[0][2] },
-          { name: "Phone Screens", uv: response.result.values[0][3] },
-          { name: "Tech Interviews", uv: response.result.values[0][4] },
-          { name: "In Person Interviews", uv: response.result.values[0][5] },
-          { name: "Offers", uv: response.result.values[0][6] }
-        ];
-        this.setState({ BarData: BarData });
-        return response.result.values;
-      })
-      .then(res => {
-        console.log("TEST RES", res);
-      })
+      .then((response) => {
+        lastRow = response.result.values.length;
+        let index;
+        let j = 0;
+        console.log("TARGET DATE", targetDate);
+        while (!index && j < response.result.values.length) {
+          if (
+            response.result.values[j][3].split("/")[0] ===
+            targetDate.split("/")[0]
+          ) {
+            if (
+              parseInt(response.result.values[j][3].split("/")[1]) >=
+              parseInt(targetDate.split("/")[1])
+            ) {
+              index = j;
+            }
+          }
+          j++;
+        }
+        let filteredArray = response.result.values.slice(index, lastRow + 1);
+        console.log("FILTER", filteredArray);
 
-      .catch(err => {
+        return filteredArray;
+      })
+      .then((response) => {
+        let obj = {};
+        let dataArray = response.filter((cur) => {
+          console.log(cur[0]);
+          console.log(this.state.BarGraphCompany);
+          console.log(cur[0] === this.state.BarGraphCompany);
+          return cur[0] === this.state.BarGraphCompany;
+        });
+        console.log("DATA ARRAY", dataArray);
+        let jobsArray = 0;
+        let coversArray = 0;
+        let phonesArray = 0;
+        let interviewsArray = 0;
+        let inpersonArray = 0;
+        let offersArray = 0;
+        let rejectedArray = 0;
+        dataArray.forEach((cur) => {
+          jobsArray++;
+          if (cur[5]) {
+            coversArray++;
+          }
+          if (cur[6] === "Phone") {
+            phonesArray++;
+          }
+          if (cur[6] === "Tech") {
+            interviewsArray++;
+          }
+          if (cur[6] === "Inperson") {
+            inpersonArray++;
+          }
+          if (cur[6] === "Offer") {
+            offersArray++;
+          }
+          if (cur[6] === "Rejected") {
+            rejectedArray++;
+          }
+        });
+        let BarData = [
+          { name: "Jobs", uv: jobsArray },
+          { name: "Cover Letters Sent", uv: coversArray },
+          { name: "Phone Screens", uv: phonesArray },
+          { name: "Tech Interviews", uv: interviewsArray },
+          { name: "In Person Interviews", uv: inpersonArray },
+          { name: "Offers", uv: offersArray },
+          { name: "Rejected", uv: rejectedArray },
+        ];
+
+        this.setState({ BarData: BarData });
+      })
+      .catch((err) => {
         console.log("outter error", err);
       });
   }
@@ -136,13 +220,14 @@ class GraphPage extends React.Component {
       .then(() => {
         this.retrieveData();
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("error", err);
       });
   }
 
   handleParamDateChange(event) {
     let changeValue = event.target.value;
+    console.log("CHANGEVALUE", changeValue);
     let newPromise = new Promise((resolve, reject) => {
       resolve();
     });
@@ -153,7 +238,7 @@ class GraphPage extends React.Component {
       .then(() => {
         this.retrieveData();
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("error", err);
       });
   }
@@ -170,7 +255,7 @@ class GraphPage extends React.Component {
       .then(() => {
         this.getConversionRate();
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("error", err);
       });
   }
@@ -186,17 +271,17 @@ class GraphPage extends React.Component {
       graphOptionsContainer.push(<label className="pr-3 h4"> Company </label>);
       graphOptionsContainer.push(
         <select
-          onChange={e => {
+          onChange={(e) => {
             this.handleParamCompanyChange(e);
           }}
         >
           <option value="">--Pick a Company--</option>
-          <option value="2">Indeed</option>
-          <option value="3">LinkedIn</option>
-          <option value="4">Angelist</option>
-          <option value="5">ZipRecruiter</option>
-          <option value="6">Dice</option>
-          <option value="7">Monster</option>
+          <option value="Indeed">Indeed</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="Angelist">Angelist</option>
+          <option value="ZipRecruiter">ZipRecruiter</option>
+          <option value="Dice">Dice</option>
+          <option value="Monster">Monster</option>
         </select>
       );
       graphContainer.push(<BarGraph BarData={this.state.BarData}></BarGraph>);
@@ -207,7 +292,7 @@ class GraphPage extends React.Component {
         <div className="row justify-content-center pt-5">
           <label className="pr-3 h4"> Graph </label>
           <select
-            onChange={e => {
+            onChange={(e) => {
               this.handleOptionChange(e);
             }}
           >
@@ -217,7 +302,7 @@ class GraphPage extends React.Component {
 
           <label className="pr-3 h4"> Timeline </label>
           <select
-            onChange={e => {
+            onChange={(e) => {
               this.handleParamDateChange(e);
             }}
           >
