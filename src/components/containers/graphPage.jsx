@@ -1,6 +1,7 @@
 import React from "react";
 import LineGraph from "./../presentational/linegraph.jsx";
 import BarGraph from "./../presentational/bargraph.jsx";
+import Report from "./../presentational/Report.jsx";
 
 class GraphPage extends React.Component {
   constructor(props) {
@@ -9,13 +10,14 @@ class GraphPage extends React.Component {
       LineData: [],
       BarData: [],
       GraphDisplay: "Line",
-      BarGraphCompany: "",
+      BarGraphCompany: "All",
       SearchParamDate: "7",
+      ReportData: [],
     };
 
     this.retrieveData = this.retrieveData.bind(this);
     this.getConversionRate = this.getConversionRate.bind(this);
-
+    this.getReportData = this.getReportData.bind(this);
     //Shared Options
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.handleParamDateChange = this.handleParamDateChange.bind(this);
@@ -147,6 +149,10 @@ class GraphPage extends React.Component {
       .then((response) => {
         let obj = {};
         let dataArray = response.filter((cur) => {
+          if (this.state.BarGraphCompany === "All") {
+            return true;
+          }
+
           return cur[0] === this.state.BarGraphCompany;
         });
         let jobsArray = 0;
@@ -194,6 +200,63 @@ class GraphPage extends React.Component {
       });
   }
 
+  getReportData() {
+    let spreadsheetId = this.props.spreadSheetId;
+    let tempDate1 = new Date();
+    let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
+    let previousMonth = false;
+    if (tempDate2 < 0) {
+      tempDate1.setDate(1);
+      tempDate1.setHours(-1);
+      tempDate2 = tempDate1.getDate() + tempDate2;
+      previousMonth = true;
+    }
+    let lastRow;
+    let targetDate;
+    if (previousMonth) {
+      targetDate = `${new Date().getMonth() - 1 + 1}/${tempDate2}`;
+    } else {
+      targetDate = `${new Date().getMonth() + 1}/${tempDate2}`;
+    }
+    gapi.client.sheets.spreadsheets.values
+      .get({
+        spreadsheetId: spreadsheetId,
+        range: "Jobs!A2:D1000",
+      })
+      .then((response) => {
+        console.log("RESponSE", response);
+        lastRow = response.result.values.length;
+
+        let index;
+        let j = 0;
+        while (!index && j < response.result.values.length) {
+          if (
+            response.result.values[j][3].split("/")[0] ===
+            targetDate.split("/")[0]
+          ) {
+            if (
+              parseInt(response.result.values[j][3].split("/")[1]) >=
+              parseInt(targetDate.split("/")[1])
+            ) {
+              index = j;
+            }
+          }
+          j++;
+        }
+        let filteredArray = response.result.values.slice(index, lastRow + 1);
+
+        return filteredArray;
+      })
+      .then((response) => {
+        let dataArray = response;
+        console.log("REPORT DATA", dataArray);
+        this.setState({ ReportData: dataArray });
+      })
+      .catch((err) => {
+        console.log("outter error line255", err);
+      });
+  }
+
   handleOptionChange(event) {
     let changeValue = event.target.value;
     let newPromise = new Promise((resolve, reject) => {
@@ -205,6 +268,9 @@ class GraphPage extends React.Component {
       })
       .then(() => {
         this.retrieveData();
+      })
+      .then(() => {
+        this.getReportData();
       })
       .catch((err) => {
         console.log("error", err);
@@ -266,7 +332,7 @@ class GraphPage extends React.Component {
             this.handleParamCompanyChange(e);
           }}
         >
-          <option value="">--Pick a Company--</option>
+          <option value="All">All Companies</option>
           <option value="Indeed">Indeed</option>
           <option value="LinkedIn">LinkedIn</option>
           <option value="Angelist">Angelist</option>
@@ -276,6 +342,9 @@ class GraphPage extends React.Component {
         </select>
       );
       graphContainer.push(<BarGraph BarData={this.state.BarData}></BarGraph>);
+    } else if (this.state.GraphDisplay === "Report") {
+      graphOptionsContainer.push(<label className="pr-3 h4"> Report</label>);
+      graphOptionsContainer.push(<Report></Report>);
     }
 
     return (
@@ -289,6 +358,7 @@ class GraphPage extends React.Component {
           >
             <option label="Applications Submitted" value="Line"></option>
             <option label="Application Conversion Rate" value="Bar"></option>
+            <option label="Application Conversion Rate" value="Report"></option>
           </select>
 
           <label className="pr-3 h4"> Timeline </label>
