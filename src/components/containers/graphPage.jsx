@@ -1,17 +1,6 @@
 import React from "react";
 import LineGraph from "./../presentational/linegraph.jsx";
 import BarGraph from "./../presentational/bargraph.jsx";
-// import { AreaChart, Area } from "recharts";
-import {
-  ResponsiveContainer,
-  LineChart,
-  BarChart,
-  Line,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-} from "recharts";
 
 class GraphPage extends React.Component {
   constructor(props) {
@@ -38,8 +27,13 @@ class GraphPage extends React.Component {
   retrieveData() {
     let spreadsheetId = this.props.spreadSheetId;
 
+    //Date calculation
+    //current Date
+
     let tempDate1 = new Date();
+    console.log("teST", this.state.SearchParamDate);
     let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
+    console.log("TEMPDATE2", tempDate2);
     let previousMonth = false;
     if (tempDate2 < 0) {
       tempDate1.setDate(1);
@@ -73,8 +67,6 @@ class GraphPage extends React.Component {
               parseInt(response.result.values[j][3].split("/")[1]) >=
               parseInt(targetDate.split("/")[1])
             ) {
-              console.log(response.result.values[j][3].split("/")[1]);
-              console.log(targetDate.split("/")[1]);
               index = j;
             }
           }
@@ -105,7 +97,6 @@ class GraphPage extends React.Component {
   }
 
   getConversionRate() {
-    console.log("Retrieveing Conversion");
     let spreadsheetId = this.props.spreadSheetId;
 
     let tempDate1 = new Date();
@@ -150,19 +141,14 @@ class GraphPage extends React.Component {
           j++;
         }
         let filteredArray = response.result.values.slice(index, lastRow + 1);
-        console.log("FILTER", filteredArray);
 
         return filteredArray;
       })
       .then((response) => {
         let obj = {};
         let dataArray = response.filter((cur) => {
-          console.log(cur[0]);
-          console.log(this.state.BarGraphCompany);
-          console.log(cur[0] === this.state.BarGraphCompany);
           return cur[0] === this.state.BarGraphCompany;
         });
-        console.log("DATA ARRAY", dataArray);
         let jobsArray = 0;
         let coversArray = 0;
         let phonesArray = 0;
@@ -258,6 +244,11 @@ class GraphPage extends React.Component {
       .catch((err) => {
         console.log("error", err);
       });
+  }
+
+  componentDidMount() {
+    console.log("Mounted");
+    this.retrieveData();
   }
 
   render() {
