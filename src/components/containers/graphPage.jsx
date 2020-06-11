@@ -221,7 +221,7 @@ class GraphPage extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
-        range: "Jobs!A2:D1000",
+        range: "Jobs!A2:H1000",
       })
       .then((response) => {
         console.log("RESponSE", response);
@@ -344,7 +344,9 @@ class GraphPage extends React.Component {
       graphContainer.push(<BarGraph BarData={this.state.BarData}></BarGraph>);
     } else if (this.state.GraphDisplay === "Report") {
       graphOptionsContainer.push(<label className="pr-3 h4"> Report</label>);
-      graphOptionsContainer.push(<Report></Report>);
+      graphOptionsContainer.push(
+        <Report ReportData={this.state.ReportData}></Report>
+      );
     }
 
     return (
