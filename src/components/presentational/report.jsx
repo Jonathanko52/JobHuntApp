@@ -7,21 +7,23 @@ const Report = (props) => {
     ReportArray.push(
       <div class="row">
         {/* Website */}
-        <div class="col">{cur[0]}</div>
+        <div class="col-1 border">{cur[0]}</div>
         {/* Company */}
-        <div class="col">{cur[1]}</div>
+        <div class="col-2 border">{cur[1]}</div>
         {/* Position */}
-        <div class="col">{cur[2]}</div>
+        <div class="col-2 border">{cur[2]}</div>
         {/* Date */}
-        <div class="col">{cur[3]}</div>
+        <div class="col-1 border">{cur[3]}</div>
         {/* Location */}
-        <div class="col">{cur[4]}</div>
+        <div class="col-2 border">{cur[4]}</div>
         {/* Cover Letter */}
-        <div class="col">{cur[5]}</div>
+        <div class="col-1 border">{cur[5]}</div>
         {/* Interview */}
-        <div class="col">{cur[6]}</div>
+        <div class="col-1 border">{cur[6]}</div>
         {/* Url */}
-        <a href={cur[7]}>{cur[1]}</a>
+        <div class="col-2 border">
+          <a href={cur[7]}>{cur[1]}</a>
+        </div>
       </div>
     );
   });
@@ -34,14 +36,14 @@ const Report = (props) => {
         </div>
       </div>
       <div class="row">
-        <div class="col">Website</div>
-        <div class="col">Company</div>
-        <div class="col">Position</div>
-        <div class="col">Date</div>
-        <div class="col">Location</div>
-        <div class="col">Cover Letter Included</div>
-        <div class="col">Interview Phase</div>
-        <div class="col">URL</div>
+        <div class="col-1 border">Website</div>
+        <div class="col-2 border">Company</div>
+        <div class="col-2 border">Position</div>
+        <div class="col-1 border">Date</div>
+        <div class="col-2 border">Location</div>
+        <div class="col-1 border">Cover Letter Included</div>
+        <div class="col-2 border">Interview Phase</div>
+        <div class="col border">URL</div>
       </div>
       <div>{ReportArray}</div>
     </div>

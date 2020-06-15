@@ -33,9 +33,7 @@ class GraphPage extends React.Component {
     //current Date
 
     let tempDate1 = new Date();
-    console.log("teST", this.state.SearchParamDate);
     let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
-    console.log("TEMPDATE2", tempDate2);
     let previousMonth = false;
     if (tempDate2 < 0) {
       tempDate1.setDate(1);
@@ -58,7 +56,7 @@ class GraphPage extends React.Component {
       })
       .then((response) => {
         lastRow = response.result.values.length;
-        let index;
+        let index = response.result.values.length;
         let j = 0;
         while (!index && j < response.result.values.length) {
           if (
@@ -224,20 +222,23 @@ class GraphPage extends React.Component {
         range: "Jobs!A2:H1000",
       })
       .then((response) => {
-        console.log("RESponSE", response);
         lastRow = response.result.values.length;
 
-        let index;
+        let index = response.result.values.length;
         let j = 0;
         while (!index && j < response.result.values.length) {
           if (
+            //month Check
             response.result.values[j][3].split("/")[0] ===
             targetDate.split("/")[0]
           ) {
+            console.log("INNER IF");
             if (
               parseInt(response.result.values[j][3].split("/")[1]) >=
               parseInt(targetDate.split("/")[1])
             ) {
+              console.log("OUTTERIF");
+
               index = j;
             }
           }
@@ -360,7 +361,7 @@ class GraphPage extends React.Component {
           >
             <option label="Applications Submitted" value="Line"></option>
             <option label="Application Conversion Rate" value="Bar"></option>
-            <option label="Application Conversion Rate" value="Report"></option>
+            <option label="Report" value="Report"></option>
           </select>
 
           <label className="pr-3 h4"> Timeline </label>
