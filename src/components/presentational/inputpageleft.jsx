@@ -84,6 +84,7 @@ const LeftPage = (props) => {
           ref={props.directWebRef}
           className="WebsiteInput TaskInput"
           onChange={(e) => {
+            console.log("E", e);
             props.handleChangeDirectWebsite(e);
           }}
         >
@@ -107,7 +108,7 @@ const LeftPage = (props) => {
         <button
           className="btn btn-primary"
           onClick={() => {
-            console.log("CLICK");
+            console.log("CLICK", props.directWebsiteInput);
             props.directLinkRef.current.value = "";
 
             if (props.directWebsiteInput === "LinkedIn") {

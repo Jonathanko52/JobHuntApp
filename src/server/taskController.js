@@ -7,7 +7,7 @@ module.exports = {
   retrieveHtmlLinkedIn: (req, res, next) => {
     req.body = axios
       .get("https://www.linkedin.com/jobs/view/" + req.params.link)
-      .then(function(response) {
+      .then(function (response) {
         const $ = cheerio.load(response.data);
         let jobTitle = $("h1").text();
         let company;
@@ -17,9 +17,7 @@ module.exports = {
           .find("span")
           .each((i, elem) => {
             if (i === 0) {
-              companyLink = $(elem)
-                .find("a")
-                .attr("href");
+              companyLink = $(elem).find("a").attr("href");
               company = $(elem).text();
             }
             if (i === 1) {
@@ -29,35 +27,28 @@ module.exports = {
           .text();
         return [jobTitle, company, companyLink, location];
       })
-      .then(data => {
+      .then((data) => {
         res.status(200).send(data);
       })
-      .catch(error => console.log("ERROR Linkedin Call", error));
+      .catch((error) => console.log("ERROR Linkedin Call", error));
   },
   retrieveHtmlIndeed: (req, res, next) => {
     req.body = axios
       .get("https://www.indeed.com/viewjob?" + req.params.link)
-      .then(function(response) {
+      .then(function (response) {
         const $ = cheerio.load(response.data);
         let jobTitle = $("h3").text();
-        let company = $(
-          ".icl-u-xs-mr--sm.jobsearch-JobInfoHeader-companyName"
-        ).text();
-        let companyLink = $(
-          ".icl-u-xs-mr--sm.jobsearch-JobInfoHeader-companyName"
-        )
-          .find("a")
-          .attr("href");
-
-        let location = $(
-          ".icl-u-xs-mt--xs.jobsearch-JobInfoHeader-companyLocation.jobsearch-DesktopStickyContainer--companylocation"
-        ).text();
-        return [jobTitle, company, companyLink, location];
+        let jobInfoArray = $(".jobsearch-DesktopStickyContainer-companyrating")
+          .text()
+          .split(/-|,/);
+        let company = jobInfoArray[0];
+        let location = jobInfoArray[1];
+        return [jobTitle, company, "", location];
       })
-      .then(data => {
+      .then((data) => {
         res.status(200).send(data);
       })
-      .catch(error => console.log("ERROR", error.error));
+      .catch((error) => console.log("ERROR", error.error));
   },
   retrieveHtmlBuildInLA: (req, res, next) => {
     // req.body = axios
@@ -77,15 +68,15 @@ module.exports = {
   retrieveHtmlAngelist: (req, res, next) => {
     req.body = axios
       .get("https://angel.co/" + req.params.link.split("+").join("/"))
-      .then(function(response) {
+      .then(function (response) {
         const $ = cheerio.load(response.data);
         let thingy = $("h2").text();
 
         return thingy;
       })
-      .then(data => {
+      .then((data) => {
         res.status(200).send(data);
       })
-      .catch(error => console.log(error.error, "ERROR"));
-  }
+      .catch((error) => console.log(error.error, "ERROR"));
+  },
 };

@@ -212,7 +212,6 @@ class App extends React.Component {
   }
 
   retrieveHtmlLinkedin() {
-    console.log("LINKEDIN");
     let url = this.state.directLinkInput.split("/");
     url = url[url.length - 2];
     axios
@@ -263,6 +262,7 @@ class App extends React.Component {
   }
 
   retrieveHtmlIndeed() {
+    console.log("retrieveHtmlIndeed");
     let url = this.state.directLinkInput.split("?");
     url = url[url.length - 1];
     axios
@@ -270,7 +270,7 @@ class App extends React.Component {
       .then((res, request) => {
         this.setState((state) => {
           let newTasks = state.tasks.slice();
-          newTasks.push({
+          newTasks.unshift({
             websiteInput: state.directWebsiteInput,
             companyInput: res.data[1],
             titleInput: res.data[0],
