@@ -9,7 +9,12 @@ module.exports = {
       .get("https://www.linkedin.com/jobs/view/" + req.params.link)
       .then(function (response) {
         const $ = cheerio.load(response.data);
-        let jobTitle = $("h1").text();
+        let jobTitle;
+        $("h3").each((i, elem) => {
+          if (i === 0) {
+            jobTitle = $(elem).text();
+          }
+        });
         let company;
         let companyLink;
         let location;
