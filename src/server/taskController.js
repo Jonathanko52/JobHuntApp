@@ -42,7 +42,7 @@ module.exports = {
       .get("https://www.indeed.com/viewjob?" + req.params.link)
       .then(function (response) {
         const $ = cheerio.load(response.data);
-        let jobTitle = $("h3").text();
+        let jobTitle = $("h1").text();
         let jobInfoArray = $(".jobsearch-DesktopStickyContainer-companyrating")
           .text()
           .split(/-|,/);
