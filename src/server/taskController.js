@@ -46,14 +46,16 @@ module.exports = {
         let jobInfoArray = $(".jobsearch-DesktopStickyContainer-companyrating")
           .text()
           .split(/-|,/);
+
         let company = jobInfoArray[0];
+        company = company.replace(/[0-9]/g, "");
         let location = jobInfoArray[1];
         return [jobTitle, company, "", location];
       })
       .then((data) => {
         res.status(200).send(data);
       })
-      .catch((error) => console.log("ERROR", error.error));
+      .catch((error) => console.log("ERROR", error));
   },
   retrieveHtmlBuildInLA: (req, res, next) => {
     // req.body = axios
@@ -82,6 +84,6 @@ module.exports = {
       .then((data) => {
         res.status(200).send(data);
       })
-      .catch((error) => console.log(error.error, "ERROR"));
+      .catch((error) => console.log(error, "ERROR"));
   },
 };
