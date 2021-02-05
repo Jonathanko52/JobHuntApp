@@ -173,6 +173,9 @@ class RightPage extends React.Component {
             Clear List
           </button>
         </div>
+        <div className="row">
+          <h4>{this.state.numberAppliedToday}</h4>
+        </div>
         <ol className="TaskTable">{Array}</ol>
       </div>
     );
