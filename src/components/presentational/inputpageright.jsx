@@ -4,6 +4,7 @@ class RightPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      numberAppliedToday: 0,
       recruiterInput: "Yes",
       coverInput: "Yes",
       interviewInput: "Submitted",
@@ -11,6 +12,7 @@ class RightPage extends React.Component {
     //binding handle change functions
     this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this);
     this.handleChangeCover = this.handleChangeCover.bind(this);
+    this.increaseNumberAppliedToday = this.increaseNumberAppliedToday.bind();
     // this.handleChangeInterview = this.handleChangeInterview.bind(this)
   }
 
@@ -28,6 +30,10 @@ class RightPage extends React.Component {
 
   handleChangeInterview(event) {
     this.setState({ interviewInput: event.target.value });
+  }
+
+  increaseNumberAppliedToday() {
+    this.setState({ numberAppliedToday: numberAppliedToday++ });
   }
 
   render() {
@@ -130,6 +136,7 @@ class RightPage extends React.Component {
                   .catch((err) => {
                     console.log("outter error", err.result.error.message);
                   });
+                increaseNumberAppliedToday();
               }}>
               Submit
             </button>
