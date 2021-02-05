@@ -6,7 +6,7 @@ class RightPage extends React.Component {
     this.state = {
       recruiterInput: "Yes",
       coverInput: "Yes",
-      interviewInput: "Submitted"
+      interviewInput: "Submitted",
     };
     //binding handle change functions
     this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this);
@@ -54,7 +54,7 @@ class RightPage extends React.Component {
                 //Radio Button to save cover letter info
                 name="CoverLetter"
                 className="CoverInput RadioInput"
-                onChange={e => {
+                onChange={(e) => {
                   this.handleChangeCover(e);
                 }}
                 value="Yes"
@@ -64,7 +64,7 @@ class RightPage extends React.Component {
                 type="radio"
                 name="CoverLetter"
                 className="CoverInput RadioInput"
-                onChange={e => {
+                onChange={(e) => {
                   this.handleChangeCover(e);
                 }}
                 value="No"
@@ -86,9 +86,9 @@ class RightPage extends React.Component {
                 gapi.client.sheets.spreadsheets.values
                   .get({
                     spreadsheetId: spreadsheetId,
-                    range: "Jobs!A1:A1000"
+                    range: "Jobs!A1:A1000",
                   })
-                  .then(response => {
+                  .then((response) => {
                     var result = response.result;
                     emptyRow = result.values.length + 1;
                     this.props.updateTotalJobsFromSheets(emptyRow);
@@ -107,30 +107,30 @@ class RightPage extends React.Component {
                               cur.websiteInput,
                               cur.companyInput,
                               cur.titleInput,
-                              `${new Date().getMonth() +
-                                1}/${new Date().getDate()}`,
+                              `${
+                                new Date().getMonth() + 1
+                              }/${new Date().getDate()}`,
                               cur.locationInput,
                               this.state.coverInput,
                               this.state.interviewInput,
-                              cur.linkInput
-                            ]
-                          ]
-                        }
+                              cur.linkInput,
+                            ],
+                          ],
+                        },
                       })
-                      .then(response => {
+                      .then((response) => {
                         //Removes item added to sheet form React App
                         var result = response.result;
                         this.props.removeFromList(ind);
                       })
-                      .catch(err => {
+                      .catch((err) => {
                         console.log("inner error", err.result.error.message);
                       });
                   })
-                  .catch(err => {
+                  .catch((err) => {
                     console.log("outter error", err.result.error.message);
                   });
-              }}
-            >
+              }}>
               Submit
             </button>
             <button
@@ -138,8 +138,7 @@ class RightPage extends React.Component {
               onClick={() => {
                 //Removes Item form React App
                 this.props.removeFromList(ind);
-              }}
-            >
+              }}>
               Cancel
             </button>
             <button
@@ -147,8 +146,7 @@ class RightPage extends React.Component {
               onClick={() => {
                 //Moves to end of list
                 this.props.moveToBack(ind);
-              }}
-            >
+              }}>
               Postpone
             </button>
           </li>
@@ -164,8 +162,7 @@ class RightPage extends React.Component {
             className="btn btn-primary"
             onClick={() => {
               this.props.clearList();
-            }}
-          >
+            }}>
             Clear List
           </button>
         </div>
