@@ -168,6 +168,9 @@ class RightPage extends React.Component {
     return (
       <div className="rightBar col-xs-6">
         <h3>List of Jobs: {this.props.tasks.length}</h3>
+        <h3>
+          Number of Jobs Applied to Today: {this.state.numberAppliedToday}
+        </h3>
         <div className="row">
           <button
             className="btn btn-primary"
@@ -177,9 +180,7 @@ class RightPage extends React.Component {
             Clear List
           </button>
         </div>
-        <div className="row">
-          <h4>{this.state.numberAppliedToday}</h4>
-        </div>
+        <div className="row"></div>
         <ol className="TaskTable">{Array}</ol>
       </div>
     );
