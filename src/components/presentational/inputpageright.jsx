@@ -12,8 +12,9 @@ class RightPage extends React.Component {
     //binding handle change functions
     this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this);
     this.handleChangeCover = this.handleChangeCover.bind(this);
-    this.increaseNumberAppliedToday = this.increaseNumberAppliedToday.bind();
-    // this.handleChangeInterview = this.handleChangeInterview.bind(this)
+    this.increaseNumberAppliedToday = this.increaseNumberAppliedToday.bind(
+      this
+    );
   }
 
   //handle changes to "Recruiter" value
@@ -33,7 +34,9 @@ class RightPage extends React.Component {
   }
 
   increaseNumberAppliedToday() {
-    this.setState({ numberAppliedToday: numberAppliedToday++ });
+    this.setState((state) => {
+      numberAppliedToday: state.numberAppliedToday++;
+    });
   }
 
   render() {
@@ -136,13 +139,14 @@ class RightPage extends React.Component {
                   .catch((err) => {
                     console.log("outter error", err.result.error.message);
                   });
-                increaseNumberAppliedToday();
               }}>
               Submit
             </button>
             <button
               className="btn btn-primary"
               onClick={() => {
+                this.increaseNumberAppliedToday();
+
                 //Removes Item form React App
                 this.props.removeFromList(ind);
               }}>
