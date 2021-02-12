@@ -145,8 +145,6 @@ class RightPage extends React.Component {
             <button
               className="btn btn-primary"
               onClick={() => {
-                this.increaseNumberAppliedToday();
-
                 //Removes Item form React App
                 this.props.removeFromList(ind);
               }}>
