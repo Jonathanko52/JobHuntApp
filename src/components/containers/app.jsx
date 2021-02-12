@@ -219,8 +219,6 @@ class App extends React.Component {
       .then((res, req) => {
         let addedBefore = false;
         this.state.tasks.forEach((cur) => {
-          console.log(cur.companyInput);
-          console.log("RES", res);
           if (cur.companyInput === res.data[1]) {
             addedBefore = window.confirm(
               "This company is already on the list. Are you sure you want to add it?"
