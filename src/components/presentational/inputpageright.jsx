@@ -131,6 +131,7 @@ class RightPage extends React.Component {
                         //Removes item added to sheet form React App
                         var result = response.result;
                         this.props.removeFromList(ind);
+                        this.increaseNumberAppliedToday();
                       })
                       .catch((err) => {
                         console.log("inner error", err.result.error.message);
