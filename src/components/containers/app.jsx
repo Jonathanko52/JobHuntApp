@@ -117,7 +117,7 @@ class App extends React.Component {
         );
       }
     });
-    if (addedBefore) {
+    if (!addedBefore) {
       this.setState((state) => {
         let newTasks = state.tasks.slice();
         newTasks.unshift({
