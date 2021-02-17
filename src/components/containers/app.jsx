@@ -109,15 +109,18 @@ class App extends React.Component {
 
   //Adds item to task list
   addToList() {
-    let addedBefore = false;
+    let wantToAddAnyway = true;
     this.state.tasks.forEach((cur) => {
-      if (cur.companyInput === this.state.companyInput) {
-        addedBefore = window.confirm(
+      if (
+        cur.companyInput === this.state.companyInput &&
+        cur.companyInput !== ""
+      ) {
+        wantToAddAnyway = window.confirm(
           "This company is already on the list. Are you sure you want to add it?"
         );
       }
     });
-    if (!addedBefore) {
+    if (wantToAddAnyway) {
       this.setState((state) => {
         let newTasks = state.tasks.slice();
         newTasks.unshift({
@@ -957,7 +960,6 @@ class App extends React.Component {
                       locRef={this.locRef}
                       linkRef={this.linkRef}
                       handleChangeWebsite={this.handleChangeWebsite}
-                      handleChangeCompany={this.handleChange}
                       handleChangeTitle={this.handleChangeTitle}
                       handleChangeRecruiter={this.handleChangeRecruiter}
                       handleChangeLocation={this.handleChangeLocation}
