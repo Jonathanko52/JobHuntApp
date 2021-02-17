@@ -136,11 +136,12 @@ class RightPage extends React.Component {
                       })
                       .catch((err) => {
                         console.log("inner error", err.result.error.message);
+                        alert("Submission Failed Inner.");
                       });
                   })
                   .catch((err) => {
                     console.log("outter error", err.result.error.message);
-                    alert("Submission failed.");
+                    alert("Submission Failed Outter.");
                   });
               }}>
               Submit
