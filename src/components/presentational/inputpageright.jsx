@@ -34,6 +34,7 @@ class RightPage extends React.Component {
   }
 
   increaseNumberAppliedToday() {
+    console.log("Test");
     this.setState((state) => {
       numberAppliedToday: state.numberAppliedToday++;
     });
@@ -139,6 +140,7 @@ class RightPage extends React.Component {
                   })
                   .catch((err) => {
                     console.log("outter error", err.result.error.message);
+                    alert("Submission failed.");
                   });
               }}>
               Submit
