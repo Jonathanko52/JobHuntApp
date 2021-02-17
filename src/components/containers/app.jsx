@@ -111,14 +111,13 @@ class App extends React.Component {
   addToList() {
     let addedBefore = false;
     this.state.tasks.forEach((cur) => {
-      console.log(this.state.companyInput, "AddToList", cur.companyInput);
       if (cur.companyInput === this.state.companyInput) {
         addedBefore = window.confirm(
           "This company is already on the list. Are you sure you want to add it?"
         );
       }
     });
-    if (!addedBefore) {
+    if (addedBefore) {
       this.setState((state) => {
         let newTasks = state.tasks.slice();
         newTasks.unshift({

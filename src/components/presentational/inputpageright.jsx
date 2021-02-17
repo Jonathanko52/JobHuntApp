@@ -108,7 +108,6 @@ class RightPage extends React.Component {
                     gapi.client.sheets.spreadsheets.values
                       .update({
                         spreadsheetId: spreadsheetId,
-                        // "1pLaxif0Ryvzs28ZqKTJRySdDWEdVRRrSreaja4L0FEw",
                         range: `Jobs!A${emptyRow}:J${emptyRow}`,
                         valueInputOption: "RAW",
                         resource: {
