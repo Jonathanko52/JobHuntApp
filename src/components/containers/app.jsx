@@ -219,16 +219,16 @@ class App extends React.Component {
     axios
       .get("/RetrieveHtmlLinkedIn/" + url)
       .then((res, req) => {
-        let addedBefore = false;
+        let addToList = true;
         this.state.tasks.forEach((cur) => {
           if (cur.companyInput === res.data[1]) {
-            addedBefore = window.confirm(
+            addToList = false;
+            addToList = window.confirm(
               "This company is already on the list. Are you sure you want to add it?"
             );
           }
         });
-        console.log("ADDED BEFORE", addedBefore);
-        if (!addedBefore) {
+        if (addToList) {
           this.setState((state) => {
             let newTasks = state.tasks.slice();
 
