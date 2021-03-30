@@ -227,6 +227,7 @@ class App extends React.Component {
             );
           }
         });
+        console.log("ADDED BEFORE", addedBefore);
         if (!addedBefore) {
           this.setState((state) => {
             let newTasks = state.tasks.slice();
