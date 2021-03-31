@@ -18,8 +18,7 @@ const LeftPage = (props) => {
           className="WebsiteInput TaskInput"
           onChange={(e) => {
             props.handleChangeWebsite(e);
-          }}
-        >
+          }}>
           <option value="Angelist">Angelist</option>
           <option value="Indeed">Indeed</option>
           <option defaultValue="selected" value="LinkedIn">
@@ -67,8 +66,7 @@ const LeftPage = (props) => {
             props.titleRef.current.value = "";
             props.locRef.current.value = "";
             props.linkRef.current.value = "";
-          }}
-        >
+          }}>
           Add
         </button>
       </div>
@@ -84,10 +82,8 @@ const LeftPage = (props) => {
           ref={props.directWebRef}
           className="WebsiteInput TaskInput"
           onChange={(e) => {
-            console.log("E", e);
             props.handleChangeDirectWebsite(e);
-          }}
-        >
+          }}>
           <option value="Indeed">Indeed</option>
           <option defaultValue="selected" value="LinkedIn">
             LinkedIn
@@ -108,7 +104,6 @@ const LeftPage = (props) => {
         <button
           className="btn btn-primary"
           onClick={() => {
-            console.log("CLICK", props.directWebsiteInput);
             props.directLinkRef.current.value = "";
 
             if (props.directWebsiteInput === "LinkedIn") {
@@ -120,8 +115,7 @@ const LeftPage = (props) => {
             } else if (props.directWebsiteInput === "Angelist") {
               props.retrieveHtmlAngelist();
             }
-          }}
-        >
+          }}>
           Add
         </button>
       </div>
