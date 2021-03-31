@@ -125,7 +125,6 @@ class GraphPage extends React.Component {
         lastRow = response.result.values.length;
         let index;
         let j = 0;
-        console.log("TARGET DATE", targetDate);
         while (!index && j < response.result.values.length) {
           if (
             response.result.values[j][3].split("/")[0] ===
@@ -232,13 +231,10 @@ class GraphPage extends React.Component {
             response.result.values[j][3].split("/")[0] ===
             targetDate.split("/")[0]
           ) {
-            console.log("INNER IF");
             if (
               parseInt(response.result.values[j][3].split("/")[1]) >=
               parseInt(targetDate.split("/")[1])
             ) {
-              console.log("OUTTERIF");
-
               index = j;
             }
           }
@@ -250,7 +246,6 @@ class GraphPage extends React.Component {
       })
       .then((response) => {
         let dataArray = response;
-        console.log("REPORT DATA", dataArray);
         this.setState({ ReportData: dataArray });
       })
       .catch((err) => {
@@ -280,7 +275,6 @@ class GraphPage extends React.Component {
 
   handleParamDateChange(event) {
     let changeValue = event.target.value;
-    console.log("CHANGEVALUE", changeValue);
     let newPromise = new Promise((resolve, reject) => {
       resolve();
     });
@@ -314,7 +308,6 @@ class GraphPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Mounted");
     this.retrieveData();
   }
 
@@ -331,8 +324,7 @@ class GraphPage extends React.Component {
         <select
           onChange={(e) => {
             this.handleParamCompanyChange(e);
-          }}
-        >
+          }}>
           <option value="All">All Companies</option>
           <option value="Indeed">Indeed</option>
           <option value="LinkedIn">LinkedIn</option>
@@ -357,8 +349,7 @@ class GraphPage extends React.Component {
           <select
             onChange={(e) => {
               this.handleOptionChange(e);
-            }}
-          >
+            }}>
             <option label="Applications Submitted" value="Line"></option>
             <option label="Application Conversion Rate" value="Bar"></option>
             <option label="Report" value="Report"></option>
@@ -368,8 +359,7 @@ class GraphPage extends React.Component {
           <select
             onChange={(e) => {
               this.handleParamDateChange(e);
-            }}
-          >
+            }}>
             <option label="Past Week" value="7"></option>
             <option label="Past 15 Days" value="15"></option>
             <option label="Past Month" value="30"></option>
