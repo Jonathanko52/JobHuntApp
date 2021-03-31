@@ -173,9 +173,7 @@ class App extends React.Component {
     this.setState((state) => {
       let newTasks = state.tasks.slice();
       let lastItem = newTasks.splice(index, 1);
-      console.log("PRETEST", newTasks);
       newTasks.push(lastItem[0]);
-      console.log("TEST", newTasks);
       return {
         tasks: newTasks,
         input: state.input,
@@ -231,7 +229,6 @@ class App extends React.Component {
         if (addToList) {
           this.setState((state) => {
             let newTasks = state.tasks.slice();
-
             newTasks.unshift({
               websiteInput: state.directWebsiteInput,
               companyInput: res.data[1],
@@ -263,7 +260,6 @@ class App extends React.Component {
   }
 
   retrieveHtmlIndeed() {
-    console.log("retrieveHtmlIndeed");
     let url = this.state.directLinkInput.split("?");
     url = url[url.length - 1];
     axios
@@ -302,9 +298,7 @@ class App extends React.Component {
     url = url[url.length - 1];
     axios
       .get("/RetrieveHtmlBuiltInLA/" + url)
-      .then((res, request) => {
-        console.log("BUILTINLA RESPONSE FRONTEND", res);
-      })
+      .then((res, request) => {})
       .then((res) => {
         this.saveToLocal();
       })
@@ -320,7 +314,6 @@ class App extends React.Component {
       .get("/RetrieveHtmlAngelist/" + url)
 
       .then((res, request) => {
-        console.log("ANGELIST RESPONSE FRONTEND", res);
         // this.setState(state => {
         //   let newTasks = state.tasks.slice();
         //   newTasks.push({
@@ -886,7 +879,6 @@ class App extends React.Component {
       })
       .then((response) => {
         let parsedResponse = JSON.parse(response.body);
-        console.log("response", parsedResponse.spreadsheetId);
         localStorage.setItem("SpreadSheetId", parsedResponse.spreadsheetId);
         this.setState({
           spreadSheetId: parsedResponse.spreadsheetId,
