@@ -127,8 +127,7 @@ class RightPage extends React.Component {
                         },
                       })
                       .then((response) => {
-                        //Removes item added to sheet form React App
-                        var result = response.result;
+                        //Removes item added to sheet from React App
                         this.increaseNumberAppliedToday();
                         this.props.removeFromList(ind);
                         alert("Submitted successfully to google sheets");
