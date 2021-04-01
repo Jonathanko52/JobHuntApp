@@ -115,8 +115,7 @@ class NavBar extends React.Component {
     return (
       <div
         className="NavBar col-xs-2"
-        style={{ backgroundColor: this.state.color }}
-      >
+        style={{ backgroundColor: this.state.color }}>
         <div className="clockContainer">
           <div className="counterContainer">
             <div className="counterNumbers" />
@@ -128,16 +127,14 @@ class NavBar extends React.Component {
                 className="btn btn-primary"
                 onClick={() => {
                   this.startTimer();
-                }}
-              >
+                }}>
                 Start
               </button>
               <button
                 className="btn btn-primary"
                 onClick={() => {
                   this.stopTimer();
-                }}
-              >
+                }}>
                 Stop
               </button>
               <button
@@ -145,8 +142,7 @@ class NavBar extends React.Component {
                 onClick={() => {
                   this.stopTimer();
                   this.clearTimer();
-                }}
-              >
+                }}>
                 Clear
               </button>
             </div>
@@ -225,7 +221,6 @@ class NavBar extends React.Component {
                         })
                         .then((response) => {
                           //Removes item added to sheet form React App
-                          console.log("savedtosheets", response.result);
                         })
                         .catch((err) => {
                           console.log("inner error", err.result.error.message);
@@ -238,8 +233,7 @@ class NavBar extends React.Component {
                   this.clearTimer();
                   this.stopTimer();
                   this.saveToLocal();
-                }}
-              >
+                }}>
                 Upload
               </button>
             </div>

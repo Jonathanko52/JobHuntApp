@@ -185,15 +185,4 @@ class RightPage extends React.Component {
   }
 }
 
-//Testing Proptypes Functionality
-
-// RightPage.propTypes ={
-//     websiteInput:PropTypes.array,
-//     // tasks:PropTypes.element.isRequired,
-// }
-
-// RightPage.defaultProps = {
-//     websiteInput:'TEST'
-// }
-
 export default RightPage;
