@@ -5,6 +5,7 @@ const cheerio = require("cheerio");
 
 module.exports = {
   retrieveHtmlLinkedIn: (req, res, next) => {
+    console.Console("TEST");
     req.body = axios
       .get("https://www.linkedin.com/jobs/view/" + req.params.link)
       .then(function (response) {
@@ -13,6 +14,7 @@ module.exports = {
         $("h3").each((i, elem) => {
           if (i === 0) {
             jobTitle = $(elem).text();
+            console.log(jobTitle);
           }
         });
         let company;

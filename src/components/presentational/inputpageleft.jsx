@@ -7,7 +7,11 @@ const LeftPage = (props) => {
     <div className="leftBar col-xs-6">
       <ManualSubmitForm></ManualSubmitForm>
       <h3 className="text-center"> OR </h3>
-      <AutoSubmitForm></AutoSubmitForm>
+      <AutoSubmitForm
+        directWebRef={props.directWebRef}
+        handleChangeDirectWebsite={props.handleChangeDirectWebsite}
+        directLinkRef={props.directLinkRef}
+        handleChangeDirectLink={props.handleChangeDirectLink}></AutoSubmitForm>
     </div>
   );
 };

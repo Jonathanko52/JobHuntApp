@@ -1,6 +1,7 @@
 import React from "react";
 
 const autoSubmitForm = (props) => {
+  console.log(props);
   return (
     <div>
       <p className="text-center mt-4">
