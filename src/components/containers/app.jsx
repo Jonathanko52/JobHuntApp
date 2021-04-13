@@ -98,9 +98,13 @@ class App extends React.Component {
     this.setState({ totalJobsFromSheets: value });
   }
   handleChangeDirectWebsite(event) {
+    console.log("handleChangeDirectWebsite", event.target.value);
+
     this.setState({ directWebsiteInput: event.target.value });
   }
   handleChangeDirectLink(event) {
+    console.log("handleChangeDirectLINK", event.target.value);
+
     this.setState({ directLinkInput: event.target.value });
   }
   handleSpreadsheetIdSubmit(event) {
@@ -212,6 +216,7 @@ class App extends React.Component {
   }
 
   retrieveHtmlLinkedin() {
+    console.log("TEST HTML LINKEDIN", state.directLinkInput);
     let url = this.state.directLinkInput.split("/");
     url = url[url.length - 2];
     axios

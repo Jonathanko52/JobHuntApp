@@ -11,7 +11,12 @@ const LeftPage = (props) => {
         directWebRef={props.directWebRef}
         handleChangeDirectWebsite={props.handleChangeDirectWebsite}
         directLinkRef={props.directLinkRef}
-        handleChangeDirectLink={props.handleChangeDirectLink}></AutoSubmitForm>
+        directWebsiteInput={props.directWebsiteInput}
+        handleChangeDirectLink={props.handleChangeDirectLink}
+        retrieveHtmlLinkedin={props.retrieveHtmlLinkedin}
+        retrieveHtmlIndeed={props.retrieveHtmlIndeed}
+        retrieveHtmlBuiltInLA={props.retrieveHtmlBuiltInLA}
+        retrieveHtmlAngelist={props.retrieveHtmlAngelist}></AutoSubmitForm>
     </div>
   );
 };

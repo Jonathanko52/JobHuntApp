@@ -38,8 +38,9 @@ const autoSubmitForm = (props) => {
           className="btn btn-primary"
           onClick={() => {
             props.directLinkRef.current.value = "";
-
+            console.log("CLICKING", props.directWebsiteInput);
             if (props.directWebsiteInput === "LinkedIn") {
+              console.log("LINKEDIN");
               props.retrieveHtmlLinkedin();
             } else if (props.directWebsiteInput === "Indeed") {
               props.retrieveHtmlIndeed();
