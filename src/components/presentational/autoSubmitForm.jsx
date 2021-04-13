@@ -1,7 +1,6 @@
 import React from "react";
 
 const autoSubmitForm = (props) => {
-  console.log(props);
   return (
     <div>
       <p className="text-center mt-4">
@@ -38,9 +37,7 @@ const autoSubmitForm = (props) => {
           className="btn btn-primary"
           onClick={() => {
             props.directLinkRef.current.value = "";
-            console.log("CLICKING", props.directWebsiteInput);
             if (props.directWebsiteInput === "LinkedIn") {
-              console.log("LINKEDIN");
               props.retrieveHtmlLinkedin();
             } else if (props.directWebsiteInput === "Indeed") {
               props.retrieveHtmlIndeed();

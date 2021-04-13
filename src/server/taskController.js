@@ -5,7 +5,7 @@ const cheerio = require("cheerio");
 
 module.exports = {
   retrieveHtmlLinkedIn: (req, res, next) => {
-    console.Console("TEST");
+    console.log("TEST");
     req.body = axios
       .get("https://www.linkedin.com/jobs/view/" + req.params.link)
       .then(function (response) {
