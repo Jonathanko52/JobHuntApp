@@ -181,6 +181,9 @@ class App extends React.Component {
     this.saveToLocal();
   }
 
+  saveToGoogleSheets() {}
+  loadFromGoogleSheets() {}
+
   saveToLocal() {
     setTimeout(() => {
       localStorage.setItem("Tasks", JSON.stringify(this.state.tasks));
