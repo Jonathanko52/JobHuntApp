@@ -184,7 +184,24 @@ class App extends React.Component {
   }
 
   saveToGoogleSheets() {
-    gapi.client.sheets.spreadsheets();
+    let emptyRow;
+    let spreadsheetId = this.props.spreadSheetId;
+    gapi.client.sheets.spreadsheets.values
+      .get({
+        spreadsheetId: spreadsheetId,
+        range: "Jobs!A1:A1000",
+      })
+      .then((response) => {
+        var result = response.result;
+        emptyRow = result.values.length + 1;
+        this.props.updateTotalJobsFromSheets(emptyRow);
+      })
+      .then((response) => {
+        console.log("EMPTY ROW", emptyRow);
+      })
+      .catch((err) => {
+        alert("Submission Failed Inner.");
+      });
   }
   loadFromGoogleSheets() {
     gapi.client.sheets.spreadsheets();
