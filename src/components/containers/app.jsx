@@ -54,12 +54,14 @@ class App extends React.Component {
     this.removeFromList = this.removeFromList.bind(this);
     this.clearList = this.clearList.bind(this);
     this.moveToBack = this.moveToBack.bind(this);
+    this.clearGoogleLocal = this.clearGoogleLocal.bind(this);
 
     //Save/load List to LocalStorage
     this.saveToLocal = this.saveToLocal.bind(this);
     this.loadFromLocal = this.loadFromLocal.bind(this);
     this.clearLocal = this.clearLocal.bind(this);
-
+    this.saveToGoogleSheets = this.saveToGoogleSheets.bind(this);
+    this.loadFromGoogleSheets = this.loadFromGoogleSheets.bind(this);
     //Http Request
     this.retrieveHtmlLinkedin = this.retrieveHtmlLinkedin.bind(this);
     this.retrieveHtmlIndeed = this.retrieveHtmlIndeed.bind(this);
@@ -181,8 +183,15 @@ class App extends React.Component {
     this.saveToLocal();
   }
 
-  saveToGoogleSheets() {}
-  loadFromGoogleSheets() {}
+  saveToGoogleSheets() {
+    gapi.client.sheets.spreadsheets();
+  }
+  loadFromGoogleSheets() {
+    gapi.client.sheets.spreadsheets();
+  }
+  clearGoogleLocal() {
+    gapi.client.sheets.spreadsheets();
+  }
 
   saveToLocal() {
     setTimeout(() => {
