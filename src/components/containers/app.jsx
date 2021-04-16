@@ -184,8 +184,10 @@ class App extends React.Component {
   }
 
   saveToGoogleSheets() {
+    console.log("SAVING TO GOOGLE SJHEETS");
     let emptyRow;
     let spreadsheetId = this.state.spreadSheetId;
+    console.log("GAPI", gapi);
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
@@ -194,9 +196,10 @@ class App extends React.Component {
       .then((response) => {
         var result = response.result;
         emptyRow = result.values.length + 1;
-        this.props.updateTotalJobsFromSheets(emptyRow);
+        console.log("EMPTY ROW", emptyRow);
       })
       .then((response) => {
+        console.log("PRE GOOGLE");
         gapi.client.sheets.spreadsheets.values
           .update({
             spreadsheetId: spreadsheetId,
@@ -209,7 +212,7 @@ class App extends React.Component {
                   "Company",
                   "Title",
                   `${new Date().getMonth() + 1}/${new Date().getDate()}`,
-                  cur.locationInput,
+                  "LocalIput",
                   "CoverInput",
                   "InterviewInput",
                   "LinkInput",
@@ -219,17 +222,16 @@ class App extends React.Component {
           })
           .then((response) => {
             //Removes item added to sheet from React App
-            this.increaseNumberAppliedToday();
-            this.props.removeFromList(ind);
             alert("Submitted successfully to google sheets");
           })
           .catch((err) => {
-            console.log(err);
-            alert("Submission Failed Inner.", err);
+            console.log("test", err);
           });
       })
       .catch((err) => {
-        alert("Submission Failed Inner.");
+        console.log("test", err);
+
+        // alert("Submission Failed Inner.");
       });
   }
   loadFromGoogleSheets() {
