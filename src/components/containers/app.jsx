@@ -185,7 +185,7 @@ class App extends React.Component {
 
   saveToGoogleSheets() {
     let emptyRow;
-    let spreadsheetId = this.props.spreadSheetId;
+    let spreadsheetId = this.state.spreadSheetId;
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
@@ -198,36 +198,36 @@ class App extends React.Component {
       })
       .then((response) => {
         gapi.client.sheets.spreadsheets.values
-        .update({
-          spreadsheetId: spreadsheetId,
-          range: `Unapplied!A${emptyRow}:J${emptyRow}`,
-          valueInputOption: "RAW",
-          resource: {
-            values: [
-              [
-                "Website"
-                "Company",
-                "Title",
-                `${
-                  new Date().getMonth() + 1
-                }/${new Date().getDate()}`,
-                cur.locationInput,
-                "CoverInput",
-                "InterviewInput",
-                "LinkInput",
+          .update({
+            spreadsheetId: spreadsheetId,
+            range: `Unapplied!A${emptyRow}:J${emptyRow}`,
+            valueInputOption: "RAW",
+            resource: {
+              values: [
+                [
+                  "Website",
+                  "Company",
+                  "Title",
+                  `${new Date().getMonth() + 1}/${new Date().getDate()}`,
+                  cur.locationInput,
+                  "CoverInput",
+                  "InterviewInput",
+                  "LinkInput",
+                ],
               ],
-            ],
-          },
-        })
-        .then((response) => {
-          //Removes item added to sheet from React App
-          this.increaseNumberAppliedToday();
-          this.props.removeFromList(ind);
-          alert("Submitted successfully to google sheets");
-        })
-        .catch((err) => {
-          alert("Submission Failed Inner.");
-        });      })
+            },
+          })
+          .then((response) => {
+            //Removes item added to sheet from React App
+            this.increaseNumberAppliedToday();
+            this.props.removeFromList(ind);
+            alert("Submitted successfully to google sheets");
+          })
+          .catch((err) => {
+            console.log(err);
+            alert("Submission Failed Inner.", err);
+          });
+      })
       .catch((err) => {
         alert("Submission Failed Inner.");
       });
@@ -1003,7 +1003,7 @@ class App extends React.Component {
                 render={(props) => {
                   return (
                     <InputPage
-                    saveToGoogleSheets={this.saveToGoogleSheets}
+                      saveToGoogleSheets={this.saveToGoogleSheets}
                       directWebRef={this.directWebRef}
                       directLinkRef={this.directLinkRef}
                       webRef={this.webRef}
