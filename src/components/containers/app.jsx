@@ -189,7 +189,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
-        range: "Jobs!A1:A1000",
+        range: "Unapplied!A1:A1000",
       })
       .then((response) => {
         var result = response.result;
@@ -197,8 +197,37 @@ class App extends React.Component {
         this.props.updateTotalJobsFromSheets(emptyRow);
       })
       .then((response) => {
-        console.log("EMPTY ROW", emptyRow);
-      })
+        gapi.client.sheets.spreadsheets.values
+        .update({
+          spreadsheetId: spreadsheetId,
+          range: `Unapplied!A${emptyRow}:J${emptyRow}`,
+          valueInputOption: "RAW",
+          resource: {
+            values: [
+              [
+                "Website"
+                "Company",
+                "Title",
+                `${
+                  new Date().getMonth() + 1
+                }/${new Date().getDate()}`,
+                cur.locationInput,
+                "CoverInput",
+                "InterviewInput",
+                "LinkInput",
+              ],
+            ],
+          },
+        })
+        .then((response) => {
+          //Removes item added to sheet from React App
+          this.increaseNumberAppliedToday();
+          this.props.removeFromList(ind);
+          alert("Submitted successfully to google sheets");
+        })
+        .catch((err) => {
+          alert("Submission Failed Inner.");
+        });      })
       .catch((err) => {
         alert("Submission Failed Inner.");
       });
@@ -974,6 +1003,7 @@ class App extends React.Component {
                 render={(props) => {
                   return (
                     <InputPage
+                    saveToGoogleSheets={this.saveToGoogleSheets}
                       directWebRef={this.directWebRef}
                       directLinkRef={this.directLinkRef}
                       webRef={this.webRef}

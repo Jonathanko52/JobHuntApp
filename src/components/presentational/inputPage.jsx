@@ -2,10 +2,11 @@ import React from "react";
 import RightPage from "./inputpageright.jsx";
 import LeftPage from "./inputpageleft.jsx";
 
-const InputPage = props => {
+const InputPage = (props) => {
   return (
     <div className="MainPage col-xs-10">
       <LeftPage
+        saveToGoogleSheets={props.saveToGoogleSheets}
         directWebRef={props.directWebRef}
         directLinkRef={props.directLinkRef}
         webRef={props.webRef}
