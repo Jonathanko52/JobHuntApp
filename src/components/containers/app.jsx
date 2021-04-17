@@ -235,7 +235,55 @@ class App extends React.Component {
       });
   }
   loadFromGoogleSheets() {
-    gapi.client.sheets.spreadsheets();
+    console.log("SAVING TO GOOGLE SJHEETS");
+    let emptyRow;
+    let spreadsheetId = this.state.spreadSheetId;
+    console.log("GAPI", gapi);
+    gapi.client.sheets.spreadsheets.values
+      .get({
+        spreadsheetId: spreadsheetId,
+        range: "Unapplied!A1:A1000",
+      })
+      .then((response) => {
+        var result = response.result;
+        emptyRow = result.values.length + 1;
+        console.log("EMPTY ROW", emptyRow);
+      })
+      .then((response) => {
+        console.log("PRE GOOGLE");
+        gapi.client.sheets.spreadsheets.values
+          .update({
+            spreadsheetId: spreadsheetId,
+            range: `Unapplied!A${emptyRow}:J${emptyRow}`,
+            valueInputOption: "RAW",
+            resource: {
+              values: [
+                [
+                  "Website",
+                  "Company",
+                  "Title",
+                  `${new Date().getMonth() + 1}/${new Date().getDate()}`,
+                  "LocalIput",
+                  "CoverInput",
+                  "InterviewInput",
+                  "LinkInput",
+                ],
+              ],
+            },
+          })
+          .then((response) => {
+            //Removes item added to sheet from React App
+            alert("Submitted successfully to google sheets");
+          })
+          .catch((err) => {
+            console.log("test", err);
+          });
+      })
+      .catch((err) => {
+        console.log("test", err);
+
+        // alert("Submission Failed Inner.");
+      });
   }
   clearGoogleLocal() {
     gapi.client.sheets.spreadsheets();
