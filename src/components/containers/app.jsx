@@ -186,6 +186,8 @@ class App extends React.Component {
   saveToGoogleSheets() {
     console.log("SAVING TO GOOGLE SJHEETS");
     let emptyRow;
+    let tasksToBeAddedToSheet = [];
+    let numberOfTasksToBeAdded;
     let spreadsheetId = this.state.spreadSheetId;
     console.log("GAPI", gapi);
     gapi.client.sheets.spreadsheets.values
@@ -199,25 +201,31 @@ class App extends React.Component {
         console.log("EMPTY ROW", emptyRow);
       })
       .then((response) => {
+        this.state.tasks.forEach((cur) => {
+          tasksToBeAddedToSheet.push([
+            cur.websiteInput,
+            cur.companyInput,
+            cur.titleInput,
+            `${new Date().getMonth() + 1}/${new Date().getDate()}`,
+            cur.locationInput,
+            this.state.coverInput,
+            this.state.interviewInput,
+            cur.linkInput,
+          ]);
+        });
+        numberOfTasksToBeAdded = this.state.tasks.length;
+      })
+      .then((response) => {
         console.log("PRE GOOGLE");
         gapi.client.sheets.spreadsheets.values
           .update({
             spreadsheetId: spreadsheetId,
-            range: `Unapplied!A${emptyRow}:J${emptyRow}`,
+            range: `Unapplied!A${emptyRow}:J${
+              emptyRow + numberOfTasksToBeAdded - 1
+            }`,
             valueInputOption: "RAW",
             resource: {
-              values: [
-                [
-                  "Website",
-                  "Company",
-                  "Title",
-                  `${new Date().getMonth() + 1}/${new Date().getDate()}`,
-                  "LocalIput",
-                  "CoverInput",
-                  "InterviewInput",
-                  "LinkInput",
-                ],
-              ],
+              values: tasksToBeAddedToSheet,
             },
           })
           .then((response) => {
