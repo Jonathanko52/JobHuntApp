@@ -54,6 +54,7 @@ const autoSubmitForm = (props) => {
           onClick={() => {
             console.log("THIS BUTTON HAS BEEN CLICKED");
             props.saveToGoogleSheets();
+            props.clearGoogleLocal();
           }}>
           TEST
         </button>

@@ -7,6 +7,7 @@ const InputPage = (props) => {
     <div className="MainPage col-xs-10">
       <LeftPage
         saveToGoogleSheets={props.saveToGoogleSheets}
+        clearGoogleLocal={props.clearGoogleLocal}
         directWebRef={props.directWebRef}
         directLinkRef={props.directLinkRef}
         webRef={props.webRef}

@@ -9,6 +9,7 @@ const LeftPage = (props) => {
       <h3 className="text-center"> OR </h3>
       <AutoSubmitForm
         saveToGoogleSheets={props.saveToGoogleSheets}
+        clearGoogleLocal={props.clearGoogleLocal}
         directWebRef={props.directWebRef}
         handleChangeDirectWebsite={props.handleChangeDirectWebsite}
         directLinkRef={props.directLinkRef}

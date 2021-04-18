@@ -235,7 +235,7 @@ class App extends React.Component {
       });
   }
   loadFromGoogleSheets() {
-    console.log("SAVING TO GOOGLE SJHEETS");
+    console.log("LOADING TO GOOGLE SJHEETS");
     let emptyRow;
     let spreadsheetId = this.state.spreadSheetId;
     console.log("GAPI", gapi);
@@ -247,10 +247,8 @@ class App extends React.Component {
       .then((response) => {
         var result = response.result;
         emptyRow = result.values.length + 1;
-        console.log("EMPTY ROW", emptyRow);
       })
       .then((response) => {
-        console.log("PRE GOOGLE");
         gapi.client.sheets.spreadsheets.values
           .update({
             spreadsheetId: spreadsheetId,
@@ -286,7 +284,8 @@ class App extends React.Component {
       });
   }
   clearGoogleLocal() {
-    gapi.client.sheets.spreadsheets();
+    // gapi.client.sheets.spreadsheets();
+    console.log("TASKS", this.state.tasks);
   }
 
   saveToLocal() {
@@ -1054,6 +1053,7 @@ class App extends React.Component {
                   return (
                     <InputPage
                       saveToGoogleSheets={this.saveToGoogleSheets}
+                      clearGoogleLocal={this.clearGoogleLocal}
                       directWebRef={this.directWebRef}
                       directLinkRef={this.directLinkRef}
                       webRef={this.webRef}
