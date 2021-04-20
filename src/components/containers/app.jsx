@@ -191,15 +191,15 @@ class App extends React.Component {
     let spreadsheetId = this.state.spreadSheetId;
     console.log("GAPI", gapi);
     gapi.client.sheets.spreadsheets.values
-      .get({
-        spreadsheetId: spreadsheetId,
-        range: "Unapplied!A1:A1000",
-      })
-      .then((response) => {
-        var result = response.result;
-        emptyRow = result.values.length + 1;
-        console.log("EMPTY ROW", emptyRow);
-      })
+      // .get({
+      //   spreadsheetId: spreadsheetId,
+      //   range: "Unapplied!A1:A1000",
+      // })
+      // .then((response) => {
+      //   var result = response.result;
+      //   emptyRow = result.values.length + 1;
+      //   console.log("EMPTY ROW", emptyRow);
+      // })
       .then((response) => {
         this.state.tasks.forEach((cur) => {
           tasksToBeAddedToSheet.push([
@@ -220,9 +220,7 @@ class App extends React.Component {
         gapi.client.sheets.spreadsheets.values
           .update({
             spreadsheetId: spreadsheetId,
-            range: `Unapplied!A${emptyRow}:J${
-              emptyRow + numberOfTasksToBeAdded - 1
-            }`,
+            range: `Unapplied!A${1}:J${1 + numberOfTasksToBeAdded - 1}`,
             valueInputOption: "RAW",
             resource: {
               values: tasksToBeAddedToSheet,
