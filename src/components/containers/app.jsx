@@ -220,7 +220,7 @@ class App extends React.Component {
         gapi.client.sheets.spreadsheets.values
           .update({
             spreadsheetId: spreadsheetId,
-            range: `Unapplied!A${1}:J${1 + numberOfTasksToBeAdded - 1}`,
+            range: `Unapplied!A${2}:J${2 + numberOfTasksToBeAdded - 1}`,
             valueInputOption: "RAW",
             resource: {
               values: tasksToBeAddedToSheet,
@@ -244,44 +244,50 @@ class App extends React.Component {
     console.log("LOADING TO GOOGLE SJHEETS");
     let emptyRow;
     let spreadsheetId = this.state.spreadSheetId;
-    console.log("GAPI", gapi);
+    let tasksToBeAdded = [];
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
-        range: "Unapplied!A1:A1000",
+        range: "Unapplied!A2:J30",
       })
       .then((response) => {
         var result = response.result;
-        emptyRow = result.values.length + 1;
+        result.forEach((cur) => {
+          tasksToBeAdded.push({
+            websiteInput: cur[0],
+            companyInput: cur[1],
+            titleInput: cur[2],
+            recruiterInput: cur[7],
+            locationInput: cur[4],
+            coverInput: cur[6],
+            linkInput: cur[8],
+          });
+        });
+        console.log("RESULT", result.values);
       })
       .then((response) => {
-        gapi.client.sheets.spreadsheets.values
-          .update({
-            spreadsheetId: spreadsheetId,
-            range: `Unapplied!A${emptyRow}:J${emptyRow}`,
-            valueInputOption: "RAW",
-            resource: {
-              values: [
-                [
-                  "Website",
-                  "Company",
-                  "Title",
-                  `${new Date().getMonth() + 1}/${new Date().getDate()}`,
-                  "LocalIput",
-                  "CoverInput",
-                  "InterviewInput",
-                  "LinkInput",
-                ],
-              ],
-            },
-          })
-          .then((response) => {
-            //Removes item added to sheet from React App
-            alert("Submitted successfully to google sheets");
-          })
-          .catch((err) => {
-            console.log("test", err);
+        this.setState((state) => {
+          let newTasks = state.tasks.slice();
+          tasksToBeAdded.forEach((cur) => {
+            newTasks.unshift({
+              websiteInput: cur.websiteInput,
+              companyInput: cur.companyInput,
+              titleInput: cur.titleInput,
+              recruiterInput: cur.recruiterInput,
+              locationInput: cur.locationInput,
+              coverInput: cur.coverInput,
+              linkInput: cur.linkInput,
+            });
           });
+          return {
+            tasks: newTasks,
+            websiteInput: "LinkedIn",
+            companyInput: "",
+            titleInput: "",
+            locationInput: "",
+            linkInput: "",
+          };
+        });
       })
       .catch((err) => {
         console.log("test", err);
@@ -1059,6 +1065,7 @@ class App extends React.Component {
                   return (
                     <InputPage
                       saveToGoogleSheets={this.saveToGoogleSheets}
+                      loadFromGoogleSheets={this.loadFromGoogleSheets}
                       clearGoogleLocal={this.clearGoogleLocal}
                       directWebRef={this.directWebRef}
                       directLinkRef={this.directLinkRef}
