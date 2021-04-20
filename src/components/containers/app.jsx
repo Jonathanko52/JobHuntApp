@@ -191,10 +191,10 @@ class App extends React.Component {
     let spreadsheetId = this.state.spreadSheetId;
     console.log("GAPI", gapi);
     gapi.client.sheets.spreadsheets.values
-      // .get({
-      //   spreadsheetId: spreadsheetId,
-      //   range: "Unapplied!A1:A1000",
-      // })
+      .get({
+        spreadsheetId: spreadsheetId,
+        range: "Unapplied!A1:A1000",
+      })
       // .then((response) => {
       //   var result = response.result;
       //   emptyRow = result.values.length + 1;
