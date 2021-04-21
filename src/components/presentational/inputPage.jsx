@@ -38,6 +38,8 @@ const InputPage = (props) => {
         totalJobs={props.totalJobs}
       />
       <RightPage
+        saveToGoogleSheets={props.saveToGoogleSheets}
+        loadFromGoogleSheets={props.loadFromGoogleSheets}
         tasks={props.tasks}
         removeFromList={props.removeFromList}
         moveToBack={props.moveToBack}

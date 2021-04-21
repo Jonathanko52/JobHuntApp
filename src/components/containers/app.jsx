@@ -263,7 +263,6 @@ class App extends React.Component {
             linkInput: cur[8],
           });
         });
-        console.log("RESULT", result.values);
       })
       .then((response) => {
         this.setState((state) => {
