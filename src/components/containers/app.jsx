@@ -184,7 +184,6 @@ class App extends React.Component {
   }
 
   saveToGoogleSheets() {
-    console.log("SAVING TO GOOGLE SJHEETS");
     let emptyRow;
     let tasksToBeAddedToSheet = [];
     let numberOfTasksToBeAdded;
@@ -241,7 +240,6 @@ class App extends React.Component {
       });
   }
   loadFromGoogleSheets() {
-    console.log("LOADING TO GOOGLE SJHEETS");
     let emptyRow;
     let spreadsheetId = this.state.spreadSheetId;
     let tasksToBeAdded = [];
@@ -296,7 +294,6 @@ class App extends React.Component {
   }
   clearGoogleLocal() {
     // gapi.client.sheets.spreadsheets();
-    console.log("TASKS", this.state.tasks);
   }
 
   saveToLocal() {
@@ -329,7 +326,6 @@ class App extends React.Component {
   }
 
   retrieveHtmlLinkedin() {
-    console.log("TEST HTML LINKEDIN", this.state.directLinkInput);
     let url = this.state.directLinkInput.split("/");
     url = url[url.length - 2];
     axios

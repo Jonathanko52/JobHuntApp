@@ -177,6 +177,30 @@ class RightPage extends React.Component {
             }}>
             Clear List
           </button>
+          <button
+            onClick={() => {
+              let addToList = false;
+              addToList = window.confirm(
+                "Are you sure you want to load from sheets"
+              );
+              if (addToList) {
+                this.props.saveToGoogleSheets();
+              }
+            }}>
+            Save To Google
+          </button>
+          <button
+            onClick={() => {
+              let addToList = false;
+              addToList = window.confirm(
+                "Are you sure you want to load from sheets"
+              );
+              if (addToList) {
+                this.props.loadFromGoogleSheets;
+              }
+            }}>
+            Load From Google
+          </button>
         </div>
         <div className="row"></div>
         <ol className="TaskTable">{Array}</ol>
