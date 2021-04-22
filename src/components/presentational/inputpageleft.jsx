@@ -5,7 +5,23 @@ const LeftPage = (props) => {
   //Input boxes that take in input regarding relevant information to a job application.
   return (
     <div className="leftBar col-xs-6">
-      <ManualSubmitForm></ManualSubmitForm>
+      <ManualSubmitForm
+        webRef={props.webRef}
+        handleChangeWebsite={props.handleChangeWebsite}
+        compRef={props.compRef}
+        handleChangeCompany={props.handleChangeCompany}
+        titleRef={props.titleRef}
+        handleChangeTitle={props.handleChangeTitle}
+        locRef={props.locRef}
+        handleChangeLocation={props.handleChangeLocation}
+        linkRef={props.linkRef}
+        handleChangeLink={props.handleChangeLink}
+        addToList={props.addToList}
+        webRef={props.webRef}
+        compRef={props.compRef}
+        titleRef={props.titleRef}
+        locRef={props.locRef}
+        linkRef={props.linkRef}></ManualSubmitForm>
       <h3 className="text-center"> OR </h3>
       <AutoSubmitForm
         saveToGoogleSheets={props.saveToGoogleSheets}
