@@ -57,7 +57,7 @@ const TaskItem = (props) => (
           .then((response) => {
             var result = response.result;
             emptyRow = result.values.length + 1;
-            this.props.updateTotalJobsFromSheets(emptyRow);
+            props.updateTotalJobsFromSheets(emptyRow);
           })
           .then(() => {
             //second google api call (technically within first) that posts data to sheet
@@ -69,22 +69,22 @@ const TaskItem = (props) => (
                 resource: {
                   values: [
                     [
-                      cur.websiteInput,
-                      cur.companyInput,
-                      cur.titleInput,
+                      props.websiteInput,
+                      props.companyInput,
+                      props.titleInput,
                       `${new Date().getMonth() + 1}/${new Date().getDate()}`,
-                      cur.locationInput,
-                      this.state.coverInput,
-                      this.state.interviewInput,
-                      cur.linkInput,
+                      props.locationInput,
+                      props.coverInput,
+                      props.interviewInput,
+                      props.linkInput,
                     ],
                   ],
                 },
               })
               .then((response) => {
                 //Removes item added to sheet from React App
-                this.increaseNumberAppliedToday();
-                this.props.removeFromList(ind);
+                props.increaseNumberAppliedToday();
+                props.removeFromList(ind);
                 alert("Submitted successfully to google sheets");
               })
               .catch((err) => {
@@ -101,7 +101,7 @@ const TaskItem = (props) => (
       className="btn btn-primary"
       onClick={() => {
         //Removes Item form React App
-        this.props.removeFromList(ind);
+        props.removeFromList(props.index);
       }}>
       Cancel
     </button>
@@ -109,7 +109,7 @@ const TaskItem = (props) => (
       className="btn btn-primary"
       onClick={() => {
         //Moves to end of list
-        this.props.moveToBack(ind);
+        props.moveToBack(props.index);
       }}>
       Postpone
     </button>
