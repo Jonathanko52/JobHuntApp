@@ -1,7 +1,7 @@
 import React from "react";
 
 const TaskItem = (props) => (
-  <li key={ind}>
+  <li>
     <b>Source Website: </b> {props.websiteInput}
     <br />
     <b>Company Name: </b>

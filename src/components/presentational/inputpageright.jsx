@@ -1,5 +1,5 @@
 import React from "react";
-import taskItem from "./taskItem.jsx";
+import TaskItem from "./taskItem.jsx";
 
 class RightPage extends React.Component {
   constructor(props) {
@@ -45,9 +45,8 @@ class RightPage extends React.Component {
     this.props.tasks.forEach((cur, ind) => {
       if (cur) {
         Array.push(
-          <taskItem
+          <TaskItem
             key={ind}
-            websiteInput={cur.websiteInput}
             companyLinkInput={cur.companyLinkInput}
             companyInput={cur.companyInput}
             titleInput={cur.titleInput}
@@ -55,9 +54,7 @@ class RightPage extends React.Component {
             handleChangeCover={this.handleChangeCover}
             linkInput={cur.linkInput}
             spreadSheetId={this.props.spreadSheetId}
-            updateTotalJobsFromSheets={this.props.updateTotalJobsFromSheets(
-              emptyRow
-            )}
+            updateTotalJobsFromSheets={this.props.updateTotalJobsFromSheets}
             websiteInput={cur.websiteInput}
             companyInput={cur.companyInput}
             titleInput={cur.titleInput}
@@ -66,7 +63,7 @@ class RightPage extends React.Component {
             increaseNumberAppliedToday={this.increaseNumberAppliedToday}
             removeFromList={this.props.removeFromList}
             moveToBack={this.props.moveToBack}
-            index={ind}></taskItem>
+            index={ind}></TaskItem>
         );
       }
     });
