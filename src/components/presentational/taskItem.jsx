@@ -9,9 +9,9 @@ const TaskItem = (props) => (
       {props.companyInput}
     </a>
     <br />
-    <b>Job Title: </b> {cur.titleInput}
+    <b>Job Title: </b> {props.titleInput}
     <br />
-    <b>Location Input: </b> {cur.locationInput}
+    <b>Location Input: </b> {props.locationInput}
     <br />
     <b>Cover Letter:</b>
     <form>
@@ -21,7 +21,7 @@ const TaskItem = (props) => (
         name="CoverLetter"
         className="CoverInput RadioInput"
         onChange={(e) => {
-          this.handleChangeCover(e);
+          props.handleChangeCover(e);
         }}
         value="Yes"
       />
@@ -31,15 +31,15 @@ const TaskItem = (props) => (
         name="CoverLetter"
         className="CoverInput RadioInput"
         onChange={(e) => {
-          this.handleChangeCover(e);
+          props.handleChangeCover(e);
         }}
         value="No"
       />
       No
     </form>
     <b href>Link:</b>
-    <a href={cur.linkInput} target="_blank">
-      {cur.linkInput}
+    <a href={props.linkInput} target="_blank">
+      {props.linkInput}
     </a>
     <br />
     <button
@@ -47,7 +47,7 @@ const TaskItem = (props) => (
       onClick={() => {
         //variable that indicates first empty row in sheet
         let emptyRow;
-        let spreadsheetId = this.props.spreadSheetId;
+        let spreadsheetId = props.spreadSheetId;
         //first google api call that finds first empty row (well, first with empty cell in column A)
         gapi.client.sheets.spreadsheets.values
           .get({
