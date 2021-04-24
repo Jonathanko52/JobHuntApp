@@ -1,12 +1,12 @@
 import React from "react";
 
-const TaskItem = () => (
+const TaskItem = (props) => (
   <li key={ind}>
-    <b>Source Website: </b> {cur.websiteInput}
+    <b>Source Website: </b> {props.websiteInput}
     <br />
     <b>Company Name: </b>
-    <a href={cur.companyLinkInput} target="_blank">
-      {cur.companyInput}
+    <a href={props.companyLinkInput} target="_blank">
+      {props.companyInput}
     </a>
     <br />
     <b>Job Title: </b> {cur.titleInput}
