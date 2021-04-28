@@ -235,8 +235,6 @@ class App extends React.Component {
       })
       .catch((err) => {
         console.log("test", err);
-
-        // alert("Submission Failed Inner.");
       });
   }
   loadFromGoogleSheets() {
