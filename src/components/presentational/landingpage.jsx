@@ -16,16 +16,13 @@ const LandingPage = (props) => {
             onClick={() => {
               props.signInChange();
               props.googleAuth();
-            }}
-          >
+            }}>
             Sign In
           </button>
         </div>
       </div>
     );
   } else {
-    // props.setSpreadsheetId(localStorage.getItem("SpreadSheetId"));
-
     return (
       <div className="LandingPage col-xs-10 d-flex justify-content-center pt-5">
         <div className="container">
@@ -42,8 +39,7 @@ const LandingPage = (props) => {
                 className="btn btn-primary"
                 onClick={() => {
                   props.createSheet();
-                }}
-              >
+                }}>
                 Create Sheet
               </button>
               <p className="mt-3">
@@ -55,8 +51,7 @@ const LandingPage = (props) => {
                 <br></br>
                 <a
                   href={`https://docs.google.com/spreadsheets/d/${props.spreadSheetId}/edit#gid=2094364220`}
-                  target="_blank"
-                >
+                  target="_blank">
                   https://docs.google.com/spreadsheets/d/{props.spreadSheetId}
                   /edit#gid=2094364220
                 </a>
@@ -72,16 +67,14 @@ const LandingPage = (props) => {
               <input
                 onChange={(e) => {
                   props.handleSpreadsheetIdSubmit(e);
-                }}
-              ></input>
+                }}></input>
               <button
                 className="btn btn-primary"
                 onClick={() => {
                   let tempSpreadsheetID = localStorage.getItem("SpreadSheetId");
                   tempSpreadsheetID = tempSpreadsheetID.replace(/['"]+/g, "");
                   props.setSpreadsheetId(tempSpreadsheetID);
-                }}
-              >
+                }}>
                 Retrieve ID
               </button>
               <button
@@ -92,8 +85,7 @@ const LandingPage = (props) => {
                     "SpreadSheetId",
                     JSON.stringify(props.tempSpreadsheetID)
                   );
-                }}
-              >
+                }}>
                 Submit ID
               </button>
             </div>

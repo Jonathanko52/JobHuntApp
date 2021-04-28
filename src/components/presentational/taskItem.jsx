@@ -17,7 +17,6 @@ const TaskItem = (props) => (
     <form>
       <input
         type="radio"
-        //Radio Button to save cover letter info
         name="CoverLetter"
         className="CoverInput RadioInput"
         onChange={(e) => {
@@ -88,11 +87,11 @@ const TaskItem = (props) => (
                 alert("Submitted successfully to google sheets");
               })
               .catch((err) => {
-                alert("Submission Failed Inner.");
+                alert("Submission Failed Inner in task Item.");
               });
           })
           .catch((err) => {
-            alert("Submission Failed Outter.");
+            alert("Submission Failed Outter in task Item.");
           });
       }}>
       Submit
