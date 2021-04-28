@@ -87,12 +87,12 @@ const TaskItem = (props) => (
                 alert("Submitted successfully to google sheets");
               })
               .catch((err) => {
-                console.log(err)
-                alert("Submission Failed Inner in task Item.";
+                console.log(err);
+                alert("Submission Failed Inner in task Item.");
               });
           })
           .catch((err) => {
-            console.log(err)
+            console.log(err);
 
             alert("Submission Failed Outter in task Item.");
           });
