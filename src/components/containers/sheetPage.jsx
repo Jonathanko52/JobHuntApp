@@ -1,6 +1,6 @@
 import React from "react";
 
-const LineGraph = (props) => {
+const SheetPage = (props) => {
   return <div></div>;
 };
 

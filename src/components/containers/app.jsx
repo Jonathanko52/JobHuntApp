@@ -6,6 +6,7 @@ import TitleBar from "../presentational/titlebar.jsx";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "../presentational/landingpage.jsx";
 import GraphPage from "./graphPage.jsx";
+import SheetPage from "./sheetPage.jsx";
 var GoogleAuth;
 
 import axios from "axios";
@@ -1105,6 +1106,13 @@ class App extends React.Component {
                 exact
                 render={(props) => {
                   return <GraphPage spreadSheetId={this.state.spreadSheetId} />;
+                }}
+              />
+              <Route
+                path="/SheetPage"
+                exact
+                render={(props) => {
+                  return <SheetPage />;
                 }}
               />
             </div>
