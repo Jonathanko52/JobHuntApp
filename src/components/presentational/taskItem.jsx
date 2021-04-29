@@ -83,7 +83,7 @@ const TaskItem = (props) => (
               .then((response) => {
                 //Removes item added to sheet from React App
                 props.increaseNumberAppliedToday();
-                props.removeFromList(ind);
+                props.removeFromList(props.index);
                 alert("Submitted successfully to google sheets");
               })
               .catch((err) => {
