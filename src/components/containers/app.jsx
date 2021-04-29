@@ -112,6 +112,7 @@ class App extends React.Component {
   //Adds item to task list
   addToList() {
     let wantToAddAnyway = true;
+    let matchFound = false;
     this.state.tasks.forEach((cur) => {
       if (
         cur.companyInput === this.state.companyInput &&
@@ -331,12 +332,16 @@ class App extends React.Component {
       .get("/RetrieveHtmlLinkedIn/" + url)
       .then((res, req) => {
         let addToList = true;
+        let matchFound = false;
         this.state.tasks.forEach((cur) => {
-          if (cur.companyInput === res.data[1]) {
-            addToList = false;
-            addToList = window.confirm(
-              "This company is already on the list. Are you sure you want to add it?"
-            );
+          if (!matchFound) {
+            if (cur.companyInput === res.data[1]) {
+              addToList = false;
+              addToList = window.confirm(
+                "This company is already on the list. Are you sure you want to add it?"
+              );
+              matchFound = true;
+            }
           }
         });
         if (addToList) {
