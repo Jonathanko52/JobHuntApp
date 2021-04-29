@@ -4,4 +4,4 @@ const SheetPage = (props) => {
   return <div></div>;
 };
 
-export default LineGraph;
+export default SheetPage;
