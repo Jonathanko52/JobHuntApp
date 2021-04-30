@@ -3,10 +3,10 @@ import React from "react";
 const SheetPage = (props) => {
   return (
     <div>
-      <div className="LandingPage col-xs-10 d-flex justify-content-center pt-5">
+      <div className="col-xs-10 d-flex justify-content-center pt-5">
         <div className="container">
           <div className="row">
-            <div className="text-center col-xs-5 LandingPageLeftCol ">
+            <div className="text-center col-xs-5">
               <p>
                 Thank you, you are now connected with your google account. If
                 this is your first time, click on the Create Sheet button below
@@ -28,43 +28,20 @@ const SheetPage = (props) => {
               <p className="mt-3">
                 Check out your spreadsheet yourself at:
                 <br></br>
-                <a
-                  href={`https://docs.google.com/spreadsheets/d/${props.spreadSheetId}/edit#gid=2094364220`}
-                  target="_blank">
-                  https://docs.google.com/spreadsheets/d/{props.spreadSheetId}
-                  /edit#gid=2094364220
-                </a>
               </p>
             </div>
             <div className="col-xs-1"></div>
-            <div className="text-center col-xs-5 LandingPageRightCol ">
+            <div className="text-center col-xs-5">
               <p>
                 If you're a return user, your spreadsheet address should be
                 saved to your browser. Otherwise, enter the ID of your
                 spreadsheet below to re-connect the App.
               </p>
-              <input
-                onChange={(e) => {
-                  props.handleSpreadsheetIdSubmit(e);
-                }}></input>
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  let tempSpreadsheetID = localStorage.getItem("SpreadSheetId");
-                  tempSpreadsheetID = tempSpreadsheetID.replace(/['"]+/g, "");
-                  props.setSpreadsheetId(tempSpreadsheetID);
-                }}>
+              <input onChange={(e) => {}}></input>
+              <button className="btn btn-primary" onClick={() => {}}>
                 Retrieve ID
               </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => {
-                  props.setSpreadsheetIdFromTemp();
-                  localStorage.setItem(
-                    "SpreadSheetId",
-                    JSON.stringify(props.tempSpreadsheetID)
-                  );
-                }}>
+              <button className="btn btn-primary" onClick={() => {}}>
                 Submit ID
               </button>
             </div>
