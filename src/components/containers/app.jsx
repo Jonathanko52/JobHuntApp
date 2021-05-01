@@ -1029,8 +1029,12 @@ class App extends React.Component {
     });
   }
 
-  getAllOfSheet() {}
-  updateColumnOfSheet() {}
+  getAllOfSheet() {
+    alert("get all of sheet");
+  }
+  updateColumnOfSheet() {
+    alert("update column of sheet");
+  }
 
   componentDidMount() {
     this.loadFromLocal();

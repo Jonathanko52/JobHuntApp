@@ -20,7 +20,7 @@ const SheetPage = (props) => {
                 onClick={() => {
                   props.updateColumnOfSheet();
                 }}>
-                getAllOfSheet
+                update column of sheet
               </button>
               <p className="mt-3">
                 Your Spreadsheet Id is:<br></br>
