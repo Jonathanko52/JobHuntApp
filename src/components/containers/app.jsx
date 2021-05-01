@@ -76,6 +76,8 @@ class App extends React.Component {
     this.createSheet = this.createSheet.bind(this);
     this.setSpreadsheetId = this.setSpreadsheetId.bind(this);
     this.setSpreadsheetIdFromTemp = this.setSpreadsheetIdFromTemp.bind(this);
+    this.getAllOfSheet = this.getAllOfSheet.bind(this);
+    this.updateColumnOfSheet = this.updateColumnOfSheet.bind(this);
 
     //Data Stuff
   }
@@ -1027,6 +1029,9 @@ class App extends React.Component {
     });
   }
 
+  getAllOfSheet() {}
+  updateColumnOfSheet() {}
+
   componentDidMount() {
     this.loadFromLocal();
   }
@@ -1117,7 +1122,12 @@ class App extends React.Component {
                 path="/SheetPage"
                 exact
                 render={(props) => {
-                  return <SheetPage />;
+                  return (
+                    <SheetPage
+                      getAllOfSheet={this.getAllOfSheet}
+                      updateColumnOfSheet={this.updateColumnOfSheet}
+                    />
+                  );
                 }}
               />
             </div>
