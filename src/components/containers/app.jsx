@@ -192,7 +192,6 @@ class App extends React.Component {
     let tasksToBeAddedToSheet = [];
     let numberOfTasksToBeAdded;
     let spreadsheetId = this.state.spreadSheetId;
-    console.log("GAPI", gapi);
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
@@ -1029,8 +1028,20 @@ class App extends React.Component {
     });
   }
 
-  getAllOfSheet() {
+  getAllOfSheet(argument) {
+    let spreadSheetId = argument;
     alert("get all of sheet");
+    gapi.client.sheets.spreadsheets.values
+      .get({
+        spreadsheetId: spreadSheetId,
+        range: "Unapplied!A1:J1000",
+      })
+      .then((response) => {
+        console.log("RESPONSE", response);
+      })
+      .catch((err) => {
+        console.log("test", err);
+      });
   }
   updateColumnOfSheet() {
     alert("update column of sheet");
@@ -1128,6 +1139,7 @@ class App extends React.Component {
                 render={(props) => {
                   return (
                     <SheetPage
+                      spreadSheetId={this.state.spreadSheetId}
                       getAllOfSheet={this.getAllOfSheet}
                       updateColumnOfSheet={this.updateColumnOfSheet}
                     />
