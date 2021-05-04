@@ -1,6 +1,6 @@
 import React from "react";
 
-const SheetPage = (props) => {
+const SheetRow = (props) => {
   return (
     <div>
       <div className="col-xs-10 d-flex justify-content-center pt-5">
@@ -40,4 +40,4 @@ const SheetPage = (props) => {
   );
 };
 
-export default SheetPage;
+export default SheetRow;

@@ -38,6 +38,7 @@ class App extends React.Component {
       SignedInOnGoogle: false,
       SheetCreationSuccessful: false,
       tempSpreadsheetID: "",
+      fullSheetData: [],
     };
     //Event Listener Function Bindings
     this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
@@ -1028,8 +1029,7 @@ class App extends React.Component {
     });
   }
 
-  getAllOfSheet(argument) {
-    let spreadSheetId = argument;
+  getAllOfSheet(spreadSheetId) {
     alert("get all of sheet");
     gapi.client.sheets.spreadsheets.values
       .get({
@@ -1037,7 +1037,12 @@ class App extends React.Component {
         range: "Unapplied!A1:J1000",
       })
       .then((response) => {
-        console.log("RESPONSE", response);
+        let result = response.result.value;
+        this.setState((state) => {
+          return {
+            fullSheetData: result,
+          };
+        });
       })
       .catch((err) => {
         console.log("test", err);
@@ -1142,6 +1147,7 @@ class App extends React.Component {
                       spreadSheetId={this.state.spreadSheetId}
                       getAllOfSheet={this.getAllOfSheet}
                       updateColumnOfSheet={this.updateColumnOfSheet}
+                      fullSheetData={this.state.fullSheetData}
                     />
                   );
                 }}
