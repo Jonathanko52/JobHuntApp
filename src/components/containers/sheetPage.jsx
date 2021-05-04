@@ -1,6 +1,10 @@
 import React from "react";
 
 const SheetPage = (props) => {
+  let sheetcontents = (){
+    
+  }
+
   return (
     <div>
       <div className="col-xs-10 d-flex justify-content-center pt-5">
