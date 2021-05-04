@@ -1037,10 +1037,12 @@ class App extends React.Component {
         range: "Unapplied!A1:J1000",
       })
       .then((response) => {
-        let result = response.result.value;
+        let result = response.result.values;
+        let newfullSheetData = result;
+        console.log(newfullSheetData);
         this.setState((state) => {
           return {
-            fullSheetData: result,
+            fullSheetData: newfullSheetData,
           };
         });
       })

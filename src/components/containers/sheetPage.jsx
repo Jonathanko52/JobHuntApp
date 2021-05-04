@@ -1,21 +1,23 @@
 import React from "react";
-
+import sheetrow from "./../presentational/sheetrow.jsx";
 const SheetPage = (props) => {
-  let sheetcontents = (){
-    
-  }
+  let sheetcontents = [];
+  console.log(props);
+  // props.fullSheetData.forEach((cur) => {
+  //   sheetcontents.push(sheetrow);
+  // });
 
   return (
     <div>
       <div className="col-xs-10 d-flex justify-content-center pt-5">
         <div className="container">
+          {sheetcontents}
           <div className="row">
             <div className="text-center col-xs-5">
               <button
                 className="btn btn-primary"
                 onClick={() => {
-                  let result = props.getAllOfSheet(props.spreadSheetId);
-                  console.log(result);
+                  props.getAllOfSheet(props.spreadSheetId);
                 }}>
                 getAllOfSheet
               </button>
