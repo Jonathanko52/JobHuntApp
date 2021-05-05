@@ -1,10 +1,9 @@
 import React from "react";
-import sheetrow from "./../presentational/sheetrow.jsx";
+import Sheetrow from "./../presentational/sheetrow.jsx";
 const SheetPage = (props) => {
   let sheetcontents = [];
-  console.log(props);
-  props.fullSheetData.forEach((cur) => {
-    sheetcontents.push(sheetrow);
+  props.fullSheetData.forEach((cur, ind) => {
+    sheetcontents.push(<Sheetrow data={cur} key={ind}></Sheetrow>);
   });
 
   return (

@@ -13,7 +13,6 @@ module.exports = {
         $("h3").each((i, elem) => {
           if (i === 0) {
             jobTitle = $(elem).text();
-            console.log(jobTitle);
           }
         });
         let company;
@@ -25,7 +24,6 @@ module.exports = {
             if (i === 0) {
               companyLink = $(elem).find("a").attr("href");
               company = $(elem).text();
-              console.log("COMPANY", company);
             }
             if (i === 1) {
               location = $(elem).text();
