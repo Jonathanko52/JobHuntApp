@@ -25,6 +25,7 @@ module.exports = {
             if (i === 0) {
               companyLink = $(elem).find("a").attr("href");
               company = $(elem).text();
+              console.log("COMPANY", company);
             }
             if (i === 1) {
               location = $(elem).text();

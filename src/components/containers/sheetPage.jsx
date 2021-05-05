@@ -3,9 +3,9 @@ import sheetrow from "./../presentational/sheetrow.jsx";
 const SheetPage = (props) => {
   let sheetcontents = [];
   console.log(props);
-  // props.fullSheetData.forEach((cur) => {
-  //   sheetcontents.push(sheetrow);
-  // });
+  props.fullSheetData.forEach((cur) => {
+    sheetcontents.push(sheetrow);
+  });
 
   return (
     <div>
