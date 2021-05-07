@@ -8,7 +8,7 @@ const SheetPage = (props) => {
 
   return (
     <div className="col-xs-10 d-flex justify-content-center pt-5">
-      <div className="container ">
+      <div className="container ml-4">
         {sheetcontents}
         <div className="text-center col-xs-5">
           <button
