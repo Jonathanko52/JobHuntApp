@@ -1,6 +1,14 @@
 import React from "react";
 
 const SheetRow = (props) => {
+  let JobPostingSource = props.data[0];
+  let Company = props.data[1];
+  let PositionTitle = props.data[2];
+  let Date = props.data[3];
+  let Location = props.data[4];
+  let CoverLetter = props.data[5];
+  let InterviewPage = props.data[6];
+  let PositionLink = props.data[7];
   return (
     <div className="row border border-secondary">
       <div className="col-1  border border-secondary">{props.data[0]}</div>
@@ -9,10 +17,9 @@ const SheetRow = (props) => {
       <div className="col-1  border border-secondary">{props.data[3]}</div>
       <div className="col-1  border border-secondary">{props.data[4]}</div>
       <div className="col-1  border border-secondary">{props.data[5]}</div>
-      <div className="col-1  border border-secondary">{props.data[6]}</div>
-      <div className="col-1 border border-secondary">
-        <a href={props.data[7]}>Link to Site</a>
-        {props.data[7]}
+      <div className="col-2  border border-secondary">{props.data[6]}</div>
+      <div className="col-2 border border-secondary">
+        <a href={PositionLink}>Link to Site</a>
       </div>
     </div>
   );
