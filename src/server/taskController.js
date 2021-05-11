@@ -5,31 +5,34 @@ const cheerio = require("cheerio");
 
 module.exports = {
   retrieveHtmlLinkedIn: (req, res, next) => {
+    console.log("TETS");
+    let jobTitle;
+
+    let company;
+    let companyLink;
+    let location;
+    let array = [];
     req.body = axios
       .get("https://www.linkedin.com/jobs/view/" + req.params.link)
       .then(function (response) {
         const $ = cheerio.load(response.data);
-        let jobTitle;
         $("h3").each((i, elem) => {
           if (i === 0) {
             jobTitle = $(elem).text();
           }
         });
-        let company;
-        let companyLink;
-        let location;
-        $("h3")
-          .find("span")
-          .each((i, elem) => {
-            if (i === 0) {
-              companyLink = $(elem).find("a").attr("href");
-              company = $(elem).text();
-            }
-            if (i === 1) {
-              location = $(elem).text();
-            }
-          })
-          .text();
+
+        $("span").each((i, elem) => {
+          if (i === 2) {
+            location = $(elem).text();
+          }
+          if (i === 3) {
+            company = $(elem).text();
+            companyLink = $(elem).find("a").attr("href");
+          }
+        });
+        // console.log([jobTitle, company, companyLink, location]);
+        console.log(array);
         return [jobTitle, company, companyLink, location];
       })
       .then((data) => {
