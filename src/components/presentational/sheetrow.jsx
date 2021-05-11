@@ -16,8 +16,40 @@ const SheetRow = (props) => {
       <div className="col-1  border border-secondary">{props.data[2]}</div>
       <div className="col-1  border border-secondary">{props.data[3]}</div>
       <div className="col-1  border border-secondary">{props.data[4]}</div>
-      <div className="col-1  border border-secondary">{props.data[5]}</div>
-      <div className="col-2  border border-secondary">{props.data[6]}</div>
+      <div className="col-1  border border-secondary">
+        <input
+          type="radio"
+          name="CoverLetter"
+          className="CoverInput RadioInput"
+          onChange={(e) => {}}
+          value="Yes"
+        />
+        <input
+          type="radio"
+          name="CoverLetter"
+          className="CoverInput RadioInput"
+          onChange={(e) => {}}
+          value="Yes"
+        />
+        {props.data[5]}
+      </div>
+      <div className="col-2  border border-secondary">
+        <input
+          type="radio"
+          name="CoverLetter"
+          className="CoverInput RadioInput"
+          onChange={(e) => {}}
+          value="Yes"
+        />{" "}
+        <input
+          type="radio"
+          name="CoverLetter"
+          className="CoverInput RadioInput"
+          onChange={(e) => {}}
+          value="Yes"
+        />
+        {props.data[6]}
+      </div>
       <div className="col-2 border border-secondary">
         <a href={PositionLink}>Link to Site</a>
       </div>
