@@ -11,8 +11,8 @@ const SheetRow = (props) => {
   let PositionLink = props.data[7];
   return (
     <div className="row border border-secondary">
-      <div className="col-1  border border-secondary">{props.data[0]}</div>
-      <div className="col-1  border border-secondary">{props.data[1]}</div>
+      <div className="col-1  border border-secondary">{JobPostingSource}</div>
+      <div className="col-1  border border-secondary">{Company}</div>
       <div className="col-1  border border-secondary">{props.data[2]}</div>
       <div className="col-1  border border-secondary">{props.data[3]}</div>
       <div className="col-1  border border-secondary">{props.data[4]}</div>
@@ -31,24 +31,14 @@ const SheetRow = (props) => {
           onChange={(e) => {}}
           value="Yes"
         />
-        {props.data[5]}
       </div>
       <div className="col-2  border border-secondary">
-        <input
-          type="radio"
-          name="CoverLetter"
-          className="CoverInput RadioInput"
-          onChange={(e) => {}}
-          value="Yes"
-        />{" "}
-        <input
-          type="radio"
-          name="CoverLetter"
-          className="CoverInput RadioInput"
-          onChange={(e) => {}}
-          value="Yes"
-        />
-        {props.data[6]}
+        <select name="cars" id="cars">
+          <option value="volvo">Applied</option>
+          <option value="saab">Phone Screened</option>
+          <option value="mercedes">Technical</option>
+          <option value="audi">Rejected</option>
+        </select>
       </div>
       <div className="col-2 border border-secondary">
         <a href={PositionLink}>Link to Site</a>
