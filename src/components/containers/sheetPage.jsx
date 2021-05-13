@@ -4,7 +4,7 @@ import Sheetheader from "./../presentational/sheetRowHeader.jsx";
 const SheetPage = (props) => {
   let sheetcontents = [];
   props.fullSheetData.forEach((cur, ind) => {
-    if (ind < 1) {
+    if (ind <= 1) {
       sheetcontents.push(<Sheetrow data={cur} key={ind}></Sheetrow>);
     }
   });
