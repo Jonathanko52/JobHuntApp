@@ -28,6 +28,7 @@ const SheetRow = (props) => {
           value="Yes"
         />
         Yes
+        <br></br>
         <input
           type="radio"
           name="CoverLetter"
