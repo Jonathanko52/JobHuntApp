@@ -20,7 +20,7 @@ const SheetRow = (props) => {
       <div
         className="col-1  border border-secondary"
         onChange={(e) => {
-          console.log("row value changed", e.target.value, rowNum);
+          console.log("row value changed", e.target.value, rowNum, "F");
         }}>
         <input
           type="radio"
@@ -38,7 +38,12 @@ const SheetRow = (props) => {
         />
         No
       </div>
-      <div className="col-2  border border-secondary">
+      <div
+        className="col-2  border border-secondary"
+        onChange={(e) => {
+          console.log("row value changed", e.target.value, rowNum, "G");
+        }}>
+        >
         <select name="InterviewStatus">
           <option value="Applied">Applied</option>
           <option value="Phoned">Phone Screened</option>
