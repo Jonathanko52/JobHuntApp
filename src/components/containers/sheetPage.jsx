@@ -30,6 +30,20 @@ const SheetPage = (props) => {
             }}>
             update column of sheet
           </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              props.changeGoogleSheet();
+            }}>
+            changeGoogleSheet{" "}
+          </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              props.changeLocalSheet();
+            }}>
+            changeLocalSheet
+          </button>
           <p className="mt-3">
             Your Spreadsheet Id is:<br></br>
           </p>
