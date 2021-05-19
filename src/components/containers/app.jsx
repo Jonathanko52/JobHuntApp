@@ -78,6 +78,8 @@ class App extends React.Component {
     this.setSpreadsheetId = this.setSpreadsheetId.bind(this);
     this.setSpreadsheetIdFromTemp = this.setSpreadsheetIdFromTemp.bind(this);
     this.getAllOfSheet = this.getAllOfSheet.bind(this);
+    this.changeLocalSheet = this.changeLocalSheet.bind(this);
+    this.changeGoogleSheet = this.changeGoogleSheet.bind(this);
     this.updateColumnOfSheet = this.updateColumnOfSheet.bind(this);
 
     //Data Stuff
