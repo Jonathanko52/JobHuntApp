@@ -5,7 +5,7 @@ const SheetPage = (props) => {
   let sheetcontents = [];
   props.fullSheetData.forEach((cur, ind) => {
     if (ind >= 1) {
-      sheetcontents.push(<Sheetrow data={cur} key={ind}></Sheetrow>);
+      sheetcontents.push(<Sheetrow data={cur} num={ind} key={ind}></Sheetrow>);
     }
   });
 
@@ -21,7 +21,7 @@ const SheetPage = (props) => {
               onClick={() => {
                 props.getAllOfSheet(props.spreadSheetId);
               }}>
-              getAllOfSheet
+              get All Of Sheet
             </button>
 
             <button

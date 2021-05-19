@@ -9,6 +9,7 @@ const SheetRow = (props) => {
   let CoverLetter = props.data[5];
   let InterviewPage = props.data[6];
   let PositionLink = props.data[7];
+  console.log(props.num);
   return (
     <div className="row border border-secondary">
       <div className="col-1  border border-secondary">{JobPostingSource}</div>
