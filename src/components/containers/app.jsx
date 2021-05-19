@@ -1157,7 +1157,6 @@ class App extends React.Component {
                     <SheetPage
                       spreadSheetId={this.state.spreadSheetId}
                       getAllOfSheet={this.getAllOfSheet}
-                      updateColumnOfSheet={this.updateColumnOfSheet}
                       fullSheetData={this.state.fullSheetData}
                       changeLocalSheet={this.changeLocalSheet}
                       changeGoogleSheet={this.changeGoogleSheet}

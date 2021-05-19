@@ -14,43 +14,38 @@ const SheetPage = (props) => {
       <div className="container ml-4">
         <Sheetheader></Sheetheader>
         {sheetcontents}
-        <div className="text-center col-xs-5">
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              props.getAllOfSheet(props.spreadSheetId);
-            }}>
-            getAllOfSheet
-          </button>
+        <div className="text-center row">
+          <div className="">
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                props.getAllOfSheet(props.spreadSheetId);
+              }}>
+              getAllOfSheet
+            </button>
 
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              props.updateColumnOfSheet();
-            }}>
-            update column of sheet
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              props.changeGoogleSheet();
-            }}>
-            changeGoogleSheet{" "}
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              props.changeLocalSheet();
-            }}>
-            changeLocalSheet
-          </button>
-          <p className="mt-3">
-            Your Spreadsheet Id is:<br></br>
-          </p>
-          <p className="mt-3">
-            Check out your spreadsheet yourself at:
-            <br></br>
-          </p>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                props.updateColumnOfSheet();
+              }}>
+              update column of sheet
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                props.changeGoogleSheet();
+              }}>
+              change Google Sheet
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                props.changeLocalSheet();
+              }}>
+              change Local Sheet
+            </button>
+          </div>
         </div>
       </div>
     </div>
