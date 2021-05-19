@@ -43,7 +43,6 @@ const SheetRow = (props) => {
         onChange={(e) => {
           console.log("row value changed", e.target.value, rowNum, "G");
         }}>
-        >
         <select name="InterviewStatus">
           <option value="Applied">Applied</option>
           <option value="Phoned">Phone Screened</option>
