@@ -1053,8 +1053,12 @@ class App extends React.Component {
       });
   }
 
-  changeLocalSheet() {}
-  changeGoogleSheet() {}
+  changeLocalSheet() {
+    alert("make changes to local sheet");
+  }
+  changeGoogleSheet() {
+    alert("Google copy of sheet updated");
+  }
   updateColumnOfSheet() {
     alert("update column of sheet");
   }
@@ -1155,6 +1159,9 @@ class App extends React.Component {
                       getAllOfSheet={this.getAllOfSheet}
                       updateColumnOfSheet={this.updateColumnOfSheet}
                       fullSheetData={this.state.fullSheetData}
+                      changeLocalSheet={this.changeLocalSheet}
+                      changeGoogleSheet={this.changeGoogleSheet}
+                      updateColumnOfSheet={this.updateColumnOfSheet}
                     />
                   );
                 }}
