@@ -1052,6 +1052,9 @@ class App extends React.Component {
         console.log("test", err);
       });
   }
+
+  changeLocalSheet() {}
+  changeGoogleSheet() {}
   updateColumnOfSheet() {
     alert("update column of sheet");
   }
