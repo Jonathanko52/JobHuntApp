@@ -1059,8 +1059,8 @@ class App extends React.Component {
   changeGoogleSheet() {
     alert("Google copy of sheet updated");
   }
-  updateColumnOfSheet() {
-    alert("update column of sheet");
+  updateColumnOfSheet(value, row, column) {
+    console.log("VALUE", value, "row", row, "column", column);
   }
 
   componentDidMount() {

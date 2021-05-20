@@ -5,7 +5,13 @@ const SheetPage = (props) => {
   let sheetcontents = [];
   props.fullSheetData.forEach((cur, ind) => {
     if (ind >= 1) {
-      sheetcontents.push(<Sheetrow data={cur} num={ind} key={ind}></Sheetrow>);
+      sheetcontents.push(
+        <Sheetrow
+          data={cur}
+          num={ind}
+          key={ind}
+          updateColumnOfSheet={props.updateColumnOfSheet}></Sheetrow>
+      );
     }
   });
 

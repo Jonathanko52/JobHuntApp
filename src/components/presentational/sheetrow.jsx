@@ -20,7 +20,7 @@ const SheetRow = (props) => {
       <div
         className="col-1  border border-secondary"
         onChange={(e) => {
-          updateColumnOfSheet(e.target.value, rowNum, "F");
+          props.updateColumnOfSheet(e.target.value, rowNum, "F");
         }}>
         <input
           type="radio"
@@ -41,7 +41,7 @@ const SheetRow = (props) => {
       <div
         className="col-2  border border-secondary"
         onChange={(e) => {
-          updateColumnOfSheet(e.target.value, rowNum, "G");
+          props.updateColumnOfSheet(e.target.value, rowNum, "G");
         }}>
         <select name="InterviewStatus">
           <option value="Applied">Applied</option>
