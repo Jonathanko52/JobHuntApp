@@ -1061,7 +1061,6 @@ class App extends React.Component {
   }
   updateColumnOfSheet(value, row, column) {
     console.log("VALUE", value, "row", row, "column", column);
-    console.log();
   }
 
   componentDidMount() {

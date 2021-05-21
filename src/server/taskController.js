@@ -5,7 +5,6 @@ const cheerio = require("cheerio");
 
 module.exports = {
   retrieveHtmlLinkedIn: (req, res, next) => {
-    console.log("TETS");
     let jobTitle;
 
     let company;
@@ -31,8 +30,6 @@ module.exports = {
             companyLink = $(elem).find("a").attr("href");
           }
         });
-        // console.log([jobTitle, company, companyLink, location]);
-        console.log(array);
         return [jobTitle, company, companyLink, location];
       })
       .then((data) => {

@@ -2,6 +2,7 @@ import React from "react";
 import Sheetrow from "./../presentational/sheetrow.jsx";
 import Sheetheader from "./../presentational/sheetRowHeader.jsx";
 import SheetControlPanel from "./../presentational/sheetControlPanel.jsx";
+
 const SheetPage = (props) => {
   let sheetcontents = [];
   props.fullSheetData.forEach((cur, ind) => {
