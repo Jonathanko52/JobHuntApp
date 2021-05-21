@@ -1,6 +1,7 @@
 import React from "react";
 import Sheetrow from "./../presentational/sheetrow.jsx";
 import Sheetheader from "./../presentational/sheetRowHeader.jsx";
+import SheetControlPanel from "./../presentational/sheetControlPanel.jsx";
 const SheetPage = (props) => {
   let sheetcontents = [];
   props.fullSheetData.forEach((cur, ind) => {
@@ -20,39 +21,7 @@ const SheetPage = (props) => {
       <div className="container ml-4">
         <Sheetheader></Sheetheader>
         {sheetcontents}
-        <div className="text-center row">
-          <div className="">
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                props.getAllOfSheet(props.spreadSheetId);
-              }}>
-              get All Of Sheet
-            </button>
-
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                props.updateColumnOfSheet();
-              }}>
-              update column of sheet
-            </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                props.changeGoogleSheet();
-              }}>
-              change Google Sheet
-            </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                props.changeLocalSheet();
-              }}>
-              change Local Sheet
-            </button>
-          </div>
-        </div>
+        <SheetControlPanel></SheetControlPanel>
       </div>
     </div>
   );
