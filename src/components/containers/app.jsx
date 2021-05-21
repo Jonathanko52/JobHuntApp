@@ -200,11 +200,6 @@ class App extends React.Component {
         spreadsheetId: spreadsheetId,
         range: "Unapplied!A1:A1000",
       })
-      // .then((response) => {
-      //   var result = response.result;
-      //   emptyRow = result.values.length + 1;
-      //   console.log("EMPTY ROW", emptyRow);
-      // })
       .then((response) => {
         this.state.tasks.forEach((cur) => {
           tasksToBeAddedToSheet.push([
@@ -221,7 +216,6 @@ class App extends React.Component {
         numberOfTasksToBeAdded = this.state.tasks.length;
       })
       .then((response) => {
-        console.log("PRE GOOGLE");
         gapi.client.sheets.spreadsheets.values
           .update({
             spreadsheetId: spreadsheetId,
@@ -244,7 +238,6 @@ class App extends React.Component {
       });
   }
   loadFromGoogleSheets() {
-    let emptyRow;
     let spreadsheetId = this.state.spreadSheetId;
     let tasksToBeAdded = [];
     gapi.client.sheets.spreadsheets.values
@@ -1041,7 +1034,6 @@ class App extends React.Component {
       .then((response) => {
         let result = response.result.values;
         let newfullSheetData = result;
-        console.log(newfullSheetData);
         this.setState((state) => {
           return {
             fullSheetData: newfullSheetData,
