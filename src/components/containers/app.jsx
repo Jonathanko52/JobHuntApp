@@ -1056,10 +1056,10 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .update({
         spreadsheetId: spreadsheetId,
-        range: `Unapplied!A${2}:J${2 + numberOfTasksToBeAdded - 1}`,
+        range: `Unapplied!A${row}:J${column}`,
         valueInputOption: "RAW",
         resource: {
-          values: tasksToBeAddedToSheet,
+          values: value,
         },
       })
       .then((response) => {
