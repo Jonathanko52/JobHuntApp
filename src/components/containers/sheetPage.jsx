@@ -23,6 +23,7 @@ const SheetPage = (props) => {
         <Sheetheader></Sheetheader>
         {sheetcontents}
         <SheetControlPanel
+          spreadSheetId={props.spreadSheetId}
           changeLocalSheet={props.changeLocalSheet}
           getAllOfSheet={props.getAllOfSheet}
           changeGoogleSheet={props.changeGoogleSheet}
