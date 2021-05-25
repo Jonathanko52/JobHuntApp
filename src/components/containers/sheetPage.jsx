@@ -22,7 +22,11 @@ const SheetPage = (props) => {
       <div className="container ml-4">
         <Sheetheader></Sheetheader>
         {sheetcontents}
-        <SheetControlPanel></SheetControlPanel>
+        <SheetControlPanel
+          changeLocalSheet={props.changeLocalSheet}
+          getAllOfSheet={props.getAllOfSheet}
+          changeGoogleSheet={props.changeGoogleSheet}
+          updateColumnOfSheet={props.updateColumnOfSheet}></SheetControlPanel>
       </div>
     </div>
   );
