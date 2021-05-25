@@ -16,6 +16,7 @@ const SheetControlPanel = (props) => {
           className="btn btn-primary"
           onClick={() => {
             props.updateColumnOfSheet();
+            console.log("update column test");
           }}>
           update column of sheet
         </button>

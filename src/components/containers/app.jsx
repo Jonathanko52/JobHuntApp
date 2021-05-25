@@ -1052,22 +1052,33 @@ class App extends React.Component {
     alert("Google copy of sheet updated");
   }
   updateColumnOfSheet(value, row, column) {
-    console.log("VALUE", value, "row", row, "column", column);
+    let spreadsheetId = this.state.spreadSheetId;
+
+    console.log(
+      "VALUE",
+      typeof value,
+      "row",
+      row,
+      "column",
+      column,
+      "ID",
+      spreadsheetId
+    );
     gapi.client.sheets.spreadsheets.values
       .update({
         spreadsheetId: spreadsheetId,
-        range: `Unapplied!A${row}:J${column}`,
+        range: `Unapplied!${column}${row + 1}`,
         valueInputOption: "RAW",
         resource: {
-          values: value,
+          values: [[value]],
         },
       })
       .then((response) => {
         //Removes item added to sheet from React App
-        alert("Submitted successfully to google sheets");
+        alert("Column updated");
       })
       .catch((err) => {
-        console.log("test", err);
+        console.log("ERROR", err);
       });
   }
 

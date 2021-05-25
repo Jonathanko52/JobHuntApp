@@ -12,7 +12,8 @@ const SheetPage = (props) => {
           data={cur}
           num={ind}
           key={ind}
-          updateColumnOfSheet={props.updateColumnOfSheet}></Sheetrow>
+          updateColumnOfSheet={props.updateColumnOfSheet}
+          spreadSheetId={props.spreadSheetId}></Sheetrow>
       );
     }
   });
