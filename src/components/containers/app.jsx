@@ -191,6 +191,7 @@ class App extends React.Component {
   }
 
   saveToGoogleSheets() {
+    console.log("ASVE TO GOOGLE SHEETS");
     let emptyRow;
     let tasksToBeAddedToSheet = [];
     let numberOfTasksToBeAdded;
@@ -1029,7 +1030,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadSheetId,
-        range: "Unapplied!A1:J1000",
+        range: "Jobs!A1:J1000",
       })
       .then((response) => {
         let result = response.result.values;
@@ -1074,7 +1075,7 @@ class App extends React.Component {
         },
       })
       .then((response) => {
-        //Removes item added to sheet from React App
+        //column updated
         alert("Column updated");
       })
       .catch((err) => {
