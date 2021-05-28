@@ -1068,7 +1068,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .update({
         spreadsheetId: spreadsheetId,
-        range: `Unapplied!${column}${row + 1}`,
+        range: `Jobs!${column}${row + 1}`,
         valueInputOption: "RAW",
         resource: {
           values: [[value]],
