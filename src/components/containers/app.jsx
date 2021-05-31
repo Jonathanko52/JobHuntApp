@@ -1054,17 +1054,6 @@ class App extends React.Component {
   }
   updateColumnOfSheet(value, row, column) {
     let spreadsheetId = this.state.spreadSheetId;
-
-    console.log(
-      "VALUE",
-      typeof value,
-      "row",
-      row,
-      "column",
-      column,
-      "ID",
-      spreadsheetId
-    );
     gapi.client.sheets.spreadsheets.values
       .update({
         spreadsheetId: spreadsheetId,
