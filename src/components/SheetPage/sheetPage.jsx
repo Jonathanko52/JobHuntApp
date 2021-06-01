@@ -1,7 +1,7 @@
 import React from "react";
-import Sheetrow from "../presentational/sheetrow.jsx";
-import Sheetheader from "../presentational/sheetRowHeader.jsx";
-import SheetControlPanel from "../presentational/sheetControlPanel.jsx";
+import Sheetrow from "./sheetrow.jsx";
+import Sheetheader from "./sheetRowHeader.jsx";
+import SheetControlPanel from "./sheetControlPanel.jsx";
 
 const SheetPage = (props) => {
   let sheetcontents = [];
