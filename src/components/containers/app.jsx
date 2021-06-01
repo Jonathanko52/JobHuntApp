@@ -6,7 +6,7 @@ import TitleBar from "../presentational/titlebar.jsx";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "../presentational/landingpage.jsx";
 import GraphPage from "./../GraphPage/graphPage.jsx";
-import SheetPage from "./sheetPage.jsx";
+import SheetPage from "../SheetPage/sheetPage.jsx";
 var GoogleAuth;
 
 import axios from "axios";
