@@ -5,7 +5,7 @@ import InputPage from "../presentational/inputPage.jsx";
 import TitleBar from "../presentational/titlebar.jsx";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "../presentational/landingpage.jsx";
-import GraphPage from "./graphPage.jsx";
+import GraphPage from "./../GraphPage/graphPage.jsx";
 import SheetPage from "./sheetPage.jsx";
 var GoogleAuth;
 
