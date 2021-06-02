@@ -1,10 +1,10 @@
 import React from "react";
 import "./../../assets/css/app.css";
 import NavBar from "../presentational/navbar.jsx";
-import InputPage from "../presentational/inputPage.jsx";
+import InputPage from "../InputPage/inputPage.jsx";
 import TitleBar from "../presentational/titlebar.jsx";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import LandingPage from "../presentational/landingpage.jsx";
+import LandingPage from "../LandingPage/landingpage.jsx";
 import GraphPage from "./../GraphPage/graphPage.jsx";
 import SheetPage from "../SheetPage/sheetPage.jsx";
 var GoogleAuth;
