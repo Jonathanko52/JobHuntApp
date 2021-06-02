@@ -1,7 +1,7 @@
 import React from "react";
-import LineGraph from "./../presentational/linegraph.jsx";
-import BarGraph from "./../presentational/bargraph.jsx";
-import Report from "./../presentational/Report.jsx";
+import LineGraph from "./linegraph.jsx";
+import BarGraph from "./bargraph.jsx";
+import Report from "./report.jsx";
 
 class GraphPage extends React.Component {
   constructor(props) {

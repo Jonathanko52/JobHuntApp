@@ -7,10 +7,10 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  Tooltip
+  Tooltip,
 } from "recharts";
 
-const LineGraph = props => {
+const LineGraph = (props) => {
   return (
     <ResponsiveContainer width="100%" height={700}>
       <LineChart width={600} height={700} data={props.LineData}>
