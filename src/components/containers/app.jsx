@@ -39,6 +39,7 @@ class App extends React.Component {
       SheetCreationSuccessful: false,
       tempSpreadsheetID: "",
       fullSheetData: [],
+      sheetParameters: 0,
     };
     //Event Listener Function Bindings
     this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
@@ -1188,6 +1189,7 @@ class App extends React.Component {
                       changeLocalSheet={this.changeLocalSheet}
                       changeGoogleSheet={this.changeGoogleSheet}
                       updateColumnOfSheet={this.updateColumnOfSheet}
+                      sheetParameters={this.sheetParameters}
                     />
                   );
                 }}
