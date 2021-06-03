@@ -34,6 +34,23 @@ const SheetControlPanel = (props) => {
           }}>
           change Local Sheet
         </button>
+        <div
+          className="col-2  border border-secondary"
+          onChange={(e) => {
+            props.updateColumnOfSheet(
+              e.target.value,
+              rowNum,
+              "G",
+              props.spreadSheetId
+            );
+          }}>
+          <select name="InterviewStatus">
+            <option value="7">7</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="999">All</option>
+          </select>
+        </div>
       </div>
     </div>
   );
