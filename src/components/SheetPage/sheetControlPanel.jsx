@@ -37,12 +37,7 @@ const SheetControlPanel = (props) => {
         <div
           className="col-2  border border-secondary"
           onChange={(e) => {
-            props.updateColumnOfSheet(
-              e.target.value,
-              rowNum,
-              "G",
-              props.spreadSheetId
-            );
+            props.handleSheetParameters(e.target.value);
           }}>
           <select name="InterviewStatus">
             <option value="7">7</option>

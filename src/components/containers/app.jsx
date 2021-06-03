@@ -39,7 +39,7 @@ class App extends React.Component {
       SheetCreationSuccessful: false,
       tempSpreadsheetID: "",
       fullSheetData: [],
-      sheetParameters: 0,
+      sheetParameters: "7",
     };
     //Event Listener Function Bindings
     this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
@@ -51,7 +51,7 @@ class App extends React.Component {
     this.handleChangeDirectWebsite = this.handleChangeDirectWebsite.bind(this);
     this.handleChangeDirectLink = this.handleChangeDirectLink.bind(this);
     this.handleSpreadsheetIdSubmit = this.handleSpreadsheetIdSubmit.bind(this);
-
+    this.handleSheetParameters = this.handleSheetParameters.bind(this);
     //Add/Remove from list
     this.addToList = this.addToList.bind(this);
     this.removeFromList = this.removeFromList.bind(this);
@@ -113,6 +113,10 @@ class App extends React.Component {
   }
   handleSpreadsheetIdSubmit(event) {
     this.setState({ tempSpreadsheetID: event.target.value });
+  }
+  handleSheetParameters(event) {
+    console.log(event.target.value);
+    this.setState({ sheetParameters: event.target.value });
   }
 
   //Adds item to task list
@@ -1190,6 +1194,7 @@ class App extends React.Component {
                       changeGoogleSheet={this.changeGoogleSheet}
                       updateColumnOfSheet={this.updateColumnOfSheet}
                       sheetParameters={this.sheetParameters}
+                      handleSheetParameters={this.handleSheetParameters}
                     />
                   );
                 }}

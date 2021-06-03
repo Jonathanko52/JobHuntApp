@@ -29,7 +29,10 @@ const SheetPage = (props) => {
           changeLocalSheet={props.changeLocalSheet}
           getAllOfSheet={props.getAllOfSheet}
           changeGoogleSheet={props.changeGoogleSheet}
-          updateColumnOfSheet={props.updateColumnOfSheet}></SheetControlPanel>
+          updateColumnOfSheet={props.updateColumnOfSheet}
+          handleSheetParameters={
+            props.handleSheetParameters
+          }></SheetControlPanel>
       </div>
     </div>
   );
