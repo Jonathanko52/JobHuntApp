@@ -37,6 +37,7 @@ const SheetControlPanel = (props) => {
         <div
           className="col-2  border border-secondary"
           onChange={(e) => {
+            console.log(e);
             props.handleSheetParameters(e.target.value);
           }}>
           Show contents of sheet form the last number of days:
