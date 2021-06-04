@@ -115,8 +115,8 @@ class App extends React.Component {
     this.setState({ tempSpreadsheetID: event.target.value });
   }
   handleSheetParameters(event) {
-    console.log(event.target.value);
-    this.setState({ sheetParameters: event.target.value });
+    console.log(event);
+    this.setState({ sheetParameters: event });
   }
 
   //Adds item to task list
