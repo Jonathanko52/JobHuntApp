@@ -1031,10 +1031,49 @@ class App extends React.Component {
 
   getAllOfSheet(spreadSheetId) {
     alert("get all of sheet");
+    let tempDate1 = new Date();
+    let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
+    let previousMonth = false;
+    if (tempDate2 < 0) {
+      tempDate1.setDate(1);
+      tempDate1.setHours(-1);
+      tempDate2 = tempDate1.getDate() + tempDate2;
+      previousMonth = true;
+    }
+    let lastRow;
+    let targetDate;
+    if (previousMonth) {
+      targetDate = `${new Date().getMonth() - 1 + 1}/${tempDate2}`;
+    } else {
+      targetDate = `${new Date().getMonth() + 1}/${tempDate2}`;
+    }
+
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadSheetId,
         range: "Jobs!A1:J1000",
+      })
+      .then((response) => {
+        lastRow = response.result.values.length;
+        let index = response.result.values.length;
+        let j = 0;
+        while (!index && j < response.result.values.length) {
+          if (
+            response.result.values[j][3].split("/")[0] ===
+            targetDate.split("/")[0]
+          ) {
+            if (
+              parseInt(response.result.values[j][3].split("/")[1]) >=
+              parseInt(targetDate.split("/")[1])
+            ) {
+              index = j;
+            }
+          }
+          j++;
+        }
+        let filteredArray = response.result.values.slice(index, lastRow + 1);
+
+        return filteredArray;
       })
       .then((response) => {
         let result = response.result.values;

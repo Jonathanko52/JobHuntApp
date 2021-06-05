@@ -1,14 +1,13 @@
 import React from "react";
 
 const SheetControlPanel = (props) => {
-  console.log(props.sheetParameters);
   return (
     <div className="text-center row">
       <div className="">
         <button
           className="btn btn-primary"
           onClick={() => {
-            props.getAllOfSheet(props.spreadSheetId);
+            props.getAllOfSheet(props.spreadSheetId,props.sheetParameters;
           }}>
           Retrieve Sheet Data
         </button>
