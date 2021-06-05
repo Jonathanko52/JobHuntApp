@@ -1048,13 +1048,14 @@ class App extends React.Component {
       targetDate = `${new Date().getMonth() + 1}/${tempDate2}`;
     }
 
+    console.log("TargetFate", targetDate);
+
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadSheetId,
         range: "Jobs!A1:J1000",
       })
       .then((response) => {
-        console.log(response.result.values);
         lastRow = response.result.values.length;
         let index = response.result.values.length;
         let j = 0;
@@ -1072,6 +1073,7 @@ class App extends React.Component {
           }
           j++;
         }
+        console.log(index, lastRow);
         let filteredArray = response.result.values.slice(index, lastRow + 1);
 
         return filteredArray;
