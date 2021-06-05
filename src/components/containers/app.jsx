@@ -115,7 +115,6 @@ class App extends React.Component {
     this.setState({ tempSpreadsheetID: event.target.value });
   }
   handleSheetParameters(event) {
-    console.log(event);
     this.setState({ sheetParameters: event });
   }
 
@@ -1193,7 +1192,7 @@ class App extends React.Component {
                       changeLocalSheet={this.changeLocalSheet}
                       changeGoogleSheet={this.changeGoogleSheet}
                       updateColumnOfSheet={this.updateColumnOfSheet}
-                      sheetParameters={this.sheetParameters}
+                      sheetParameters={this.state.sheetParameters}
                       handleSheetParameters={this.handleSheetParameters}
                     />
                   );

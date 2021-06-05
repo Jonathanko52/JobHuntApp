@@ -1,6 +1,7 @@
 import React from "react";
 
 const SheetControlPanel = (props) => {
+  console.log(props.sheetParameters);
   return (
     <div className="text-center row">
       <div className="">
