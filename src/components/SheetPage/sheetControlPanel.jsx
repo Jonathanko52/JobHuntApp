@@ -7,7 +7,7 @@ const SheetControlPanel = (props) => {
         <button
           className="btn btn-primary"
           onClick={() => {
-            props.getAllOfSheet(props.spreadSheetId,props.sheetParameters;
+            props.getAllOfSheet(props.spreadSheetId, props.sheetParameters);
           }}>
           Retrieve Sheet Data
         </button>

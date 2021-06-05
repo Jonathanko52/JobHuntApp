@@ -1029,10 +1029,10 @@ class App extends React.Component {
     });
   }
 
-  getAllOfSheet(spreadSheetId) {
+  getAllOfSheet(spreadSheetId, sheetParameters) {
     alert("get all of sheet");
     let tempDate1 = new Date();
-    let tempDate2 = tempDate1.getDate() - parseInt(this.state.SearchParamDate);
+    let tempDate2 = tempDate1.getDate() - parseInt(sheetParameters);
     let previousMonth = false;
     if (tempDate2 < 0) {
       tempDate1.setDate(1);
@@ -1054,6 +1054,7 @@ class App extends React.Component {
         range: "Jobs!A1:J1000",
       })
       .then((response) => {
+        console.log(response.result.values);
         lastRow = response.result.values.length;
         let index = response.result.values.length;
         let j = 0;
@@ -1076,8 +1077,8 @@ class App extends React.Component {
         return filteredArray;
       })
       .then((response) => {
-        let result = response.result.values;
-        let newfullSheetData = result;
+        let newfullSheetData = response;
+        console.log(response);
         this.setState((state) => {
           return {
             fullSheetData: newfullSheetData,
