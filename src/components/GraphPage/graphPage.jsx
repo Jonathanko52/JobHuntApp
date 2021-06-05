@@ -56,7 +56,7 @@ class GraphPage extends React.Component {
       })
       .then((response) => {
         lastRow = response.result.values.length;
-        let index = response.result.values.length;
+        let index;
         let j = 0;
         while (!index && j < response.result.values.length) {
           if (

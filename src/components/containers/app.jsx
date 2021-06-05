@@ -1057,7 +1057,7 @@ class App extends React.Component {
       })
       .then((response) => {
         lastRow = response.result.values.length;
-        let index = response.result.values.length;
+        let index;
         let j = 0;
         while (!index && j < response.result.values.length) {
           if (
@@ -1073,7 +1073,6 @@ class App extends React.Component {
           }
           j++;
         }
-        console.log(index, lastRow);
         let filteredArray = response.result.values.slice(index, lastRow + 1);
 
         return filteredArray;
