@@ -195,7 +195,6 @@ class App extends React.Component {
   }
 
   saveToGoogleSheets() {
-    console.log("ASVE TO GOOGLE SHEETS");
     let emptyRow;
     let tasksToBeAddedToSheet = [];
     let numberOfTasksToBeAdded;
@@ -1048,8 +1047,6 @@ class App extends React.Component {
       targetDate = `${new Date().getMonth() + 1}/${tempDate2}`;
     }
 
-    console.log("TargetFate", targetDate);
-
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadSheetId,
@@ -1079,7 +1076,6 @@ class App extends React.Component {
       })
       .then((response) => {
         let newfullSheetData = response;
-        console.log(response);
         this.setState((state) => {
           return {
             fullSheetData: newfullSheetData,
