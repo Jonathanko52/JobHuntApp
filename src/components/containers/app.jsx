@@ -289,13 +289,9 @@ class App extends React.Component {
       })
       .catch((err) => {
         console.log("test", err);
-
-        // alert("Submission Failed Inner.");
       });
   }
-  clearGoogleLocal() {
-    // gapi.client.sheets.spreadsheets();
-  }
+  clearGoogleLocal() {}
 
   saveToLocal() {
     setTimeout(() => {
@@ -432,30 +428,7 @@ class App extends React.Component {
     axios
       .get("/RetrieveHtmlAngelist/" + url)
 
-      .then((res, request) => {
-        // this.setState(state => {
-        //   let newTasks = state.tasks.slice();
-        //   newTasks.push({
-        //     websiteInput: state.directWebsiteInput,
-        //     companyInput: res.data[1],
-        //     titleInput: res.data[0],
-        //     recruiterInput: state.recruiterInput,
-        //     locationInput: res.data[3],
-        //     coverInput: state.coverInput,
-        //     linkInput: state.directLinkInput,
-        //     companyLinkInput: res.data[2]
-        //   });
-        //   return {
-        //     tasks: newTasks,
-        //     websiteInput: "LinkedIn",
-        //     companyInput: "",
-        //     titleInput: "",
-        //     locationInput: "",
-        //     linkInput: "",
-        //     companyLinkInput: ""
-        //   };
-        // });
-      })
+      .then((res, request) => {})
       .then((res) => {
         this.saveToLocal();
       })
@@ -845,7 +818,6 @@ class App extends React.Component {
               },
 
               {
-                // object (GridProperties)
                 startRow: 0,
                 startColumn: 0,
                 rowData: [
@@ -898,7 +870,6 @@ class App extends React.Component {
             },
             data: [
               {
-                // object (GridProperties)
                 startRow: 0,
                 startColumn: 0,
                 rowData: [
@@ -1105,7 +1076,6 @@ class App extends React.Component {
         },
       })
       .then((response) => {
-        //column updated
         alert("Column updated");
         gapi.client.sheets.spreadsheets.values
           .get({
