@@ -17,14 +17,14 @@ const SheetControlPanel = (props) => {
           onClick={() => {
             props.updateColumnOfSheet();
           }}>
-          update column of sheet
+          Update column of sheet
         </button>
         <button
           className="btn btn-primary"
           onClick={() => {
             props.changeGoogleSheet();
           }}>
-          change Google Sheet
+          Change Google Sheet
         </button>
         <button
           className="btn btn-primary"
