@@ -12,15 +12,15 @@ const SheetRow = (props) => {
   let rowNum = props.num;
   return (
     <div className="row border border-secondary">
-      <div className="col-1 pt-2 border border-secondary">
+      <div className="col-1 pt-1 border border-secondary">
         {JobPostingSource}
       </div>
-      <div className="col-1 pt-2 pr-4  border border-secondary">{Company}</div>
+      <div className="col-2 pt-2 pr-4  border border-secondary">{Company}</div>
       <div className="col-2 pt-2 border border-secondary">{PositionTitle}</div>
-      <div className="col-2 pt-2 border border-secondary">{Date}</div>
-      <div className="col-1 pt-2 border border-secondary">{Location}</div>
+      <div className="col-1 pt-1 border border-secondary">{Date}</div>
+      <div className="col-2 pt-2 border border-secondary">{Location}</div>
       <div
-        className="col-2 pt-2 border border-secondary"
+        className="col-1 pt-1 border border-secondary"
         onChange={(e) => {
           props.updateColumnOfSheet(
             e.target.value,
@@ -62,7 +62,7 @@ const SheetRow = (props) => {
           <option value="Rejected">Rejected</option>
         </select>
       </div>
-      <div className="col-2 pt-2 border border-secondary">
+      <div className="col-1 pt-2 border border-secondary">
         <a href={PositionLink}>Link to Site</a>
       </div>
     </div>

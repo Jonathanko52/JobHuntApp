@@ -12,7 +12,7 @@ const SheetRowHeader = (props) => {
         Cover Letter Included
       </div>
       <div className="col-2  border border-secondary">Interview Phase</div>
-      <div className="col-2 border border-secondary">Link to Site</div>
+      <div className="col-1 border border-secondary">Link to Site</div>
     </div>
   );
 };
