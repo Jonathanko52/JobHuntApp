@@ -16,11 +16,11 @@ const SheetRow = (props) => {
         {JobPostingSource}
       </div>
       <div className="col-1 pt-2 pr-4  border border-secondary">{Company}</div>
-      <div className="col-1 pt-2 border border-secondary">{PositionTitle}</div>
-      <div className="col-1 pt-2 border border-secondary">{Date}</div>
+      <div className="col-2 pt-2 border border-secondary">{PositionTitle}</div>
+      <div className="col-2 pt-2 border border-secondary">{Date}</div>
       <div className="col-1 pt-2 border border-secondary">{Location}</div>
       <div
-        className="col-1 pt-2 border border-secondary"
+        className="col-2 pt-2 border border-secondary"
         onChange={(e) => {
           props.updateColumnOfSheet(
             e.target.value,
