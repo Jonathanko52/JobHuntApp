@@ -4,13 +4,12 @@ const cheerio = require("cheerio");
 // Load client secrets from a local file.
 
 module.exports = {
-  retrieveHtmlLinkedIn: (req, res, next) => {
+  retrieveHtmlLinkedIn: (req, res) => {
     let jobTitle;
 
     let company;
     let companyLink;
     let location;
-    let array = [];
     req.body = axios
       .get("https://www.linkedin.com/jobs/view/" + req.params.link)
       .then(function (response) {
@@ -37,7 +36,7 @@ module.exports = {
       })
       .catch((error) => console.log("ERROR Linkedin Call", error));
   },
-  retrieveHtmlIndeed: (req, res, next) => {
+  retrieveHtmlIndeed: (req, res) => {
     req.body = axios
       .get("https://www.indeed.com/viewjob?" + req.params.link)
       .then(function (response) {
@@ -72,7 +71,7 @@ module.exports = {
     //   })
     //   .catch(error => console.log("ERROR", error.error));
   },
-  retrieveHtmlAngelist: (req, res, next) => {
+  retrieveHtmlAngelist: (req, res) => {
     req.body = axios
       .get("https://angel.co/" + req.params.link.split("+").join("/"))
       .then(function (response) {
