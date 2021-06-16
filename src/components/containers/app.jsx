@@ -121,7 +121,6 @@ class App extends React.Component {
   //Adds item to task list
   addToList() {
     let wantToAddAnyway = true;
-    let matchFound = false;
     this.state.tasks.forEach((cur) => {
       if (
         cur.companyInput === this.state.companyInput &&
@@ -195,7 +194,6 @@ class App extends React.Component {
   }
 
   saveToGoogleSheets() {
-    let emptyRow;
     let tasksToBeAddedToSheet = [];
     let numberOfTasksToBeAdded;
     let spreadsheetId = this.state.spreadSheetId;
@@ -219,7 +217,7 @@ class App extends React.Component {
         });
         numberOfTasksToBeAdded = this.state.tasks.length;
       })
-      .then((response) => {
+      .then(() => {
         gapi.client.sheets.spreadsheets.values
           .update({
             spreadsheetId: spreadsheetId,
@@ -229,7 +227,7 @@ class App extends React.Component {
               values: tasksToBeAddedToSheet,
             },
           })
-          .then((response) => {
+          .then(() => {
             //Removes item added to sheet from React App
             alert("Submitted successfully to google sheets");
           })
@@ -379,7 +377,7 @@ class App extends React.Component {
     url = url[url.length - 1];
     axios
       .get("/RetrieveHtmlIndeed/" + url)
-      .then((res, request) => {
+      .then((res) => {
         this.setState((state) => {
           let newTasks = state.tasks.slice();
           newTasks.unshift({
@@ -1047,7 +1045,7 @@ class App extends React.Component {
       })
       .then((response) => {
         let newfullSheetData = response;
-        this.setState((state) => {
+        this.setState(() => {
           return {
             fullSheetData: newfullSheetData,
           };
