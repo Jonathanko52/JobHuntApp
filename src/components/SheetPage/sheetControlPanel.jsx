@@ -3,7 +3,7 @@ import React from "react";
 const SheetControlPanel = (props) => {
   return (
     <div className="text-center row">
-      <div className="">
+      <div className="col-10">
         <button
           className="btn btn-primary"
           onClick={() => {
@@ -33,20 +33,20 @@ const SheetControlPanel = (props) => {
           }}>
           change Local Sheet
         </button>
-        <div
-          className="col-2  border border-secondary"
-          onChange={(e) => {
-            props.handleSheetParameters(e.target.value);
-          }}>
-          Show contents of sheet from the last
-          <select name="SheetPageDate">
-            <option value="7">7</option>
-            <option value="15">15</option>
-            <option value="30">30</option>
-            <option value="999">All</option>
-          </select>
-          days:
-        </div>
+      </div>
+      <div
+        className="col-2  border border-secondary"
+        onChange={(e) => {
+          props.handleSheetParameters(e.target.value);
+        }}>
+        Show contents of sheet from the last
+        <select name="SheetPageDate">
+          <option value="7">7</option>
+          <option value="15">15</option>
+          <option value="30">30</option>
+          <option value="999">All</option>
+        </select>
+        days:
       </div>
     </div>
   );
