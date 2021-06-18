@@ -2,40 +2,39 @@ import React from "react";
 
 const SheetControlPanel = (props) => {
   return (
-    <div className="text-center row">
-      <div className="col-10">
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            props.getAllOfSheet(props.spreadSheetId, props.sheetParameters);
-          }}>
-          Retrieve Sheet Data
-        </button>
+    <div className="text-center row m-4 ">
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          props.getAllOfSheet(props.spreadSheetId, props.sheetParameters);
+        }}>
+        Retrieve Sheet Data
+      </button>
 
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            props.updateColumnOfSheet();
-          }}>
-          Update column of sheet
-        </button>
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            props.changeGoogleSheet();
-          }}>
-          Change Google Sheet
-        </button>
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            props.changeLocalSheet();
-          }}>
-          change Local Sheet
-        </button>
-      </div>
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          props.updateColumnOfSheet();
+        }}>
+        Update column of sheet
+      </button>
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          props.changeGoogleSheet();
+        }}>
+        Change Google Sheet
+      </button>
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          props.changeLocalSheet();
+        }}>
+        change Local Sheet
+      </button>
+
       <div
-        className="col-2  border border-secondary"
+        className="border border-secondary"
         onChange={(e) => {
           props.handleSheetParameters(e.target.value);
         }}>
