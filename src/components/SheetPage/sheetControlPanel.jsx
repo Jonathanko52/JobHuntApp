@@ -34,7 +34,7 @@ const SheetControlPanel = (props) => {
       </button>
 
       <div
-        className="border border-secondary"
+        className="border border-secondary p-4"
         onChange={(e) => {
           props.handleSheetParameters(e.target.value);
         }}>
