@@ -39,7 +39,7 @@ const SheetControlPanel = (props) => {
           props.handleSheetParameters(e.target.value);
         }}>
         Show contents of sheet from the last
-        <select className="px-2 text-dark">
+        <select className="mx-2 text-dark">
           <option value="7">7</option>
           <option value="15">15</option>
           <option value="30">30</option>
