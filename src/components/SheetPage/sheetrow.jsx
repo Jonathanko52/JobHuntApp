@@ -11,9 +11,36 @@ const SheetRow = (props) => {
   let PositionLink = props.data[7];
   let rowNum = props.num;
 
+  //HTML to be dynamically rendered
+  let coverLetterArray;
+  let interviewArray;
+
   function setCoverLetterSelect() {}
 
-  function setInterviewPageSelect() {}
+  function setInterviewPageSelect() {
+    let states = [
+      "Applied",
+      "Phone Screen Scheduled",
+      "Technical Interview Scheduled",
+      "Rejected",
+    ];
+
+    states = states.map((cur) => {
+      if (cur === InterviewPage) {
+        return (
+          <option value={cur} select>
+            {" "}
+            {cur}{" "}
+          </option>
+        );
+      } else {
+        return <option value={cur}>{cur}</option>;
+      }
+    });
+    return states;
+  }
+
+  interviewArray = setInterviewPageSelect();
 
   return (
     <div className="row border border-secondary">
@@ -59,12 +86,7 @@ const SheetRow = (props) => {
             props.spreadSheetId
           );
         }}>
-        <select name="InterviewStatus">
-          <option value="Applied">Applied</option>
-          <option value="Phoned">Phone Screened</option>
-          <option value="Technicaled">Technical</option>
-          <option value="Rejected">Rejected</option>
-        </select>
+        <select name="InterviewStatus">{interviewArray}</select>
       </div>
       <div className="col-1 pt-2 border border-secondary">
         <a href={PositionLink}>Link to Site</a>
