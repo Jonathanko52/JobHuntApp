@@ -26,14 +26,16 @@ const SheetRow = (props) => {
     ];
 
     states = states.map((cur) => {
+      console.log("TEST");
       if (cur === InterviewPage) {
+        console.log("IF");
         return (
-          <option value={cur} select>
-            {" "}
-            {cur}{" "}
+          <option value={cur} selected={true}>
+            {cur}
           </option>
         );
       } else {
+        console.log("ELSE");
         return <option value={cur}>{cur}</option>;
       }
     });
