@@ -41,7 +41,9 @@ class App extends React.Component {
       fullSheetData: [],
       sheetParameters: "7",
     };
+
     //Event Listener Function Bindings
+
     this.handleChangeWebsite = this.handleChangeWebsite.bind(this);
     this.handleChangeCompany = this.handleChangeCompany.bind(this);
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -52,7 +54,9 @@ class App extends React.Component {
     this.handleChangeDirectLink = this.handleChangeDirectLink.bind(this);
     this.handleSpreadsheetIdSubmit = this.handleSpreadsheetIdSubmit.bind(this);
     this.handleSheetParameters = this.handleSheetParameters.bind(this);
+
     //Add/Remove from list
+
     this.addToList = this.addToList.bind(this);
     this.removeFromList = this.removeFromList.bind(this);
     this.clearList = this.clearList.bind(this);
@@ -60,12 +64,14 @@ class App extends React.Component {
     this.clearGoogleLocal = this.clearGoogleLocal.bind(this);
 
     //Save/load List to LocalStorage
+
     this.saveToLocal = this.saveToLocal.bind(this);
     this.loadFromLocal = this.loadFromLocal.bind(this);
     this.clearLocal = this.clearLocal.bind(this);
     this.saveToGoogleSheets = this.saveToGoogleSheets.bind(this);
     this.loadFromGoogleSheets = this.loadFromGoogleSheets.bind(this);
     //Http Request
+
     this.retrieveHtmlLinkedin = this.retrieveHtmlLinkedin.bind(this);
     this.retrieveHtmlIndeed = this.retrieveHtmlIndeed.bind(this);
     this.retrieveHtmlBuiltInLA = this.retrieveHtmlBuiltInLA.bind(this);
@@ -73,6 +79,7 @@ class App extends React.Component {
     this.retrieveHtmlAngelist = this.retrieveHtmlAngelist.bind(this);
 
     //GoogleAPI stuff
+
     this.googleAuth = this.googleAuth.bind(this);
     this.signInChange = this.signInChange.bind(this);
     this.createSheet = this.createSheet.bind(this);
@@ -87,6 +94,7 @@ class App extends React.Component {
   }
 
   //Event Listeners handling event changes on left(input) page
+
   handleChangeWebsite(event) {
     this.setState({ websiteInput: event.target.value });
   }
@@ -119,6 +127,7 @@ class App extends React.Component {
   }
 
   //Adds item to task list
+
   addToList() {
     let wantToAddAnyway = true;
     this.state.tasks.forEach((cur) => {
@@ -406,6 +415,7 @@ class App extends React.Component {
       })
       .catch((error) => console.error(error));
   }
+
   retrieveHtmlBuiltInLA() {
     let url = this.state.directLinkInput.split("/");
     url = url[url.length - 1];
@@ -419,6 +429,7 @@ class App extends React.Component {
   }
 
   retrieveHtmlMonster() {}
+
   retrieveHtmlAngelist() {
     let url = this.state.directLinkInput.split("/");
     url = url.slice(3);
