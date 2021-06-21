@@ -56,21 +56,7 @@ module.exports = {
       })
       .catch((error) => console.log("ERROR", error));
   },
-  retrieveHtmlBuildInLA: (req, res, next) => {
-    // req.body = axios
-    //   .get("https://angel.co/company/blockfolio/jobs/" + req.params.link)
-    //   .then(function(response) {
-    //     const $ = cheerio.load(response.data);
-    //     let jobTitleCompany = $(".u-colorGray3").text();
-    //     let location = $(
-    //       ".high-concept.s-vgBottom2.u-colorGray6.u-fontSize16"
-    //     ).text();
-    //   })
-    //   .then(data => {
-    //     res.status(200).send(data);
-    //   })
-    //   .catch(error => console.log("ERROR", error.error));
-  },
+  retrieveHtmlBuildInLA: (req, res, next) => {},
   retrieveHtmlAngelist: (req, res) => {
     req.body = axios
       .get("https://angel.co/" + req.params.link.split("+").join("/"))
