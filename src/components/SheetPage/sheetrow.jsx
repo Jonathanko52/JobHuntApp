@@ -10,8 +10,7 @@ const SheetRow = (props) => {
   // let InterviewPage = props.data[6];
   let PositionLink = props.data[7];
   let rowNum = props.num;
-  console.log("Cover Letter", CoverLetter);
-  console.log("Interview Page", InterviewPage);
+
   return (
     <div className="row border border-secondary">
       <div className="col-1 pt-1 border border-secondary">
