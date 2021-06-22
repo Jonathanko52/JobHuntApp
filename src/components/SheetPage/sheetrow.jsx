@@ -30,7 +30,15 @@ const SheetRow = (props) => {
           </input>
         );
       } else {
-        return <option value={cur}>{cur}</option>;
+        return (
+          <input
+            type="radio"
+            name="CoverLetter"
+            className="CoverInput RadioInput"
+            value={cur}>
+            {cur}
+          </input>
+        );
       }
     });
     return states;
