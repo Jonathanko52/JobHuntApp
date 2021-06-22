@@ -70,7 +70,7 @@ const SheetRow = (props) => {
   }
 
   interviewArray = setInterviewPageSelect();
-
+  coverLetterArray = setCoverLetterSelect();
   return (
     <div className="row border border-secondary">
       <div className="col-1 pt-1 border border-secondary">
