@@ -90,20 +90,7 @@ const SheetRow = (props) => {
             props.spreadSheetId
           );
         }}>
-        <input
-          type="radio"
-          name="CoverLetter"
-          className="CoverInput RadioInput"
-        />
-        Yes
-        <br></br>
-        <input
-          type="radio"
-          name="CoverLetter"
-          className="CoverInput RadioInput"
-          value="No"
-        />
-        No
+        {coverLetterArray}
       </div>
       <div
         className="col-2 pt-2  border border-secondary"
