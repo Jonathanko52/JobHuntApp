@@ -18,26 +18,33 @@ const SheetRow = (props) => {
   function setCoverLetterSelect() {
     let states = ["Yes", "No"];
     states = states.map((cur) => {
+      console.log("test", cur);
       if (cur === CoverLetter) {
+        console.log("IF");
         return (
-          <input
-            type="radio"
-            name="CoverLetter"
-            className="CoverInput RadioInput"
-            value={cur}
-            selected={true}>
+          <div>
+            <input
+              type="radio"
+              name="CoverLetter"
+              className="CoverInput RadioInput"
+              value={cur}
+              checked={true}
+            />
             {cur}
-          </input>
+          </div>
         );
       } else {
+        console.log("else");
         return (
-          <input
-            type="radio"
-            name="CoverLetter"
-            className="CoverInput RadioInput"
-            value={cur}>
+          <div>
+            <input
+              type="radio"
+              name="CoverLetter"
+              className="CoverInput RadioInput"
+              value={cur}
+            />
             {cur}
-          </input>
+          </div>
         );
       }
     });
