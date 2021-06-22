@@ -6,7 +6,7 @@ const SheetRow = (props) => {
   let PositionTitle = props.data[2];
   let Date = props.data[3];
   let Location = props.data[4];
-  // let CoverLetter = props.data[5];
+  let CoverLetter = props.data[5];
   let InterviewPage = props.data[6];
   let PositionLink = props.data[7];
   let rowNum = props.num;
@@ -15,7 +15,26 @@ const SheetRow = (props) => {
   let coverLetterArray;
   let interviewArray;
 
-  function setCoverLetterSelect() {}
+  function setCoverLetterSelect() {
+    let states = ["Yes", "No"];
+    states = states.map((cur) => {
+      if (cur === CoverLetter) {
+        return (
+          <input
+            type="radio"
+            name="CoverLetter"
+            className="CoverInput RadioInput"
+            value={cur}
+            selected={true}>
+            {cur}
+          </input>
+        );
+      } else {
+        return <option value={cur}>{cur}</option>;
+      }
+    });
+    return states;
+  }
 
   function setInterviewPageSelect() {
     let states = [
