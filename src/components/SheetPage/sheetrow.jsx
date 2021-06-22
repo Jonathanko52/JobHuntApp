@@ -30,7 +30,7 @@ const SheetRow = (props) => {
               value={cur}
               checked={true}
             />
-            {cur}
+            <label>{cur}</label>
           </div>
         );
       } else {
@@ -43,7 +43,7 @@ const SheetRow = (props) => {
               className="CoverInput RadioInput"
               value={cur}
             />
-            {cur}
+            <label>{cur}</label>
           </div>
         );
       }
@@ -60,16 +60,13 @@ const SheetRow = (props) => {
     ];
 
     states = states.map((cur) => {
-      console.log("TEST");
       if (cur === InterviewPage) {
-        console.log("IF");
         return (
           <option value={cur} selected={true}>
             {cur}
           </option>
         );
       } else {
-        console.log("ELSE");
         return <option value={cur}>{cur}</option>;
       }
     });
