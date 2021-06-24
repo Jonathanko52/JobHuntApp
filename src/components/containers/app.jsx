@@ -1086,26 +1086,8 @@ class App extends React.Component {
         },
       })
       .then((response) => {
+        getAllOfSheet();
         alert("Column updated");
-        console.log("spreadsheetId", spreadsheetId);
-        gapi.client.sheets.spreadsheets.values
-          .get({
-            spreadsheetId: spreadsheetId,
-            range: "Jobs!A1:J1000",
-          })
-          .then((response) => {
-            let result = response.result.values;
-            let newfullSheetData = result;
-            this.setState((state) => {
-              return {
-                fullSheetData: newfullSheetData,
-              };
-            });
-            alert("Sheet Updated?");
-          })
-          .catch((err) => {
-            console.log("test", err);
-          });
       })
       .catch((err) => {
         console.log("ERROR", err);
