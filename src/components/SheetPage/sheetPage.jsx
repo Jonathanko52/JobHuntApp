@@ -5,6 +5,7 @@ import SheetControlPanel from "./sheetControlPanel.jsx";
 
 const SheetPage = (props) => {
   let sheetcontents = [];
+  console.log("FULL SHEET", props.fullSheetData);
   props.fullSheetData.forEach((cur, ind) => {
     if (ind >= 1) {
       sheetcontents.push(
