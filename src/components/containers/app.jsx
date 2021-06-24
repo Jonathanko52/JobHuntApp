@@ -1074,6 +1074,7 @@ class App extends React.Component {
     alert("Google copy of sheet updated");
   }
   updateColumnOfSheet(value, row, column) {
+    console.log("ROW", row, "COLUMN", column);
     let spreadsheetId = this.state.spreadSheetId;
     gapi.client.sheets.spreadsheets.values
       .update({
@@ -1086,9 +1087,10 @@ class App extends React.Component {
       })
       .then((response) => {
         alert("Column updated");
+        console.log("spreadsheetId", spreadsheetId);
         gapi.client.sheets.spreadsheets.values
           .get({
-            spreadsheetId: spreadSheetId,
+            spreadsheetId: spreadsheetId,
             range: "Jobs!A1:J1000",
           })
           .then((response) => {

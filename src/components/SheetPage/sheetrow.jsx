@@ -18,9 +18,7 @@ const SheetRow = (props) => {
   function setCoverLetterSelect() {
     let states = ["Yes", "No"];
     states = states.map((cur) => {
-      console.log("test", cur);
       if (cur === CoverLetter) {
-        console.log("IF");
         return (
           <div>
             <input
@@ -34,7 +32,6 @@ const SheetRow = (props) => {
           </div>
         );
       } else {
-        console.log("else");
         return (
           <div>
             <input
