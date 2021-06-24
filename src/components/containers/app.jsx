@@ -1021,6 +1021,8 @@ class App extends React.Component {
     }
     let lastRow;
     let targetDate;
+    let firstRowIndex;
+    let lastRowIndex;
     if (previousMonth) {
       targetDate = `${new Date().getMonth() - 1 + 1}/${tempDate2}`;
     } else {
@@ -1051,8 +1053,17 @@ class App extends React.Component {
           j++;
         }
         let filteredArray = response.result.values.slice(index, lastRow + 1);
-
+        firstRowIndex = index;
+        lastRowIndex = lastRow + 1;
         return filteredArray;
+      })
+      .then((response) => {
+        let furtherFilteredArray = response.map((cur, ind) => {
+          cur.push(firstRowIndex + ind);
+          return cur;
+        });
+
+        return furtherFilteredArray;
       })
       .then((response) => {
         let newfullSheetData = response;

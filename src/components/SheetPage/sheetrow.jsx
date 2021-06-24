@@ -9,7 +9,7 @@ const SheetRow = (props) => {
   let CoverLetter = props.data[5];
   let InterviewPage = props.data[6];
   let PositionLink = props.data[7];
-  let rowNum = props.num;
+  let rowNum = props.data[8];
 
   //HTML to be dynamically rendered
   let coverLetterArray;

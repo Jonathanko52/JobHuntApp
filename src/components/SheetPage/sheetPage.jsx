@@ -11,7 +11,6 @@ const SheetPage = (props) => {
       sheetcontents.push(
         <Sheetrow
           data={cur}
-          num={ind}
           key={ind}
           updateColumnOfSheet={props.updateColumnOfSheet}
           spreadSheetId={props.spreadSheetId}></Sheetrow>
