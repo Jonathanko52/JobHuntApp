@@ -50,7 +50,7 @@ const SheetRow = (props) => {
 
   function setInterviewPageSelect() {
     let states = [
-      "Applied",
+      "Submitted",
       "Phone Screen Scheduled",
       "Technical Interview Scheduled",
       "Rejected",
@@ -103,7 +103,9 @@ const SheetRow = (props) => {
             props.spreadSheetId
           );
         }}>
-        <select name="InterviewStatus">{interviewArray}</select>
+        <select className="col-2" name="InterviewStatus">
+          {interviewArray}
+        </select>
       </div>
       <div className="col-1 pt-2 border border-secondary">
         <a href={PositionLink}>Link to Site</a>
