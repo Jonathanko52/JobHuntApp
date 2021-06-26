@@ -1025,7 +1025,6 @@ class App extends React.Component {
     let lastRow;
     let targetDate;
     let firstRowIndex;
-    let lastRowIndex;
     if (previousMonth) {
       targetDate = `${new Date().getMonth() - 1 + 1}/${tempDate2}`;
     } else {

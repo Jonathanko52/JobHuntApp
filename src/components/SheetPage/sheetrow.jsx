@@ -50,10 +50,11 @@ const SheetRow = (props) => {
 
   function setInterviewPageSelect() {
     let states = [
+      "Submitted",
       "Applied",
       "Phone Screen Scheduled",
       "Technical Interview Scheduled",
-      "Rejected",
+      "Rejected"
     ];
 
     states = states.map((cur) => {
