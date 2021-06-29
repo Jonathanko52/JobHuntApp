@@ -1,6 +1,7 @@
 import React from "react";
 
 const SheetRow = (props) => {
+  //Table values
   let JobPostingSource = props.data[0];
   let Company = props.data[1];
   let PositionTitle = props.data[2];
@@ -11,7 +12,7 @@ const SheetRow = (props) => {
   let PositionLink = props.data[7];
   let rowNum = props.data[8];
 
-  //HTML to be dynamically rendered
+  //Table values set in HTML to be dynamically rendered
   let coverLetterArray;
   let interviewArray;
 
