@@ -1031,6 +1031,8 @@ class App extends React.Component {
       targetDate = `${new Date().getMonth() + 1}/${tempDate2}`;
     }
 
+    //seems to not work at certain time of month. need to check if previousMonth thing is working
+
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadSheetId,
