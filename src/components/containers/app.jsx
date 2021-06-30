@@ -12,7 +12,7 @@ var GoogleAuth;
 import axios from "axios";
 
 class App extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this.directWebRef = React.createRef();
     this.directLinkRef = React.createRef();
