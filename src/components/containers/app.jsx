@@ -1190,14 +1190,14 @@ class App extends React.Component {
               <Route
                 path="/GraphPage"
                 exact
-                render={(props) => {
+                render={() => {
                   return <GraphPage spreadSheetId={this.state.spreadSheetId} />;
                 }}
               />
               <Route
                 path="/SheetPage"
                 exact
-                render={(props) => {
+                render={() => {
                   return (
                     <SheetPage
                       spreadSheetId={this.state.spreadSheetId}
