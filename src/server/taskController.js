@@ -22,10 +22,10 @@ module.exports = {
 
         $("span").each((i, elem) => {
           if (i === 2) {
-            location = $(elem).text();
+            company = $(elem).text();
           }
           if (i === 3) {
-            company = $(elem).text();
+            location = $(elem).text();
             companyLink = $(elem).find("a").attr("href");
           }
         });
