@@ -1,6 +1,6 @@
 import React from "react";
 
-const SheetRowHeader = (props) => {
+const SheetRowHeader = () => {
   return (
     <div className="row border border-secondary">
       <div className="col-1  border border-secondary">Job Posting Source</div>
