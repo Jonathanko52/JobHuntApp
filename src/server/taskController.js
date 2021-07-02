@@ -21,7 +21,8 @@ module.exports = {
         });
 
         $("span").each((i, elem) => {
-          if (i === 2) {
+          // console.log(i, $(elem).text());
+          if (i === 4) {
             company = $(elem).text();
           }
           if (i === 3) {
