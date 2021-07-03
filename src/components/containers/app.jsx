@@ -1083,10 +1083,10 @@ class App extends React.Component {
   }
 
   changeLocalSheet() {
-    alert("make changes to local sheet");
+    alert("make changes to local sheet. Work In Progress");
   }
   changeGoogleSheet() {
-    alert("Google copy of sheet updated");
+    alert("Google copy of sheet updated. Work In Progress");
   }
   updateColumnOfSheet(value, row, column) {
     let spreadsheetId = this.state.spreadSheetId;
