@@ -30,7 +30,7 @@ module.exports = {
       expiry_date: process.env.GOOGLE_EXPIRY_DATE,
     };
     oAuth2Client.setCredentials(tokenObject);
-    console.log("AFTR OAUTH");
+    console.log("oAuth Completed");
     // sends google drive grant permission from VRMS to email
     // try {
     //   const result = await grantPermission(
