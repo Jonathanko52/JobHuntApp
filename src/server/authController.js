@@ -17,7 +17,7 @@ module.exports = {
       client_secret,
       redirect_uris[1]
     );
-    console.log("AFTERCLIENT");
+    // console.log("AFTERCLIENT");
     // if (err)
     //   return res.status(500).send({
     //     message: "Error loading client secret file:" + err.message,
