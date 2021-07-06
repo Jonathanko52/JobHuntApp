@@ -1,12 +1,9 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-// Load client secrets from a local file.
-
 module.exports = {
   retrieveHtmlLinkedIn: (req, res) => {
     let jobTitle;
-
     let company;
     let companyLink;
     let location;
@@ -57,8 +54,9 @@ module.exports = {
       })
       .catch((error) => console.log("ERROR", error));
   },
-  retrieveHtmlBuildInLA: (req, res, next) => {},
+  retrieveHtmlBuildInLA: () => {},
   retrieveHtmlAngelist: (req, res) => {
+    //Not working. Angelist seems to be protected against scraping
     req.body = axios
       .get("https://angel.co/" + req.params.link.split("+").join("/"))
       .then(function (response) {
