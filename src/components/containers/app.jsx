@@ -82,8 +82,11 @@ class App extends React.Component {
 
     this.googleAuth = this.googleAuth.bind(this);
     this.signInChange = this.signInChange.bind(this);
+    //Creating a sheet in google sheets
     this.createSheet = this.createSheet.bind(this);
+    //Setting the spreadsheet ID for the app from the text field.
     this.setSpreadsheetId = this.setSpreadsheetId.bind(this);
+    //Setting the spreadsheet ID for the app from locale memory
     this.setSpreadsheetIdFromTemp = this.setSpreadsheetIdFromTemp.bind(this);
     this.getAllOfSheet = this.getAllOfSheet.bind(this);
     this.changeLocalSheet = this.changeLocalSheet.bind(this);
