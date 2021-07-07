@@ -88,7 +88,9 @@ class App extends React.Component {
     this.setSpreadsheetId = this.setSpreadsheetId.bind(this);
     //Setting the spreadsheet ID for the app from locale memory
     this.setSpreadsheetIdFromTemp = this.setSpreadsheetIdFromTemp.bind(this);
+    //Retrieve all of the spreadsheet and load it into app data.
     this.getAllOfSheet = this.getAllOfSheet.bind(this);
+    //make changes to copy of sheet in app data.
     this.changeLocalSheet = this.changeLocalSheet.bind(this);
     this.changeGoogleSheet = this.changeGoogleSheet.bind(this);
     this.updateColumnOfSheet = this.updateColumnOfSheet.bind(this);
