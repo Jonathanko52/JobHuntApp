@@ -92,7 +92,9 @@ class App extends React.Component {
     this.getAllOfSheet = this.getAllOfSheet.bind(this);
     //make changes to copy of sheet in app data.
     this.changeLocalSheet = this.changeLocalSheet.bind(this);
+    //Makes changes to google sheet according to local sheet
     this.changeGoogleSheet = this.changeGoogleSheet.bind(this);
+    //Make changes to google sheet directly from what's displayed on the app.
     this.updateColumnOfSheet = this.updateColumnOfSheet.bind(this);
 
     //Data Stuff
