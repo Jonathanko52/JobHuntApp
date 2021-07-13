@@ -19,7 +19,7 @@ const ManualSubmitForm = (props) => {
           <option defaultValue="selected" value="LinkedIn">
             LinkedIn
           </option>
-          <option value="Other">Angelist</option>
+          <option value="Other">Other</option>
         </select>
         <h4>Company</h4>
         <input
