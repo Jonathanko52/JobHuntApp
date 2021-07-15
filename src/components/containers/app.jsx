@@ -1020,8 +1020,6 @@ class App extends React.Component {
     let tempDate1 = new Date();
     let tempDate2 = tempDate1.getDate() - parseInt(sheetParameters);
     let previousMonth = false;
-    console.log("tempDate1", tempDate1);
-    console.log("tempDate2", tempDate2);
 
     if (tempDate2 < 0) {
       tempDate1.setDate(1);
