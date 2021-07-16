@@ -19,6 +19,8 @@ const ManualSubmitForm = (props) => {
           <option defaultValue="selected" value="LinkedIn">
             LinkedIn
           </option>
+          <option value="Hacker News">Hacker News</option>
+
           <option value="Other">Other</option>
         </select>
         <h4>Company</h4>
