@@ -9,7 +9,6 @@ const autoSubmitForm = (props) => {
       </p>
       <div className="LeftSubBar">
         <h4>Website</h4>
-
         <select
           ref={props.directWebRef}
           className="WebsiteInput TaskInput"
