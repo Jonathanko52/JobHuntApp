@@ -20,6 +20,7 @@ const autoSubmitForm = (props) => {
           </option>
           <option value="BuiltInLA">BuiltInLA</option>
           <option value="Angelist">Angelist</option>
+          <option value="Hacker News">Hacker News</option>
         </select>
 
         <h4>Link</h4>
