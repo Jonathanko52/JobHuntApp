@@ -65,7 +65,35 @@ const ManualSubmitForm = (props) => {
             props.linkRef.current.value = "";
           }}>
           Add
-        </button>
+        </button>{" "}
+        <input
+          ref={props.linkRef}
+          className="LinkInput TaskInput"
+          onChange={(e) => {
+            props.handleChangeLink(e);
+          }}
+        />{" "}
+        <input
+          ref={props.linkRef}
+          className="LinkInput TaskInput"
+          onChange={(e) => {
+            props.handleChangeLink(e);
+          }}
+        />{" "}
+        <input
+          ref={props.linkRef}
+          className="LinkInput TaskInput"
+          onChange={(e) => {
+            props.handleChangeLink(e);
+          }}
+        />{" "}
+        <input
+          ref={props.linkRef}
+          className="LinkInput TaskInput"
+          onChange={(e) => {
+            props.handleChangeLink(e);
+          }}
+        />
       </div>
     </div>
   );
