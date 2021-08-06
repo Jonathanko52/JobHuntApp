@@ -66,7 +66,7 @@ const ManualSubmitForm = (props) => {
           }}>
           Add
         </button>
-        <h4>Additional Input Field</h4>
+        <h4>Point of Contact</h4>
         <input
           ref={props.linkRef}
           className="LinkInput TaskInput"
