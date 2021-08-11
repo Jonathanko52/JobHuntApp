@@ -98,6 +98,22 @@ const ManualSubmitForm = (props) => {
             props.handleChangeLink(e);
           }}
         />
+        <h4>Additional Input Field</h4>
+        <input
+          ref={props.linkRef}
+          className="LinkInput TaskInput"
+          onChange={(e) => {
+            props.handleChangeLink(e);
+          }}
+        />
+        <h4>Additional Input Field</h4>
+        <input
+          ref={props.linkRef}
+          className="LinkInput TaskInput"
+          onChange={(e) => {
+            props.handleChangeLink(e);
+          }}
+        />
       </div>
     </div>
   );
