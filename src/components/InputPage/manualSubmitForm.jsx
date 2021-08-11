@@ -89,7 +89,7 @@ const ManualSubmitForm = (props) => {
           onChange={(e) => {
             props.handleChangeLink(e);
           }}
-        />{" "}
+        />
         <h4>Additional Input Field</h4>
         <input
           ref={props.linkRef}
