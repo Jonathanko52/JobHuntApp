@@ -29,6 +29,11 @@ class App extends React.Component {
       titleInput: "",
       locationInput: "",
       linkInput: "",
+      additionalInput1: "",
+      additionalInput2: "",
+      additionalInput3: "",
+      additionalInput4: "",
+      additionalInput5: "",
       totalJobsFromSheets: 0,
       directWebsiteInput: "LinkedIn",
       directLinkInput: "",
@@ -54,6 +59,11 @@ class App extends React.Component {
     this.handleChangeDirectLink = this.handleChangeDirectLink.bind(this);
     this.handleSpreadsheetIdSubmit = this.handleSpreadsheetIdSubmit.bind(this);
     this.handleSheetParameters = this.handleSheetParameters.bind(this);
+    this.handleAdditionalInput1 = this.handleAdditionalInput1.bind(this);
+    this.handleAdditionalInput2 = this.handleAdditionalInput2.bind(this);
+    this.handleAdditionalInput3 = this.handleAdditionalInput3.bind(this);
+    this.handleAdditionalInput4 = this.handleAdditionalInput4.bind(this);
+    this.handleAdditionalInput5 = this.handleAdditionalInput5.bind(this);
 
     //Add/Remove from list
 
@@ -131,6 +141,21 @@ class App extends React.Component {
   }
   handleSheetParameters(event) {
     this.setState({ sheetParameters: event });
+  }
+  handleAdditionalInput1(event) {
+    this.setState({ additionalInput1: event });
+  }
+  handleAdditionalInput2(event) {
+    this.setState({ additionalInput2: event });
+  }
+  handleAdditionalInput3(event) {
+    this.setState({ additionalInput3: event });
+  }
+  handleAdditionalInput4(event) {
+    this.setState({ additionalInput4: event });
+  }
+  handleAdditionalInput5(event) {
+    this.setState({ additionalInput5: event });
   }
 
   //Adds item to task list
