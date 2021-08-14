@@ -26,6 +26,11 @@ const InputPage = (props) => {
         handleChangeLink={props.handleChangeLink}
         handleChangeDirectWebsite={props.handleChangeDirectWebsite}
         handleChangeDirectLink={props.handleChangeDirectLink}
+        additionalInput1={props.additionalInput1}
+        additionalInput2={props.additionalInput2}
+        additionalInput3={props.additionalInput3}
+        additionalInput4={props.additionalInput4}
+        additionalInput5={props.additionalInput5}
         addToList={props.addToList}
         retrieveHtmlLinkedin={props.retrieveHtmlLinkedin}
         retrieveHtmlIndeed={props.retrieveHtmlIndeed}

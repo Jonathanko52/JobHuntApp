@@ -16,6 +16,11 @@ const LeftPage = (props) => {
         handleChangeLocation={props.handleChangeLocation}
         linkRef={props.linkRef}
         handleChangeLink={props.handleChangeLink}
+        additionalInput1={props.additionalInput1}
+        additionalInput2={props.additionalInput2}
+        additionalInput3={props.additionalInput3}
+        additionalInput4={props.additionalInput4}
+        additionalInput5={props.additionalInput5}
         addToList={props.addToList}
         webRef={props.webRef}
         compRef={props.compRef}

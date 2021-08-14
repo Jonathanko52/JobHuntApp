@@ -1193,6 +1193,11 @@ class App extends React.Component {
                       handleChangeLink={this.handleChangeLink}
                       handleChangeDirectWebsite={this.handleChangeDirectWebsite}
                       handleChangeDirectLink={this.handleChangeDirectLink}
+                      additionalInput1={this.additionalInput1}
+                      additionalInput2={this.additionalInput2}
+                      additionalInput3={this.additionalInput3}
+                      additionalInput4={this.additionalInput4}
+                      additionalInput5={this.additionalInput5}
                       addToList={this.addToList}
                       clearList={this.clearList}
                       moveToBack={this.moveToBack}
