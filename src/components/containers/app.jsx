@@ -288,11 +288,11 @@ class App extends React.Component {
             alert("Submitted successfully to google sheets");
           })
           .catch((err) => {
-            console.log("test", err);
+            console.log("error in saveToGoogleSheets Inner", err);
           });
       })
       .catch((err) => {
-        console.log("test", err);
+        console.log("error in saveToGoogleSheets outter", err);
       });
   }
   loadFromGoogleSheets() {
