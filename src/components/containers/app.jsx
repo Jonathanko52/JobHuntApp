@@ -45,11 +45,6 @@ class App extends React.Component {
       tempSpreadsheetID: "",
       fullSheetData: [],
       sheetParameters: "7",
-      handleAdditionalInput1: "",
-      handleAdditionalInput2: "",
-      handleAdditionalInput3: "",
-      handleAdditionalInput4: "",
-      handleAdditionalInput5: "",
     };
 
     //Event Listener Function Bindings
