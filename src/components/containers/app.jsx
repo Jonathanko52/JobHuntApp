@@ -277,7 +277,7 @@ class App extends React.Component {
         gapi.client.sheets.spreadsheets.values
           .update({
             spreadsheetId: spreadsheetId,
-            range: `Unapplied!A${2}:J${2 + numberOfTasksToBeAdded - 1}`,
+            range: `Unapplied!A${2}:O${2 + numberOfTasksToBeAdded - 1}`,
             valueInputOption: "RAW",
             resource: {
               values: tasksToBeAddedToSheet,
@@ -1101,7 +1101,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadSheetId,
-        range: "Jobs!A1:J1000",
+        range: "Jobs!A1:O1000",
       })
       .then((response) => {
         lastRow = response.result.values.length;
