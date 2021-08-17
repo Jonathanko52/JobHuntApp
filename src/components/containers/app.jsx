@@ -183,6 +183,11 @@ class App extends React.Component {
           locationInput: state.locationInput,
           coverInput: state.coverInput,
           linkInput: state.linkInput,
+          additionalInput1: state.additionalInput1,
+          additionalInput2: state.additionalInput2,
+          additionalInput3: state.additionalInput3,
+          additionalInput4: state.additionalInput4,
+          additionalInput5: state.additionalInput5,
         });
         return {
           tasks: newTasks,
@@ -191,6 +196,11 @@ class App extends React.Component {
           titleInput: "",
           locationInput: "",
           linkInput: "",
+          additionalInput1: "",
+          additionalInput2: "",
+          additionalInput3: "",
+          additionalInput4: "",
+          additionalInput5: "",
         };
       });
     }
