@@ -301,7 +301,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
-        range: "Unapplied!A2:J30",
+        range: "Unapplied!A2:O30",
       })
       .then((response) => {
         var result = response.result;
@@ -314,6 +314,11 @@ class App extends React.Component {
             locationInput: cur[4],
             coverInput: cur[6],
             linkInput: cur[8],
+            additionalInput1: cur[9],
+            additionalInput2: cur[10],
+            additionalInput3: cur[11],
+            additionalInput4: cur[12],
+            additionalInput5: cur[13],
           });
         });
       })
@@ -426,6 +431,11 @@ class App extends React.Component {
               locationInput: "",
               linkInput: "",
               companyLinkInput: "",
+              additionalInput1: "",
+              additionalInput2: "",
+              additionalInput3: "",
+              additionalInput4: "",
+              additionalInput5: "",
             };
           });
         }
