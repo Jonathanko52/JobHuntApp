@@ -264,6 +264,11 @@ class App extends React.Component {
             this.state.coverInput,
             this.state.interviewInput,
             cur.linkInput,
+            cur.additionalInput1,
+            cur.additionalInput2,
+            cur.additionalInput3,
+            cur.additionalInput4,
+            cur.additionalInput5,
           ]);
         });
         numberOfTasksToBeAdded = this.state.tasks.length;
@@ -324,6 +329,11 @@ class App extends React.Component {
               locationInput: cur.locationInput,
               coverInput: cur.coverInput,
               linkInput: cur.linkInput,
+              additionalInput1: cur.additionalInput1,
+              additionalInput2: cur.additionalInput2,
+              additionalInput3: cur.additionalInput3,
+              additionalInput4: cur.additionalInput4,
+              additionalInput5: cur.additionalInput5,
             });
           });
           return {
@@ -333,6 +343,11 @@ class App extends React.Component {
             titleInput: "",
             locationInput: "",
             linkInput: "",
+            additionalInput1: "",
+            additionalInput2: "",
+            additionalInput3: "",
+            additionalInput4: "",
+            additionalInput5: "",
           };
         });
       })
