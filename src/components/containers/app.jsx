@@ -78,6 +78,8 @@ class App extends React.Component {
     this.saveToLocal = this.saveToLocal.bind(this);
     this.loadFromLocal = this.loadFromLocal.bind(this);
     this.clearLocal = this.clearLocal.bind(this);
+
+    //Savee/load Unapplied list to google sheets for retrieval between browsers/machines
     this.saveToGoogleSheets = this.saveToGoogleSheets.bind(this);
     this.loadFromGoogleSheets = this.loadFromGoogleSheets.bind(this);
     //Http Request
