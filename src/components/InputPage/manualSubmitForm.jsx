@@ -66,7 +66,7 @@ const ManualSubmitForm = (props) => {
           }}>
           Add
         </button>
-        <h4>Point of Contact</h4>
+        <h4>Recruiter/Job Poster Profile</h4>
         <input
           ref={props.linkRef}
           className="LinkInput TaskInput"
