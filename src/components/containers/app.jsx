@@ -80,8 +80,10 @@ class App extends React.Component {
     this.clearLocal = this.clearLocal.bind(this);
 
     //Savee/load Unapplied list to google sheets for retrieval between browsers/machines
-    this.saveToGoogleSheets = this.saveToGoogleSheets.bind(this);
-    this.loadFromGoogleSheets = this.loadFromGoogleSheets.bind(this);
+    this.saveTasklistToGoogleUnapplied =
+      this.saveTasklistToGoogleUnapplied.bind(this);
+    this.loadTasklistFromGoogleUnapplied =
+      this.loadTasklistFromGoogleUnapplied.bind(this);
     //Http Request
 
     this.retrieveHtmlLinkedin = this.retrieveHtmlLinkedin.bind(this);
@@ -246,7 +248,7 @@ class App extends React.Component {
     this.saveToLocal();
   }
 
-  saveToGoogleSheets() {
+  saveTasklistToGoogleUnapplied() {
     let tasksToBeAddedToSheet = [];
     let numberOfTasksToBeAdded;
     let spreadsheetId = this.state.spreadSheetId;
@@ -290,14 +292,14 @@ class App extends React.Component {
             alert("Submitted successfully to google sheets");
           })
           .catch((err) => {
-            console.log("error in saveToGoogleSheets Inner", err);
+            console.log("error in saveTasklistToGoogleUnapplied Inner", err);
           });
       })
       .catch((err) => {
-        console.log("error in saveToGoogleSheets outter", err);
+        console.log("error in saveTasklistToGoogleUnapplied outter", err);
       });
   }
-  loadFromGoogleSheets() {
+  loadTasklistFromGoogleUnapplied() {
     let spreadsheetId = this.state.spreadSheetId;
     let tasksToBeAdded = [];
     gapi.client.sheets.spreadsheets.values
@@ -1211,8 +1213,12 @@ class App extends React.Component {
                 render={(props) => {
                   return (
                     <InputPage
-                      saveToGoogleSheets={this.saveToGoogleSheets}
-                      loadFromGoogleSheets={this.loadFromGoogleSheets}
+                      saveTasklistToGoogleUnapplied={
+                        this.saveTasklistToGoogleUnapplied
+                      }
+                      loadTasklistFromGoogleUnapplied={
+                        this.loadTasklistFromGoogleUnapplied
+                      }
                       clearGoogleLocal={this.clearGoogleLocal}
                       directWebRef={this.directWebRef}
                       directLinkRef={this.directLinkRef}
