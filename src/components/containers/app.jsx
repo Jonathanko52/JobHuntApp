@@ -77,7 +77,7 @@ class App extends React.Component {
 
     this.saveTaskToLocalStorage = this.saveTaskToLocalStorage.bind(this);
     this.loadTaskFromLocalStorage = this.loadTaskFromLocalStorage.bind(this);
-    this.clearLocal = this.clearLocal.bind(this);
+    this.clearTaskFromLocalStorage = this.clearTaskFromLocalStorage.bind(this);
 
     //Savee/load Unapplied list to google sheets for retrieval between browsers/machines
     this.saveTasklistToGoogleUnapplied =
@@ -393,7 +393,7 @@ class App extends React.Component {
     }
   }
 
-  clearLocal() {
+  clearTaskFromLocalStorage() {
     localStorage.removeItem("Tasks");
   }
 
@@ -1262,7 +1262,7 @@ class App extends React.Component {
                       updateTotalJobsFromSheets={this.updateTotalJobsFromSheets}
                       saveTaskToLocalStorage={this.saveTaskToLocalStorage}
                       loadTaskFromLocalStorage={this.loadTaskFromLocalStorage}
-                      clearLocal={this.clearLocal}
+                      clearTaskFromLocalStorage={this.clearTaskFromLocalStorage}
                     />
                   );
                 }}

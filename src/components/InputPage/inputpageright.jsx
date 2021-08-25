@@ -13,9 +13,8 @@ class RightPage extends React.Component {
     //binding handle change functions
     this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this);
     this.handleChangeCover = this.handleChangeCover.bind(this);
-    this.increaseNumberAppliedToday = this.increaseNumberAppliedToday.bind(
-      this
-    );
+    this.increaseNumberAppliedToday =
+      this.increaseNumberAppliedToday.bind(this);
   }
 
   //handle changes to "Recruiter" value

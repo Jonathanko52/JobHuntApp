@@ -53,7 +53,7 @@ const InputPage = (props) => {
         updateTotalJobsFromSheets={props.updateTotalJobsFromSheets}
         saveTaskToLocalStorage={props.saveTaskToLocalStorage}
         loadTaskFromLocalStorage={props.loadTaskFromLocalStorage}
-        clearLocal={props.clearLocal}
+        clearTaskFromLocalStorage={props.clearTaskFromLocalStorage}
         spreadSheetId={props.spreadSheetId}
       />
     </div>
