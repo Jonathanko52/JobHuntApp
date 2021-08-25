@@ -75,7 +75,7 @@ class App extends React.Component {
 
     //Save/load List to LocalStorage
 
-    this.saveToLocal = this.saveToLocal.bind(this);
+    this.saveTaskToLocalStorage = this.saveTaskToLocalStorage.bind(this);
     this.loadFromLocal = this.loadFromLocal.bind(this);
     this.clearLocal = this.clearLocal.bind(this);
 
@@ -208,7 +208,7 @@ class App extends React.Component {
         };
       });
     }
-    this.saveToLocal();
+    this.saveTaskToLocalStorage();
   }
 
   //removes item from task list
@@ -221,7 +221,7 @@ class App extends React.Component {
         input: state.input,
       };
     });
-    this.saveToLocal();
+    this.saveTaskToLocalStorage();
   }
 
   clearList() {
@@ -232,7 +232,7 @@ class App extends React.Component {
         input: state.input,
       };
     });
-    this.saveToLocal();
+    this.saveTaskToLocalStorage();
   }
 
   moveToBack(index) {
@@ -245,7 +245,7 @@ class App extends React.Component {
         input: state.input,
       };
     });
-    this.saveToLocal();
+    this.saveTaskToLocalStorage();
   }
 
   saveTasklistToGoogleUnapplied() {
@@ -299,6 +299,7 @@ class App extends React.Component {
         console.log("error in saveTasklistToGoogleUnapplied outter", err);
       });
   }
+
   loadTasklistFromGoogleUnapplied() {
     let spreadsheetId = this.state.spreadSheetId;
     let tasksToBeAdded = [];
@@ -364,9 +365,10 @@ class App extends React.Component {
         console.log("test", err);
       });
   }
+
   clearGoogleLocal() {}
 
-  saveToLocal() {
+  saveTaskToLocalStorage() {
     setTimeout(() => {
       localStorage.setItem("Tasks", JSON.stringify(this.state.tasks));
     }, 500);
@@ -446,10 +448,10 @@ class App extends React.Component {
         return res;
       })
       .then((res) => {
-        this.saveToLocal();
+        this.saveTaskToLocalStorage();
       })
       .catch((error) => console.error(error));
-    this.saveToLocal();
+    this.saveTaskToLocalStorage();
   }
 
   retrieveHtmlIndeed() {
@@ -482,7 +484,7 @@ class App extends React.Component {
         });
       })
       .then((res) => {
-        this.saveToLocal();
+        this.saveTaskToLocalStorage();
       })
       .catch((error) => console.error(error));
   }
@@ -494,7 +496,7 @@ class App extends React.Component {
       .get("/RetrieveHtmlBuiltInLA/" + url)
       .then((res, request) => {})
       .then((res) => {
-        this.saveToLocal();
+        this.saveTaskToLocalStorage();
       })
       .catch((error) => console.error(error));
   }
@@ -510,7 +512,7 @@ class App extends React.Component {
 
       .then((res, request) => {})
       .then((res) => {
-        this.saveToLocal();
+        this.saveTaskToLocalStorage();
       })
       .catch((error) => console.error(error));
   }
@@ -1251,14 +1253,14 @@ class App extends React.Component {
                       retrieveHtmlAngelist={this.retrieveHtmlAngelist}
                       directWebsiteInput={this.state.directWebsiteInput}
                       directLinkInput={this.state.directLinkInput}
-                      saveToLocal={this.saveToLocal}
+                      saveTaskToLocalStorage={this.saveTaskToLocalStorage}
                       totalJobs={this.state.totalJobs}
                       tasks={this.state.tasks}
                       spreadSheetId={this.state.spreadSheetId}
                       removeFromList={this.removeFromList}
                       websiteInput={this.state.websiteInput}
                       updateTotalJobsFromSheets={this.updateTotalJobsFromSheets}
-                      saveToLocal={this.saveToLocal}
+                      saveTaskToLocalStorage={this.saveTaskToLocalStorage}
                       loadFromLocal={this.loadFromLocal}
                       clearLocal={this.clearLocal}
                     />
