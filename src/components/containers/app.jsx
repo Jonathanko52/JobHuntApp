@@ -76,7 +76,7 @@ class App extends React.Component {
     //Save/load List to LocalStorage
 
     this.saveTaskToLocalStorage = this.saveTaskToLocalStorage.bind(this);
-    this.loadFromLocal = this.loadFromLocal.bind(this);
+    this.loadTaskFromLocalStorage = this.loadTaskFromLocalStorage.bind(this);
     this.clearLocal = this.clearLocal.bind(this);
 
     //Savee/load Unapplied list to google sheets for retrieval between browsers/machines
@@ -374,7 +374,7 @@ class App extends React.Component {
     }, 500);
   }
 
-  loadFromLocal() {
+  loadTaskFromLocalStorage() {
     let loadedTasks = JSON.parse(localStorage.getItem("Tasks"));
 
     if (Array.isArray(loadedTasks)) {
@@ -1180,7 +1180,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.loadFromLocal();
+    this.loadTaskFromLocalStorage();
   }
 
   render() {
@@ -1261,7 +1261,7 @@ class App extends React.Component {
                       websiteInput={this.state.websiteInput}
                       updateTotalJobsFromSheets={this.updateTotalJobsFromSheets}
                       saveTaskToLocalStorage={this.saveTaskToLocalStorage}
-                      loadFromLocal={this.loadFromLocal}
+                      loadTaskFromLocalStorage={this.loadTaskFromLocalStorage}
                       clearLocal={this.clearLocal}
                     />
                   );
