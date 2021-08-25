@@ -39,7 +39,7 @@ const InputPage = (props) => {
         totalJobsFromSheets={props.totalJobsFromSheets}
         directWebsiteInput={props.directWebsiteInput}
         directLinkInput={props.directLinkInput}
-        saveToLocal={props.saveToLocal}
+        saveTaskToLocalStorage={props.saveTaskToLocalStorage}
         totalJobs={props.totalJobs}
       />
       <RightPage
@@ -51,7 +51,7 @@ const InputPage = (props) => {
         clearList={props.clearList}
         websiteInput={props.websiteInput}
         updateTotalJobsFromSheets={props.updateTotalJobsFromSheets}
-        saveToLocal={props.saveToLocal}
+        saveTaskToLocalStorage={props.saveTaskToLocalStorage}
         loadFromLocal={props.loadFromLocal}
         clearLocal={props.clearLocal}
         spreadSheetId={props.spreadSheetId}
