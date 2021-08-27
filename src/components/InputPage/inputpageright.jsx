@@ -89,7 +89,7 @@ class RightPage extends React.Component {
                 "Are you sure you want to save the jobs you haven't applied to yet to sheets?"
               );
               if (addToList) {
-                props.saveTasklistToGoogleUnapplied();
+                this.props.saveTasklistToGoogleUnapplied();
               }
             }}>
             Save To Google
@@ -101,7 +101,7 @@ class RightPage extends React.Component {
                 "Do you want to load your unapplied positions from sheets?"
               );
               if (addToList) {
-                props.loadTasklistFromGoogleUnapplied();
+                this.props.loadTasklistFromGoogleUnapplied();
               }
             }}>
             Load From Google

@@ -309,7 +309,8 @@ class App extends React.Component {
         range: "Unapplied!A2:O30",
       })
       .then((response) => {
-        var result = response.result;
+        console.log("RESPONSE", response.result.values);
+        var result = response.result.values;
         result.forEach((cur) => {
           tasksToBeAdded.push({
             websiteInput: cur[0],
