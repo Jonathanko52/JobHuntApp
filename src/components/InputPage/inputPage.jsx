@@ -52,8 +52,6 @@ const InputPage = (props) => {
         clearList={props.clearList}
         websiteInput={props.websiteInput}
         updateTotalJobsFromSheets={props.updateTotalJobsFromSheets}
-        saveTaskToLocalStorage={props.saveTaskToLocalStorage}
-        loadTaskFromLocalStorage={props.loadTaskFromLocalStorage}
         clearTaskFromLocalStorage={props.clearTaskFromLocalStorage}
         spreadSheetId={props.spreadSheetId}
         saveTasklistToGoogleUnapplied={props.saveTasklistToGoogleUnapplied}
