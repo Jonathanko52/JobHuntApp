@@ -40,6 +40,7 @@ class RightPage extends React.Component {
   }
 
   render() {
+    console.log("PROPS", this.props);
     let Array = [];
     this.props.tasks.forEach((cur, ind) => {
       if (cur) {
@@ -85,10 +86,10 @@ class RightPage extends React.Component {
             onClick={() => {
               let addToList = false;
               addToList = window.confirm(
-                "Are you sure you want to load from sheets"
+                "Are you sure you want to save the jobs you haven't applied to yet to sheets?"
               );
               if (addToList) {
-                this.props.saveToGoogleSheets();
+                props.saveTasklistToGoogleUnapplied();
               }
             }}>
             Save To Google
@@ -97,10 +98,10 @@ class RightPage extends React.Component {
             onClick={() => {
               let addToList = false;
               addToList = window.confirm(
-                "Are you sure you want to load from sheets"
+                "Do you want to load your unapplied positions from sheets?"
               );
               if (addToList) {
-                this.props.loadFromGoogleSheets;
+                props.loadTasklistFromGoogleUnapplied();
               }
             }}>
             Load From Google

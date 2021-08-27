@@ -3,6 +3,7 @@ import RightPage from "./inputpageright.jsx";
 import LeftPage from "./inputpageleft.jsx";
 
 const InputPage = (props) => {
+  console.log("INPUT PAGE PROPS", props);
   return (
     <div className="MainPage col-xs-10">
       <LeftPage
@@ -43,8 +44,8 @@ const InputPage = (props) => {
         totalJobs={props.totalJobs}
       />
       <RightPage
-        saveToGoogleSheets={props.saveToGoogleSheets}
-        loadFromGoogleSheets={props.loadFromGoogleSheets}
+        saveTaskToLocalStorage={props.saveTaskToLocalStorage}
+        loadTaskFromLocalStorage={props.loadTaskFromLocalStorage}
         tasks={props.tasks}
         removeFromList={props.removeFromList}
         moveToBack={props.moveToBack}
@@ -55,6 +56,8 @@ const InputPage = (props) => {
         loadTaskFromLocalStorage={props.loadTaskFromLocalStorage}
         clearTaskFromLocalStorage={props.clearTaskFromLocalStorage}
         spreadSheetId={props.spreadSheetId}
+        saveTasklistToGoogleUnapplied={props.saveTasklistToGoogleUnapplied}
+        loadTasklistFromGoogleUnapplied={props.loadTasklistFromGoogleUnapplied}
       />
     </div>
   );
