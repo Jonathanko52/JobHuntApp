@@ -372,7 +372,7 @@ class App extends React.Component {
   clearTasklistFromGoogleUnapplied() {
     let spreadsheetId = this.state.spreadSheetId;
     gapi.client.sheets.spreadsheets.values
-      .get({
+      .clear({
         spreadsheetId: spreadsheetId,
         range: "Unapplied!A1:A1000",
       })
@@ -395,24 +395,6 @@ class App extends React.Component {
           ]);
         });
         numberOfTasksToBeAdded = this.state.tasks.length;
-      })
-      .then(() => {
-        gapi.client.sheets.spreadsheets.values
-          .update({
-            spreadsheetId: spreadsheetId,
-            range: `Unapplied!A${2}:O${2 + numberOfTasksToBeAdded - 1}`,
-            valueInputOption: "RAW",
-            resource: {
-              values: tasksToBeAddedToSheet,
-            },
-          })
-          .then(() => {
-            //Removes item added to sheet from React App
-            alert("Submitted successfully to google sheets");
-          })
-          .catch((err) => {
-            console.log("error in saveTasklistToGoogleUnapplied Inner", err);
-          });
       })
       .catch((err) => {
         console.log("error in saveTasklistToGoogleUnapplied outter", err);
