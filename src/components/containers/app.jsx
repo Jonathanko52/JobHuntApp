@@ -84,6 +84,8 @@ class App extends React.Component {
       this.saveTasklistToGoogleUnapplied.bind(this);
     this.loadTasklistFromGoogleUnapplied =
       this.loadTasklistFromGoogleUnapplied.bind(this);
+    this.clearTasklistFromGoogleUnapplied =
+      this.clearTasklistFromGoogleUnapplied.bind(this);
     //Http Request
 
     this.retrieveHtmlLinkedin = this.retrieveHtmlLinkedin.bind(this);
@@ -364,6 +366,56 @@ class App extends React.Component {
       })
       .catch((err) => {
         console.log("test", err);
+      });
+  }
+
+  clearTasklistFromGoogleUnapplied() {
+    let spreadsheetId = this.state.spreadSheetId;
+    gapi.client.sheets.spreadsheets.values
+      .get({
+        spreadsheetId: spreadsheetId,
+        range: "Unapplied!A1:A1000",
+      })
+      .then((response) => {
+        this.state.tasks.forEach((cur) => {
+          tasksToBeAddedToSheet.push([
+            cur.websiteInput,
+            cur.companyInput,
+            cur.titleInput,
+            `${new Date().getMonth() + 1}/${new Date().getDate()}`,
+            cur.locationInput,
+            this.state.coverInput,
+            this.state.interviewInput,
+            cur.linkInput,
+            cur.additionalInput1,
+            cur.additionalInput2,
+            cur.additionalInput3,
+            cur.additionalInput4,
+            cur.additionalInput5,
+          ]);
+        });
+        numberOfTasksToBeAdded = this.state.tasks.length;
+      })
+      .then(() => {
+        gapi.client.sheets.spreadsheets.values
+          .update({
+            spreadsheetId: spreadsheetId,
+            range: `Unapplied!A${2}:O${2 + numberOfTasksToBeAdded - 1}`,
+            valueInputOption: "RAW",
+            resource: {
+              values: tasksToBeAddedToSheet,
+            },
+          })
+          .then(() => {
+            //Removes item added to sheet from React App
+            alert("Submitted successfully to google sheets");
+          })
+          .catch((err) => {
+            console.log("error in saveTasklistToGoogleUnapplied Inner", err);
+          });
+      })
+      .catch((err) => {
+        console.log("error in saveTasklistToGoogleUnapplied outter", err);
       });
   }
 
