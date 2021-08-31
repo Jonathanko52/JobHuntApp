@@ -362,6 +362,7 @@ class App extends React.Component {
             additionalInput5: "",
           };
         });
+        this.saveTaskToLocalStorage();
       })
       .catch((err) => {
         console.log("test", err);
@@ -377,6 +378,7 @@ class App extends React.Component {
       })
       .then((response) => {
         alert("Submitted cleared google unapplied to google sheets");
+        this.saveTaskToLocalStorage();
       })
       .catch((err) => {
         console.log("error in clearTasklistFromGoogleUnapplied outter", err);
