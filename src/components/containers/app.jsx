@@ -373,7 +373,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .clear({
         spreadsheetId: spreadsheetId,
-        range: "Unapplied!A1:A1000",
+        range: "Unapplied!A1:I1000",
       })
       .then((response) => {
         alert("Submitted cleared google unapplied to google sheets");
