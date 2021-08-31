@@ -1111,6 +1111,7 @@ class App extends React.Component {
       previousMonth = true;
     }
     let lastRow;
+    let lastRowIndex;
     let targetDate;
     let firstRowIndex;
     if (previousMonth) {
