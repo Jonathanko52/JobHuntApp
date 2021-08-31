@@ -106,6 +106,18 @@ class RightPage extends React.Component {
             }}>
             Load From Google
           </button>
+          <button
+            onClick={() => {
+              let addToList = false;
+              addToList = window.confirm(
+                "Are you sure you want to wipe the google unapplied list?"
+              );
+              if (addToList) {
+                this.props.clearTasklistFromGoogleUnapplied();
+              }
+            }}>
+            Clear Google
+          </button>
         </div>
         <div className="row"></div>
         <ol className="TaskTable">{Array}</ol>

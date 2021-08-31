@@ -311,7 +311,6 @@ class App extends React.Component {
         range: "Unapplied!A2:O30",
       })
       .then((response) => {
-        console.log("RESPONSE", response.result.values);
         var result = response.result.values;
         result.forEach((cur) => {
           tasksToBeAdded.push({
@@ -377,27 +376,10 @@ class App extends React.Component {
         range: "Unapplied!A1:A1000",
       })
       .then((response) => {
-        this.state.tasks.forEach((cur) => {
-          tasksToBeAddedToSheet.push([
-            cur.websiteInput,
-            cur.companyInput,
-            cur.titleInput,
-            `${new Date().getMonth() + 1}/${new Date().getDate()}`,
-            cur.locationInput,
-            this.state.coverInput,
-            this.state.interviewInput,
-            cur.linkInput,
-            cur.additionalInput1,
-            cur.additionalInput2,
-            cur.additionalInput3,
-            cur.additionalInput4,
-            cur.additionalInput5,
-          ]);
-        });
-        numberOfTasksToBeAdded = this.state.tasks.length;
+        alert("Submitted cleared google unapplied to google sheets");
       })
       .catch((err) => {
-        console.log("error in saveTasklistToGoogleUnapplied outter", err);
+        console.log("error in clearTasklistFromGoogleUnapplied outter", err);
       });
   }
 
@@ -1255,6 +1237,9 @@ class App extends React.Component {
                       }
                       loadTasklistFromGoogleUnapplied={
                         this.loadTasklistFromGoogleUnapplied
+                      }
+                      clearTasklistFromGoogleUnapplied={
+                        this.clearTasklistFromGoogleUnapplied
                       }
                       clearGoogleLocal={this.clearGoogleLocal}
                       directWebRef={this.directWebRef}

@@ -56,6 +56,9 @@ const InputPage = (props) => {
         spreadSheetId={props.spreadSheetId}
         saveTasklistToGoogleUnapplied={props.saveTasklistToGoogleUnapplied}
         loadTasklistFromGoogleUnapplied={props.loadTasklistFromGoogleUnapplied}
+        clearTasklistFromGoogleUnapplied={
+          props.clearTasklistFromGoogleUnapplied
+        }
       />
     </div>
   );
