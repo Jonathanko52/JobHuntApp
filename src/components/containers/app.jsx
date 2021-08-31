@@ -112,8 +112,6 @@ class App extends React.Component {
     this.changeGoogleSheet = this.changeGoogleSheet.bind(this);
     //Make changes to google sheet directly from what's displayed on the app.
     this.updateColumnOfSheet = this.updateColumnOfSheet.bind(this);
-
-    //Data Stuff
   }
 
   //Event Listeners handling event changes on left(input) page
