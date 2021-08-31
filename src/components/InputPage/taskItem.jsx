@@ -2,7 +2,7 @@ import React from "react";
 //Decided to start showing tasks depending on what fields are actually filled
 //Also need to stop calling them 'tasks' I think. worth the trouble?
 const TaskItem = (props) => (
-  <li className="border border-secondary p-4">
+  <li className="border border-secondary px-4 py-2">
     <b>Source Website: </b> {props.websiteInput}
     <br />
     <b>Company Name: </b>

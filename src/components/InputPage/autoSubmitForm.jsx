@@ -48,16 +48,6 @@ const autoSubmitForm = (props) => {
           }}>
           Add
         </button>
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            console.log("THIS BUTTON HAS BEEN CLICKED");
-            props.saveToGoogleSheets();
-            // props.clearGoogleLocal();
-            // props.loadFromGoogleSheets();
-          }}>
-          TEST
-        </button>
       </div>
     </div>
   );
