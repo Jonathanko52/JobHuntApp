@@ -15,7 +15,7 @@ const SheetRow = (props) => {
 
   //Table values set in HTML to be dynamically rendered
   let coverLetterArray;
-  let interviewArray;
+  let interviewPhaseArray;
 
   function setCoverLetterSelect() {
     let states = ["Yes", "No"];
