@@ -7,9 +7,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "../LandingPage/landingpage.jsx";
 import GraphPage from "./../GraphPage/graphPage.jsx";
 import SheetPage from "../SheetPage/sheetPage.jsx";
-var GoogleAuth;
-//Tested. didn't break anything
 import axios from "axios";
+
+var GoogleAuth;
 
 class App extends React.Component {
   constructor() {
