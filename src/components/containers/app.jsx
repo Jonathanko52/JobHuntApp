@@ -292,10 +292,12 @@ class App extends React.Component {
             alert("Submitted successfully to google sheets");
           })
           .catch((err) => {
+            alert("An error has occured");
             console.log("error in saveTasklistToGoogleUnapplied Inner", err);
           });
       })
       .catch((err) => {
+        alert("An error has occured");
         console.log("error in saveTasklistToGoogleUnapplied outter", err);
       });
   }
@@ -363,6 +365,8 @@ class App extends React.Component {
         this.saveTaskToLocalStorage();
       })
       .catch((err) => {
+        alert("An error has occured");
+
         console.log("test", err);
       });
   }
@@ -375,10 +379,12 @@ class App extends React.Component {
         range: "Unapplied!A2:O1000",
       })
       .then((response) => {
-        alert("Submitted cleared google unapplied to google sheets");
+        alert("An error has occured");
+        console.log("Submitted cleared google unapplied to google sheets");
         this.saveTaskToLocalStorage();
       })
       .catch((err) => {
+        alert("An error has occured");
         console.log("error in clearTasklistFromGoogleUnapplied outter", err);
       });
   }
@@ -1074,7 +1080,7 @@ class App extends React.Component {
         });
       })
       .catch((res, err) => {
-        console.log("error", res.body);
+        alert("error", res.body);
       });
   }
 
@@ -1167,7 +1173,7 @@ class App extends React.Component {
         });
       })
       .catch((err) => {
-        console.log("test", err);
+        alert("test", err);
       });
   }
 
@@ -1193,7 +1199,7 @@ class App extends React.Component {
         alert("Column updated");
       })
       .catch((err) => {
-        console.log("ERROR", err);
+        alert("ERROR", err);
       });
   }
 
