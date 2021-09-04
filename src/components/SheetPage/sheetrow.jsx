@@ -1,6 +1,7 @@
 import React from "react";
 
 const SheetRow = (props) => {
+  console.log(props.data);
   //Table values
   let JobPostingSource = props.data[0];
   let Company = props.data[1];
@@ -49,7 +50,8 @@ const SheetRow = (props) => {
     return states;
   }
 
-  function setInterviewPageSelect() {
+  function setInterviewPhaseSelect() {
+    console.log("INTERVIEW PHASE R?UNNING");
     let states = [
       "Submitted",
       "Phone Screen Scheduled",
@@ -71,7 +73,7 @@ const SheetRow = (props) => {
     return states;
   }
 
-  interviewArray = setInterviewPageSelect();
+  interviewPhaseArray = setInterviewPhaseSelect();
   coverLetterArray = setCoverLetterSelect();
 
   return (
@@ -106,7 +108,7 @@ const SheetRow = (props) => {
           );
         }}>
         <select className="col-2" name="InterviewStatus">
-          {interviewArray}
+          {interviewPhaseArray}
         </select>
       </div>
       <div className="col-1 pt-2 border border-secondary">
