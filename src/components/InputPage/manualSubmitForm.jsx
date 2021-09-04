@@ -74,38 +74,6 @@ const ManualSubmitForm = (props) => {
             props.additionalInput1(e);
           }}
         />
-        {/* <h4>Additional Input Field</h4>
-        <input
-          ref={props.linkRef}
-          className="LinkInput TaskInput"
-          onChange={(e) => {
-            props.additionalInput2(e);
-          }}
-        />
-        <h4>Additional Input Field</h4>
-        <input
-          ref={props.linkRef}
-          className="LinkInput TaskInput"
-          onChange={(e) => {
-            props.additionalInput3(e);
-          }}
-        />
-        <h4>Additional Input Field</h4>
-        <input
-          ref={props.linkRef}
-          className="LinkInput TaskInput"
-          onChange={(e) => {
-            props.additionalInput4(e);
-          }}
-        />
-        <h4>Additional Input Field</h4>
-        <input
-          ref={props.linkRef}
-          className="LinkInput TaskInput"
-          onChange={(e) => {
-            props.additionalInput5(e);
-          }}
-        /> */}
       </div>
     </div>
   );
