@@ -51,7 +51,6 @@ const SheetRow = (props) => {
   }
 
   function setInterviewPhaseSelect() {
-    console.log("INTERVIEW PHASE R?UNNING");
     let states = [
       "Submitted",
       "Phone Screen Scheduled",
@@ -61,9 +60,8 @@ const SheetRow = (props) => {
 
     states = states.map((cur) => {
       if (cur === InterviewPage) {
-        console.log("TEST");
         return (
-          <option value={cur} selected="selected">
+          <option value={cur} selected={true}>
             {cur}
           </option>
         );
