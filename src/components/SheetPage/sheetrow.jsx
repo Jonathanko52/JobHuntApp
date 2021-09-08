@@ -61,8 +61,9 @@ const SheetRow = (props) => {
 
     states = states.map((cur) => {
       if (cur === InterviewPage) {
+        console.log("TEST");
         return (
-          <option value={cur} selected={InterviewPage}>
+          <option value={cur} selected="selected">
             {cur}
           </option>
         );
@@ -70,6 +71,7 @@ const SheetRow = (props) => {
         return <option value={cur}>{cur}</option>;
       }
     });
+    console.log("STATES", states);
     return states;
   }
 
