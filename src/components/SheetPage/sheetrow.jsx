@@ -107,7 +107,7 @@ const SheetRow = (props) => {
             props.spreadSheetId
           );
         }}>
-        <select className="col-12" name="InterviewStatus">
+        <select className="col-10" name="InterviewStatus">
           {interviewPhaseArray}
         </select>
       </div>
