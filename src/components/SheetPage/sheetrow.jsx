@@ -60,10 +60,9 @@ const SheetRow = (props) => {
     ];
 
     states = states.map((cur) => {
-      console.log("CUR", cur);
       if (cur === InterviewPage) {
         return (
-          <option value={cur} selected={true}>
+          <option value={cur} selected={InterviewPage}>
             {cur}
           </option>
         );
