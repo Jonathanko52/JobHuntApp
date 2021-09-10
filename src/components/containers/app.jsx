@@ -1262,6 +1262,7 @@ class App extends React.Component {
                       titleRef={this.titleRef}
                       locRef={this.locRef}
                       linkRef={this.linkRef}
+                      recruiterRef={this.recruiterRef}
                       handleChangeWebsite={this.handleChangeWebsite}
                       handleChangeTitle={this.handleChangeTitle}
                       handleChangeRecruiter={this.handleChangeRecruiter}

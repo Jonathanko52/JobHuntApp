@@ -63,12 +63,13 @@ const ManualSubmitForm = (props) => {
             props.titleRef.current.value = "";
             props.locRef.current.value = "";
             props.linkRef.current.value = "";
+            props.recruiterRef.current.value = "";
           }}>
           Add
         </button>
         <h4>Recruiter/Job Poster Profile</h4>
         <input
-          ref={props.linkRef}
+          ref={props.recruiterRef}
           className="LinkInput TaskInput"
           onChange={(e) => {
             props.additionalInput1(e);

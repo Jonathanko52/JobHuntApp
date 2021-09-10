@@ -17,6 +17,7 @@ const InputPage = (props) => {
         titleRef={props.titleRef}
         locRef={props.locRef}
         linkRef={props.linkRef}
+        recruiterRef={props.recruiterRef}
         handleChangeWebsite={props.handleChangeWebsite}
         handleChangeCompany={props.handleChange}
         handleChangeTitle={props.handleChangeTitle}
