@@ -21,6 +21,11 @@ class App extends React.Component {
     this.titleRef = React.createRef();
     this.locRef = React.createRef();
     this.linkRef = React.createRef();
+    this.Ref1 = React.createRef();
+    this.Ref2 = React.createRef();
+    this.Ref3 = React.createRef();
+    this.Ref4 = React.createRef();
+    this.Ref5 = React.createRef();
 
     this.state = {
       tasks: [],
