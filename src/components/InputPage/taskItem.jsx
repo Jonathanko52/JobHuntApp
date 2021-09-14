@@ -43,7 +43,10 @@ const TaskItem = (props) => (
     </a>
     <br />
     <b href> Priority</b>
-    <select>
+    <select
+      onChange={(e) => {
+        props.handlePriorityInput(e);
+      }}>
       <option value="5">5</option>
       <option value="4">4</option>
       <option value="3">3</option>

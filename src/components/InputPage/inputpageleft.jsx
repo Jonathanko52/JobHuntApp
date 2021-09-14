@@ -17,7 +17,7 @@ const LeftPage = (props) => {
         linkRef={props.linkRef}
         recruiterRef={props.recruiterRef}
         handleChangeLink={props.handleChangeLink}
-        additionalInput1={props.additionalInput1}
+        priorityInput={props.priorityInput}
         additionalInput2={props.additionalInput2}
         additionalInput3={props.additionalInput3}
         additionalInput4={props.additionalInput4}

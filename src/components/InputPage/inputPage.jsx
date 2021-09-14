@@ -28,7 +28,8 @@ const InputPage = (props) => {
         handleChangeLink={props.handleChangeLink}
         handleChangeDirectWebsite={props.handleChangeDirectWebsite}
         handleChangeDirectLink={props.handleChangeDirectLink}
-        additionalInput1={props.additionalInput1}
+        priorityInput={props.priorityInput}
+        handlePriorityInput={props.handlePriorityInput}
         additionalInput2={props.additionalInput2}
         additionalInput3={props.additionalInput3}
         additionalInput4={props.additionalInput4}

@@ -72,7 +72,7 @@ const ManualSubmitForm = (props) => {
           ref={props.recruiterRef}
           className="LinkInput TaskInput"
           onChange={(e) => {
-            props.additionalInput1(e);
+            props.priorityInput(e);
           }}
         />
       </div>

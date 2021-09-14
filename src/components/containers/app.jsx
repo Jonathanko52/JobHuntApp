@@ -1272,6 +1272,7 @@ class App extends React.Component {
                       handleChangeLink={this.handleChangeLink}
                       handleChangeDirectWebsite={this.handleChangeDirectWebsite}
                       handleChangeDirectLink={this.handleChangeDirectLink}
+                      handlePriorityInput={this.handlePriorityInput}
                       priorityInput={this.priorityInput}
                       additionalInput2={this.additionalInput2}
                       additionalInput3={this.additionalInput3}
