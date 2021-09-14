@@ -35,7 +35,7 @@ class App extends React.Component {
       titleInput: "",
       locationInput: "",
       linkInput: "",
-      additionalInput1: "",
+      priorityInput: "",
       additionalInput2: "",
       additionalInput3: "",
       additionalInput4: "",
@@ -65,7 +65,7 @@ class App extends React.Component {
     this.handleChangeDirectLink = this.handleChangeDirectLink.bind(this);
     this.handleSpreadsheetIdSubmit = this.handleSpreadsheetIdSubmit.bind(this);
     this.handleSheetParameters = this.handleSheetParameters.bind(this);
-    this.handleAdditionalInput1 = this.handleAdditionalInput1.bind(this);
+    this.handlePriorityInput = this.handlePriorityInput.bind(this);
     this.handleAdditionalInput2 = this.handleAdditionalInput2.bind(this);
     this.handleAdditionalInput3 = this.handleAdditionalInput3.bind(this);
     this.handleAdditionalInput4 = this.handleAdditionalInput4.bind(this);
@@ -152,8 +152,8 @@ class App extends React.Component {
   handleSheetParameters(event) {
     this.setState({ sheetParameters: event });
   }
-  handleAdditionalInput1(event) {
-    this.setState({ additionalInput1: event });
+  handlePriorityInput(event) {
+    this.setState({ priorityInput: event });
   }
   handleAdditionalInput2(event) {
     this.setState({ additionalInput2: event });
@@ -193,7 +193,7 @@ class App extends React.Component {
           locationInput: state.locationInput,
           coverInput: state.coverInput,
           linkInput: state.linkInput,
-          additionalInput1: state.additionalInput1,
+          priorityInput: state.priorityInput,
           additionalInput2: state.additionalInput2,
           additionalInput3: state.additionalInput3,
           additionalInput4: state.additionalInput4,
@@ -206,7 +206,7 @@ class App extends React.Component {
           titleInput: "",
           locationInput: "",
           linkInput: "",
-          additionalInput1: "",
+          priorityInput: "",
           additionalInput2: "",
           additionalInput3: "",
           additionalInput4: "",
@@ -274,7 +274,7 @@ class App extends React.Component {
             this.state.coverInput,
             this.state.interviewInput,
             cur.linkInput,
-            cur.additionalInput1,
+            cur.priorityInput,
             cur.additionalInput2,
             cur.additionalInput3,
             cur.additionalInput4,
@@ -327,7 +327,7 @@ class App extends React.Component {
             locationInput: cur[4],
             coverInput: cur[6],
             linkInput: cur[8],
-            additionalInput1: cur[9],
+            priorityInput: cur[9],
             additionalInput2: cur[10],
             additionalInput3: cur[11],
             additionalInput4: cur[12],
@@ -347,7 +347,7 @@ class App extends React.Component {
               locationInput: cur.locationInput,
               coverInput: cur.coverInput,
               linkInput: cur.linkInput,
-              additionalInput1: cur.additionalInput1,
+              priorityInput: cur.priorityInput,
               additionalInput2: cur.additionalInput2,
               additionalInput3: cur.additionalInput3,
               additionalInput4: cur.additionalInput4,
@@ -361,7 +361,7 @@ class App extends React.Component {
             titleInput: "",
             locationInput: "",
             linkInput: "",
-            additionalInput1: "",
+            priorityInput: "",
             additionalInput2: "",
             additionalInput3: "",
             additionalInput4: "",
@@ -466,7 +466,7 @@ class App extends React.Component {
               locationInput: "",
               linkInput: "",
               companyLinkInput: "",
-              additionalInput1: "",
+              priorityInput: "",
               additionalInput2: "",
               additionalInput3: "",
               additionalInput4: "",
@@ -1272,7 +1272,7 @@ class App extends React.Component {
                       handleChangeLink={this.handleChangeLink}
                       handleChangeDirectWebsite={this.handleChangeDirectWebsite}
                       handleChangeDirectLink={this.handleChangeDirectLink}
-                      additionalInput1={this.additionalInput1}
+                      priorityInput={this.priorityInput}
                       additionalInput2={this.additionalInput2}
                       additionalInput3={this.additionalInput3}
                       additionalInput4={this.additionalInput4}
