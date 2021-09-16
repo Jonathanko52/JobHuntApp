@@ -41,6 +41,7 @@ class RightPage extends React.Component {
 
   render() {
     let Array = [];
+    console.log("tasks", this.props.tasks);
     this.props.tasks.forEach((cur, ind) => {
       if (cur) {
         Array.push(
@@ -51,7 +52,7 @@ class RightPage extends React.Component {
             titleInput={cur.titleInput}
             locationInput={cur.locationInput}
             handleChangeCover={this.handleChangeCover}
-            handlePriorityInput={this.handlePriorityInput}
+            handlePriorityInput={props.handlePriorityInput}
             linkInput={cur.linkInput}
             spreadSheetId={this.props.spreadSheetId}
             updateTotalJobsFromSheets={this.props.updateTotalJobsFromSheets}
