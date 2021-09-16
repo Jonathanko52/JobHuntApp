@@ -29,7 +29,6 @@ const InputPage = (props) => {
         handleChangeDirectWebsite={props.handleChangeDirectWebsite}
         handleChangeDirectLink={props.handleChangeDirectLink}
         priorityInput={props.priorityInput}
-        handlePriorityInput={props.handlePriorityInput}
         additionalInput2={props.additionalInput2}
         additionalInput3={props.additionalInput3}
         additionalInput4={props.additionalInput4}
@@ -48,6 +47,7 @@ const InputPage = (props) => {
       <RightPage
         saveTaskToLocalStorage={props.saveTaskToLocalStorage}
         loadTaskFromLocalStorage={props.loadTaskFromLocalStorage}
+        handlePriorityInput={props.handlePriorityInput}
         tasks={props.tasks}
         removeFromList={props.removeFromList}
         moveToBack={props.moveToBack}

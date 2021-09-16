@@ -52,7 +52,7 @@ class RightPage extends React.Component {
             titleInput={cur.titleInput}
             locationInput={cur.locationInput}
             handleChangeCover={this.handleChangeCover}
-            handlePriorityInput={props.handlePriorityInput}
+            handlePriorityInput={this.props.handlePriorityInput}
             linkInput={cur.linkInput}
             spreadSheetId={this.props.spreadSheetId}
             updateTotalJobsFromSheets={this.props.updateTotalJobsFromSheets}
