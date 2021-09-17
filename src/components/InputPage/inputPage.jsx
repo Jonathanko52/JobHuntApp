@@ -3,7 +3,6 @@ import RightPage from "./inputpageright.jsx";
 import LeftPage from "./inputpageleft.jsx";
 
 const InputPage = (props) => {
-  console.log("INPUT PAGE PROPS", props);
   return (
     <div className="MainPage col-xs-10">
       <LeftPage

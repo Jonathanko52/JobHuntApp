@@ -152,10 +152,10 @@ class App extends React.Component {
   handleSheetParameters(event) {
     this.setState({ sheetParameters: event });
   }
-  handlePriorityInput(event) {
+  handlePriorityInput(value, index) {
     this.setState((state) => {
       let newTasks = state.tasks.slice();
-      newTasks[index].priorityInput = event;
+      newTasks[index].priorityInput = value;
       return {
         tasks: newTasks,
       };
