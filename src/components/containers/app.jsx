@@ -407,6 +407,19 @@ class App extends React.Component {
 
   sortPriorityInList() {
     let newTaskList = this.state.tasks.slice();
+    newTaskList = newTaskList.sort((a, b) => {
+      return a.priorityInput > b.priorityInput;
+    });
+    this.setState((state) => {
+      return {
+        tasks: newTaskList,
+        websiteInput: "LinkedIn",
+        companyInput: "",
+        titleInput: "",
+        locationInput: "",
+        linkInput: "",
+      };
+    });
   }
 
   saveTaskToLocalStorage() {
