@@ -78,6 +78,7 @@ class App extends React.Component {
     this.clearList = this.clearList.bind(this);
     this.moveToBack = this.moveToBack.bind(this);
     this.clearGoogleLocal = this.clearGoogleLocal.bind(this);
+    this.sortPriorityInList = this.sortPriorityInList.bind(this);
 
     //Save/load List to LocalStorage
 
@@ -403,6 +404,10 @@ class App extends React.Component {
   }
 
   clearGoogleLocal() {}
+
+  sortPriorityInList() {
+    let newTaskList = this.state.tasks.slice();
+  }
 
   saveTaskToLocalStorage() {
     setTimeout(() => {
