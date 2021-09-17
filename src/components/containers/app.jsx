@@ -200,7 +200,7 @@ class App extends React.Component {
           locationInput: state.locationInput,
           coverInput: state.coverInput,
           linkInput: state.linkInput,
-          priorityInput: state.priorityInput,
+          priorityInput: "5",
           additionalInput2: state.additionalInput2,
           additionalInput3: state.additionalInput3,
           additionalInput4: state.additionalInput4,
