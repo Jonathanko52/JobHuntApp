@@ -153,7 +153,14 @@ class App extends React.Component {
     this.setState({ sheetParameters: event });
   }
   handlePriorityInput(event) {
-    this.setState({ priorityInput: event });
+    this.setState((state) => {
+      let newTasks = state.tasks.slice();
+      newTasks[index].priorityInput = event;
+      return {
+        tasks: newTasks,
+      };
+    });
+    this.saveTaskToLocalStorage();
   }
   handleAdditionalInput2(event) {
     this.setState({ additionalInput2: event });
