@@ -1,6 +1,9 @@
 {
   "name": "BoilerPlate",
   "version": "1.0.0",
+  "engines": {
+    "node": "19.3.0"
+  },
   "description": "Starting setup for react redux project",
   "main": "index.js",
   "scripts": {
