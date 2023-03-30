@@ -18,13 +18,18 @@ module.exports = {
         });
 
         $("span").each((i, elem) => {
-
-          if (i === 5) {
-            company = $(elem).text();
-          }
+          // if(i <= 10){
+          //   console.log("SPAN", i, $(elem).text().trim())
+          // }
           if (i === 3) {
             location = $(elem).text();
             companyLink = $(elem).find("a").attr("href");
+          }
+        });
+
+        $("a").each((i, elem) => {
+          if (i === 5) {
+            company = $(elem).text();
           }
         });
         return [jobTitle, company, companyLink, location];
