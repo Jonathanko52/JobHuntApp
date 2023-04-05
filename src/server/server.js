@@ -31,5 +31,5 @@ app.get("/RetrieveHtmlAngelist/:link", taskController.retrieveHtmlAngelist);
 app.get("/TEST", authController.googleAuth);
 
 app.listen(port, () => {
-  console.log(`Listening on ${port}`);
+  console.log(`Listening on ${port}, http://localhost:3000/`);
 });

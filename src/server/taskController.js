@@ -24,12 +24,15 @@ module.exports = {
           if (i === 3) {
             location = $(elem).text();
             companyLink = $(elem).find("a").attr("href");
+            console.log("COMPANY LINK", companyLink)
           }
         });
 
         $("a").each((i, elem) => {
           if (i === 5) {
             company = $(elem).text();
+            console.log("COMPANY LINK", company)
+
           }
         });
         return [jobTitle, company, companyLink, location];
