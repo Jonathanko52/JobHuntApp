@@ -222,6 +222,7 @@ class App extends React.Component {
         };
       });
     }
+    alert("Item Added to List");
     this.saveTaskToLocalStorage();
   }
 
