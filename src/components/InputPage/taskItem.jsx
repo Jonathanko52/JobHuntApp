@@ -41,10 +41,10 @@ const TaskItem = (props) => {
       </form>
       <b href>Link:</b>
       <a href={props.linkInput} target="_blank">
-        {props.linkInput}
+        Link
       </a>
       <br />
-      <b href> Priority</b>
+      {/* <b href> Priority</b>
       <select
         onChange={(e) => {
           props.handlePriorityInput(e.target.value, props.index);
@@ -54,7 +54,7 @@ const TaskItem = (props) => {
         <option value="3">3</option>
         <option value="2">2</option>
         <option value="1">1</option>
-      </select>
+      </select> */}
       <br />
       <button
         className="btn btn-primary"

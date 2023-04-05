@@ -18,23 +18,26 @@ module.exports = {
         });
 
         $("span").each((i, elem) => {
+          console.log(i, "SPAN", $(elem).text());
           // if(i <= 10){
           //   console.log("SPAN", i, $(elem).text().trim())
           // }
-          if (i === 3) {
+          if (i === 5) {
             location = $(elem).text();
-            companyLink = $(elem).find("a").attr("href");
-            console.log("COMPANY LINK", companyLink)
+            console.log("Location", location);
           }
         });
 
         $("a").each((i, elem) => {
           if (i === 5) {
             company = $(elem).text();
-            console.log("COMPANY LINK", company)
-
+            console.log("COMPANY LINK", company);
+            companyLink = $(elem).find("a").attr("href");
           }
         });
+
+        console.log("Location", location);
+
         return [jobTitle, company, companyLink, location];
       })
       .then((data) => {
