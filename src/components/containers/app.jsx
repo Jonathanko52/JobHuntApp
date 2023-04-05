@@ -328,6 +328,7 @@ class App extends React.Component {
       .then((response) => {
         var result = response.result.values;
         result.forEach((cur) => {
+          console.log("CUR", cur);
           tasksToBeAdded.push({
             websiteInput: cur[0],
             companyInput: cur[1],
@@ -335,7 +336,7 @@ class App extends React.Component {
             recruiterInput: cur[7],
             locationInput: cur[4],
             coverInput: cur[6],
-            linkInput: cur[8],
+            linkInput: cur[7],
             priorityInput: cur[9],
             additionalInput2: cur[10],
             additionalInput3: cur[11],

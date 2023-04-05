@@ -41,7 +41,6 @@ class RightPage extends React.Component {
 
   render() {
     let Array = [];
-    console.log("tasks", this.props.tasks);
     this.props.tasks.forEach((cur, ind) => {
       if (cur) {
         Array.push(
