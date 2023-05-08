@@ -79,6 +79,8 @@ class App extends React.Component {
     this.moveToBack = this.moveToBack.bind(this);
     this.clearGoogleLocal = this.clearGoogleLocal.bind(this);
     this.sortPriorityInList = this.sortPriorityInList.bind(this);
+    this.moveUpInList = this.moveUpInList.bind(this);
+    this.moveDownInList = this.moveDownInList.bind(this);
 
     //Save/load List to LocalStorage
 
@@ -260,6 +262,48 @@ class App extends React.Component {
         input: state.input,
       };
     });
+    this.saveTaskToLocalStorage();
+  }
+  moveUpInList(index) {
+    if (index === 0) {
+      alert("This is the top of the list");
+    }
+    if (this.state.tasks < 2) {
+      alert("Invalid command: Not enough tasks");
+    } else {
+      this.setState((state) => {
+        let newTasks = state.tasks.slice();
+        let listedItem = newTasks[index];
+        let replacedItem = newTasks[index - 1];
+        newTasks[index] = replacedItem;
+        newTasks[index - 1] = listedItem;
+        return {
+          tasks: newTasks,
+          input: state.input,
+        };
+      });
+    }
+    this.saveTaskToLocalStorage();
+  }
+  moveDownInList(index) {
+    if (index > this.state.tasks.length - 1) {
+      alert("This is the bottom of the list");
+    }
+    if (this.state.tasks < 2) {
+      alert("Invalid command: Not enough tasks");
+    } else {
+      this.setState((state) => {
+        let newTasks = state.tasks.slice();
+        let listedItem = newTasks[index];
+        let replacedItem = newTasks[index + 1];
+        newTasks[index] = replacedItem;
+        newTasks[index + 1] = listedItem;
+        return {
+          tasks: newTasks,
+          input: state.input,
+        };
+      });
+    }
     this.saveTaskToLocalStorage();
   }
 
@@ -1308,6 +1352,8 @@ class App extends React.Component {
                       addToList={this.addToList}
                       clearList={this.clearList}
                       moveToBack={this.moveToBack}
+                      moveUpInList={this.moveUpInList}
+                      moveDownInList={this.moveDownInList}
                       totalJobsFromSheets={this.state.totalJobsFromSheets}
                       retrieveHtmlLinkedin={this.retrieveHtmlLinkedin}
                       retrieveHtmlIndeed={this.retrieveHtmlIndeed}

@@ -63,6 +63,8 @@ class RightPage extends React.Component {
             increaseNumberAppliedToday={this.increaseNumberAppliedToday}
             removeFromList={this.props.removeFromList}
             moveToBack={this.props.moveToBack}
+            moveDownInList={this.props.moveDownInList}
+            moveUpInList={this.props.moveUpInList}
             index={ind}></TaskItem>
         );
       }

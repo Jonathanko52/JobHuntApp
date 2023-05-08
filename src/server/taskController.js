@@ -2,6 +2,8 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 module.exports = {
+  retrieveHtmlSimplify: () => {},
+
   retrieveHtmlLinkedIn: (req, res) => {
     let jobTitle;
     let company;

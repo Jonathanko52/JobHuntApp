@@ -50,6 +50,8 @@ const InputPage = (props) => {
         tasks={props.tasks}
         removeFromList={props.removeFromList}
         moveToBack={props.moveToBack}
+        moveUpInList={props.moveUpInList}
+        moveDownInList={props.moveDownInList}
         clearList={props.clearList}
         websiteInput={props.websiteInput}
         updateTotalJobsFromSheets={props.updateTotalJobsFromSheets}

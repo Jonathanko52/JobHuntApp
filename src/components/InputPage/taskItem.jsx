@@ -129,6 +129,20 @@ const TaskItem = (props) => {
         }}>
         Postpone
       </button>
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          props.moveUpInList(props.index);
+        }}>
+        Move Up
+      </button>
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          props.moveDownInList(props.index);
+        }}>
+        Move Down
+      </button>
     </li>
   );
 };
