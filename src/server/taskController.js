@@ -20,10 +20,8 @@ module.exports = {
         });
 
         $("span").each((i, elem) => {
-          console.log(i, "SPAN", $(elem).text());
-          // if(i <= 10){
-          //   console.log("SPAN", i, $(elem).text().trim())
-          // }
+          // console.log(i, "SPAN", $(elem).text());
+
           if (i === 5) {
             location = $(elem).text();
             console.log("Location", location);
@@ -34,11 +32,15 @@ module.exports = {
           if (i === 5) {
             company = $(elem).text();
             console.log("COMPANY LINK", company);
-            companyLink = $(elem).find("a").attr("href");
+            // companyLink = $(elem).find("a").attr("href");
+            companyLink = $(elem).attr('href')
           }
         });
 
         console.log("Location", location);
+        console.log("Company",  company);
+        console.log("Link", companyLink);
+        console.log("Title", jobTitle);
 
         return [jobTitle, company, companyLink, location];
       })
