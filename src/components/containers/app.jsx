@@ -507,7 +507,7 @@ class App extends React.Component {
         let matchFound = false;
         this.state.tasks.forEach((cur) => {
           if (!matchFound) {
-            console.log("TEST1",cur.companyInput)
+            console.log("TEST1", cur);
             if (cur.companyInput === res.data[1]) {
               addToList = false;
               addToList = window.confirm(
