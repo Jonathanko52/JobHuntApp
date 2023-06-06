@@ -20,25 +20,30 @@ module.exports = {
         });
 
         $("span").each((i, elem) => {
-          // console.log(i, "SPAN", $(elem).text());
-
           if (i === 5) {
             location = $(elem).text();
-            console.log("Location", location);
           }
         });
 
         $("a").each((i, elem) => {
           if (i === 5) {
             company = $(elem).text();
-            console.log("COMPANY LINK", company);
-            // companyLink = $(elem).find("a").attr("href");
-            companyLink = $(elem).attr('href')
+            companyLink = $(elem).attr("href");
           }
         });
 
+        var category = $("div")
+          .filter(function () {
+            console.log("INNER", $(this).text().trim());
+
+            return $(this).text().trim() === "Easy Apply";
+          })
+          .next()
+          .text();
+        console.log("TEST", category);
+
         console.log("Location", location);
-        console.log("Company",  company);
+        console.log("Company", company);
         console.log("Link", companyLink);
         console.log("Title", jobTitle);
 
