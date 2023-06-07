@@ -32,15 +32,15 @@ module.exports = {
           }
         });
 
-        var category = $("div")
-          .filter(function () {
-            console.log("INNER", $(this).text().trim());
+        // var category = $("div")
+        //   .filter(function () {
+        //     console.log("INNER", $(this).text().trim());
 
-            return $(this).text().trim() === "Easy Apply";
-          })
-          .next()
-          .text();
-        console.log("TEST", category);
+        //     return $(this).text().trim() === "Easy Apply";
+        //   })
+        //   .next()
+        //   .text();
+        // console.log("TEST", category);
 
         console.log("Location", location);
         console.log("Company", company);
@@ -67,6 +67,12 @@ module.exports = {
         let company = jobInfoArray[0];
         company = company.replace(/[0-9]/g, "");
         let location = jobInfoArray[1];
+        let companyLink = "";
+
+        console.log("Location", location);
+        console.log("Company", company);
+        console.log("Link", companyLink);
+        console.log("Title", jobTitle);
         return [jobTitle, company, "", location];
       })
       .then((data) => {
