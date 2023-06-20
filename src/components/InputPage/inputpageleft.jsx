@@ -41,7 +41,8 @@ const LeftPage = (props) => {
         retrieveHtmlLinkedin={props.retrieveHtmlLinkedin}
         retrieveHtmlIndeed={props.retrieveHtmlIndeed}
         retrieveHtmlBuiltInLA={props.retrieveHtmlBuiltInLA}
-        retrieveHtmlAngelist={props.retrieveHtmlAngelist}></AutoSubmitForm>
+        retrieveHtmlAngelist={props.retrieveHtmlAngelist}
+        retrieveHtmlSimplify={props.retrieveHtmlSimplify}></AutoSubmitForm>
     </div>
   );
 };

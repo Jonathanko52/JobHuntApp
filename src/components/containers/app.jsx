@@ -102,6 +102,7 @@ class App extends React.Component {
     this.retrieveHtmlBuiltInLA = this.retrieveHtmlBuiltInLA.bind(this);
     this.retrieveHtmlMonster = this.retrieveHtmlMonster.bind(this);
     this.retrieveHtmlAngelist = this.retrieveHtmlAngelist.bind(this);
+    this.retrieveHtmlSimplify = this.retrieveHtmlSimplify.bind(this);
 
     //GoogleAPI stuff
 
@@ -507,7 +508,6 @@ class App extends React.Component {
         let matchFound = false;
         this.state.tasks.forEach((cur) => {
           if (!matchFound) {
-            console.log("TEST1", cur);
             if (cur.companyInput === res.data[1]) {
               addToList = false;
               addToList = window.confirm(
@@ -612,6 +612,64 @@ class App extends React.Component {
       .get("/RetrieveHtmlAngelist/" + url)
 
       .then((res, request) => {})
+      .then((res) => {
+        this.saveTaskToLocalStorage();
+      })
+      .catch((error) => console.error(error));
+  }
+
+  retrieveHtmlSimplify() {
+    let url = this.state.directLinkInput.split("/");
+    console.log("URL", url);
+    let newURL = url[4] + "/" + url[5];
+    console.log("REACT SIDE OF SIMPLIFY HIT", newURL);
+    axios
+      .get("/RetrieveHtmlSimplify/" + newURL)
+      .then((res, req) => {
+        let addToList = true;
+        let matchFound = false;
+        this.state.tasks.forEach((cur) => {
+          if (!matchFound) {
+            if (cur.companyInput === res.data[1]) {
+              addToList = false;
+              addToList = window.confirm(
+                "This company is already on the list. Are you sure you want to add it?"
+              );
+              matchFound = true;
+            }
+          }
+        });
+        if (addToList) {
+          this.setState((state) => {
+            let newTasks = state.tasks.slice();
+            newTasks.unshift({
+              websiteInput: state.directWebsiteInput,
+              companyInput: res.data[1],
+              titleInput: res.data[0],
+              recruiterInput: state.recruiterInput,
+              locationInput: res.data[3],
+              coverInput: state.coverInput,
+              linkInput: state.directLinkInput,
+              companyLinkInput: res.data[2],
+            });
+            return {
+              tasks: newTasks,
+              websiteInput: "Simplify",
+              companyInput: "",
+              titleInput: "",
+              locationInput: "",
+              linkInput: "",
+              companyLinkInput: "",
+              priorityInput: "",
+              additionalInput2: "",
+              additionalInput3: "",
+              additionalInput4: "",
+              additionalInput5: "",
+            };
+          });
+        }
+        return res;
+      })
       .then((res) => {
         this.saveTaskToLocalStorage();
       })
@@ -1360,6 +1418,7 @@ class App extends React.Component {
                       retrieveHtmlIndeed={this.retrieveHtmlIndeed}
                       retrieveHtmlBuiltInLA={this.retrieveHtmlBuiltInLA}
                       retrieveHtmlAngelist={this.retrieveHtmlAngelist}
+                      retrieveHtmlSimplify={this.retrieveHtmlSimplify}
                       directWebsiteInput={this.state.directWebsiteInput}
                       directLinkInput={this.state.directLinkInput}
                       saveTaskToLocalStorage={this.saveTaskToLocalStorage}

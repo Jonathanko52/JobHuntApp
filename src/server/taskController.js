@@ -2,8 +2,59 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 module.exports = {
-  retrieveHtmlSimplify: () => {},
+  retrieveHtmlSimplify: (req, res) => {
+    console.log("SMPLIGY HIT", req.params);
+    let jobTitle;
+    let company;
+    let companyLink;
+    let location;
+    req.body = axios
+      .get("https://simplify.jobs/p/" + req.params.link)
+      .then(function (response) {
+        const $ = cheerio.load(response.data);
+        $("h3").each((i, elem) => {
+          if (i === 0) {
+            jobTitle = $(elem).text();
+          }
+        });
 
+        $("span").each((i, elem) => {
+          if (i === 5) {
+            location = $(elem).text();
+          }
+        });
+
+        $("a").each((i, elem) => {
+          if (i === 5) {
+            company = $(elem).text();
+            companyLink = $(elem).attr("href");
+          }
+        });
+
+        // var category = $("div")
+        //   .filter(function () {
+        //     console.log("INNER", $(this).text().trim());
+
+        //     return $(this).text().trim() === "Easy Apply";
+        //   })
+        //   .next()
+        //   .text();
+        // console.log("TEST", category);
+
+        // console.log("Location", location);
+        // console.log("Company", company);
+        // console.log("Link", companyLink);
+        // console.log("Title", jobTitle);
+
+        return [jobTitle, company, companyLink, location];
+      })
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((error) =>
+        console.log("ERROR Linkedin Call", error.response.status)
+      );
+  },
   retrieveHtmlLinkedIn: (req, res) => {
     let jobTitle;
     let company;
