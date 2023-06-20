@@ -42,22 +42,25 @@ module.exports = {
         //   .text();
         // console.log("TEST", category);
 
-        console.log("Location", location);
-        console.log("Company", company);
-        console.log("Link", companyLink);
-        console.log("Title", jobTitle);
+        // console.log("Location", location);
+        // console.log("Company", company);
+        // console.log("Link", companyLink);
+        // console.log("Title", jobTitle);
 
         return [jobTitle, company, companyLink, location];
       })
       .then((data) => {
         res.status(200).send(data);
       })
-      .catch((error) => console.log("ERROR Linkedin Call", error));
+      .catch((error) =>
+        console.log("ERROR Linkedin Call", error.response.status)
+      );
   },
   retrieveHtmlIndeed: (req, res) => {
     req.body = axios
       .get("https://www.indeed.com/viewjob?" + req.params.link)
       .then(function (response) {
+        console.log("RESPONSE", response.data);
         const $ = cheerio.load(response.data);
         let jobTitle = $("h1").text();
         let jobInfoArray = $(".jobsearch-DesktopStickyContainer-companyrating")
@@ -78,7 +81,7 @@ module.exports = {
       .then((data) => {
         res.status(200).send(data);
       })
-      .catch((error) => console.log("ERROR", error));
+      .catch((error) => console.log("ERROR", error.response.status));
   },
   retrieveHtmlBuildInLA: () => {},
   retrieveHtmlAngelist: (req, res) => {
