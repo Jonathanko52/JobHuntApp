@@ -14,9 +14,12 @@ const ManualSubmitForm = (props) => {
           onChange={(e) => {
             props.handleChangeWebsite(e);
           }}>
-          <option value="Angelist">Angelist</option>
+          <option value="Wellfound">Wellfound</option>
           <option value="Indeed">Indeed</option>
           <option value="LinkedIn">LinkedIn</option>
+          <option value="Simplify">
+          Simplify
+          </option>
           <option defaultValue="selected" value="Hacker News">
             Hacker News
           </option>
