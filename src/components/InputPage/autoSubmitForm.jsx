@@ -20,6 +20,8 @@ const autoSubmitForm = (props) => {
           <option value="Indeed">Indeed</option>
           <option value="BuiltInLA">BuiltInLA</option>
           <option value="Angelist">Angelist</option>
+          <option value="Simplify">Simplify</option>
+
           <option value="Hacker News">Hacker News</option>
         </select>
 
@@ -44,6 +46,8 @@ const autoSubmitForm = (props) => {
               props.retrieveHtmlBuiltInLA();
             } else if (props.directWebsiteInput === "Angelist") {
               props.retrieveHtmlAngelist();
+            } else if (props.directWebsiteInput === "Simplify") {
+              props.retrieveHtmlSimplify();
             }
           }}>
           Add

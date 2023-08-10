@@ -22,7 +22,6 @@ const InputPage = (props) => {
         handleChangeTitle={props.handleChangeTitle}
         handleChangeRecruiter={props.handleChangeRecruiter}
         handleChangeLocation={props.handleChangeLocation}
-        handleChangeCompany={props.handleChangeCompany}
         handleChangeCover={props.handleChangeCover}
         handleChangeLink={props.handleChangeLink}
         handleChangeDirectWebsite={props.handleChangeDirectWebsite}
@@ -36,7 +35,7 @@ const InputPage = (props) => {
         retrieveHtmlLinkedin={props.retrieveHtmlLinkedin}
         retrieveHtmlIndeed={props.retrieveHtmlIndeed}
         retrieveHtmlAngelist={props.retrieveHtmlAngelist}
-        retrieveHtmlAngelist={props.retrieveHtmlAngelist}
+        retrieveHtmlSimplify={props.retrieveHtmlSimplify}
         totalJobsFromSheets={props.totalJobsFromSheets}
         directWebsiteInput={props.directWebsiteInput}
         directLinkInput={props.directLinkInput}
