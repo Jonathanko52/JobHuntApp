@@ -183,6 +183,7 @@ class App extends React.Component {
 
   addToList() {
     let wantToAddAnyway = true;
+    console.log("STATE",this.state)
     this.state.tasks.forEach((cur) => {
       if (
         cur.companyInput === this.state.companyInput &&
