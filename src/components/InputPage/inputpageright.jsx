@@ -15,6 +15,7 @@ class RightPage extends React.Component {
     this.handleChangeCover = this.handleChangeCover.bind(this);
     this.increaseNumberAppliedToday =
       this.increaseNumberAppliedToday.bind(this);
+      this.handleChangePriority = this.handleChangePriority.bind(this);
   }
 
   //handle changes to "Recruiter" value
@@ -27,6 +28,9 @@ class RightPage extends React.Component {
 
   handleChangeCover(event) {
     this.setState({ coverInput: event.target.value });
+  }
+  handleChangePriority(event) {
+    
   }
 
   handleChangeInterview(event) {
@@ -77,6 +81,13 @@ class RightPage extends React.Component {
           Number of Jobs Applied to Today: {this.state.numberAppliedToday}
         </h3>
         <div className="row">
+        <button
+            className="btn btn-primary"
+            onClick={() => {
+              console.log(this.props.tasks)
+            }}>
+            log state
+          </button>
           <button
             className="btn btn-primary"
             onClick={() => {
