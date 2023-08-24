@@ -373,7 +373,6 @@ class App extends React.Component {
       .then((response) => {
         var result = response.result.values;
         result.forEach((cur) => {
-          console.log("CUR", cur);
           tasksToBeAdded.push({
             websiteInput: cur[0],
             companyInput: cur[1],
@@ -546,6 +545,7 @@ class App extends React.Component {
             };
           });
         }
+        alert("Linkedin Item added to List")
         return res;
       })
       .then((res) => {
