@@ -212,7 +212,7 @@ class App extends React.Component {
         });
         return {
           tasks: newTasks,
-          websiteInput: "LinkedIn",
+          websiteInput: "Indeed",
           companyInput: "",
           titleInput: "",
           locationInput: "",

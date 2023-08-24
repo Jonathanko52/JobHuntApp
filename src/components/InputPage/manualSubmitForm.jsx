@@ -25,20 +25,20 @@ const ManualSubmitForm = (props) => {
           </option>
           <option value="Other">Other</option>
         </select>
-        <h4>Company</h4>
-        <input
-          ref={props.compRef}
-          className="CompanyInput TaskInput"
-          onChange={(e) => {
-            props.handleChangeCompany(e);
-          }}
-        />
         <h4>Title</h4>
         <input
           ref={props.titleRef}
           className="TitleInput TaskInput"
           onChange={(e) => {
             props.handleChangeTitle(e);
+          }}
+        />
+        <h4>Company</h4>
+        <input
+          ref={props.compRef}
+          className="CompanyInput TaskInput"
+          onChange={(e) => {
+            props.handleChangeCompany(e);
           }}
         />
         <h4>Location</h4>
