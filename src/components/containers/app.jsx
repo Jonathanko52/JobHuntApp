@@ -213,6 +213,7 @@ class App extends React.Component {
         return {
           tasks: newTasks,
           websiteInput: "Indeed",
+          directWebsiteInput:"Indeed",
           companyInput: "",
           titleInput: "",
           locationInput: "",
