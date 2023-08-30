@@ -41,7 +41,7 @@ class App extends React.Component {
       additionalInput4: "",
       additionalInput5: "",
       totalJobsFromSheets: 0,
-      directWebsiteInput: "Indeed",
+      directWebsiteInput: "LinkedIn",
       directLinkInput: "",
       companyLinkInput: "",
       spreadSheetId: "",

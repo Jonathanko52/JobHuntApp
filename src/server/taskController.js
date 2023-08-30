@@ -123,16 +123,12 @@ module.exports = {
         let location = jobInfoArray[1];
         let companyLink = "";
 
-        console.log("Location", location);
-        console.log("Company", company);
-        console.log("Link", companyLink);
-        console.log("Title", jobTitle);
         return [jobTitle, company, "", location];
       })
       .then((data) => {
         res.status(200).send(data);
       })
-      .catch((error) => console.log("ERROR", error.response.status));
+      .catch((error) => console.log("ERROR indeed call", error.response.status));
   },
   retrieveHtmlBuildInLA: () => {},
   retrieveHtmlAngelist: (req, res) => {
