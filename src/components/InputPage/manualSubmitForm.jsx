@@ -61,7 +61,7 @@ const ManualSubmitForm = (props) => {
           className="btn btn-primary"
           onClick={() => {
             props.addToList();
-            props.webRef.current.value = "LinkedIn";
+            props.webRef.current.value = "Indeed";
             props.compRef.current.value = "";
             props.titleRef.current.value = "";
             props.locRef.current.value = "";

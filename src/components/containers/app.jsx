@@ -30,7 +30,7 @@ class App extends React.Component {
 
     this.state = {
       tasks: [],
-      websiteInput: "LinkedIn",
+      websiteInput: "Indeed",
       companyInput: "",
       titleInput: "",
       locationInput: "",
@@ -41,7 +41,7 @@ class App extends React.Component {
       additionalInput4: "",
       additionalInput5: "",
       totalJobsFromSheets: 0,
-      directWebsiteInput: "LinkedIn",
+      directWebsiteInput: "Indeed",
       directLinkInput: "",
       companyLinkInput: "",
       spreadSheetId: "",
@@ -428,7 +428,7 @@ class App extends React.Component {
       .catch((err) => {
         alert("An error has occured");
 
-        console.log("test", err);
+        console.log("Save to local storage error", err);
       });
   }
 
