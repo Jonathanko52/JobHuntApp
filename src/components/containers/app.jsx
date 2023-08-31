@@ -145,6 +145,7 @@ class App extends React.Component {
     this.setState({ totalJobsFromSheets: value });
   }
   handleChangeDirectWebsite(event) {
+    console.log(event.target.value,"Bug")
     this.setState({ directWebsiteInput: event.target.value });
   }
   handleChangeDirectLink(event) {
@@ -213,7 +214,7 @@ class App extends React.Component {
         return {
           tasks: newTasks,
           websiteInput: "Indeed",
-          directWebsiteInput:"Indeed",
+          directWebsiteInput:"LinkedIn",
           companyInput: "",
           titleInput: "",
           locationInput: "",
