@@ -14,7 +14,7 @@ const autoSubmitForm = (props) => {
           onChange={(e) => {
             props.handleChangeDirectWebsite(e);
           }}>
-          <option selected value="LinkedIn">
+          <option value="LinkedIn">
             LinkedIn
           </option>
           <option value="Indeed">Indeed</option>
