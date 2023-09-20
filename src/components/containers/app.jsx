@@ -226,8 +226,12 @@ class App extends React.Component {
           additionalInput5: "",
         };
       });
+      alert("Item Added to List");
+
+    } else {
+      alert("Canceled adding item to list");
+
     }
-    alert("Item Added to List");
     this.saveTaskToLocalStorage();
   }
 
