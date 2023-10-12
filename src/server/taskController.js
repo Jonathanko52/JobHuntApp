@@ -77,9 +77,6 @@ module.exports = {
         });
 
         $("a").each((i, elem) => {
-          if(i< 10){
-            console.log("I, ELEM", i, $(elem).text())
-          }
           if (i === 5 && $(elem).text() !== "Join now") {
             company = $(elem).text();
             companyLink = $(elem).attr("href");
