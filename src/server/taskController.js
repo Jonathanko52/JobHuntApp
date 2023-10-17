@@ -76,30 +76,19 @@ module.exports = {
           }
         });
 
+        // $('.job-details-jobs-unified-top-card__primary-description').each((i,elem)=>{
+        //   console.log("TEST", $(elem).text())
+        // })
+
         $("a").each((i, elem) => {
-          if (i === 5 && $(elem).text() !== "Join now") {
+          if (i === 5 && $(elem).text() !== "Join now" && $(elem).text() !== "Cookie Policy") {
             company = $(elem).text();
             companyLink = $(elem).attr("href");
-          } else if (i === 8 && $(elem).text() !== "Join now") {
+          } else if (i === 8 && $(elem).text() !== "Join now" && $(elem).text() !== "Cookie Policy") {
             company = $(elem).text();
             companyLink = $(elem).attr("href");
           } 
         });
-
-        // var category = $("div")
-        //   .filter(function () {
-        //     console.log("INNER", $(this).text().trim());
-
-        //     return $(this).text().trim() === "Easy Apply";
-        //   })
-        //   .next()
-        //   .text();
-        // console.log("TEST", category);
-
-        // console.log("Location", location);
-        // console.log("Company", company);
-        // console.log("Link", companyLink);
-        // console.log("Title", jobTitle);
 
         return [jobTitle, company, companyLink, location];
       })
