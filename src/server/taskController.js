@@ -81,13 +81,18 @@ module.exports = {
         // })
 
         $("a").each((i, elem) => {
-          if (i === 5 && $(elem).text() !== "Join now" && $(elem).text() !== "Cookie Policy") {
-            company = $(elem).text();
-            companyLink = $(elem).attr("href");
-          } else if (i === 8 && $(elem).text() !== "Join now" && $(elem).text() !== "Cookie Policy") {
-            company = $(elem).text();
-            companyLink = $(elem).attr("href");
-          } 
+
+          if(i === 5 || i === 8){
+            let firstWord = $(elem).text()
+            firstWord = firstWord.replace(/ .*/,'')
+            console.log("TEST", firstWord)
+
+
+            if(firstWord !== "See" && $(elem).text() !== "Cookie"){
+                company = $(elem).text();
+                companyLink = $(elem).attr("href");
+            } 
+          }
         });
 
         return [jobTitle, company, companyLink, location];
@@ -96,7 +101,7 @@ module.exports = {
         res.status(200).send(data);
       })
       .catch((error) =>
-        console.log("ERROR Linkedin Call", error.response.status)
+        console.log("ERROR Linkedin Call", error)
       );
   },
   retrieveHtmlIndeed: (req, res) => {
