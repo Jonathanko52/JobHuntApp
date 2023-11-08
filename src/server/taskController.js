@@ -31,20 +31,6 @@ module.exports = {
           }
         });
 
-        // var category = $("div")
-        //   .filter(function () {
-        //     console.log("INNER", $(this).text().trim());
-
-        //     return $(this).text().trim() === "Easy Apply";
-        //   })
-        //   .next()
-        //   .text();
-        // console.log("TEST", category);
-
-        // console.log("Location", location);
-        // console.log("Company", company);
-        // console.log("Link", companyLink);
-        // console.log("Title", jobTitle);
 
         return [jobTitle, company, companyLink, location];
       })
@@ -76,19 +62,21 @@ module.exports = {
           }
         });
 
-        // $('.job-details-jobs-unified-top-card__primary-description').each((i,elem)=>{
-        //   console.log("TEST", $(elem).text())
-        // })
-
         $("a").each((i, elem) => {
 
-          if(i === 5 || i === 8){
-            let firstWord = $(elem).text()
+          if(i >= 2 && i <= 10){
+            let firstWord = $(elem).text().trim()
             firstWord = firstWord.replace(/ .*/,'')
-            console.log("TEST", firstWord)
 
-
-            if(firstWord !== "See" && $(elem).text() !== "Cookie"){
+            if(firstWord !== "User" 
+              && firstWord !== "Privacy"
+              && firstWord !== "Cookie"
+              && firstWord !== "company"
+              && firstWord !== "See"
+              && firstWord !== "Already"
+              && firstWord !== "Report"
+              && firstWord !== "Forgot"
+          ){
                 company = $(elem).text();
                 companyLink = $(elem).attr("href");
             } 
