@@ -89,7 +89,7 @@ module.exports = {
         res.status(200).send(data);
       })
       .catch((error) =>
-        console.log("ERROR Linkedin Call", error)
+        console.log("ERROR Linkedin Call", error.response)
       );
   },
   retrieveHtmlIndeed: (req, res) => {

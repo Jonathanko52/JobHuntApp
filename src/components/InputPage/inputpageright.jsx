@@ -6,6 +6,7 @@ class RightPage extends React.Component {
     super(props);
     this.state = {
       numberAppliedToday: 0,
+      numberAppliedTodayCover:0,
       recruiterInput: "Yes",
       coverInput: "Yes",
       interviewInput: "Submitted",
@@ -13,9 +14,8 @@ class RightPage extends React.Component {
     //binding handle change functions
     this.handleChangeRecruiter = this.handleChangeRecruiter.bind(this);
     this.handleChangeCover = this.handleChangeCover.bind(this);
-    this.increaseNumberAppliedToday =
-      this.increaseNumberAppliedToday.bind(this);
-      this.handleChangePriority = this.handleChangePriority.bind(this);
+    this.increaseNumberAppliedToday = this.increaseNumberAppliedToday.bind(this);
+    this.handleChangePriority = this.handleChangePriority.bind(this);
   }
 
   //handle changes to "Recruiter" value
@@ -39,8 +39,16 @@ class RightPage extends React.Component {
 
   increaseNumberAppliedToday() {
     this.setState((state) => {
-      numberAppliedToday: state.numberAppliedToday++;
-    });
+      let newCoverAppliedToday = state.numberAppliedTodayCover
+      let newAppliedToday = state.numberAppliedToday
+      if(state.coverInput === "Yes"){
+        newCoverAppliedToday++
+      }
+      newAppliedToday++
+    return {
+      numberAppliedTodayCover: newCoverAppliedToday,
+      numberAppliedToday: newAppliedToday
+    }});
   }
 
   render() {
@@ -80,11 +88,16 @@ class RightPage extends React.Component {
         <h3>
           Number of Jobs Applied to Today: {this.state.numberAppliedToday}
         </h3>
+        <h3>
+          Number of Jobs Applied to Today: {this.state.numberAppliedTodayCover}
+        </h3>        
         <div className="row">
         <button
             className="btn btn-primary"
             onClick={() => {
-              console.log(this.props.tasks)
+              // console.log(this.props.tasks)
+              console.log("TEST", this.increaseNumberAppliedToday())
+              
             }}>
             log state
           </button>
