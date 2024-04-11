@@ -38,7 +38,7 @@ module.exports = {
         res.status(200).send(data);
       })
       .catch((error) =>
-        console.log("ERROR Linkedin Call", error.response.status)
+        console.log("ERROR other Call", error.response.status)
       );
   },
   retrieveHtmlLinkedIn: (req, res) => {
@@ -88,9 +88,11 @@ module.exports = {
       .then((data) => {
         res.status(200).send(data);
       })
-      .catch((error) =>
-        console.log("ERROR Linkedin Call", error.response)
-      );
+      .catch((error) =>{
+        if(error.response){
+          console.log("ERROR Linkedin Call", error.response.status,error.response.statusText)
+        }
+      });
   },
   retrieveHtmlIndeed: (req, res) => {
     req.body = axios

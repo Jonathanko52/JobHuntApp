@@ -321,7 +321,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadsheetId,
-        range: "Unapplied!A2:O1000",
+        range: "Unapplied!A2:O2000",
       })
       .then((response) => {
         this.state.tasks.forEach((cur) => {
@@ -442,7 +442,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .clear({
         spreadsheetId: spreadsheetId,
-        range: "Unapplied!A2:O1000",
+        range: "Unapplied!A2:O2000",
       })
       .then((response) => {
         alert("An error has occured");
@@ -1273,7 +1273,7 @@ class App extends React.Component {
     gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: spreadSheetId,
-        range: "Jobs!A1:O1000",
+        range: "Jobs!A1:O2000",
       })
       .then((response) => {
         lastRow = response.result.values.length;
