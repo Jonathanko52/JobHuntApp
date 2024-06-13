@@ -84,13 +84,13 @@ class RightPage extends React.Component {
 
     return (
       <div className="rightBar col-xs-6">
-        <h3>List of Jobs: {this.props.tasks.length}</h3>
-        <h3>
+        <h5>List of Jobs: {this.props.tasks.length}</h5>
+        <h5>
           Number of Jobs Applied to Today: {this.state.numberAppliedToday}
-        </h3>
-        <h3>
+        </h5>
+        <h5>
           Number of Jobs Applied to Today: {this.state.numberAppliedTodayCover}
-        </h3>        
+        </h5>        
         <div className="row">
         <button
             className="btn btn-primary"
