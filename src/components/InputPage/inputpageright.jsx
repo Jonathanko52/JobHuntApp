@@ -83,15 +83,13 @@ class RightPage extends React.Component {
     });
 
     return (
-      <div className="rightBar col-xs-6">
-        <h5>List of Jobs: {this.props.tasks.length}</h5>
-        <h5>
+      <div className="rightBar col-xs-6 text-center mt-3">
+        <h4>List of Jobs: {this.props.tasks.length}</h4>
+        <h4>
           Number of Jobs Applied to Today: {this.state.numberAppliedToday}
-        </h5>
-        <h5>
-          Number of Jobs Applied to Today: {this.state.numberAppliedTodayCover}
-        </h5>        
-        <div className="row">
+        </h4>
+  
+        <div className="row d-flex justify-content-center">
         <button
             className="btn btn-primary"
             onClick={() => {
@@ -109,6 +107,7 @@ class RightPage extends React.Component {
             Clear List
           </button>
           <button
+            className="btn btn-primary"
             onClick={() => {
               let addToList = false;
               addToList = window.confirm(
@@ -121,6 +120,7 @@ class RightPage extends React.Component {
             Save To Google
           </button>
           <button
+            className="btn btn-primary"
             onClick={() => {
               let addToList = false;
               addToList = window.confirm(
@@ -133,6 +133,7 @@ class RightPage extends React.Component {
             Load From Google
           </button>
           <button
+            className="btn btn-primary"
             onClick={() => {
               let addToList = false;
               addToList = window.confirm(
